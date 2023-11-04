@@ -1,0 +1,38 @@
+footer{
+  /* background-image: url("../../../assets/images/landing.png"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  margin: 0px;
+  padding: 0px;
+}
+.page-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+
+.title {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 700;
+  color: white;
+}
+
+.menuitem {
+  margin-left: 1.5em;
+  margin-top: 1.5em;
+  font-size: 15px;
+}
+
+.menuitem a {
+  color: rgb(178, 181, 224);
+}
+.footer-shadow{
+  background-color: var(--primary-700);
+  opacity: 0.8;
+}

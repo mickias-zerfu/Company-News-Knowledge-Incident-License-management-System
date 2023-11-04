@@ -1,0 +1,63 @@
+.button {
+    font-family: inherit;
+    /* background: #2CA0D9; */
+    color: white;
+    padding: 0.35em 0;
+    font-size: 17px;
+    border: none;
+    border-radius: 0.7em;
+    letter-spacing: 0.08em;
+    position: relative;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 2.1em;
+    padding-left: 2.8em;
+    padding-right: 0.9em;
+   }
+
+   .button .icon {
+    background: #fff;
+    height: 2em;
+    width: 2em;
+    border-radius: 2em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0.4em;
+    transition: all 0.5s;
+   }
+
+   .icon svg {
+    margin-left: 0.4em;
+    transition: all 0.5s;
+    color: #2CA0D9;
+    width: 1.2rem;
+    height: 1.2rem;
+   }
+
+   .button:hover .icon svg {
+    transform: rotate(360deg);
+   }
+
+   .button:hover .icon {
+    width: calc(100% - 0.85rem);
+    border-radius: 0.5em;
+   }
+   .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #282936;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+   }

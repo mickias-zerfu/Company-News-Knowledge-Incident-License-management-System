@@ -1,0 +1,42 @@
+<nav class="sidebar-nav pb-8">
+  <ul id="sidebarnav">
+    <li class="sidebar-item">
+      <img class="avatar mat-elevation-z8 rounded" src="../../../assets/images/user_avatar.png" />
+      <h4 class="name">John Smith</h4>
+      <p class="designation">Software Engineer</p>
+      <p-divider></p-divider>
+    </li><ul>
+      <ng-container *ngFor="let sidebarnavItem of sidebarnavItems">
+        <li class="sidebar-item" [class.active]="showMenu === sidebarnavItem.title">
+          <div class="nav-small-cap" *ngIf="sidebarnavItem.extralink === true">{{ sidebarnavItem.title }}</div>
+          <a class="sidebar-link waves-effect waves-dark flex items-center space-x-2 cursor-pointer"
+            [routerLink]="sidebarnavItem.class === '' ? [sidebarnavItem.path] : null" [ngClass]="[sidebarnavItem.class]"
+            *ngIf="!sidebarnavItem.extralink" (click)="addExpandClass(sidebarnavItem.title)"
+            [routerLinkActive]="sidebarnavItem.submenu.length !== 0 ? '' : 'active'">
+            <span class="flex items-center">
+              <!-- <p-icon> {{ sidebarnavItem.icon }}</p-icon> -->
+            </span>
+            <span class="hide-menum">{{ sidebarnavItem.title }}</span>
+          </a>
+
+          <!-- Nested Submenu -->
+          <ul *ngIf="showMenu === sidebarnavItem.title" class="pl-8">
+            <li class="sidebar-item" [class.active]="showMenu === submenuItem.title"
+                *ngFor="let submenuItem of sidebarnavItem.submenu">
+              <a class="sidebar-link waves-effect waves-dark flex items-center space-x-2 cursor-pointer"
+                [routerLink]="submenuItem.class === '' ? [submenuItem.path] : null" [ngClass]="[submenuItem.class]"
+                [routerLinkActive]="submenuItem.submenu.length !== 0 ? '' : 'active'">
+                <span class="flex items-center">
+                  <!-- <mat-icon>{{ submenuItem.icon }}</mat-icon> -->
+                </span>
+                <span class="hide-menum">{{ submenuItem.title }}</span>
+              </a>
+            </li>
+          </ul>
+          <!-- End of Nested Submenu -->
+
+        </li>
+      </ng-container>
+    </ul>
+  </ul>
+</nav>

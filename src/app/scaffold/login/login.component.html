@@ -1,0 +1,26 @@
+<div class="flex h-screen items-center justify-center bg-gray-100">
+  <form (ngSubmit)="login()" class="w-full max-w-sm bg-white rounded-lg shadow-lg p-6">
+    <div class="text-center">
+      <img class="w-24 mx-auto mb-6" alt="Logo" src="../../../assets/images/logos/logo.png" />
+      <h2 class="text-3xl font-bold text-gray-800">Wel Come Admin !</h2>
+    </div>
+    <div class="mt-8">
+      <input type="text" pInputText name="username" type="text" placeholder="Username" required
+        [(ngModel)]="loginModel.userName" />
+
+    </div>
+    <div class="mt-4">
+      <input type="text" pInputText name="password" type="password" placeholder="Password" required
+      [(ngModel)]="loginModel.password"/>
+    </div>
+    <div class="mt-6">
+      <button
+        class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-lg shadow-neumorphic">
+        Login
+      </button>
+    </div>
+    <div class="mt-4 text-center text-red-500" *ngIf="loginFailed">
+      <span class="badge">The username or password is incorrect. Try again or contact support.</span>
+    </div>
+  </form>
+</div>
