@@ -1,17 +1,19 @@
-<app-header>
-
-</app-header>
-<div class="flex">
-  <app-sidebar>
-
-  </app-sidebar>
-  <router-outlet>
-
-  </router-outlet>
+<div class="flex flex-col h-screen">
+  <app-header></app-header>
+  <div class="flex">
+    <div *ngIf="isAdmin" class=" " style="width: 250px !important;">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="" style="width: 100% !important;">
+      <ng-container *ngIf="isAdmin; else noSidebar">
+        <router-outlet></router-outlet>
+      </ng-container>
+      <ng-template #noSidebar>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <app-footer class="mt-auto"></app-footer>
 </div>
-<router-outlet>
-
-</router-outlet>
-<app-footer>
-
-</app-footer>
