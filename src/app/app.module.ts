@@ -6,6 +6,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DividerModule } from 'primeng/divider';
 import { AccordionModule } from 'primeng/accordion';
 import { CardModule } from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { ButtonModule } from 'primeng/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -57,7 +60,10 @@ import { SearchComponentComponent } from './pages/transactions/search-component/
     InputTextModule,
     DividerModule,
     AccordionModule,
-    CardModule
+    CardModule,
+    DropdownModule,
+    CalendarModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

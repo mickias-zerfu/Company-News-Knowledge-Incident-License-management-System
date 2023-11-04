@@ -1,1 +1,39 @@
-<p>search-component works!</p>
+<section>
+  <div class="searchComponent">
+    <form #f="ngForm" (ngSubmit)="onSearchClicked()">
+      <h2 class="text-4xl text-center">Search</h2>
+      <div class="params flex p-4 ">
+        <div class="form-component">
+          <div class="label">Date Range</div>
+          <div class="date-range">
+            <p-calendar name="fromDate" [(ngModel)]="fromDate" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+            <span class="date-range-separator px-2">To</span>
+            <p-calendar name="toDate" [(ngModel)]="toDate" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+          </div>
+        </div>
+        <div class="form-component">
+          <div class="label">Search By</div>
+          <p-dropdown [options]="searchByOptions" [(ngModel)]="searchType" (onChange)="onSearchByChange()"></p-dropdown>
+        </div>
+        <ng-container *ngIf="searchType == 'Transaction Type'; else accountNumberInput">
+          <div class="form-component">
+            <div class="label">Transaction Type</div>
+            <p-dropdown [options]="transactionTypeOptions" [(ngModel)]="transactionType"></p-dropdown>
+          </div>
+          <div class="form-component">
+            <div class="label">Status</div>
+            <p-dropdown [options]="statusOptions" [(ngModel)]="status"></p-dropdown>
+          </div>
+        </ng-container>
+        <ng-template #accountNumberInput>
+          <div class="form-component">
+            <div class="label">Account Number</div>
+            <input type="text" name="accountNumber" [(ngModel)]="accountNumber">
+          </div>
+        </ng-template>
+
+        <button [disabled]="!f.valid" id="searchButton" class="form-component">Search</button>
+      </div>
+    </form>
+  </div>
+</section>
