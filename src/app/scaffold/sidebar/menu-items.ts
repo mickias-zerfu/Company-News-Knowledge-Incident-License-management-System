@@ -35,7 +35,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/about',
+    path: '/help',
     title: 'Help',
     icon: 'developer_board',
     class: '',

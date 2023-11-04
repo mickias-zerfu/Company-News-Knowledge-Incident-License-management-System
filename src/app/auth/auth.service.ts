@@ -24,36 +24,6 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  /*
-  login(username: string, password: string) {
-    return this.http.post('/login', { username, password })
-      .pipe(map(user => {
-        // login successful if there's a jwt token in the response
-        // && user.token
-        if (user) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.user = user;
-        }
-        return user;
-      }));
-  }
-  */
-  /*
-    login(userName: string, password: string): Observable<any> {
-      this.isUserLoggedIn = userName == 'admin' && password == 'admin';
-      localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
-      localStorage.setItem('userRole', 'admin');
-
-      return of(this.isUserLoggedIn).pipe(
-        delay(1000),
-        tap(val => {
-          console.log("Is User Authentication is successful: " + val);
-        })
-      );
-    }
-    */
-  // Modified method
   public login(userName: string, password: string): Observable<any> {
     if (userName === 'admin' && password === 'admin') {
       this.isUserLoggedIn = true;

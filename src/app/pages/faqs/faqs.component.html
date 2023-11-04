@@ -1,0 +1,18 @@
+<section class=" rounded mt-4">
+<div>
+  <h3 class="pt-10 pb-5 text-emerald-900 text-3xl font-bold">FAQs</h3>
+</div>
+<p-accordion [multiple]="true">
+  <ng-container *ngFor="let faq of faqs; let i = index">
+    <p-accordionTab [selected]="i === expandedIndex" (click)="toggleAccordion(i)">
+      <p-header>
+        {{ faq.question }}
+      </p-header>
+      <div>
+        {{ faq.answer }}
+      </div>
+    </p-accordionTab>
+  </ng-container>
+</p-accordion>
+
+</section>
