@@ -33,6 +33,6 @@ footer{
   color: rgb(178, 181, 224);
 }
 .footer-shadow{
-  background-color: var(--primary-700);
+  background-color: #a80b0b;
   opacity: 0.8;
 }

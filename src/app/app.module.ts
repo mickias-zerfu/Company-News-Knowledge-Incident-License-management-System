@@ -21,6 +21,10 @@ import { FaqsComponent } from './pages/faqs/faqs.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ContactBoardsComponent } from './pages/contact-us/contact-boards/contact-boards.component';
 import { ContactSideComponent } from './pages/contact-us/contact-side/contact-side.component';
+import { ServicesComponent } from './pages/services/services.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { SearchComponentComponent } from './pages/transactions/search-component/search-component.component';
 
 
 
@@ -37,6 +41,10 @@ import { ContactSideComponent } from './pages/contact-us/contact-side/contact-si
     ContactSideComponent,
     FaqsComponent,
     DashboardComponent,
+    TransactionsComponent,
+    ServicesComponent,
+    UserManagementComponent,
+    SearchComponentComponent,
 
   ],
   imports: [

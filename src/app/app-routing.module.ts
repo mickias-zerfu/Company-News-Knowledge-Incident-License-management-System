@@ -5,6 +5,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { FaqsComponent } from './pages/faqs/faqs.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { ServicesComponent } from './pages/services/services.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -12,9 +15,9 @@ const routes: Routes = [
 
 
   { path: "dashboard", component: DashboardComponent },
-  { path: "transactions", component: LoginComponent },
-  { path: "service", component: LoginComponent },
-  { path: "user-management", component: LoginComponent },
+  { path: "transactions", component: TransactionsComponent },
+  { path: "service", component: ServicesComponent },
+  { path: "user-management", component: UserManagementComponent },
   { path: "help", component: FaqsComponent },
 
 
