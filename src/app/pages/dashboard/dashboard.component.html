@@ -10,14 +10,17 @@
       <section class="cards-container w-full">
         <section>
           <div class="flex justify-between px-16">
-            <div class="card" *ngFor='let topcard of topcardsConstantine'>
+            <div class="card" *ngFor='let topcard of topcardsIb'>
               <!-- Card content goes here -->
               <div class="card-item ">
                 <div class="bg-white rounded-lg shadow-lg p-6 h-full">
                   <div class="text-left">
                     <div
                       class="icon-container rounded-full flex align-center items-center justify-center h-16 w-16" [class]="topcard.bgcolor">
-                      <i class="pi" [class]="topcard.icon" style="font-size: 2rem"></i>
+                      <!-- <i class="pi" [class]="topcard.icon" style="font-size: 2rem"></i> -->
+                      <!-- <mat-spinner diameter="24"  > -->
+                        <mat-icon>{{topcard.icon}}</mat-icon>
+                      <!-- </mat-spinner> -->
                     </div>
                   </div>
                   <div class="text-center mt-4">
@@ -33,21 +36,13 @@
       </section>
       <section class="flex px-16">
         <div class="w-1/2 p-4">
-          <div style="display: block">
-            <!-- Doughnut chart -->
-
-            <!-- <canvas width="100" height="100" baseChart [data]="doughnutChartData" [type]="'doughnut' "
-              (chartClick)="chartClicked($event)">
-            </canvas> -->
+          <div >
+           <app-chart-data></app-chart-data>
           </div>
         </div>
         <div class="w-1/2 p-4">
-          <div style="display: block">
-            <!-- Radar chart -->
-            <!-- <canvas baseChart [labels]="doughnutChartLabels" [datasets]="doughnutChartDatasets"
-              [options]="doughnutChartOptions" [legend]="true" [type]="'doughnut'">
-            </canvas> -->
-
+          <div >
+           <app-chart-data></app-chart-data>
           </div>
         </div>
       </section>
@@ -55,11 +50,11 @@
         <!-- Other sections -->
       </section>
       <section class="all-container  px-16">
-        <p-card class="p-card">
+        <mat-card class="p-card">
           <!-- <p-card-content class="p-card-content"> -->
             <!-- Content goes here -->
           <!-- </p-card-content> -->
-        </p-card>
+        </mat-card>
       </section>
     </section>
   </div>

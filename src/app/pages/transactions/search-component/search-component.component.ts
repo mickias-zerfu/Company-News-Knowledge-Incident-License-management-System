@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-search-component',
@@ -17,23 +19,31 @@ export class SearchComponentComponent {
     "Transaction Type",
     "Account Number"
   ];
-  transactionTypeOptions:[]=[]
-  statusOptions:[]=[]
+  transactionTypeOptions: string[] = []
+  statusOptions: string[] = []
 
   constructor() {
     this.fromDate = null;
     this.toDate = null;
-    this.searchType = 'accountNumber'; // Default to 'Account Number' search
+    this.searchType = ''; // Default to 'Account Number' search
     this.transactionType = ''; // Initialize transaction type
     this.status = ''; // Initialize status
     this.accountNumber = ''; // Initialize account number
   }
+  today = new Date();
+  month = this.today.getMonth();
+  year = this.today.getFullYear();
+  campaignOne = {
+    start: new Date(this.year, this.month, 1),
+    end: new Date(this.today)
+  };
   ngOnInit(): void {
 
-
+    this.transactionTypeOptions.push("Transfer via RTGS", "ALL", "Transfer via ETH-SWICH", "Transfer to Own Account", "Bill Payments",)
+    this.statusOptions.push("All", "Acknowledged", "Rejected", "Reconciled", "Reversal")
   }
   onSearchByChange() {
-    this.transactionType =     "Transaction Type";
+    // this.searchType ="Transaction Type";
   }
   onSearchClicked() {
     console.log('Search parameters:', {

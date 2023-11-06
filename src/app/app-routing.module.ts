@@ -8,6 +8,7 @@ import { FaqsComponent } from './pages/faqs/faqs.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { DailyChecklistComponent } from './pages/daily-checklist/daily-checklist.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: "user-management", component: UserManagementComponent },
   { path: "help", component: FaqsComponent },
 
+  { path: "checklist", component: DailyChecklistComponent },
 
   { path: "about-us", component: AboutUsComponent },
   { path: "contact-us", component: ContactUsComponent },

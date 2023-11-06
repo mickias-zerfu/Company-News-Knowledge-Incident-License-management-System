@@ -15,7 +15,7 @@ export interface Topcard {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  topcardsConstantine: Topcard[] = [];
+  topcardsIb: Topcard[] = [];
   // public doughnutChartLabels: string[] = [ 'Download Sales', 'In-Store Sales', 'Mail-Order Sales' ];
   // public doughnutChartDatasets: ChartConfiguration<'doughnut'>['data']['datasets'] = [
   //     { data: [ 350, 450, 100 ], label: 'Series A' },
@@ -29,38 +29,38 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.getConstantineData()
+    this.getIbData()
   }
 
-  getConstantineData() {
-    this.topcardsConstantine.push(
+  getIbData() {
+    this.topcardsIb.push(
       {
         bgcolor: 'bg-red-500',
-        icon: 'pi-spin pi-cog',
+        icon: 'cog',
         title: '78,000',
         subtitle: ' Total Transaction'
       },
       {
         bgcolor: 'bg-red-900',
-        icon: 'pi-money-bill',
+        icon: 'money-bill',
         title: '28',
         subtitle: 'EthSwitch'
       },
       {
         bgcolor: 'bg-yellow-900',
-        icon: 'pi-sign-out',
+        icon: 'sign-out',
         title: '8',
         subtitle: 'RGTS'
       },
       {
         bgcolor: 'bg-violet-500',
-        icon: 'pi-dollar',
+        icon: 'dollar',
         title: '4',
         subtitle: 'Bill Payment'
       },
       {
         bgcolor: 'bg-green-900',
-        icon: 'pi-times-circle',
+        icon: 'times-circle',
         title: '7',
         subtitle: 'Total Rejected'
       }

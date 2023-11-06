@@ -6,33 +6,71 @@
         <div class="form-component">
           <div class="label">Date Range</div>
           <div class="date-range">
-            <p-calendar name="fromDate" [(ngModel)]="fromDate" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
-            <span class="date-range-separator px-2">To</span>
-            <p-calendar name="toDate" [(ngModel)]="toDate" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+            <mat-form-field class="example-form-field">
+              <mat-label>From - To</mat-label>
+              <mat-date-range-input [rangePicker]="campaignOnePicker">
+                <input matStartDate placeholder="Start date" [(ngModel)]="campaignOne.start" name="start">
+                <input matEndDate placeholder="End date" [(ngModel)]="campaignOne.end" name="end">
+              </mat-date-range-input>
+              <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+              <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+            </mat-form-field>
           </div>
         </div>
-        <div class="form-component">
+        <div class="form-component ml-2">
           <div class="label">Search By</div>
-          <p-dropdown [options]="searchByOptions" [(ngModel)]="searchType" (onChange)="onSearchByChange()"></p-dropdown>
+          <mat-form-field class="form-component categories" appearance="fill">
+            <mat-label> Search Type </mat-label>
+            <mat-select [(ngModel)]="searchType" name="searchType" required>
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let search of searchByOptions" [value]="search">
+                {{search}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-        <ng-container *ngIf="searchType == 'Transaction Type'; else accountNumberInput">
-          <div class="form-component">
+        <ng-container *ngIf="searchType == 'Transaction Type'">
+          <div class="form-component ml-2">
             <div class="label">Transaction Type</div>
-            <p-dropdown [options]="transactionTypeOptions" [(ngModel)]="transactionType"></p-dropdown>
+
+            <mat-form-field class="form-component categories" appearance="fill">
+              <mat-label> Transaction Options</mat-label>
+              <mat-select [(ngModel)]="transactionType" name="transactionType" required>
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let transactionType of transactionTypeOptions" [value]="transactionType">
+                  {{transactionType}}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
-          <div class="form-component">
+          <div class="form-component ml-2">
             <div class="label">Status</div>
-            <p-dropdown [options]="statusOptions" [(ngModel)]="status"></p-dropdown>
+
+            <mat-form-field class="form-component">
+              <mat-label> status </mat-label>
+              <mat-select [(ngModel)]="status" name="status" required>
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let status of statusOptions" [value]="status">
+                  {{status}}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </ng-container>
-        <ng-template #accountNumberInput>
-          <div class="form-component">
+        <ng-container *ngIf="searchType == 'Account Number'">
+          <div class="form-component ml-2">
             <div class="label">Account Number</div>
-            <input type="text" name="accountNumber" [(ngModel)]="accountNumber">
+            <mat-form-field class="example-full-width">
+              <mat-label>Account Code</mat-label>
+              <input name="accountNumber" matInput #Account maxlength="5" placeholder="Ex. 941051111111111"
+                [(ngModel)]="accountNumber" value="">
+              <mat-hint align="end">{{Account.value.length}} / 15</mat-hint>
+            </mat-form-field>
           </div>
-        </ng-template>
-
-        <button [disabled]="!f.valid" id="searchButton" class="form-component">Search</button>
+        </ng-container>
+        <div class="flex items-center justify-center px-4 ">
+          <button mat-raised-button [disabled]="!f.valid" id="searchButton" class="form-component btn-effect">
+            Search
+          </button>
+        </div>
       </div>
     </form>
   </div>

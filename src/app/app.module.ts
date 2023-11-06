@@ -2,14 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { InputTextModule } from 'primeng/inputtext';
-import { DividerModule } from 'primeng/divider';
-import { AccordionModule } from 'primeng/accordion';
-import { CardModule } from 'primeng/card';
-import { DropdownModule } from 'primeng/dropdown';
-import { CalendarModule } from 'primeng/calendar';
-import { ButtonModule } from 'primeng/button';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './scaffold/header/header.component';
@@ -28,6 +20,13 @@ import { ServicesComponent } from './pages/services/services.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { SearchComponentComponent } from './pages/transactions/search-component/search-component.component';
+import { MaterialModule } from './material.module';
+import { NgChartsModule } from 'ng2-charts';
+import { DataDisplayComponent } from './pages/transactions/data-display/data-display.component';
+import { ChartDataComponent } from './pages/dashboard/chart-data/chart-data.component';
+import { DailyChecklistComponent } from './pages/daily-checklist/daily-checklist.component';
+import { BwProcessServiceComponent } from './pages/daily-checklist/bw-process-service/bw-process-service.component';
+import { ResourceAvailablityComponent } from './pages/daily-checklist/resource-availablity/resource-availablity.component';
 
 
 
@@ -48,6 +47,11 @@ import { SearchComponentComponent } from './pages/transactions/search-component/
     ServicesComponent,
     UserManagementComponent,
     SearchComponentComponent,
+    DataDisplayComponent,
+    ChartDataComponent,
+    DailyChecklistComponent,
+    BwProcessServiceComponent,
+    ResourceAvailablityComponent,
 
   ],
   imports: [
@@ -57,13 +61,9 @@ import { SearchComponentComponent } from './pages/transactions/search-component/
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    InputTextModule,
-    DividerModule,
-    AccordionModule,
-    CardModule,
-    DropdownModule,
-    CalendarModule,
-    ButtonModule,
+    MaterialModule,
+    NgChartsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

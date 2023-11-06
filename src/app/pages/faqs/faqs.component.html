@@ -4,18 +4,19 @@
   </div>
   <div class="p-16">
 
-    <p-accordion [multiple]="true">
-      <ng-container *ngFor="let faq of faqs; let i = index">
-        <p-accordionTab [selected]="i === expandedIndex" (click)="toggleAccordion(i)">
-          <p-header>
-            {{ faq.question }}
-          </p-header>
-          <div>
-            {{ faq.answer }}
-          </div>
-        </p-accordionTab>
-      </ng-container>
-    </p-accordion>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let faq of faqs; let i = index" [expanded]="i === expandedIndex">
+    <mat-expansion-panel-header (click)="toggleAccordion(i)" class="header h-full">
+      <mat-panel-title class="text-left p-2 text-1xl font-bold">
+        {{ faq.question }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description class="text-left p-4">
+      {{ faq.answer }}
+    </mat-panel-description>
+  </mat-expansion-panel>
+</mat-accordion>
   </div>
 
 </section>

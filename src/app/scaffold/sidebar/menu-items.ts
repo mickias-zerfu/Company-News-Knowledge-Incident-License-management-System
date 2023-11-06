@@ -35,6 +35,14 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
+    path: '/checklist',
+    title: 'Daily Checklist',
+    icon: 'folder',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
     path: '/help',
     title: 'Help',
     icon: 'developer_board',
