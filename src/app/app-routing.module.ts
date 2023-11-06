@@ -9,6 +9,9 @@ import { UserManagementComponent } from './pages/user-management/user-management
 import { ServicesComponent } from './pages/services/services.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { DailyChecklistComponent } from './pages/daily-checklist/daily-checklist.component';
+import { ResourceSharingComponent } from './pages/resource-sharing/resource-sharing.component';
+import { CategoriesComponent } from './pages/resource-sharing/categories/categories.component';
+import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/product-mgmt.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -22,6 +25,10 @@ const routes: Routes = [
   { path: "help", component: FaqsComponent },
 
   { path: "checklist", component: DailyChecklistComponent },
+  { path: "resources", component: ResourceSharingComponent },
+  { path: "resources/category", component: CategoriesComponent },
+
+  { path: "resources/products", component: ProductMgmtComponent },
 
   { path: "about-us", component: AboutUsComponent },
   { path: "contact-us", component: ContactUsComponent },

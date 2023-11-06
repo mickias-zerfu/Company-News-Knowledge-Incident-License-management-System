@@ -27,6 +27,15 @@ import { ChartDataComponent } from './pages/dashboard/chart-data/chart-data.comp
 import { DailyChecklistComponent } from './pages/daily-checklist/daily-checklist.component';
 import { BwProcessServiceComponent } from './pages/daily-checklist/bw-process-service/bw-process-service.component';
 import { ResourceAvailablityComponent } from './pages/daily-checklist/resource-availablity/resource-availablity.component';
+import { ResourceSharingComponent } from './pages/resource-sharing/resource-sharing.component';
+import { CategoriesComponent } from './pages/resource-sharing/categories/categories.component';
+import { ConfirmDialogComponent } from './scaffold/confirm-modal/confirm-dialog.component';
+import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/product-mgmt.component';
+import { ProductDetailComponent } from './pages/resource-sharing/product-detail/product-detail.component';
+import { ProductListComponent } from './pages/resource-sharing/product-list/product-list.component';
+import { ProductCreateComponent } from './pages/resource-sharing/product-mgmt/product-create/product-create.component';
+import { ProductUpdateComponent } from './pages/resource-sharing/product-update/product-update.component';
+import { CategoriesModalComponent } from './pages/resource-sharing/categories/categories-modal/categories-modal.component';
 
 
 
@@ -52,6 +61,15 @@ import { ResourceAvailablityComponent } from './pages/daily-checklist/resource-a
     DailyChecklistComponent,
     BwProcessServiceComponent,
     ResourceAvailablityComponent,
+    ResourceSharingComponent,
+    CategoriesComponent,
+    ConfirmDialogComponent,
+    ProductMgmtComponent,
+    ProductUpdateComponent,
+    ProductDetailComponent,
+    ProductCreateComponent,
+    ProductListComponent,
+    CategoriesModalComponent
 
   ],
   imports: [

@@ -1,0 +1,58 @@
+<section class="pt-16 px-16">
+  <div class="flex">
+    <!-- <app-sidebar></app-sidebar> -->
+    <section class="body-wrapper w-full align-center text-center px-16">
+      <div class="container my-8 px-4">
+        <div class="flex justify-center space-x-4 w-full gap gap-2">
+          <mat-toolbar class="menu-toolbar justify-between">
+            <mat-toolbar-row class="justify-around">
+              <button mat-button class="menu-button" routerLink="/resources/category" routerLinkActive="active">
+                <mat-icon class="menu-icon">category</mat-icon>
+                <span class="menu-label">Categories</span>
+              </button>
+              <button mat-button class="menu-button" routerLink="/resources/products" routerLinkActive="active">
+                <mat-icon class="menu-icon">inventory</mat-icon>
+                <span class="menu-label">Product Management</span>
+              </button>
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
+        <div class="container mx-auto px-4 py-8">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-2xl font-bold">Categories</h2>
+            <button mat-raised-button color="primary" class="ml-2" (click)="openModal()">Add Category</button>
+          </div>
+          <table mat-table [dataSource]="categories" class="min-w-full bg-white border border-gray-200">
+            <ng-container matColumnDef="id" class="text-center">
+              <th mat-header-cell *matHeaderCellDef class="text-center font-bold">ID</th>
+              <td mat-cell *matCellDef="let category">{{ category.id }}</td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef class="text-center font-bold">Name</th>
+              <td mat-cell *matCellDef="let category">{{ category.name }}</td>
+            </ng-container>
+            <ng-container matColumnDef="icon">
+              <th mat-header-cell *matHeaderCellDef class="text-center font-bold">Icon</th>
+              <td mat-cell *matCellDef="let category">
+                <mat-icon>{{ category.icon }}</mat-icon>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef class="text-center font-bold">Action</th>
+              <td mat-cell *matCellDef="let category" class="py-2">
+                <button mat-icon-button (click)="editCategory(category.id)" class="focus:outline-none">
+                  <mat-icon class="text-blue-500">edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteCategory(category.id)" class="focus:outline-none">
+                  <mat-icon class="text-red-500">delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="text-center"></tr>
+            <tr mat-row *matRowDef="let category; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

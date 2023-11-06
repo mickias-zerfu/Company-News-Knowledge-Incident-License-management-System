@@ -43,6 +43,14 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
+    path: '/resources',
+    title: 'Resource Sharing',
+    icon: 'folder',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
     path: '/help',
     title: 'Help',
     icon: 'developer_board',
