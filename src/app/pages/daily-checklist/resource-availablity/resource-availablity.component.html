@@ -1,1 +1,191 @@
-<p>resource-availablity works!</p>
+  <mat-card class="mat-card">
+  <mat-card-header class="row header-info ">
+    <div class="title-container">
+      <h2 class="text-3xl p-4"> Bankworld Resourcess </h2>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="mat-car-content ">
+    <section class="all-container">
+      <section class="list-container">
+        <form #f="ngForm" (ngSubmit)="onFormSubmit(f)">
+          <section class="basic-working-container">
+            <div class="basic-working-form-container">
+              <table class="table align-middle text-nowrap">
+                <thead>
+                  <tr>
+                    <th class="text-dark font-medium fs-4">NO.</th>
+                    <th class="text-dark font-medium fs-4">Server List</th>
+                    <th class="text-dark font-medium fs-4">Disk Partitions</th>
+                    <th class="text-dark font-medium fs-4">Disk Free Space Size</th>
+                    <th class="text-dark font-medium fs-4">CPU</th>
+                    <th class="text-dark font-medium fs-4">Memory</th>
+                    <th class="text-dark font-medium fs-4">Checking Time</th>
+                    <th class="text-dark font-medium fs-4">Remark</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <h3> 1 </h3>
+                    </td>
+                    <td class=" " >
+                      SMS Server (10.1.1.13 ) </td>
+                    <td class=" " >
+                      Local Disk (C:) </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="sms_server_C" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="sms_CPU" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="sms_memory" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                    <td>
+                      <input type="time">
+                    </td>
+                    <td class="border-spacing-2">
+                      <textarea rows="2" cols="32" class="border-solid border-2 border-gray-500 rounded"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3> 2 </h3>
+                    </td>
+                    <td class=" " >
+                      SMS Server (10.1.1.14 ) </td>
+                    <td class=" " >
+                      Local Disk (C:) </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="webb_server_C" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="webb_CPU" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="webb_memory" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                    <td>
+                      <input type="time">
+                    </td>
+                    <td class="border-spacing-2">
+                      <textarea rows="2" cols="32" class="border-solid border-2 border-gray-500 rounded"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3> 3 </h3>
+                    </td>
+                    <td class=" " >
+                      Web Server (10.1.1.14 ) </td>
+                    <td class=" " >
+                      Local Disk (D:) </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="Web_server_D" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="Web_CPU" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="Web_memory" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                    <td>
+                      <input type="time">
+                    </td>
+                    <td class="border-spacing-2">
+                      <textarea rows="2" cols="32" class="border-solid border-2 border-gray-500 rounded"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3> 4 </h3>
+                    </td>
+                    <td class=" " >
+                      Channel Server (10.1.1.106 ) </td>
+                    <td class=" " >
+                      Local Disk (C:) </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="chann_server_C" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="chann_CPU" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="chann_memory" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                    <td>
+                      <input type="time">
+                    </td>
+                    <td class="border-spacing-2">
+                      <textarea rows="2" cols="32" class="border-solid border-2 border-gray-500 rounded"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h3> 5 </h3>
+                    </td>
+                    <td class=" " >
+                      Channel Server (10.1.1.106 ) </td>
+                    <td class=" " >
+                      Local Disk (D:) </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="channel_server_D" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="channel_CPU" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                      <td class="">
+                        <div class="  m-1">
+                          <input type="text" name="channel_memory" [value]="0" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                      </td>
+                    <td>
+                      <input type="time">
+                    </td>
+                    <td class="border-spacing-2">
+                      <textarea rows="2" cols="32" class="border-solid border-2 border-gray-500 rounded"></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <div>
+            <div class="flex justify-end">
+              <button type="submit" class="button-40 text-white flex justify-end ">save</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </section>
+  </mat-card-content>
+  </mat-card>

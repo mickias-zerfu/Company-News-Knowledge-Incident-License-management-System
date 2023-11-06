@@ -1,1 +1,62 @@
-<p>bw-process-service works!</p>
+ <mat-card class="mat-card">
+  <mat-card-header class="row header-info ">
+    <div class="title-container">
+      <h2 class="text-3xl p-4"> Bankworld Process </h2>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="mat-car-content ">
+    <section class="all-container">
+      <section class="list-container">
+        <form #f="ngForm" (ngSubmit)="onFormSubmit(f)">
+          <section class="basic-working-container">
+            <div class="basic-working-form-container">
+              <table class="table align-middle text-nowrap">
+                <thead>
+                  <tr>
+                    <th class="text-dark font-medium fs-4">NO.</th>
+                    <th class="text-dark font-medium fs-4">BW Processes & Service List</th>
+                    <th class="text-dark font-medium fs-4">Status</th>
+                    <th class="text-dark font-medium fs-4">Checking Time</th>
+                    <th class="text-dark font-medium fs-4">Remark</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let bwProcessService of basicbwProcessServiceList let i=index; ">
+                    <td>
+                      <h3> {{bwProcessService['NO'] }}</h3>
+                    </td>
+                    <td class="fs-4" style="width: 300px; white-space: pre-wrap;">
+                      {{bwProcessService['checkListItem'] }}</td>
+                    <td class="flex justify-between">
+                      <div class="radio m-1">
+                        <input type="radio" [name]="bwProcessService['Name']" [value]="true" label="Yes"
+                          [(ngModel)]="bwProcessService.isSelected">
+                      </div>
+                      <div class=" radio m-1">
+                        <input type="radio" [name]="bwProcessService['Name'] " [value]="false" label="NO"
+                          [(ngModel)]="bwProcessService.isSelected">
+                      </div>
+                    </td>
+                    <td>
+                      <input type="time">
+                    </td>
+                    <td class="border-spacing-2">
+                      <textarea rows="2" cols="52" class="border-solid border-2 border-gray-500 rounded"></textarea>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <div>
+            <div class="flex justify-end">
+              <button type="submit"  class="button-40 text-white flex justify-end ">save</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </section>
+  </mat-card-content>
+</mat-card>
