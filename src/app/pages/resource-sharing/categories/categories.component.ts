@@ -14,9 +14,9 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class CategoriesComponent implements OnInit {
   categories: any[] = [
-    { id: 1, name: 'Category 1', icon: 'category', numProducts: 5 },
-    { id: 2, name: 'Category 2', icon: 'category', numProducts: 10 },
-    { id: 3, name: 'Category 3', icon: 'category', numProducts: 3 }
+    { id: 1, name: 'For Managers', icon: 'category', numProducts: 5 },
+    { id: 2, name: 'Bank world', icon: 'category', numProducts: 10 },
+    { id: 3, name: 'እኔ ምን አቃለው? ', icon: 'category', numProducts: 3 }
   ];
 
   displayedColumns: string[] = ['id', 'name', 'icon', 'action'];
