@@ -7,3 +7,9 @@ export interface RouteInfo {
   extralink: boolean;
   submenu: RouteInfo[];
 }
+
+export interface Icon {
+  icon1: string;
+  icon2: string;
+  icon3: string;
+}

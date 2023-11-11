@@ -33,6 +33,8 @@ nav{
 
 .sidebar-item {
   list-style: none;
+  margin-top: auto;
+  margin-bottom: auto;
   padding: 0;
   padding-top: 15px;
   display: flex;
@@ -54,13 +56,18 @@ mat-icon {
 
 .avatar {
   margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
   width: 60px;
   height: 60px;
+  
 }
 
 .name {
   margin-top: 8px;
   margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: normal;
   font-size: 1rem;
   text-align: center;
@@ -70,14 +77,16 @@ mat-icon {
 .sidebar-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-items: center;
 }
 
 .designation {
   font-size: 0.7rem;
+  margin-left: auto;
+  margin-right: auto;
   color: gray;
   font-weight: lighter;
+  text-align: center;
 }
 
 mat-divider {
@@ -100,3 +109,4 @@ mat-divider {
   justify-content: flex-start;
   font-size: 1rem;
 }
+

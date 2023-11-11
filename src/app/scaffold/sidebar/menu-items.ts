@@ -13,7 +13,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/transactions',
     title: 'Transactions',
-    icon: 'people',
+    icon: 'money',
     class: '',
     extralink: false,
     submenu: []
@@ -29,7 +29,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/user-management',
     title: 'User Management',
-    icon: 'folder',
+    icon: 'people',
     class: '',
     extralink: false,
     submenu: []
@@ -37,7 +37,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/checklist',
     title: 'Daily Checklist',
-    icon: 'folder',
+    icon: 'checklist',
     class: '',
     extralink: false,
     submenu: []
@@ -53,7 +53,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/help',
     title: 'Help',
-    icon: 'developer_board',
+    icon: 'help',
     class: '',
     extralink: false,
     submenu: []
