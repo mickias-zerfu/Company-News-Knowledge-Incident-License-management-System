@@ -1,19 +1,29 @@
 <div class="flex flex-col h-screen">
   <app-header></app-header>
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <mat-icon *ngIf="drawer.opened" class="5xl"> keyboard_arrow_left menu</mat-icon>
+      <mat-icon *ngIf="!drawer.opened" class="5xl">keyboard_arrow_right</mat-icon>
+    </button>
+    <!-- <button type="button" mat-button (click)="drawer.toggle()">
+    </button> -->
+  </div>
   <div class="flex">
-    <div *ngIf="isAdmin" class=" " style="width: 250px !important;">
-      <app-sidebar></app-sidebar>
-    </div>
+    <mat-drawer #drawer class="example-sidenav" mode="side" [ngStyle]="{'display': false ? 'block' : 'none'}">
+      <div *ngIf="isAdmin" >
+        <app-sidebar></app-sidebar>
+      </div>
+    </mat-drawer>
     <div class="" style="width: 100% !important;">
-      <ng-container *ngIf="isAdmin; else noSidebar">
+      <!-- <ng-container *ngIf="isAdmin; else noSidebar">
         <router-outlet></router-outlet>
       </ng-container>
       <ng-template #noSidebar>
-        <div>
-          <router-outlet></router-outlet>
-        </div>
-      </ng-template>
+        <div> -->
+      <router-outlet></router-outlet>
     </div>
+    <!-- </ng-template> -->
+    <!-- </div> -->
   </div>
   <app-footer class="mt-auto"></app-footer>
 </div>
