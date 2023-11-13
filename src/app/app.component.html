@@ -5,25 +5,16 @@
       <mat-icon *ngIf="drawer.opened" class="5xl"> keyboard_arrow_left menu</mat-icon>
       <mat-icon *ngIf="!drawer.opened" class="5xl">keyboard_arrow_right</mat-icon>
     </button>
-    <!-- <button type="button" mat-button (click)="drawer.toggle()">
-    </button> -->
   </div>
   <div class="flex">
-    <mat-drawer #drawer class="example-sidenav" mode="side" [ngStyle]="{'display': false ? 'block' : 'none'}">
-      <div *ngIf="isAdmin" >
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <div *ngIf="isAdmin">
         <app-sidebar></app-sidebar>
       </div>
     </mat-drawer>
     <div class="" style="width: 100% !important;">
-      <!-- <ng-container *ngIf="isAdmin; else noSidebar">
-        <router-outlet></router-outlet>
-      </ng-container>
-      <ng-template #noSidebar>
-        <div> -->
       <router-outlet></router-outlet>
     </div>
-    <!-- </ng-template> -->
-    <!-- </div> -->
   </div>
   <app-footer class="mt-auto"></app-footer>
 </div>
