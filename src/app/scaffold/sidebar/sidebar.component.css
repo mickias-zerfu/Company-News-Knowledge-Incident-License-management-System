@@ -60,7 +60,7 @@ mat-icon {
   margin-right: auto;
   width: 60px;
   height: 60px;
-  
+
 }
 
 .name {
@@ -96,7 +96,7 @@ mat-divider {
 }
 
 .sidebar-link {
-  color: #FFA73D !important;
+  color: #dd1748 !important;
   display: flex;
   align-items: center;
   justify-content: center;
