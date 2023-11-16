@@ -8,7 +8,7 @@
   background-color: #E8E8E8;
   border-right: none;
   color: rgb(0, 0, 0);
-  box-shadow: 9px 0 5px -5px #bbb;
+  /* box-shadow: 9px 0 5px -5px #bbb; */
   height: 100vh;
 }
 nav{
@@ -20,7 +20,7 @@ nav{
   background-color: #E8E8E8;
   border-right: none;
   color: rgb(0, 0, 0);
-  box-shadow: 9px 0 5px -5px #bbb;
+  /* box-shadow: 9px 0 5px -5px #bbb; */
   height: 100%;
 }
 .sidebar-nav-container {

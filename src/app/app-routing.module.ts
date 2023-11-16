@@ -12,6 +12,7 @@ import { DailyChecklistComponent } from './pages/daily-checklist/daily-checklist
 import { ResourceSharingComponent } from './pages/resource-sharing/resource-sharing.component';
 import { CategoriesComponent } from './pages/resource-sharing/categories/categories.component';
 import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/product-mgmt.component';
+import { LicenseManagementComponent } from './pages/license-management/license-management.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -23,13 +24,19 @@ const routes: Routes = [
   { path: "service", component: ServicesComponent },
   { path: "user-management", component: UserManagementComponent },
   { path: "help", component: FaqsComponent },
-
+  // Daily Checklist
   { path: "checklist", component: DailyChecklistComponent },
+  // Resources
   { path: "resources", component: ResourceSharingComponent },
   { path: "resources/category", component: CategoriesComponent },
 
   { path: "resources/products", component: ProductMgmtComponent },
 
+  // licences links
+  { path: "licences", component: LicenseManagementComponent },
+
+
+  // Static pages
   { path: "about-us", component: AboutUsComponent },
   { path: "contact-us", component: ContactUsComponent },
 
