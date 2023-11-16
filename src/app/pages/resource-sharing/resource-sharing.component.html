@@ -1,47 +1,29 @@
-<section class="pt-16 px-16">
+<section class=" px-16">
   <div class="flex">
-    <!-- <app-sidebar></app-sidebar> -->
-    <section class="body-wrapper w-full align-center text-center px-16">
-      <div class="container my-8  px-4">
+    <section class="body-wrapper w-full align-center text-center ">
+      <div class="containe px-4">
         <div class="flex justify-center space-x-4 w-full gap gap-2">
           <mat-toolbar class="menu-toolbar justify-between">
-            <mat-toolbar-row class="  justify-around">
-              <button mat-button class="menu-button " routerLink="/resources/category" routerLinkActive="active">
-                <mat-icon class="menu-icon">category</mat-icon>
-                <span class="menu-label">Categories</span>
+            <mat-toolbar-row class=" justify-around">
+              <button mat-raised-button class="menu-button " routerLink="/resources/" routerLinkActive="active">
+                <mat-icon class="menu-icon">home</mat-icon>
+                <span class="menu-label">Dashboard</span>
               </button>
-              <button mat-button class="menu-button" routerLink="/resources/products" routerLinkActive="active">
+              <button mat-raised-button class="menu-button m-8" routerLink="/resources/resourceList" routerLinkActive="active">
                 <mat-icon class="menu-icon">shopping_cart</mat-icon>
                 <span class="menu-label">Resources</span>
+              </button>
+              <button mat-raised-button class="menu-button " routerLink="/resources/categories" routerLinkActive="active">
+                <mat-icon class="menu-icon">category</mat-icon>
+                <span class="menu-label">Categories</span>
               </button>
             </mat-toolbar-row>
           </mat-toolbar>
         </div>
       </div>
-    <section class="cards-container w-full">
-      <section>
-        <div class="flex justify-between px-16">
-          <div class="card" *ngFor='let topcard of topcardsResource'>
-            <!-- Card content goes here -->
-            <div class="card-item ">
-              <div class="bg-white rounded-lg shadow-lg p-6 h-full">
-                <div class="text-left">
-                  <div
-                    class="icon-container bg-gray-200 rounded-full flex align-center items-center justify-center h-16 w-16">
-                    <mat-icon class="text-4xl">{{topcard.icon}}</mat-icon>
-                  </div>
-                </div>
-                <div class="text-center mt-4">
-                  <span class="text-2xl font-semibold">{{topcard.title}}</span>
-                  <br>
-                  <span class="text-gray-600">{{topcard.subtitle}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section class="cards-container w-full">
+        <router-outlet> </router-outlet>
       </section>
-    </section>
     </section>
 
   </div>

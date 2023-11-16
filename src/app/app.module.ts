@@ -36,6 +36,8 @@ import { ProductListComponent } from './pages/resource-sharing/product-list/prod
 import { ProductCreateComponent } from './pages/resource-sharing/product-mgmt/product-create/product-create.component';
 import { ProductUpdateComponent } from './pages/resource-sharing/product-update/product-update.component';
 import { CategoriesModalComponent } from './pages/resource-sharing/categories/categories-modal/categories-modal.component';
+import { LicenseModule } from './pages/license-management/license.module';
+import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
 
 
 
@@ -69,7 +71,8 @@ import { CategoriesModalComponent } from './pages/resource-sharing/categories/ca
     ProductDetailComponent,
     ProductCreateComponent,
     ProductListComponent,
-    CategoriesModalComponent
+    CategoriesModalComponent,
+    ResourceDashboardComponent
 
   ],
   imports: [
@@ -80,6 +83,7 @@ import { CategoriesModalComponent } from './pages/resource-sharing/categories/ca
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
+    LicenseModule,
     NgChartsModule
 
   ],

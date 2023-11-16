@@ -1,22 +1,6 @@
 <section class="pt-16 px-16">
   <div class="flex">
-    <!-- <app-sidebar></app-sidebar> -->
     <section class="body-wrapper w-full align-center text-center px-16">
-      <div class="container my-8 px-4">
-        <div class="flex justify-center space-x-4 w-full gap gap-2">
-          <mat-toolbar class="menu-toolbar justify-between">
-            <mat-toolbar-row class="justify-around">
-              <button mat-button class="menu-button" routerLink="/resources/category" routerLinkActive="active">
-                <mat-icon class="menu-icon">category</mat-icon>
-                <span class="menu-label">Categories</span>
-              </button>
-              <button mat-button class="menu-button" routerLink="/resources/products" routerLinkActive="active">
-                <mat-icon class="menu-icon">inventory</mat-icon>
-                <span class="menu-label">Product Management</span>
-              </button>
-            </mat-toolbar-row>
-          </mat-toolbar>
-        </div>
         <div class="container mx-auto px-4 py-8">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-2xl font-bold">Categories</h2>
@@ -52,7 +36,6 @@
             <tr mat-row *matRowDef="let category; columns: displayedColumns;"></tr>
           </table>
         </div>
-      </div>
     </section>
   </div>
 </section>

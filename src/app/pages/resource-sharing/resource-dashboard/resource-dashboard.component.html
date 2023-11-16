@@ -1,0 +1,26 @@
+
+<section>
+  <div class="flex justify-between px-16">
+    <div class="card" *ngFor='let topcard of topcardsResource'>
+      <!-- Card content goes here -->
+      <div class="card-item ">
+        <div class="bg-white rounded-lg shadow-lg p-6 h-full">
+          <div class="text-left">
+            <div
+              class="icon-container bg-gray-200 rounded-full flex align-center items-center justify-center h-16 w-16">
+              <mat-icon class="text-4xl">{{topcard.icon}}</mat-icon>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <span class="text-2xl font-semibold">{{topcard.title}}</span>
+            <br>
+            <span class="text-gray-600">{{topcard.subtitle}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+<app-categories></app-categories>
+</section>
