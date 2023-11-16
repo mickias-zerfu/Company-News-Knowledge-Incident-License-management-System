@@ -15,6 +15,7 @@ import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/prod
 import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
 import { ProductCreateComponent } from './pages/resource-sharing/product-mgmt/product-create/product-create.component';
 import { ProductDetailComponent } from './pages/resource-sharing/product-detail/product-detail.component';
+import { LicenseManagementComponent } from './pages/license-management/license-management.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -26,9 +27,10 @@ const routes: Routes = [
   { path: "service", component: ServicesComponent },
   { path: "user-management", component: UserManagementComponent },
   { path: "help", component: FaqsComponent },
-
+  // Daily Checklist
   { path: "checklist", component: DailyChecklistComponent },
 
+  // Resources
   {
     path: "resources", component: ResourceSharingComponent,
     children: [
@@ -41,6 +43,11 @@ const routes: Routes = [
     ]
   },
 
+  // licences links
+  { path: "licences", component: LicenseManagementComponent },
+
+
+  // Static pages
   { path: "about-us", component: AboutUsComponent },
   { path: "contact-us", component: ContactUsComponent },
 

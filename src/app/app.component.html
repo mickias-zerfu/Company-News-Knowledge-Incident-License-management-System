@@ -1,13 +1,14 @@
 <div class="flex flex-col h-screen">
   <app-header></app-header>
-  <div class="example-sidenav-content" style="width: 250px;" >
-    <button type="button"  (click)="drawer.toggle()" style="width: 250px;background-color: #E8E8E8;"
-     class="flex items-center justify-center align-middle place-self-center  px-4 py-2  rounded-t-lg">
+  <div class="example-sidenav-content" style="width: 250px;">
+    <button type="button" (click)="drawer.toggle()" style="width: 250px;"
+      [ngClass]="{ 'bg-gray-200': drawer.opened, 'bg-gray-100': !drawer.opened }"
+      class="flex items-center justify-center align-middle place-self-center  px-4 py-2  rounded-t-lg">
       <div *ngIf="drawer.opened" class="2xl flex items-center justify-center align-middle place-self-center ">
         <mat-icon>keyboard_arrow_left</mat-icon><mat-icon>menu</mat-icon>
       </div>
       <div *ngIf="!drawer.opened" class="2xl flex items-center justify-center align-middle place-self-center ">
-       <mat-icon>menu</mat-icon> <mat-icon>keyboard_arrow_right</mat-icon>
+        <mat-icon>menu</mat-icon> <mat-icon>keyboard_arrow_right</mat-icon>
       </div>
     </button>
   </div>
