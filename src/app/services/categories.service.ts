@@ -7,7 +7,7 @@ import { CategoryModel } from '../models/category.model';
   providedIn: 'root'
 })
 export class CategoriesService {
-  private apiUrl = 'https://api.example.com/'; // Replace with your API endpoint URL
+  private apiUrl = 'http://localhost:5144/api/products'; // Replace with your API endpoint URL
 
   constructor(private http: HttpClient) { }
 

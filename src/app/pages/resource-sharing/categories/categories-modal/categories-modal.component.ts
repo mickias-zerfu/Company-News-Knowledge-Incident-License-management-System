@@ -22,6 +22,7 @@ export class CategoriesModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.categoryForm = this.formBuilder.group({
       name: ['', Validators.required],
       icon: ['', Validators.required]
@@ -50,26 +51,27 @@ export class CategoriesModalComponent implements OnInit {
 
     if (this.isEditMode) {
       // Logic to update the category with the provided categoryData
-      this.categoriesService
-        .updateCategoryContent(this.data.category.id, categoryData)
-        .subscribe(() => {
-          this.toastService.showSuccess(
-            'The Category has been updated',
-            'Close',
-            2000
-          );
-          this.dialogRef.close(categoryData);
-        });
+            // this.categoriesService
+            //   .updateCategoryContent(this.data.category.id, categoryData)
+            //   .subscribe(() => {
+            //     this.toastService.showSuccess(
+            //       'The Category has been updated',
+            //       'Close',
+            //       2000
+            //     );
+            //     this.dialogRef.close(categoryData);
+            //   });
     } else {
       // Logic to add a new category with the provided categoryData
-      this.categoriesService.addCategory(categoryData).subscribe(() => {
-        this.toastService.showSuccess(
-          'New Category Added',
-          'Close',
-          2000
-        );
-        this.dialogRef.close(categoryData);
-      });
+            // this.categoriesService.addCategory(categoryData).subscribe(() => {
+            //   this.toastService.showSuccess(
+            //     'New Category Added',
+            //     'Close',
+            //     2000
+            //   );s
+            //   this.dialogRef.close(categoryData);
+            // });
+
     }
   }
 

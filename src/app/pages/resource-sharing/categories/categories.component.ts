@@ -20,17 +20,16 @@ export class CategoriesComponent implements OnInit {
   ];
 
   displayedColumns: string[] = ['id', 'name', 'icon', 'action'];
-
-
-
-  constructor(private dialog: MatDialog, private categoriesService: CategoriesService, private toastService: ToastService, private confirmdialog: MatDialog) { }
+  constructor(private dialog: MatDialog,
+    private categoriesService: CategoriesService,
+    private toastService: ToastService, private confirmdialog: MatDialog) { }
   ngOnInit() {
     this._getAllCategories();
   }
   _getAllCategories() {
-    this.categoriesService.getAllCategorys().subscribe((categoryList => {
-      this.categories = categoryList;
-    }))
+    // this.categoriesService.getAllCategorys().subscribe((categoryList => {
+    //   this.categories = categoryList;
+    // }))
 
   }
   openModal(): void {
@@ -43,22 +42,38 @@ export class CategoriesComponent implements OnInit {
       console.log(result);
     });
   }
-
   editCategory(categoryId: number): void {
-    // Logic to retrieve the category data for editing based on the provided categoryId
-    // this.categoriesService.getCategory(categoryId).subscribe(category => {
+    const category = this.categories.find((category) => category.id === categoryId);
+
+    if (category) {
       const dialogRef = this.dialog.open(CategoriesModalComponent, {
         width: '400px',
-        data: { category: {name:'abebe', icon:'icon'} }
+        data: { category: { name: category.name, icon: category.icon } }
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        // Handle any actions after the dialog is closed, such as updating the UI
         console.log(result);
         this._getAllCategories();
       });
-    // });
+    }
   }
+
+
+  // editCategory(categoryId: number): void {
+  //   // Logic to retrieve the category data for editing based on the provided categoryId
+  //   // this.categoriesService.getCategory(categoryId).subscribe(category => {
+  //   const dialogRef = this.dialog.open(CategoriesModalComponent, {
+  //     width: '400px',
+  //     data: { category: { name: 'abebe', icon: 'icon' } }
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     // Handle any actions after the dialog is closed, such as updating the UI
+  //     console.log(result);
+  //     this._getAllCategories();
+  //   });
+  //   // });
+  // }
   deleteCategory(categoryId: number): void {
     // Logic to edit the category with the provided categoryId
 
@@ -67,10 +82,11 @@ export class CategoriesComponent implements OnInit {
       message: 'Are you sure you want to proceed?',
       callback: (confirmed: boolean) => {
         if (confirmed) {
-          this.categoriesService.deleteCategory(categoryId).subscribe((message) => {
-            this.toastService.showSuccess('The Category Deleted', 'Close', 2000);
-            this._getAllCategories();
-          })
+          // this.categoriesService.deleteCategory(categoryId).subscribe((message) => {
+          //   this.toastService.showSuccess('The Category Deleted', 'Close', 2000);
+          //   this._getAllCategories();
+          // })
+          this.categories = this.categories.filter(e => e.id !== categoryId);
         } else {
           // User canceled the confirmation
         }
