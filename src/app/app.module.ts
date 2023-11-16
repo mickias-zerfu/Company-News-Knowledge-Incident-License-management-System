@@ -71,7 +71,7 @@ import { ResourceDashboardComponent } from './pages/resource-sharing/resource-da
     ProductDetailComponent,
     ProductCreateComponent,
     ProductListComponent,
-    CategoriesModalComponent,,
+    CategoriesModalComponent,
     ResourceDashboardComponent
 
   ],
