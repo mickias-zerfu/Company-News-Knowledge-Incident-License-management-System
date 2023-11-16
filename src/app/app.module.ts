@@ -37,6 +37,7 @@ import { ProductCreateComponent } from './pages/resource-sharing/product-mgmt/pr
 import { ProductUpdateComponent } from './pages/resource-sharing/product-update/product-update.component';
 import { CategoriesModalComponent } from './pages/resource-sharing/categories/categories-modal/categories-modal.component';
 import { LicenseModule } from './pages/license-management/license.module';
+import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
 
 
 
@@ -70,7 +71,8 @@ import { LicenseModule } from './pages/license-management/license.module';
     ProductDetailComponent,
     ProductCreateComponent,
     ProductListComponent,
-    CategoriesModalComponent,
+    CategoriesModalComponent,,
+    ResourceDashboardComponent
 
   ],
   imports: [
