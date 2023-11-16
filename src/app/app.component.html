@@ -17,7 +17,7 @@
         <app-sidebar class="h-screen"></app-sidebar>
       </div>
     </mat-drawer>
-    <div class="flex-grow" [ngStyle]="{ 'width': drawer.opened ? 'calc(100% - 240px)' : '100%' }">
+    <div class="flex-grow" [ngStyle]="{ 'width': drawer.opened ? 'calc(100% - 240px)' : '100%' }" style="margin-top: -30px;">
       <router-outlet></router-outlet>
     </div>
   </div>

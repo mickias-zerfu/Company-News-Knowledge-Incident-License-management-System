@@ -12,6 +12,9 @@ import { DailyChecklistComponent } from './pages/daily-checklist/daily-checklist
 import { ResourceSharingComponent } from './pages/resource-sharing/resource-sharing.component';
 import { CategoriesComponent } from './pages/resource-sharing/categories/categories.component';
 import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/product-mgmt.component';
+import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
+import { ProductCreateComponent } from './pages/resource-sharing/product-mgmt/product-create/product-create.component';
+import { ProductDetailComponent } from './pages/resource-sharing/product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -25,10 +28,18 @@ const routes: Routes = [
   { path: "help", component: FaqsComponent },
 
   { path: "checklist", component: DailyChecklistComponent },
-  { path: "resources", component: ResourceSharingComponent },
-  { path: "resources/category", component: CategoriesComponent },
 
-  { path: "resources/products", component: ProductMgmtComponent },
+  {
+    path: "resources", component: ResourceSharingComponent,
+    children: [
+      { path: "", component: ResourceDashboardComponent },
+      { path: "categories", component: CategoriesComponent },
+      { path: "resourceList", component: ProductMgmtComponent },
+      { path: "resource/:id", component: ProductDetailComponent },
+      { path: "resource/add", component: ProductCreateComponent },
+      { path: "resource/:id/update", component: ProductCreateComponent },
+    ]
+  },
 
   { path: "about-us", component: AboutUsComponent },
   { path: "contact-us", component: ContactUsComponent },
