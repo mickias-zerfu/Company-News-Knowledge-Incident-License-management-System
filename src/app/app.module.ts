@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './scaffold/header/header.component';
 import { FooterComponent } from './scaffold/footer/footer.component';
-import { SidebarComponent } from './scaffold/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { LoginComponent } from './scaffold/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,7 +27,7 @@ import { BwProcessServiceComponent } from './pages/daily-checklist/bw-process-se
 import { ResourceAvailablityComponent } from './pages/daily-checklist/resource-availablity/resource-availablity.component';
 import { ResourceSharingComponent } from './pages/resource-sharing/resource-sharing.component';
 import { CategoriesComponent } from './pages/resource-sharing/categories/categories.component';
-import { ConfirmDialogComponent } from './scaffold/confirm-modal/confirm-dialog.component';
+import { ConfirmDialogComponent } from './shared/confirm-modal/confirm-dialog.component';
 import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/product-mgmt.component';
 import { ProductDetailComponent } from './pages/resource-sharing/product-detail/product-detail.component';
 import { ProductListComponent } from './pages/resource-sharing/product-list/product-list.component';
