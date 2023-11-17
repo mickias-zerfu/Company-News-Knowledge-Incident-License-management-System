@@ -7,8 +7,9 @@
         <div class="bg-white rounded-lg shadow-lg p-6 h-full">
           <div class="text-left">
             <div
-              class="icon-container bg-gray-200 rounded-full flex align-center items-center justify-center h-16 w-16">
-              <mat-icon class="text-4xl">{{topcard.icon}}</mat-icon>
+            [ngStyle]="{'background-color': topcard.bgcolor}"
+              class="icon-container  rounded-full flex align-center items-center justify-center h-16 w-16">
+              <mat-icon class="text-l">{{topcard.icon}}</mat-icon>
             </div>
           </div>
           <div class="text-center mt-4">
