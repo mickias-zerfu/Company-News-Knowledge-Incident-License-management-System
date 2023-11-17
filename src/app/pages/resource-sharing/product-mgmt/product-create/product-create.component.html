@@ -8,13 +8,13 @@
             (ngSubmit)="onSubmit()">
 
             <!-- Resource Name -->
-            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4">
+            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
               <mat-label>Resource Name</mat-label>
               <input matInput formControlName="ResourceName" placeholder="Enter the Resource name" required>
             </mat-form-field>
 
             <!-- Description -->
-            <mat-form-field class="col-span-full">
+            <mat-form-field class="col-span-full"appearance="outline">
               <mat-label>Description</mat-label>
               <textarea matInput rows="4" formControlName="description" placeholder="Enter the Resource description"
                 required></textarea>
@@ -28,7 +28,7 @@
 
 
             <!-- Category -->
-            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4">
+            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4"appearance="outline">
               <mat-label>Category</mat-label>
               <mat-select formControlName="category" placeholder="Select a category" required>
                 <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
