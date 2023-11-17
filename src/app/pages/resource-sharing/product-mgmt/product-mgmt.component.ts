@@ -12,7 +12,37 @@ export class ProductMgmtComponent {
     // Add your product data here
     {
       id: 1,
-      title: 'Product 1',
+      title: 'Resource 1',
+      description: 'Description 1',
+      category: {
+        id: 1,
+        name: 'Candles',
+        icon: 'string'
+      },
+      filename: 'string',
+      size: 2,
+      isFeatured: true,
+      created_at: '2021-01-01',
+      updated_at: '2021-01-01'
+    },
+    {
+      id: 2,
+      title: 'Resource 2',
+      description: 'Description 1',
+      category: {
+        id: 1,
+        name: 'Candles',
+        icon: 'string'
+      },
+      filename: 'string',
+      size: 2,
+      isFeatured: true,
+      created_at: '2021-01-01',
+      updated_at: '2021-01-01'
+    },
+    {
+      id: 3,
+      title: 'Resource 3',
       description: 'Description 1',
       category: {
         id: 1,
@@ -44,10 +74,10 @@ export class ProductMgmtComponent {
     // });
   }
 
-  editProduct(categoryId: number): void {
-    // Logic to edit the category with the provided categoryId
-    console.log(`Editing category with ID: ${categoryId}`);
-  }
+  // editProduct(categoryId: number): void {
+  //   // Logic to edit the category with the provided categoryId
+  //   console.log(`Editing category with ID: ${categoryId}`);
+  // }
   deleteProduct(categoryId: number): void {
     // Logic to edit the category with the provided categoryId
     console.log(`Editing category with ID: ${categoryId}`);

@@ -24,7 +24,7 @@ export class ProductService {
     return this.http.get<any>(url);
   }
 
-  addProduct(product: any): Observable<any> {
+  addResource(product: any): Observable<any> {
     console.log(product);
 
     return this.http.post<any>(`${this.apiUrl}/add`, product);

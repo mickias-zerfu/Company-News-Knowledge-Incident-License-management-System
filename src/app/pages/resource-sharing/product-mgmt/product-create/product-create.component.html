@@ -1,78 +1,49 @@
-<section class="pt-16 px-16">
+<section class="px-16">
   <div class="flex">
-    <!-- <app-sidebar></app-sidebar> -->
     <section class="body-wrapper w-full align-center text-center px-16">
-      <div class="container my-8 px-4">
-        <div class="flex justify-center space-x-4 w-full gap gap-2">
-          <mat-toolbar class="menu-toolbar justify-between">
-            <mat-toolbar-row class="justify-around">
-              <button mat-button class="menu-button" routerLink="/shop-mgmt/category" routerLinkActive="active">
-                <mat-icon class="menu-icon">category</mat-icon>
-                <span class="menu-label">Categories</span>
-              </button>
-              <button mat-button class="menu-button" routerLink="/shop-mgmt/products" routerLinkActive="active">
-                <mat-icon class="menu-icon">inventory</mat-icon>
-                <span class="menu-label">Product Management</span>
-              </button>
-            </mat-toolbar-row>
-          </mat-toolbar>
-        </div>
+      <div class="container px-4">
         <div class="container mx-auto px-4 py-16">
-          <h2 class="text-2xl font-bold mb-4" mat-dialog-title>{{ isEditMode ? 'Edit Product' : 'Add Product' }}</h2>
-          <form [formGroup]="productForm" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+          <h2 class="text-2xl font-bold mb-4 text-left" mat-dialog-title>{{ isEditMode ? 'Edit Resource' : 'Add Resource' }}</h2>
+          <form [formGroup]="ResourceForm" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-gray-800"
             (ngSubmit)="onSubmit()">
-            <!-- Product Name -->
+
+            <!-- Resource Name -->
             <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4">
-              <mat-label>Product Name</mat-label>
-              <input matInput formControlName="productName" placeholder="Enter the product name" required>
+              <mat-label>Resource Name</mat-label>
+              <input matInput formControlName="ResourceName" placeholder="Enter the Resource name" required>
             </mat-form-field>
 
             <!-- Description -->
             <mat-form-field class="col-span-full">
               <mat-label>Description</mat-label>
-              <textarea matInput rows="4" formControlName="description" placeholder="Enter the product description"
+              <textarea matInput rows="4" formControlName="description" placeholder="Enter the Resource description"
                 required></textarea>
             </mat-form-field>
 
-            <!-- Price -->
-            <mat-form-field class="col-span-full sm:col-span-1">
-              <mat-label>Price</mat-label>
-              <input matInput type="number" formControlName="price" placeholder="Enter the product price" required>
-            </mat-form-field>
+            <!-- Size -->
+            <!-- <mat-form-field class="col-span-full sm:col-span-1">
+              <mat-label>Size</mat-label>
+              <input matInput type="number" formControlName="size" placeholder="Enter the Resource Size" required>
+            </mat-form-field> -->
 
-            <!-- Manufacturer -->
-            <mat-form-field class="col-span-full sm:col-span-1">
-              <mat-label>Manufacturer</mat-label>
-              <input matInput formControlName="manufacturer" placeholder="Enter the product manufacturer" required>
-            </mat-form-field>
 
             <!-- Category -->
-            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-1">
+            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4">
               <mat-label>Category</mat-label>
               <mat-select formControlName="category" placeholder="Select a category" required>
                 <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
               </mat-select>
             </mat-form-field>
 
-            <!-- In Stock -->
-            <mat-form-field class="col-span-full sm:col-span-1 md:col-span-2">
-              <mat-label>Count In Stock</mat-label>
-              <input matInput type="number" formControlName="inStock" placeholder="Enter the quantity in stock"
-                required>
-            </mat-form-field>
-
             <!-- Image -->
-            <div class="col-span-full sm:col-span-2 md:col-span-3">
-              <mat-label>Image</mat-label>
+            <div class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4">
+              <mat-label>Reource</mat-label>
               <input type="file" (change)="onFileChange($event)" required>
-              <div>
-                <img [src]="imageDisplay" alt="" srcset="" class="rounded-full w-32 h-32 mt-4">
-              </div>
             </div>
 
             <!-- Submit Button -->
             <button mat-raised-button color="primary" class="col-span-full"
-              [disabled]="productForm.invalid && isSubmitted">Create Product</button>
+              [disabled]="ResourceForm.invalid && isSubmitted">{{ isEditMode ? 'Update Resource' : 'Add Resource' }}</button>
           </form>
         </div>
       </div>

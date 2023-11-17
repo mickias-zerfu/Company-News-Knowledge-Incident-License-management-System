@@ -37,9 +37,9 @@ const routes: Routes = [
       { path: "", component: ResourceDashboardComponent },
       { path: "categories", component: CategoriesComponent },
       { path: "resourceList", component: ProductMgmtComponent },
-      { path: "resource/:id", component: ProductDetailComponent },
-      { path: "resource/add", component: ProductCreateComponent },
-      { path: "resource/:id/update", component: ProductCreateComponent },
+      { path: "add", component: ProductCreateComponent },
+      { path: ":id", component: ProductDetailComponent },
+      { path: ":id/update", component: ProductCreateComponent , data: { isEditMode: true } },
     ]
   },
 

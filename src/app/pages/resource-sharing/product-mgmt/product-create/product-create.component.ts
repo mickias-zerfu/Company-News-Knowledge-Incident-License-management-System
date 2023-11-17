@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CategoryModel } from 'src/app/models/category.model';
 import { ProductService } from 'src/app/services/product.service';
 import { ToastService } from 'src/app/services/toast.service';
@@ -11,8 +12,9 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class ProductCreateComponent implements OnInit {
 
-  productForm: FormGroup;
+  ResourceForm: FormGroup;
   isEditMode = false;
+  id: any;
   categories: CategoryModel[] = [
     { id: 1, name: 'Category 1', icon: '' },
     { id: 2, name: 'Category 2', icon: '' },
@@ -24,20 +26,32 @@ export class ProductCreateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
-    private toastService: ToastService
-  ) {}
+    private toastService: ToastService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.productForm = this.formBuilder.group({
-      productName: ['', Validators.required],
+    this.route.data.subscribe(data => {
+      this.isEditMode = data['isEditMode'] || false;
+    });
+
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+      console.log(params, "------------------");
+      console.log(this.id, "------------------");
+    });
+
+    this.ResourceForm = this.formBuilder.group({
+      ResourceName: ['', Validators.required],
       description: ['', Validators.required],
-      price: ['', Validators.required],
-      manufacturer: ['', Validators.required],
+      size: ['', Validators.required],
       category: ['', Validators.required],
-      inStock: ['', Validators.required],
       image: [null, Validators.required],
       isFeatured: [false]
     });
+    // If it is an edit mode, you can pre-fill the form with existing resource data
+    if (this.isEditMode) {
+      this.populateFormWithResourceData();
+    }
   }
 
   onFileChange(event: any) {
@@ -54,32 +68,37 @@ export class ProductCreateComponent implements OnInit {
       // Clear the value of the file input
       event.target.value = '';
 
-      this.productForm.patchValue({ image: file });
-      this.productForm.get('image')?.updateValueAndValidity();
+      this.ResourceForm.patchValue({ image: file });
+      this.ResourceForm.get('image')?.updateValueAndValidity();
     }
+  }
+
+  private populateFormWithResourceData(): void {
+    // Fetch the existing resource data and populate the form fields
+    // Example: this.ResourceForm.patchValue({ title: existingResource.title, description: existingResource.description, ... });
   }
 
   onSubmit() {
     this.isSubmitted = true;
 
-    if (this.productForm.invalid) {
+    if (this.ResourceForm.invalid) {
       return;
     }
 
     const formData = new FormData();
-    Object.keys(this.productForm.value).forEach((key) => {
-      formData.append(key, this.productForm.value[key]);
+    Object.keys(this.ResourceForm.value).forEach((key) => {
+      formData.append(key, this.ResourceForm.value[key]);
     });
 
-    this.productService.addProduct(formData).subscribe(() => {
-      this.toastService.showSuccess('New product added', 'Close', 2000);
+    this.productService.addResource(formData).subscribe(() => {
+      this.toastService.showSuccess('New Resource added', 'Close', 2000);
     });
 
-    console.log(this.productForm.value);
+    console.log(this.ResourceForm.value);
     console.log(formData);
   }
 
-  get productFormControls() {
-    return this.productForm.controls;
+  get ResourceFormControls() {
+    return this.ResourceForm.controls;
   }
 }
