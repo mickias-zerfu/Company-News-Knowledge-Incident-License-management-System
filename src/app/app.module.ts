@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './scaffold/header/header.component';
 import { FooterComponent } from './scaffold/footer/footer.component';
-import { SidebarComponent } from './scaffold/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { LoginComponent } from './scaffold/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,15 +21,13 @@ import { UserManagementComponent } from './pages/user-management/user-management
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { SearchComponentComponent } from './pages/transactions/search-component/search-component.component';
 import { MaterialModule } from './material.module';
-import { NgChartsModule } from 'ng2-charts';
 import { DataDisplayComponent } from './pages/transactions/data-display/data-display.component';
-import { ChartDataComponent } from './pages/dashboard/chart-data/chart-data.component';
 import { DailyChecklistComponent } from './pages/daily-checklist/daily-checklist.component';
 import { BwProcessServiceComponent } from './pages/daily-checklist/bw-process-service/bw-process-service.component';
 import { ResourceAvailablityComponent } from './pages/daily-checklist/resource-availablity/resource-availablity.component';
 import { ResourceSharingComponent } from './pages/resource-sharing/resource-sharing.component';
 import { CategoriesComponent } from './pages/resource-sharing/categories/categories.component';
-import { ConfirmDialogComponent } from './scaffold/confirm-modal/confirm-dialog.component';
+import { ConfirmDialogComponent } from './shared/confirm-modal/confirm-dialog.component';
 import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/product-mgmt.component';
 import { ProductDetailComponent } from './pages/resource-sharing/product-detail/product-detail.component';
 import { ProductListComponent } from './pages/resource-sharing/product-list/product-list.component';
@@ -38,6 +36,7 @@ import { ProductUpdateComponent } from './pages/resource-sharing/product-update/
 import { CategoriesModalComponent } from './pages/resource-sharing/categories/categories-modal/categories-modal.component';
 import { LicenseModule } from './pages/license-management/license.module';
 import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -59,7 +58,6 @@ import { ResourceDashboardComponent } from './pages/resource-sharing/resource-da
     UserManagementComponent,
     SearchComponentComponent,
     DataDisplayComponent,
-    ChartDataComponent,
     DailyChecklistComponent,
     BwProcessServiceComponent,
     ResourceAvailablityComponent,
@@ -83,9 +81,10 @@ import { ResourceDashboardComponent } from './pages/resource-sharing/resource-da
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    LicenseModule,
-    NgChartsModule
+    SharedModule
 
+  ],
+  exports: [
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoriesModalComponent } from './categories-modal/categories-modal.component';
 import { CategoriesService } from 'src/app/services/categories.service';
-import { ConfirmDialogData, ConfirmDialogComponent } from 'src/app/scaffold/confirm-modal/confirm-dialog.component';
+import { ConfirmDialogData, ConfirmDialogComponent } from 'src/app/shared/confirm-modal/confirm-dialog.component';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
