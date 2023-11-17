@@ -21,9 +21,7 @@ import { UserManagementComponent } from './pages/user-management/user-management
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { SearchComponentComponent } from './pages/transactions/search-component/search-component.component';
 import { MaterialModule } from './material.module';
-import { NgChartsModule } from 'ng2-charts';
 import { DataDisplayComponent } from './pages/transactions/data-display/data-display.component';
-import { ChartDataComponent } from './pages/dashboard/chart-data/chart-data.component';
 import { DailyChecklistComponent } from './pages/daily-checklist/daily-checklist.component';
 import { BwProcessServiceComponent } from './pages/daily-checklist/bw-process-service/bw-process-service.component';
 import { ResourceAvailablityComponent } from './pages/daily-checklist/resource-availablity/resource-availablity.component';
@@ -38,6 +36,7 @@ import { ProductUpdateComponent } from './pages/resource-sharing/product-update/
 import { CategoriesModalComponent } from './pages/resource-sharing/categories/categories-modal/categories-modal.component';
 import { LicenseModule } from './pages/license-management/license.module';
 import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -59,7 +58,6 @@ import { ResourceDashboardComponent } from './pages/resource-sharing/resource-da
     UserManagementComponent,
     SearchComponentComponent,
     DataDisplayComponent,
-    ChartDataComponent,
     DailyChecklistComponent,
     BwProcessServiceComponent,
     ResourceAvailablityComponent,
@@ -83,9 +81,10 @@ import { ResourceDashboardComponent } from './pages/resource-sharing/resource-da
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    LicenseModule,
-    NgChartsModule
+    SharedModule
 
+  ],
+  exports: [
   ],
   providers: [],
   bootstrap: [AppComponent]

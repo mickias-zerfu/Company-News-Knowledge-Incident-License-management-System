@@ -5,6 +5,9 @@ import { LicenseListComponent } from './license-list/license-list.component';
 import { LicenseManagementComponent } from './license-management.component';
 import { VendorsMgmtComponent } from './vendors-mgmt/vendors-mgmt.component';
 import { UsersMgmtComponent } from './users-mgmt/users-mgmt.component';
+import { MaterialModule } from 'src/app/material.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -14,10 +17,14 @@ import { UsersMgmtComponent } from './users-mgmt/users-mgmt.component';
     LicenseListComponent,
     LicenseManagementComponent,
     VendorsMgmtComponent,
-    UsersMgmtComponent
+    UsersMgmtComponent,
   ],
   imports: [
     CommonModule,
+    MaterialModule,
+    AppRoutingModule,
+    SharedModule
+
   ]
 })
 export class LicenseModule { }

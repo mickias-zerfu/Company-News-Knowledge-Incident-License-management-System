@@ -56,7 +56,40 @@ export const ROUTES: RouteInfo[] = [
     icon: 'alarm',
     class: '',
     extralink: false,
-    submenu: []
+    submenu: [
+      {
+        path: '/licences',
+        title: 'Reports',
+        icon: 'tonality',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/lists',
+        title: 'License Lists',
+        icon: 'grid_on',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/',
+        title: 'Users',
+        icon: 'portrait',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/vendors',
+        title: 'Vendors',
+        icon: 'computer',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+    ]
   },
   {
     path: '/help',
