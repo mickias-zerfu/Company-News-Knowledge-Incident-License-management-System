@@ -5,9 +5,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { FaqsComponent } from './pages/faqs/faqs.component';
-import { UserManagementComponent } from './pages/user-management/user-management.component';
-import { ServicesComponent } from './pages/services/services.component';
-import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { DailyChecklistComponent } from './pages/daily-checklist/daily-checklist.component';
 import { ResourceSharingComponent } from './pages/resource-sharing/resource-sharing.component';
 import { CategoriesComponent } from './pages/resource-sharing/categories/categories.component';
@@ -20,6 +17,9 @@ import { LicenseDashboardComponent } from './pages/license-management/license-da
 import { LicenseListComponent } from './pages/license-management/license-list/license-list.component';
 import { VendorsMgmtComponent } from './pages/license-management/vendors-mgmt/vendors-mgmt.component';
 import { NotificationsComponent } from './shared/notifications/notifications.component';
+import { ServicesComponent } from './pages/transaction-monitoring/services/services.component';
+import { TransactionsComponent } from './pages/transaction-monitoring/transactions/transactions.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
