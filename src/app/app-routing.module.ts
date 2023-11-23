@@ -16,10 +16,15 @@ import { LicenseManagementComponent } from './pages/license-management/license-m
 import { LicenseDashboardComponent } from './pages/license-management/license-dashboard/license-dashboard.component';
 import { LicenseListComponent } from './pages/license-management/license-list/license-list.component';
 import { VendorsMgmtComponent } from './pages/license-management/vendors-mgmt/vendors-mgmt.component';
-import { NotificationsComponent } from './shared/notifications/notifications.component';
 import { ServicesComponent } from './pages/transaction-monitoring/services/services.component';
-import { TransactionsComponent } from './pages/transaction-monitoring/transactions/transactions.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { TransactionsComponent } from './pages/transaction-monitoring/transactions/transactions.component';
+import { NotificationsComponent } from './shared/notifications/notifications.component';
+import { LicenseFormComponent } from './pages/license-management/license-form/license-form.component';
+import { LicenseDetailComponent } from './pages/license-management/license-detail/license-detail.component';
+import { SoftwareProductListComponent } from './pages/license-management/software-product/software-product-list/software-product-list.component';
+import { SoftwareProductFormComponent } from './pages/license-management/software-product/software-product-form/software-product-form.component';
+import { SoftwareProductDetailComponent } from './pages/license-management/software-product/software-product-detail/software-product-detail.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -44,7 +49,7 @@ const routes: Routes = [
       { path: "resourceList", component: ProductMgmtComponent },
       { path: "add", component: ProductCreateComponent },
       { path: ":id", component: ProductDetailComponent },
-      { path: ":id/update", component: ProductCreateComponent , data: { isEditMode: true } },
+      { path: ":id/update", component: ProductCreateComponent, data: { isEditMode: true } },
     ]
   },
 
@@ -54,9 +59,31 @@ const routes: Routes = [
     children: [
       { path: "", component: LicenseDashboardComponent },
       { path: "lists", component: LicenseListComponent },
-      { path: "users", component: UserManagementComponent },
-      { path: "vendors", component: VendorsMgmtComponent },
-      { path: ":id/update", component: ProductCreateComponent, data: { isEditMode: true } },
+      { path: "add", component: LicenseFormComponent },
+      {
+        path: "products", component: SoftwareProductListComponent, children: [
+          { path: "add", component: SoftwareProductFormComponent },
+          { path: ":id", component: SoftwareProductDetailComponent },
+          { path: ":id/update", component: SoftwareProductFormComponent, data: { isEditMode: true } },
+
+        ]
+      },
+      {
+        path: "users", component: UserManagementComponent, children: [
+          { path: "add", component: UserManagementComponent },
+          { path: ":id", component: UserManagementComponent },
+          { path: ":id/update", component: UserManagementComponent, data: { isEditMode: true } },
+
+        ]
+      },
+      {
+        path: "vendors", component: VendorsMgmtComponent, children: [
+          { path: "add", component: VendorsMgmtComponent },
+          { path: ":id", component: VendorsMgmtComponent },
+          { path: ":id/update", component: VendorsMgmtComponent, data: { isEditMode: true } },]
+      },
+      { path: ":id", component: LicenseDetailComponent },
+      { path: ":id/update", component: LicenseFormComponent, data: { isEditMode: true } },
     ]
   },
 

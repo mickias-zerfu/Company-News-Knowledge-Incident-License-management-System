@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Topcard } from '../../dashboard/dashboard.component';
+import { ReportCard } from 'src/app/models/report-card.model';
 
 @Component({
   selector: 'app-license-dashboard',
@@ -8,7 +8,7 @@ import { Topcard } from '../../dashboard/dashboard.component';
 })
 export class LicenseDashboardComponent implements OnInit{
 
-  topcardsLicense: Topcard[] = [];
+  topcardsLicense: ReportCard[] = [];
 
 
   ngOnInit(): void {
@@ -20,25 +20,29 @@ export class LicenseDashboardComponent implements OnInit{
         bgcolor: 'bg-red-500',
         icon: 'atm',
         title: '7',
-        subtitle: 'Active'
+        subtitle: 'Active',
+        link:'lists?status=active'
       },
       {
         bgcolor: 'bg-red-900',
         icon: 'money-bill',
         title: '2',
-        subtitle: 'Pending'
+        subtitle: 'Pending',
+        link:'lists?status=pending'
       },
       {
         bgcolor: 'bg-yellow-900',
         icon: 'local_offer',
         title: '8',
-        subtitle: 'IDGF'
+        subtitle: 'Software Products',
+        link:'products'
       },
       {
         bgcolor: 'bg-red-500',
         icon: 'cancel',
         title: '1',
-        subtitle: 'Expired'
+        subtitle: 'Expired',
+        link:'lists?status=expired'
       }
     )
   }
