@@ -37,6 +37,9 @@ import { CategoriesModalComponent } from './pages/resource-sharing/categories/ca
 import { LicenseModule } from './pages/license-management/license.module';
 import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
 import { SharedModule } from './shared/shared.module';
+import { UserDetailComponent } from './pages/user-management/user-detail/user-detail.component';
+import { UserListComponent } from './pages/user-management/user-list/user-list.component';
+import { UserFormComponent } from './pages/user-management/user-form/user-form.component';
 
 
 
@@ -70,7 +73,10 @@ import { SharedModule } from './shared/shared.module';
     ProductCreateComponent,
     ProductListComponent,
     CategoriesModalComponent,
-    ResourceDashboardComponent
+    ResourceDashboardComponent,
+    UserDetailComponent,
+    UserListComponent,
+    UserFormComponent
 
   ],
   imports: [
