@@ -31,6 +31,12 @@ export class ResourceDashboardComponent implements OnInit {
         title: '500',
         subtitle: 'Personal Bankers'
       },
+      {
+        bgcolor: '#66Aa6a',
+        icon: 'priority_high',
+        title: '50',
+        subtitle: 'Incidents'
+      },
     );
   }
 

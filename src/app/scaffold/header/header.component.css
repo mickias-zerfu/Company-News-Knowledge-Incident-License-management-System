@@ -47,7 +47,7 @@
   /* width: 100%; */
   display: flex;
   justify-content: space-between;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .menu {
@@ -65,20 +65,21 @@
 }
 
 .header .logo a {
-  width: 100px;
+  width: 250px;
   height: 100px;
   display: block;
   background: url("../../../assets/logo.png") no-repeat 0 0;
-  background-size: contain;
-  border-radius: 0rem 0.5rem 0.5rem 0rem;
+  /* background-color: #e8e8e8c2d5; */
+  background-size: cover;
+  /* border-radius: 0rem 0.5rem 0.5rem 0rem; */
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
-  margin-right: 8px; /* Adjust the margin as needed */
+  /* margin-right: 8px; Adjust the margin as needed */
 }
 .separator {
   display: block;
-  background-color: #e8e8e8;
+  background-color: #e8e8e8c2;
   width: 1px;
   height: auto;
 }

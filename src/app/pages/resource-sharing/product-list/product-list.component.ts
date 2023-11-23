@@ -36,7 +36,7 @@ export class ProductListComponent implements OnInit {
   }
 
   addProduct(product: any) {
-    this.shopService.addProduct(product).subscribe(data => {
+    this.shopService.addResource(product).subscribe(data => {
       // Handle response
     });
   }

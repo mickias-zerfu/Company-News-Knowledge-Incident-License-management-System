@@ -1,14 +1,12 @@
 import { CategoryModel } from "./category.model";
 
-export class ProductModel {
+export interface Resource {
   id: number;
-  name  : string;
-  description : string;
-  image_url:string;
-  price : string;
-  manufacturer : string;
+  title: string;
+  description: string;
   category:CategoryModel;
-  instock : number;
+  filename: string;
+  size: number;
   isFeatured:boolean;
   created_at : string;
   updated_at : string;

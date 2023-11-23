@@ -1,0 +1,4 @@
+:host ::ng-deep .mat-mdc-raised-button.mat-unthemed {
+  --mdc-protected-button-container-color: #941313;
+  --mdc-protected-button-label-text-color: #ffffff;
+}

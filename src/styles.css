@@ -5,3 +5,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::ng-deep .mdc-notched-outline__notch {
+  border-right: none !important;
+}
+.mdc-notched-outline__notch
+{
+  border-right: none;
+}
+::ng-deep .mdc-notched-outline__notch
+{
+  border-right: none;
+}
