@@ -14,6 +14,7 @@ import { SoftwareProductListComponent } from './software-product/software-produc
 import { SoftwareProductFormComponent } from './software-product/software-product-form/software-product-form.component';
 import { SoftwareProductDetailComponent } from './software-product/software-product-detail/software-product-detail.component';
 import { LicenseTableComponent } from './license-list/license-table/license-table.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -35,7 +36,8 @@ import { LicenseTableComponent } from './license-list/license-table/license-tabl
     CommonModule,
     MaterialModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
 
   ]
 })
