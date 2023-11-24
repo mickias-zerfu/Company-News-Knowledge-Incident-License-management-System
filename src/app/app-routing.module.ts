@@ -53,9 +53,9 @@ const routes: Routes = [
     ]
   },
 
-  // licences links
+  // licenses links
   {
-    path: "licences", component: LicenseManagementComponent,
+    path: "licenses", component: LicenseManagementComponent,
     children: [
       { path: "", component: LicenseDashboardComponent },
       { path: "lists", component: LicenseListComponent },

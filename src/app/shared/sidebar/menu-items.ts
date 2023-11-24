@@ -77,14 +77,14 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
-    path: '/licences',
+    path: '/licenses',
     title: 'License Management',
     icon: 'alarm',
     class: '',
     extralink: false,
     submenu: [
       {
-        path: '/licences/',
+        path: '/licenses/',
         title: 'Reports',
         icon: 'tonality',
         class: 'sub-menu',
@@ -92,7 +92,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/licences/lists',
+        path: '/licenses/lists',
         title: 'License Lists',
         icon: 'grid_on',
         class: 'sub-menu',
@@ -100,7 +100,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/licences/users',
+        path: '/licenses/users',
         title: 'Users',
         icon: 'portrait',
         class: 'sub-menu',
@@ -108,7 +108,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/licences/products',
+        path: '/licenses/products',
         title: 'Software / Products',
         icon: 'computer',
         class: 'sub-menu',
