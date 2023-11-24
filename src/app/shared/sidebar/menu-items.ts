@@ -51,7 +51,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: [
 
       {
-        path: '',
+        path: '/resources',
         title: 'Status',
         icon: 'tonality',
         class: 'sub-menu',
@@ -59,7 +59,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/resourceList',
+        path: '/resources/resourceList',
         title: 'Available Resources',
         icon: 'list',
         class: 'sub-menu',
@@ -67,7 +67,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/categories',
+        path: '/resources/categories',
         title: 'Category',
         icon: 'category',
         class: 'sub-menu',
@@ -84,7 +84,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
-        path: '/licences',
+        path: '/licences/',
         title: 'Reports',
         icon: 'tonality',
         class: 'sub-menu',
@@ -92,7 +92,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/lists',
+        path: '/licences/lists',
         title: 'License Lists',
         icon: 'grid_on',
         class: 'sub-menu',
@@ -100,7 +100,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/',
+        path: '/licences/users',
         title: 'Users',
         icon: 'portrait',
         class: 'sub-menu',
@@ -108,7 +108,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/vendors',
+        path: '/licences/vendors',
         title: 'Vendors',
         icon: 'computer',
         class: 'sub-menu',

@@ -13,6 +13,7 @@ import { LicenseDetailComponent } from './license-detail/license-detail.componen
 import { SoftwareProductListComponent } from './software-product/software-product-list/software-product-list.component';
 import { SoftwareProductFormComponent } from './software-product/software-product-form/software-product-form.component';
 import { SoftwareProductDetailComponent } from './software-product/software-product-detail/software-product-detail.component';
+import { LicenseTableComponent } from './license-list/license-table/license-table.component';
 
 
 
@@ -28,6 +29,7 @@ import { SoftwareProductDetailComponent } from './software-product/software-prod
     SoftwareProductListComponent,
     SoftwareProductFormComponent,
     SoftwareProductDetailComponent,
+    LicenseTableComponent,
   ],
   imports: [
     CommonModule,

@@ -65,7 +65,7 @@
                 <a
                   class="sidebar-link waves-effect waves-dark flex items-center space-x-2 cursor-pointer"
                   [routerLink]="
-                    submenuItem.class === '' ? [submenuItem.path] : null
+                    submenuItem.class !== '' ? [submenuItem.path] : null
                   "
                   [ngClass]="[submenuItem.class]"
                   [routerLinkActive]="
