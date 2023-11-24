@@ -108,8 +108,8 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/licences/vendors',
-        title: 'Vendors',
+        path: '/licences/products',
+        title: 'Software / Products',
         icon: 'computer',
         class: 'sub-menu',
         extralink: false,

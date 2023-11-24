@@ -23,7 +23,7 @@ export interface UserData {
 export class LicenseTableComponent implements OnInit, AfterViewInit {
 
   licenses: LicenseModel[];
-  displayedColumns: string[] = ['id', 'licenseKey', 'activationStatus', 'quantity', 'expirationDate', 'assignedUsers', 'softwareProduct', 'AgreementStartDate', 'AgreementEndDate'];
+  displayedColumns: string[] = ['id', 'licenseKey', 'activationStatus', 'quantity', 'expirationDate', 'assignedUsers', 'softwareProduct', 'AgreementStartDate', 'AgreementEndDate', 'Action'];
 
   dataSource: MatTableDataSource<any>;
 
@@ -62,5 +62,9 @@ export class LicenseTableComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  deleteLicense(categoryId: number): void {
+    // Logic to edit the category with the provided categoryId
+    console.log(`Editing category with ID: ${categoryId}`);
   }
 }
