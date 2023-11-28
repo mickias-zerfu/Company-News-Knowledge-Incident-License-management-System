@@ -25,6 +25,7 @@ import { LicenseDetailComponent } from './pages/license-management/license-detai
 import { SoftwareProductListComponent } from './pages/license-management/software-product/software-product-list/software-product-list.component';
 import { SoftwareProductFormComponent } from './pages/license-management/software-product/software-product-form/software-product-form.component';
 import { SoftwareProductDetailComponent } from './pages/license-management/software-product/software-product-detail/software-product-detail.component';
+import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -55,35 +56,38 @@ const routes: Routes = [
 
   // licenses links
   {
-    path: "licenses", component: LicenseManagementComponent,
+    path: "licenses",
+    component: LicenseManagementComponent,
     children: [
-      { path: "", component: LicenseDashboardComponent },
       { path: "lists", component: LicenseListComponent },
       { path: "add", component: LicenseFormComponent },
+      { path: "products", component: SoftwareProductListComponent },
+      // children: [
+      { path: "", component: SoftwareProductListComponent },
+      { path: "products/add", component: SoftwareProductFormComponent },
+      { path: "products/:id", component: SoftwareProductDetailComponent },
+      { path: "products/:id/update", component: SoftwareProductFormComponent, data: { isEditMode: true } },
+      // ]
+      // },
+      {        path: "users",        component: UserManagementComponent },
+        // children: [
+          { path: "user/add", component: UserManagementComponent },
+          { path: "user/:id", component: UserManagementComponent },
+          { path: "user/:id/update", component: UserManagementComponent, data: { isEditMode: true } },
+        // ]
+      // },
       {
-        path: "products", component: SoftwareProductListComponent, children: [
-          { path: "add", component: SoftwareProductFormComponent },
-          { path: ":id", component: SoftwareProductDetailComponent },
-          { path: ":id/update", component: SoftwareProductFormComponent, data: { isEditMode: true } },
-
-        ]
-      },
-      {
-        path: "users", component: UserManagementComponent, children: [
-          { path: "add", component: UserManagementComponent },
-          { path: ":id", component: UserManagementComponent },
-          { path: ":id/update", component: UserManagementComponent, data: { isEditMode: true } },
-
-        ]
-      },
-      {
-        path: "vendors", component: VendorsMgmtComponent, children: [
+        path: "vendors",
+        component: VendorsMgmtComponent,
+        children: [
           { path: "add", component: VendorsMgmtComponent },
           { path: ":id", component: VendorsMgmtComponent },
-          { path: ":id/update", component: VendorsMgmtComponent, data: { isEditMode: true } },]
+          { path: ":id/update", component: VendorsMgmtComponent, data: { isEditMode: true } }
+        ]
       },
-      { path: ":id", component: LicenseDetailComponent },
-      { path: ":id/update", component: LicenseFormComponent, data: { isEditMode: true } },
+      // { path: ":id", component: LicenseDetailComponent },
+      // { path: ":id/update", component: LicenseFormComponent, data: { isEditMode: true } },
+      { path: "", component: LicenseDashboardComponent } // Default route should be placed at the end
     ]
   },
 
@@ -91,6 +95,7 @@ const routes: Routes = [
   // Static pages
   { path: "about-us", component: AboutUsComponent },
   { path: "contact-us", component: ContactUsComponent },
+  { path: "**", component: PagenotfoundComponent },
 
 
 ];

@@ -6,6 +6,8 @@ import { MaterialModule } from '../material.module';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NotificationDetailComponent } from './notifications/notification-detail/notification-detail.component';
 import { NotificationFormComponent } from './notifications/notification-form/notification-form.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -14,12 +16,14 @@ import { NotificationFormComponent } from './notifications/notification-form/not
     ChartDataComponent,
     NotificationsComponent,
     NotificationDetailComponent,
-    NotificationFormComponent
+    NotificationFormComponent,
+    PagenotfoundComponent
   ],
   imports: [
     CommonModule,
     NgChartsModule,
-    MaterialModule
+    MaterialModule,
+    AppRoutingModule
   ],
   exports: [
     ChartDataComponent
