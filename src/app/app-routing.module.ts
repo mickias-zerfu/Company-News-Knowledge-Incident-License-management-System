@@ -59,6 +59,7 @@ const routes: Routes = [
     path: "licenses",
     component: LicenseManagementComponent,
     children: [
+      { path: "", component: LicenseDashboardComponent }, // Default route should be placed at the end
       { path: "lists", component: LicenseListComponent },
       { path: "add", component: LicenseFormComponent },
       { path: "products", component: SoftwareProductListComponent },
@@ -87,7 +88,6 @@ const routes: Routes = [
       },
       // { path: ":id", component: LicenseDetailComponent },
       // { path: ":id/update", component: LicenseFormComponent, data: { isEditMode: true } },
-      { path: "", component: LicenseDashboardComponent } // Default route should be placed at the end
     ]
   },
 
