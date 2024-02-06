@@ -1,14 +1,15 @@
-import { SoftwareModel } from "./software.model";
+
+import { SoftwareProduct } from "./software.model";
 import { UserModel } from "./user.model";
 
 export class LicenseModel {
-  licenseID : string;
+  id : string;
   licenseKey : string;
   activationStatus : string;
   quantity: number;
   expirationDate: Date;
   assignedUsers: UserModel[];
-  softwareProduct: SoftwareModel;
+  softwareProduct: SoftwareProduct;
   AgreementStartDate : string;
   AgreementEndDate : string;
 }

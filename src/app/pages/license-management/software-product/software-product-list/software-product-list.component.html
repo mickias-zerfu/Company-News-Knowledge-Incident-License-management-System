@@ -1,0 +1,12 @@
+<h1>list component</h1>
+<section>
+  <div class="container py-8 px-4">
+    <div class="flex justify-center space-x-4 w-full gap gap-2">
+      <div class="flex flex-wrap justify-center">
+        <div *ngFor="let product of products" >
+         <app-software-product-detail [product]="product"></app-software-product-detail>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
