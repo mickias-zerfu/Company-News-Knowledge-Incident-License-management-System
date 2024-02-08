@@ -1,25 +1,37 @@
 <div class="headerContainer">
   <div id="menu-first-row" class="header-with-shadow rounded shadow-md ">
-    <div class="menus  rounded-lg">
+    <div class="menus  rounded-lg flex items-center justify-between w-full">
       <div class="menus left-menu">
         <!-- logo -->
         <div class="header">
           <div class="flex items-center logo">
             <a class="logo-image" alt="Logo" href="/home"></a>
-            <!-- <h1 class="ml-2 text-1xl font-bold   font-ubuntu leading-tight ">
-              Zemen<br>Bank
-            </h1> -->
+            <h1 class="ml-2 text-2xl font-bold font-ubuntu leading-tight ">
+              Zemen Digital Channel Automation System
+            </h1>
           </div>
         </div>
         <div class="separator px-0.1 my-10 mx-5"></div>
         <!-- logo end -->
         <!-- left Menu -->
-        <div class="pl-8 flex-grow flex justify-between left-menu-items">
-          <ul class="flex items-center list-none space-x-4 w-full  text-1xl ">
+        <div class="pl-8 flex-grow flex justify-center left-menu-items">
+          <ul class="flex items-center list-none space-x-4    text-1xl ">
             <li class="flex-grow">
               <button class="learn-more">
                 <a class="button-text hover:font-bold" routerLinkActive="nav-link active"
                   [routerLink]="['home']">Home</a>
+              </button>
+            </li>
+            <li class="flex-grow"  *ngIf="isLoggedIn" >
+              <button class="learn-more">
+                <a class="button-text hover:font-bold" routerLinkActive="nav-link active"
+                  [routerLink]="['about-us']">News</a>
+              </button>
+            </li>
+            <li class="flex-grow"  *ngIf="isLoggedIn" >
+              <button class="learn-more">
+                <a class="button-text hover:font-bold" routerLinkActive="nav-link active"
+                  [routerLink]="['about-us']">Resources</a>
               </button>
             </li>
             <li class="flex-grow">
@@ -40,14 +52,19 @@
       </div>
       <div class="menu right-menu flex justify-end rounded  ">
         <ul class="menu menuitems">
-          <li class="notification w-full">
+          <li class="notification w-full"  *ngIf="isAdmin && isLoggedIn" >
             <a routerLinkActive="active" [routerLink]="['notifications']" class="btn text-white font-bold">
               <button class="button w-full"><mat-icon class="textxl">notification_important</mat-icon> </button>
             </a>
           </li>
-          <li class="donation w-full">
+          <li class="donation w-full" *ngIf="!isLoggedIn">
             <a routerLinkActive="active" [routerLink]="['login']" class="btn text-white font-bold">
               <button class="button w-full">Login </button>
+            </a>
+          </li>
+          <li class="donation w-full"  *ngIf="isLoggedIn" >
+            <a routerLinkActive="active" (click)="logout()" class="btn text-white font-bold">
+              <button class="button w-full">Logout</button>
             </a>
           </li>
         </ul>

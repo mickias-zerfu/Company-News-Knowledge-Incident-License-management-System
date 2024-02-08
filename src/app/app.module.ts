@@ -41,6 +41,7 @@ import { UserDetailComponent } from './pages/user-management/user-detail/user-de
 import { UserFormComponent } from './pages/user-management/user-form/user-form.component';
 import { UserListComponent } from './pages/user-management/user-list/user-list.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 
@@ -78,7 +79,8 @@ import { UserManagementComponent } from './pages/user-management/user-management
     UserDetailComponent,
     UserListComponent,
     UserFormComponent,
-    TransactionDashboardComponent
+    TransactionDashboardComponent,
+    HomeComponent
 
   ],
   imports: [

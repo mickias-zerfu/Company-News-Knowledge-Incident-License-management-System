@@ -26,9 +26,11 @@ import { SoftwareProductListComponent } from './pages/license-management/softwar
 import { SoftwareProductFormComponent } from './pages/license-management/software-product/software-product-form/software-product-form.component';
 import { SoftwareProductDetailComponent } from './pages/license-management/software-product/software-product-detail/software-product-detail.component';
 import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/dashboard", pathMatch: "full" },
+  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "notifications", component: NotificationsComponent },
 
