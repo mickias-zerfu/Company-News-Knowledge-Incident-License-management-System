@@ -1,1 +1,71 @@
-<p>license-detail works!</p>
+<!-- Angular Material components -->
+<div class="container mx-auto p-6">
+  <mat-card class="shadow-lg">
+    <mat-card-header>
+      <mat-card-title class="text-2xl font-bold">
+        <h2 class="text-2xl font-bold mb-4">License Details</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="flex items-center mb-4">
+        <div class="rounded w-1/2">
+          <div class="flex items-center mb-4">
+            <mat-icon class="text-4xl mr-4">receipt</mat-icon>
+            <div>
+              <h3 class="text-xl font-semibold">License Key</h3>
+              <p class="text-gray-600">ABC123DEF456</p>
+            </div>
+          </div>
+          <div class="flex items-center mb-4">
+            <mat-icon class="text-4xl mr-4">check_circle</mat-icon>
+            <div>
+              <h3 class="text-xl font-semibold">Activation Status</h3>
+              <p class="text-green-600">Active</p>
+            </div>
+          </div>
+          <div class="flex items-center mb-4">
+            <mat-icon class="text-4xl mr-4">calendar_today</mat-icon>
+            <div>
+              <h3 class="text-xl font-semibold">Expiration Date</h3>
+              <p class="text-gray-600">December 31, 2023</p>
+            </div>
+          </div>
+          <div class="flex items-center mb-4">
+            <mat-icon class="text-4xl mr-4">people</mat-icon>
+            <div>
+              <h3 class="text-xl font-semibold">Assigned Users</h3>
+              <p class="text-gray-600">John Doe, Jane Smith</p>
+            </div>
+          </div>
+          <div class="flex items-center mb-4">
+            <mat-icon class="text-4xl mr-4">apps</mat-icon>
+            <div>
+              <h3 class="text-xl font-semibold">Software Product</h3>
+              <p class="text-gray-600">Product A</p>
+            </div>
+          </div>
+          <div class="flex items-center mb-4">
+            <mat-icon class="text-4xl mr-4">event</mat-icon>
+            <div>
+              <h3 class="text-xl font-semibold">Agreement Period</h3>
+              <p class="text-gray-600">January 1, 2022 - December 31, 2025</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded w-1/2">
+          <img src="../../../../assets/cert.jpg" alt="" srcset="">
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button routerLink="../" class="focus:outline-none  rounded-2xl">
+        <mat-icon class="text-violet-950-500">undo</mat-icon>
+      </button>
+      <button mat-icon-button routerLink="../{{'id'}}/update" class="focus:outline-none rounded-full">
+        <mat-icon class="text-blue-500">edit</mat-icon>
+      </button>
+      <button mat-icon-button class="focus:outline-none">
+        <mat-icon class="text-red-500">delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

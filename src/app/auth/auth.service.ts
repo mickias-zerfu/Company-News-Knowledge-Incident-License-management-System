@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map, tap } from 'rxjs/operators';
 
@@ -22,6 +22,8 @@ export class AuthService {
   userRole: string = '';
   isAuthenticated: boolean = false;
 
+  public loginStatusChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(private http: HttpClient) { }
 
   public login(userName: string, password: string): Observable<any> {
@@ -39,9 +41,13 @@ export class AuthService {
     localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? 'true' : 'false');
     localStorage.setItem('userRole', this.userRole);
 
+    this.loginStatusChanged.emit(this.isUserLoggedIn);
+
     return of(this.isUserLoggedIn).pipe(
       delay(1000),
       tap(val => {
+
+        this.loginStatusChanged.emit(this.isUserLoggedIn);
         console.log('Is User Authentication successful: ' + val);
       })
     );
