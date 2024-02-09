@@ -14,7 +14,7 @@
   /* width: 40%; */
   height: 100% !important;
   margin: auto 10px;
-  padding: 100px;
+  padding: 100px 100px 10px 100px;
 }
 .title {
   font-family: "Ubuntu", sans-serif;

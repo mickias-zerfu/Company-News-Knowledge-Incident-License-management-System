@@ -10,6 +10,10 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { LoginComponent } from './scaffold/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { FaqsComponent } from './pages/faqs/faqs.component';
@@ -42,8 +46,11 @@ import { UserFormComponent } from './pages/user-management/user-form/user-form.c
 import { UserListComponent } from './pages/user-management/user-list/user-list.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LottieAnimationComponent } from './pages/home/lottie-animation/lottie-animation.component';
 
-
+export function playerFactory() {
+  return player;
+}
 
 @NgModule({
   declarations: [
@@ -80,13 +87,15 @@ import { HomeComponent } from './pages/home/home.component';
     UserListComponent,
     UserFormComponent,
     TransactionDashboardComponent,
-    HomeComponent
+    HomeComponent,
+    LottieAnimationComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    LottieModule.forRoot({ player: playerFactory }),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
