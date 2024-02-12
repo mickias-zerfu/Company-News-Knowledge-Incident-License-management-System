@@ -47,6 +47,12 @@ import { UserListComponent } from './pages/user-management/user-list/user-list.c
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LottieAnimationComponent } from './pages/home/lottie-animation/lottie-animation.component';
+import { NewsMgmtComponent } from './pages/resource-sharing/news-mgmt/news-mgmt.component';
+import { NewsCreateComponent } from './pages/resource-sharing/news-mgmt/news-create/news-create.component';
+import { NewsDetailComponent } from './pages/resource-sharing/news-mgmt/news-detail/news-detail.component';
+import { IncidentDetailComponent } from './pages/resource-sharing/incident-mgmt/incident-detail/incident-detail.component';
+import { IncidentCreateComponent } from './pages/resource-sharing/incident-mgmt/incident-create/incident-create.component';
+import { IncidentMgmtComponent } from './pages/resource-sharing/incident-mgmt/incident-mgmt.component';
 
 export function playerFactory() {
   return player;
@@ -88,7 +94,13 @@ export function playerFactory() {
     UserFormComponent,
     TransactionDashboardComponent,
     HomeComponent,
-    LottieAnimationComponent
+    LottieAnimationComponent,
+    NewsMgmtComponent,
+    NewsCreateComponent,
+    NewsDetailComponent,
+    IncidentDetailComponent,
+    IncidentCreateComponent,
+    IncidentMgmtComponent
 
   ],
   imports: [

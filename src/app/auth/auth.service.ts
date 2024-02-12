@@ -27,6 +27,8 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public login(userName: string, password: string): Observable<any> {
+
+    debugger 
     if (userName === 'admin' && password === 'admin') {
       this.isUserLoggedIn = true;
       this.userRole = 'admin';
@@ -37,17 +39,13 @@ export class AuthService {
       this.isUserLoggedIn = true;
       this.userRole = 'user';
     }
-
     localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? 'true' : 'false');
     localStorage.setItem('userRole', this.userRole);
-
     this.loginStatusChanged.emit(this.isUserLoggedIn);
 
     return of(this.isUserLoggedIn).pipe(
-      delay(1000),
-      tap(val => {
-
-        this.loginStatusChanged.emit(this.isUserLoggedIn);
+      delay(100),
+      tap(val => { 
         console.log('Is User Authentication successful: ' + val);
       })
     );

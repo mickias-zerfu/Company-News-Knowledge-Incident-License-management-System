@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
     // this.isLoggedIn = false;}
 
     // console.log("isLoggedIn", this.isLoggedIn);
-
   }
 
   ngOnDestroy(): void { }

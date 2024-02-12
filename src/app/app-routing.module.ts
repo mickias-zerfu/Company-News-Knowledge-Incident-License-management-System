@@ -27,6 +27,9 @@ import { SoftwareProductFormComponent } from './pages/license-management/softwar
 import { SoftwareProductDetailComponent } from './pages/license-management/software-product/software-product-detail/software-product-detail.component';
 import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NewsMgmtComponent } from './pages/resource-sharing/news-mgmt/news-mgmt.component';
+import { NewsCreateComponent } from './pages/resource-sharing/news-mgmt/news-create/news-create.component';
+import { NewsDetailComponent } from './pages/resource-sharing/news-mgmt/news-detail/news-detail.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -50,6 +53,10 @@ const routes: Routes = [
       { path: "", component: ResourceDashboardComponent },
       { path: "categories", component: CategoriesComponent },
       { path: "resourceList", component: ProductMgmtComponent },
+      { path: "news", component: NewsMgmtComponent },
+      { path: "news/add", component: NewsCreateComponent },
+      { path: "news:id", component: NewsDetailComponent },
+      { path: "news:id/update", component: NewsCreateComponent, data: { isEditMode: true } },
       { path: "add", component: ProductCreateComponent },
       { path: ":id", component: ProductDetailComponent },
       { path: ":id/update", component: ProductCreateComponent, data: { isEditMode: true } },
