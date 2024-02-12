@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(): void {
     // debugger
     // if(this.loginModel.userName === 'Admin' && this.loginModel.password === '12345'){
 
@@ -29,6 +28,7 @@ export class LoginComponent implements OnInit {
     // }
 
 
+  login(): void {
     this.authService.login(this.loginModel.userName, this.loginModel.password).subscribe(
       (isAuthenticated) => {
         if (isAuthenticated) {
@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
           const userRole = localStorage.getItem('userRole');
 
           // redirect to correct page
+
+          this.authService.loginStatusChanged.emit(true);
           if (userRole === 'admin') { this.router.navigate(["../dashboard"]);
          } else {
             this.router.navigate(['/']);
