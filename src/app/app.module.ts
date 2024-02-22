@@ -53,6 +53,7 @@ import { NewsDetailComponent } from './pages/resource-sharing/news-mgmt/news-det
 import { IncidentDetailComponent } from './pages/resource-sharing/incident-mgmt/incident-detail/incident-detail.component';
 import { IncidentCreateComponent } from './pages/resource-sharing/incident-mgmt/incident-create/incident-create.component';
 import { IncidentMgmtComponent } from './pages/resource-sharing/incident-mgmt/incident-mgmt.component';
+import { NewsListComponent } from './pages/resource-sharing/news-mgmt/news-list/news-list.component';
 
 export function playerFactory() {
   return player;
@@ -100,7 +101,8 @@ export function playerFactory() {
     NewsDetailComponent,
     IncidentDetailComponent,
     IncidentCreateComponent,
-    IncidentMgmtComponent
+    IncidentMgmtComponent,
+    NewsListComponent
 
   ],
   imports: [

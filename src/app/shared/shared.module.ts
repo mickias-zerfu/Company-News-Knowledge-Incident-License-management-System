@@ -8,6 +8,7 @@ import { NotificationDetailComponent } from './notifications/notification-detail
 import { NotificationFormComponent } from './notifications/notification-form/notification-form.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { LoadingComponent } from './loading/loading.component';
 
 
 
@@ -17,7 +18,8 @@ import { AppRoutingModule } from '../app-routing.module';
     NotificationsComponent,
     NotificationDetailComponent,
     NotificationFormComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { AppRoutingModule } from '../app-routing.module';
     AppRoutingModule
   ],
   exports: [
-    ChartDataComponent
+    ChartDataComponent,
+    LoadingComponent
   ]
 })
 export class SharedModule { }

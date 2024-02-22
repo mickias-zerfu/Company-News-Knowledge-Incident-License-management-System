@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { postsInfo } from 'src/app/data/posts';
 import { BlogModel } from 'src/app/models/blog.model';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-news-detail',
@@ -11,22 +11,32 @@ import { BlogModel } from 'src/app/models/blog.model';
 export class NewsDetailComponent implements OnInit {
   blog: BlogModel;
   recentBlogList: BlogModel[] = [];
+  blogId: number
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private blogService: BlogService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const blogId = +params['id']; // Replace 'id' with the actual parameter name for the blog ID
-      this.fetchBlogDetails(blogId);
+      this.blogId = +params['id']; // Replace 'id' with the actual parameter name for the blog ID
+      this.fetchBlogDetails(this.blogId);
       this.fetchRecentBlogs();
     });
   }
 
   fetchBlogDetails(blogId: number) {
-    this.blog = postsInfo.find(blog => blog.id === blogId) as BlogModel;
+    this.blogService.getBlog(blogId).subscribe(blog => {
+      this.blog = blog;
+      console.log(this.blog, 'blog single');
+
+    });
   }
 
   fetchRecentBlogs() {
-    this.recentBlogList = postsInfo.slice(1, 4); // Assuming you want to display the second, third, and fourth blog as recent blogs
+    this.blogService.getAllBlogs().subscribe(data => {
+      this.recentBlogList = data.slice(0, 4);
+      console.log(this.recentBlogList,'recents . . . ');
+
+    });
+    // this.recentBlogList = postsInfo // Assuming you want to display the second, third, and fourth blog as recent blogs
   }
 }
