@@ -30,6 +30,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NewsMgmtComponent } from './pages/resource-sharing/news-mgmt/news-mgmt.component';
 import { NewsCreateComponent } from './pages/resource-sharing/news-mgmt/news-create/news-create.component';
 import { NewsDetailComponent } from './pages/resource-sharing/news-mgmt/news-detail/news-detail.component';
+import { NewsListComponent } from './pages/resource-sharing/news-mgmt/news-list/news-list.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -50,13 +51,16 @@ const routes: Routes = [
   {
     path: "resources", component: ResourceSharingComponent,
     children: [
-      { path: "", component: ResourceDashboardComponent },
+      { path: "", component: ResourceSharingComponent },
       { path: "categories", component: CategoriesComponent },
       { path: "resourceList", component: ProductMgmtComponent },
-      { path: "news", component: NewsMgmtComponent },
+
+      { path: "news", component: NewsListComponent },
+      { path: "managenews", component: NewsMgmtComponent },
       { path: "news/add", component: NewsCreateComponent },
-      { path: "news:id", component: NewsDetailComponent },
-      { path: "news:id/update", component: NewsCreateComponent, data: { isEditMode: true } },
+      { path: "news/:id", component: NewsDetailComponent },
+      { path: "news/:id/update", component: NewsCreateComponent, data: { isEditMode: true } },
+
       { path: "add", component: ProductCreateComponent },
       { path: ":id", component: ProductDetailComponent },
       { path: ":id/update", component: ProductCreateComponent, data: { isEditMode: true } },

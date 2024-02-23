@@ -1,26 +1,6 @@
-<section class=" px-16">
+<section class="pl-2">
   <div class="flex">
     <section class="body-wrapper w-full align-center text-center ">
-      <div class="containe px-4">
-        <div class="flex justify-center space-x-4 w-full gap gap-2">
-          <mat-toolbar class="menu-toolbar justify-between">
-            <mat-toolbar-row class=" justify-around">
-              <button mat-raised-button class="menu-button " routerLink="/resources/" routerLinkActive="active">
-                <mat-icon class="menu-icon">home</mat-icon>
-                <span class="menu-label">Dashboard</span>
-              </button>
-              <button mat-raised-button class="menu-button m-8" routerLink="/resources/resourceList" routerLinkActive="active">
-                <mat-icon class="menu-icon">shopping_cart</mat-icon>
-                <span class="menu-label">Resources</span>
-              </button>
-              <button mat-raised-button class="menu-button " routerLink="/resources/categories" routerLinkActive="active">
-                <mat-icon class="menu-icon">category</mat-icon>
-                <span class="menu-label">Categories</span>
-              </button>
-            </mat-toolbar-row>
-          </mat-toolbar>
-        </div>
-      </div>
       <section class="cards-container w-full">
         <router-outlet> </router-outlet>
       </section>
