@@ -4,60 +4,66 @@
       <h2 class="text-4xl font-bold text-red-700">Zemen in News and Our Blogs</h2>
     </div>
   </section>
-<div class="flex">
-  <section class="body-wrapper w-full align-center text-center px-16">
-    <section class="cards-container w-full py-8">
-      <div *ngIf="!blogListObject">
-        <app-loading></app-loading>
-      </div>
-      <div class="blog-container" *ngIf="blogListObject">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <!-- Repeat the following code block for each blog -->
-          <div *ngFor="let blog of blogListObject let i = index  "class="blog-list-card"
-          [class.even-background]="evenBackground(i)" [class.odd-background]="oddBackground(i)">
-            <div class="card shadow-lg rounded-lg">
-              <div class="flex items-center mb-2">
-                <!-- <div class="ml-2">
+  <div class="flex">
+    <section class="body-wrapper w-full align-center text-center px-16">
+      <section class="cards-container w-full py-8">
+        <div *ngIf="!blogListObject">
+          <app-loading></app-loading>
+        </div>
+        <div class="blog-container" *ngIf="blogListObject">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Repeat the following code block for each blog -->
+            <div *ngFor="let blog of blogListObject let i = index  " class="blog-list-card"
+              [class.even-background]="evenBackground(i)" [class.odd-background]="oddBackground(i)">
+              <div class="card shadow-lg rounded-lg">
+                <div class="flex items-center mb-2">
+                  <!-- <div class="ml-2">
                   <h4 class="w-12 font-bold text-xl">{{ blog.id }}</h4>
                 </div> -->
-                <div class="flex justify-center px-4 rounded mb-4">
-                  <img src="{{ blog.image_url }}" alt="Blog Image" class="w-48 p-2 rounded">
-                </div>
-              </div>
-              <div class="blog-detail">
-                <div class="content p-4">
-                  <div class="text-left">
-                    <p class="font-bold">Title: {{ blog.title }}</p>
-                  </div>
-                  <div class="mt-4">
-                    <p class="truncate">{{ blog.content }}</p>
-                  </div>
-                  <div class="flex justify-between mt-4">
-                    <div>
-                      <p class="font-bold">Posted on:</p>
-                      <p>{{ blog.created_at | date }}</p>
-                    </div>
-                    <div>
-                      <p class="font-bold">Updated on:</p>
-                      <p>{{ blog.updated_at | date }}</p>
-                    </div>
+                  <div class="flex justify-center px-4 rounded mb-4">
+                    <img src="{{ blog.image_url }}" alt="Blog Image" class="w-48 p-2 rounded">
+
+                    <!-- <img *ngIf="!defaultImage; else defaultImg" [src]="blog.image_url" (error)="onError()" class="w-48 p-2 rounded">
+
+                    <ng-template #defaultImg>
+                      <img [src]="defaultImage">
+                    </ng-template> -->
                   </div>
                 </div>
-              </div>
-              <div class="action flex justify-center p-4">
-                <button class="learn-more" routerLinkActive="nav-link active" [routerLink]="['../news/' + blog.id]">
-                  <span class="circle" aria-hidden="true">
-                  <span class="icon arrow"></span>
-                  </span>
-                  <span class="button-text">Read More</span>
-                </button>
+                <div class="blog-detail">
+                  <div class="content p-4">
+                    <div class="text-left">
+                      <p class="font-bold">Title: {{ blog.title }}</p>
+                    </div>
+                    <div class="mt-4">
+                      <p class="truncate">{{ blog.content }}</p>
+                    </div>
+                    <div class="flex justify-between mt-4">
+                      <div>
+                        <p class="font-bold">Posted on:</p>
+                        <p>{{ blog.created_at | date }}</p>
+                      </div>
+                      <div *ngIf=" blog.created_at!= blog.updated_at ">
+                        <p class="font-bold">Updated on:</p>
+                        <p>{{ blog.updated_at | date }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="action flex justify-center p-4">
+                  <button class="learn-more" routerLinkActive="nav-link active" [routerLink]="['../news/' + blog.id]">
+                    <span class="circle" aria-hidden="true">
+                      <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Read More</span>
+                  </button>
+                </div>
               </div>
             </div>
+            <!-- End of blog code block -->
           </div>
-          <!-- End of blog code block -->
         </div>
-      </div>
+      </section>
     </section>
-  </section>
-</div>
+  </div>
 </section>

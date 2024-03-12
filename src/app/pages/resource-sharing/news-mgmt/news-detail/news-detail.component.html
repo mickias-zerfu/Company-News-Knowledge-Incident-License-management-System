@@ -12,7 +12,12 @@
       <div class="text-left">
         <h1 class="text-3xl font-bold mb-4">{{ blog.title }}</h1>
         <p class="text-gray-600 mb-4">{{ blog.created_at }}</p>
-        <img src="{{ blog.image_url }}" alt="Blog Image" class="w-96 h-auto mb-4">
+        <img *ngIf="!defaultImage; else defaultImg" [src]="blog.image_url" (error)="onError()">
+
+        <ng-template #defaultImg>
+          <img [src]="defaultImage">
+        </ng-template>
+
         <p>{{ blog.content }}</p>
       </div>
     </div>
@@ -25,7 +30,6 @@
               <img [src]="recentBlog.image_url" alt="Blog Image" class="w-16">
               <div class="ml-4">
                 <!-- <h3 class="truncate text-xl font-bold ">{{ recentBlog.title }}</h3> -->
-
               </div>
 
             </div>

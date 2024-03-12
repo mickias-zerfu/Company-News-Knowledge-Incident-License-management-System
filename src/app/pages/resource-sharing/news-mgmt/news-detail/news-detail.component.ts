@@ -11,7 +11,9 @@ import { BlogService } from 'src/app/services/blog.service';
 export class NewsDetailComponent implements OnInit {
   blog: BlogModel;
   recentBlogList: BlogModel[] = [];
-  blogId: number
+  blogId: number;
+  defaultImage:any;
+
 
   constructor(private route: ActivatedRoute, private blogService: BlogService) { }
 
@@ -23,8 +25,12 @@ export class NewsDetailComponent implements OnInit {
     });
   }
 
+onError() {
+  this.defaultImage = '../../../../../assets/imageNotLoading.png';
+}
+
   fetchBlogDetails(blogId: number) {
-    this.blogService.getBlog(blogId).subscribe(blog => {
+    this.blogService.getBlogById(blogId).subscribe(blog => {
       this.blog = blog;
       console.log(this.blog, 'blog single');
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BlogModel } from 'src/app/models/blog.model';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -8,19 +9,14 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./news-mgmt.component.css']
 })
 export class NewsMgmtComponent implements OnInit{
+
   blogListObject: BlogModel[];
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private router : Router) { }
 
   ngOnInit() {
     this.getAllBlogs();
   }
 
-  evenBackground(index: any) {
-    return ((Math.floor(index / 2) + index % 2) % 2 === 0) ? true : false;
-  }
-  oddBackground(index: any) {
-    return ((Math.floor(index / 2) + index % 2) % 2 === 1) ? true : false;
-  }
   getAllBlogs() {
     this.blogService.getAllBlogs().subscribe(data => {
       this.blogListObject = data;
@@ -35,21 +31,19 @@ export class NewsMgmtComponent implements OnInit{
   //   });
   // }
 
-  addBlog(Blog: any) {
-    this.blogService.addBlog(Blog).subscribe(data => {
-      // Handle response
-    });
+  addBlog() {
+    this.router.navigate(['/resources/news/add']);
   }
 
-  updateBlog(BlogId: number, Blog: any) {
-    this.blogService.updateBlogContent(BlogId, Blog).subscribe(data => {
-      // Handle response
-    });
+  updateBlog(BlogId: number) {
+    this.router.navigate(['/resources/news/'+BlogId+'/update']);
   }
 
   deleteBlog(BlogId: number) {
     this.blogService.deleteBlog(BlogId).subscribe(data => {
-      // Handle response
+      // Toaster
+      console.log(data);
+      this.router.navigate(['/resources//managenews']);
     });
   }
 }

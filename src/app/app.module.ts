@@ -59,6 +59,7 @@ import { KnowledgeListComponent } from './pages/resource-sharing/knowledge-mgmt/
 import { KnowledgeDetailComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-detail/knowledge-detail.component';
 import { KnowledgeCreateComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-create/knowledge-create.component';
 import { KnowledgeMgmtComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-mgmt.component';
+import { AddNewButtonComponent } from './shared/add-new-button/add-new-button.component';
 
 export function playerFactory() {
   return player;
@@ -111,7 +112,8 @@ export function playerFactory() {
     KnowledgeListComponent,
     KnowledgeDetailComponent,
     KnowledgeCreateComponent,
-    KnowledgeMgmtComponent
+    KnowledgeMgmtComponent,
+    AddNewButtonComponent
 
   ],
   imports: [

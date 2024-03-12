@@ -1,48 +1,31 @@
-<section class="pt-32 px-16">
-    <div class="flex">
-      <app-sidebar></app-sidebar>
-      <section class="body-wrapper w-full align-center text-center px-16">
-          <div class="header-container text-left align-left p-4 m-8 rounded shadow-md ">
-            <h2 class="col-span-2 text-2xl font-bold mb-4">Add your insights .... </h2>
-          </div>
-        <div class="grid grid-cols-2 gap-4 p-4">
-  
-          <div>
-            <label for="title" class="block text-lg mb-2">Title:</label>
-            <input type="text" id="title" class="w-full border border-gray-300 rounded-md p-2" [(ngModel)]="post.title" />
-          </div>
-  
-          <div>
-            <label for="featuredImage" class="block text-lg mb-2">Featured Image:</label>
-            <input type="file" id="featuredImage" class="p-2" (change)="handleImageUpload($event)" accept="image/*" />
-          </div>
-          <!--
-          <div>
-            <label for="category" class="block text-lg mb-2">Category:</label>
-            <input type="text" id="category" class="w-full border border-gray-300 rounded-md p-2"
-              [(ngModel)]="post.category" />
-          </div>
-  
-          <div>
-            <label for="subCategories" class="block text-lg mb-2">Subcategories:</label>
-            <select id="subCategories" class="w-full border border-gray-300 rounded-md p-2"
-              [(ngModel)]="post.subCategories" multiple>
-              <option value="subcategory1">Subcategory 1</option>
-              <option value="subcategory2">Subcategory 2</option>
-              <option value="subcategory3">Subcategory 3</option>
-            </select>
-          </div> -->
-  
-          <div class="col-span-2">
-            <label for="content" class="block text-lg mb-2">Content:</label>
-            <textarea id="content" class="w-full h-40 border border-gray-300 rounded-md p-2"
-              [(ngModel)]="post.content"></textarea>
-          </div>
-  
-          <div class="col-span-2 text-right   align-right">
-            <button class="bg-blue-500 text-white py-2 px-4 rounded" (click)="submitPost()">Submit</button>
-          </div>
+<section class="pt-2 px-2">
+  <div class="flex">
+    <section class="body-wrapper w-full align-left text-left px-4">
+      <div class="header-container text-left align-left p-4  rounded shadow-md ">
+        <h2 class="text-2xl font-bold mb-4 text-left" mat-dialog-title>{{ isEditMode ? 'Edit Post' : 'Add Post' }}</h2>
+      </div>
+      <div class=" gap-4 p-4">
+
+        <div>
+          <label for="title" class="block text-lg mb-2">Title:</label>
+          <input type="text" id="title" class="w-full border border-gray-300 rounded-md p-2" [(ngModel)]="post.title" />
         </div>
-      </section>
-    </div>
-  </section>
+
+        <div>
+          <label for="featuredImage" class="block text-lg mb-2">Featured Image:</label>
+          <input type="file" id="featuredImage" class="p-2" (change)="handleImageUpload($event)" accept="image/*" />
+          <img [src]="imagePreview" alt="Selected Image" class="w-96 h-auto" *ngIf="imagePreview" />
+        </div>
+        <div class="col-span-2">
+          <label for="content" class="block text-lg mb-2">Content:</label>
+          <textarea id="content" class="w-full h-40 border border-gray-300 rounded-md p-2"
+            [(ngModel)]="post.content"></textarea>
+        </div>
+
+        <div class="flex justify-end pr-16">
+          <app-add-new-button buttonText="{{ isEditMode ? 'Update Post' : 'Submit Post'}}"  (click)="submitPost()"></app-add-new-button>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

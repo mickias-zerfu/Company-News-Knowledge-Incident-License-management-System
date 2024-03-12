@@ -11,9 +11,12 @@ export class BlogService {
 
   constructor(private http: HttpClient) {}
 
-  getBlog(id: number): Observable<BlogModel> {
+  getBlogById(id: number): Observable<BlogModel> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<BlogModel>(url);
+  }
+  uploadBlogImage(formData: FormData): Observable<any> {
+    return this.http.post<any>('http://localhost:5195/api/Files/PostSingleFile', formData);
   }
   addBlog(blog: BlogModel): Observable<BlogModel> {
     return this.http.post<BlogModel>(this.apiUrl, blog);
@@ -23,10 +26,11 @@ export class BlogService {
     return this.http.get<BlogModel[]>(this.apiUrl);
   }
 
-  updateBlogContent(id: number, content: string): Observable<BlogModel> {
+  updateBlogContent(id: number, content: BlogModel): Observable<BlogModel> {
     const url = `${this.apiUrl}/${id}`;
-    const updatedBlog = { content: content };
-    return this.http.put<BlogModel>(url, updatedBlog);
+    // const updatedBlog = { content: content };
+    console.log(content);
+    return this.http.put<any>(url, content);
   }
   deleteBlog(id: number): Observable<void> {
     const url = `${this.apiUrl}/${id}`;
