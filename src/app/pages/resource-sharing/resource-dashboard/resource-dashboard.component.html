@@ -1,12 +1,13 @@
 <section>
-  <!-- <div class="flex justify-between px-16">
-    <div class="card" *ngFor='let topcard of topcardsResource'>
-      <div class="card-item ">
+  <h1 class="text-4xl font-bold text-gray-800 p-4">Resource Sharing Dashboard</h1>
+  <div class="flex flex-wrap justify-between px-16">
+    <div class="card" class="w-full md:w-1/2 xl:w-1/4 p-4" *ngFor='let topcard of topcardsResource'>
+      <div class="card-item " [routerLink]="topcard.link">
         <div class="bg-white rounded-lg shadow-lg p-6 h-full">
           <div class="text-left">
             <div [ngStyle]="{'background-color': topcard.bgcolor}"
               class="icon-container  rounded-full flex align-center items-center justify-center h-16 w-16">
-              <mat-icon class="text-l">{{topcard.icon}}</mat-icon>
+              <mat-icon class="text-lg">{{topcard.icon}}</mat-icon>
             </div>
           </div>
           <div class="text-center mt-4">
@@ -17,7 +18,55 @@
         </div>
       </div>
     </div>
-  </div> -->
-  <!-- <router-outlet></router-outlet> -->
-  <h1> Dashboard</h1>
+  </div>
 </section>
+<hr class="border-t-2 border-gray-300 my-6">
+<div class="flex flex-wrap">
+  <div class="w-full md:w-1/2 xl:w-1/4 p-4">
+    <mat-card>
+      <mat-card-content>
+        <h2>Total Shared Items</h2>
+        <h1>{{ totalItems }}</h1>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="w-full md:w-1/2 xl:w-1/4 p-4">
+    <mat-card>
+      <mat-card-content>
+        <h2>Recent Activity</h2>
+        <ul>
+          <li *ngFor="let activity of recentActivity">
+            {{ activity.title }} - {{ activity.date }} by {{ activity.user }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="w-full md:w-1/2 xl:w-1/4 p-4">
+    <mat-card>
+      <mat-card-content>
+        <h2>Popular/Shared Items</h2>
+        <ul>
+          <li *ngFor="let item of popularItems">
+            {{ item.title }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="w-full md:w-1/2 xl:w-1/4 p-4">
+    <mat-card>
+      <mat-card-content>
+        <h2>Categories and Tags</h2>
+        <ul>
+          <li *ngFor="let category of categories">
+            {{ category }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

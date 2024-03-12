@@ -21,7 +21,6 @@ export class ProductListComponent implements OnInit {
   }
 
   getAllProducts() {
-    debugger
     this.shopService.getAllProducts().subscribe(data => {
       this.products = data;
       console.log(this.products);

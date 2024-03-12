@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Topcard } from '../../dashboard/dashboard.component';
 
+
+export interface Topcard {
+  bgcolor: string,
+  icon: string,
+  title: string,
+  subtitle: string,
+  link:string
+}
 @Component({
   selector: 'app-resource-dashboard',
   templateUrl: './resource-dashboard.component.html',
@@ -9,33 +16,58 @@ import { Topcard } from '../../dashboard/dashboard.component';
 export class ResourceDashboardComponent implements OnInit {
 
   topcardsResource: Topcard[] = [];
+  totalItems: number = 0;
+  recentActivity: any[] = [];
+  popularItems: any[] = [];
+  categories: string[] = [];
   constructor() { }
 
   ngOnInit(): void {
+
+    this.totalItems = 100;
+    this.recentActivity = [
+      { title: 'Item 1', date: '2022-01-01', user: 'User A' },
+      { title: 'Item 2', date: '2022-01-02', user: 'User B' },
+      { title: 'Item 3', date: '2022-01-03', user: 'User C' },
+    ];
+    this.popularItems = [
+      { title: 'Item 1' },
+      { title: 'Item 2' },
+      { title: 'Item 3' },
+    ];
+    this.categories = ['Category 1', 'Category 2', 'Category 3'];
+    this.getDashboardData();
+
+  }
+  getDashboardData() {
     this.topcardsResource.push(
       {
-        bgcolor: '#007bff',
-        icon: 'store',
-        title: '10,000',
-        subtitle: 'Total Resources'
+        bgcolor: '#FFB534',
+        icon: 'newspaper',
+        title: '10',
+        subtitle: 'Shared News',
+        link:"news"
       },
       {
-        bgcolor: '#ef5350',
-        icon: 'shopping_cart',
+        bgcolor: '#3C0753',
+        icon: 'attach_file',
         title: '5,000',
-        subtitle: 'For Managers'
+        subtitle: 'File Shared Items',
+        link:"files"
       },
       {
-        bgcolor: '#66bb6a',
-        icon: 'star',
+        bgcolor: '#B80000',
+        icon: 'info',
         title: '500',
-        subtitle: 'Personal Bankers'
+        subtitle: 'Solved Incident Registered',
+        link:"incidents"
       },
       {
-        bgcolor: '#66Aa6a',
+        bgcolor: '#4F6F52',
         icon: 'priority_high',
         title: '50',
-        subtitle: 'Incidents'
+        subtitle: 'Knowledge Base',
+        link:"knowledges"
       },
     );
   }
