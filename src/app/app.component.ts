@@ -14,27 +14,35 @@ export class AppComponent implements OnInit {
 
   constructor(private cdr: ChangeDetectorRef, private authService: AuthService) { }
   ngOnInit() {
-
+    // debugger
     this.checkLoginStatus();
   }
   checkLoginStatus() {
-
+    this.isLoggedIn = this.authService.isAuthenticate();
     this.authService.loginStatusChanged.subscribe((isUserLoggedIn: boolean) => {
+      debugger
+      console.log('---------------isUserLoggedIn authService.loginStatusChanged.subscribe app', isUserLoggedIn);
       this.isLoggedIn = isUserLoggedIn;
-      let storeData = localStorage.getItem("isUserLoggedIn");
-      let roleData = localStorage.getItem("userRole");
-      console.log("StoreData: " + storeData);
-      console.log("roleData: " + roleData);
-      if (storeData != null && storeData == "true" && roleData == "admin") {
-        this.isLoggedIn = true;
-        this.isAdmin = true;
-      } else if (storeData != null && storeData == "true") {
-        this.isLoggedIn = true;
-      } else {
-        this.isAdmin = false;
-        this.isLoggedIn = false;
-      }
       this.cdr.detectChanges();
     });
+    const storeData = localStorage.getItem('isUserLoggedIn');
+    const roleData = localStorage.getItem('userRole');
+
+    console.log('StoreData app: ' + storeData);
+    console.log('roleData app: ' + roleData);
+
+    if (storeData === 'true') {
+      this.isLoggedIn = true;
+
+      if (roleData === 'admin') {
+        this.isAdmin = true;
+        console.log('this.isLoggedIn if storeData === true && roleData === admin app', this.isLoggedIn);
+      }
+
+      console.log('this.isLoggedIn if storeData === true app', this.isLoggedIn);
+    }
+
+    this.cdr.detectChanges();
+
   }
 }

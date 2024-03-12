@@ -24,25 +24,20 @@ export class AuthService {
 
   public loginStatusChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
 
   public login(userName: string, password: string): Observable<any> {
 
     if (userName === 'admin' && password === 'admin') {
-      this.isUserLoggedIn = true;
-      this.userRole = 'admin';
+      this.setUserLoggedIn(true, 'admin');
     } else if (userName === 'subadmin' && password === 'subadmin') {
-      this.isUserLoggedIn = true;
-      this.userRole = 'subadmin';
+      this.setUserLoggedIn(true, 'subadmin');
     } else {
-      this.isUserLoggedIn = true;
-      this.userRole = 'user';
+      this.setUserLoggedIn(true, 'user');
     }
-    localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? 'true' : 'false');
-    localStorage.setItem('userRole', this.userRole);
-
-    this.loginStatusChanged.emit(this.isUserLoggedIn);
-
+    this.emitLoginStatus();
     return of(this.isUserLoggedIn).pipe(
       delay(100),
       tap(val => {
@@ -50,30 +45,45 @@ export class AuthService {
       })
     );
   }
-  logout(): void {
-    this.isUserLoggedIn = false;
+  public logout(): void {
+    this.setUserLoggedIn(false, '');
     localStorage.removeItem('isUserLoggedIn');
+    localStorage.removeItem('userRole');
   }
 
-
-  // logout() {
-  //   // remove user from local storage to log user out
-  //   localStorage.removeItem('currentUser');
-  //   this.user = null;
-  // }
-
   getCurrentUser(): User | null {
-    const userJson = localStorage.getItem('currentUser');
+    const userJson = localStorage.getItem('userRole');
 
     if (userJson) {
       return JSON.parse(userJson);
     }
-
     return null;
   }
 
-  isAuthenticate() {
-    return !!this.getCurrentUser();
+  public isAuthenticate(): boolean {
+    const storeData = localStorage.getItem('isUserLoggedIn');
+    const roleData = localStorage.getItem('userRole');
+
+    console.log('StoreData Auth isAuthenticate: ' + storeData);
+    console.log('roleData: isAuthenticate: ' + roleData);
+
+    if (storeData === 'true') {
+      this.emitLoginStatus();
+      return true;
+    }
+
+    return false;
+  }
+
+  private setUserLoggedIn(isLoggedIn: boolean, role: string): void {
+    this.isUserLoggedIn = isLoggedIn;
+    this.userRole = role;
+    localStorage.setItem('isUserLoggedIn', isLoggedIn ? 'true' : 'false');
+    localStorage.setItem('userRole', role);
+  }
+
+  private emitLoginStatus(): void {
+    this.loginStatusChanged.emit(this.isUserLoggedIn);
   }
 
 }

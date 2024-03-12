@@ -11,7 +11,7 @@ import { CategoriesComponent } from './pages/resource-sharing/categories/categor
 import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/product-mgmt.component';
 import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
 import { ProductCreateComponent } from './pages/resource-sharing/product-mgmt/product-create/product-create.component';
-import { ProductDetailComponent } from './pages/resource-sharing/product-detail/product-detail.component';
+import { ProductDetailComponent } from './pages/resource-sharing/product-mgmt/product-detail/product-detail.component';
 import { LicenseManagementComponent } from './pages/license-management/license-management.component';
 import { LicenseDashboardComponent } from './pages/license-management/license-dashboard/license-dashboard.component';
 import { LicenseListComponent } from './pages/license-management/license-list/license-list.component';
@@ -31,15 +31,28 @@ import { NewsMgmtComponent } from './pages/resource-sharing/news-mgmt/news-mgmt.
 import { NewsCreateComponent } from './pages/resource-sharing/news-mgmt/news-create/news-create.component';
 import { NewsDetailComponent } from './pages/resource-sharing/news-mgmt/news-detail/news-detail.component';
 import { NewsListComponent } from './pages/resource-sharing/news-mgmt/news-list/news-list.component';
+import { ProductUpdateComponent } from './pages/resource-sharing/product-mgmt/product-update/product-update.component';
+import { ProductListComponent } from './pages/resource-sharing/product-mgmt/product-list/product-list.component';
+import { IncidentListComponent } from './pages/resource-sharing/incident-mgmt/incident-list/incident-list.component';
+import { IncidentCreateComponent } from './pages/resource-sharing/incident-mgmt/incident-create/incident-create.component';
+import { IncidentDetailComponent } from './pages/resource-sharing/incident-mgmt/incident-detail/incident-detail.component';
+import { IncidentMgmtComponent } from './pages/resource-sharing/incident-mgmt/incident-mgmt.component';
+import { KnowledgeCreateComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-create/knowledge-create.component';
+import { KnowledgeDetailComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-detail/knowledge-detail.component';
+import { KnowledgeListComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-list/knowledge-list.component';
+import { KnowledgeMgmtComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-mgmt.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
+  { path: "signout", component: LoginComponent },
   { path: "notifications", component: NotificationsComponent },
 
 
   { path: "dashboard", component: DashboardComponent },
+
+
   { path: "transactions", component: TransactionsComponent },
   { path: "service", component: ServicesComponent },
   { path: "user-management", component: UserManagementComponent },
@@ -51,9 +64,9 @@ const routes: Routes = [
   {
     path: "resources", component: ResourceSharingComponent,
     children: [
-      { path: "", component: ResourceSharingComponent },
+      { path: "", component: ResourceDashboardComponent },
+
       { path: "categories", component: CategoriesComponent },
-      { path: "resourceList", component: ProductMgmtComponent },
 
       { path: "news", component: NewsListComponent },
       { path: "managenews", component: NewsMgmtComponent },
@@ -61,9 +74,25 @@ const routes: Routes = [
       { path: "news/:id", component: NewsDetailComponent },
       { path: "news/:id/update", component: NewsCreateComponent, data: { isEditMode: true } },
 
-      { path: "add", component: ProductCreateComponent },
-      { path: ":id", component: ProductDetailComponent },
-      { path: ":id/update", component: ProductCreateComponent, data: { isEditMode: true } },
+      { path: "files", component: ProductListComponent },
+      { path: "managefiles", component: ProductMgmtComponent },
+      { path: "files/add", component: ProductCreateComponent },
+      { path: "files/:id", component: ProductDetailComponent },
+      { path: "files/:id/update", component: ProductUpdateComponent },
+
+
+      { path: "incidents", component: IncidentListComponent },
+      { path: "manageincidents", component: IncidentMgmtComponent },
+      { path: "incidents/add", component: IncidentCreateComponent },
+      { path: "incidents/:id", component: IncidentDetailComponent },
+      { path: "incidents/:id/update", component: IncidentCreateComponent, data: { isEditMode: true } },
+
+      { path: "knowledges", component: KnowledgeListComponent },
+      { path: "manageknowledges", component: KnowledgeMgmtComponent },
+      { path: "knowledges/add", component: KnowledgeCreateComponent },
+      { path: "knowledges/:id", component: KnowledgeDetailComponent },
+      { path: "knowledges/:id/update", component: KnowledgeCreateComponent, data: { isEditMode: true } },
+
     ]
   },
 

@@ -27,29 +27,12 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/user-management',
-    title: 'User Management',
-    icon: 'people',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/checklist',
-    title: 'Daily Checklist',
-    icon: 'checklist',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
     path: '/resources',
     title: 'Resource Sharing',
     icon: 'folder',
     class: '',
     extralink: false,
     submenu: [
-
       {
         path: '/resources',
         title: 'Status',
@@ -59,9 +42,33 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/resources/resourceList',
-        title: 'Available Resources',
-        icon: 'list',
+        path: '/resources/managenews',
+        title: 'News and Events',
+        icon: 'event',
+        class: 'sub-menu',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/resources/managefiles',
+        title: 'File Sharing',
+        icon: 'insert_drive_file',
+        class: 'sub-menu',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/resources/manageincidents',
+        title: 'Incident Tracking',
+        icon: 'bug_report',
+        class: 'sub-menu',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/resources/manageknowledges',
+        title: 'Knowledge Base',
+        icon: 'info',
         class: 'sub-menu',
         extralink: false,
         submenu: []
@@ -116,6 +123,22 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
     ]
+  },
+  {
+    path: '/user-management',
+    title: 'User Management',
+    icon: 'people',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: '/checklist',
+    title: 'Daily Checklist',
+    icon: 'checklist',
+    class: '',
+    extralink: false,
+    submenu: []
   },
   {
     path: '/help',

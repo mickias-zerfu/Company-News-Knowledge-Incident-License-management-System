@@ -12,9 +12,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private authService: AuthService,) { }
   ngOnInit() {
-
-    this.isLoggedIn = localStorage.getItem("isUserLoggedIn") ? false : true;
-    console.log("isUserLoggedIn", this.isLoggedIn);
+    // this.isLoggedIn = localStorage.getItem("isUserLoggedIn") ? false : true;
+    // console.log("isUserLoggedIn", this.isLoggedIn);
 
   }
 
