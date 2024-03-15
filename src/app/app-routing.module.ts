@@ -77,8 +77,8 @@ const routes: Routes = [
       { path: "files", component: ProductListComponent },
       { path: "managefiles", component: ProductMgmtComponent },
       { path: "files/add", component: ProductCreateComponent },
-      { path: "files/:id", component: ProductDetailComponent },
-      { path: "files/:id/update", component: ProductUpdateComponent },
+      // { path: "files/:id", component: ProductDetailComponent },
+      { path: "files/:id/update", component: ProductCreateComponent, data: { isEditMode: true } },
 
 
       { path: "incidents", component: IncidentListComponent },

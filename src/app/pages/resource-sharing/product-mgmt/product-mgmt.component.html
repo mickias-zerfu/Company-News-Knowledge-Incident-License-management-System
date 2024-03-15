@@ -1,54 +1,41 @@
-<section class=" px-16">
-  <div class="flex">
-    <section class="body-wrapper w-full align-center text-center px-16">
-      <div class="container  px-4">
-        <div class="container mx-auto px-4 py-8">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-2xl font-bold">Resource Lists</h2>
-            <button mat-raised-button color="primary" class="ml-2" routerLink="/resources/add"
-              routerLinkActive="active">
-              Add Resource</button>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="pt-2 px-2">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Manage Zemen's IB Shared Resources</h2>
+    </div>
+  </section>
+  <div class="flex justify-end pr-16">
+    <app-add-new-button buttonText="Add Resource File" [routerLink]="['../files/add']"></app-add-new-button>
   </div>
-</section>
-<section>
   <div>
     <section>
       <div>
-        <table mat-table matSort [dataSource]="products" class="min-w-full bg-white border border-gray-900">
+        <table mat-table matSort [dataSource]="products" class="min-w-fullf bg-white border border-gray-900">
           <ng-container matColumnDef="id" class="text-center">
             <th mat-header-cell *matHeaderCellDef class="text-center font-bold">ID</th>
             <td mat-cell *matCellDef="let product">{{ product.id }}</td>
           </ng-container>
-          <ng-container matColumnDef="title">
+          <ng-container matColumnDef="fileTitle">
             <th mat-header-cell *matHeaderCellDef class="text-center font-bold" mat-sort-header disableClear>
               Name
             </th>
-            <td mat-cell *matCellDef="let product">{{ product.title }}</td>
+            <td mat-cell *matCellDef="let product">{{ product.fileTitle }}</td>
           </ng-container>
-          <ng-container matColumnDef="filename">
+          <ng-container matColumnDef="fileName">
             <th mat-header-cell *matHeaderCellDef class="text-center font-bold">File Name</th>
-            <td mat-cell *matCellDef="let product"> {{product.filename}}
+            <td mat-cell *matCellDef="let product"> {{product.fileName}}
             </td>
           </ng-container>
-          <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef class="text-center font-bold">Description</th>
-            <td mat-cell *matCellDef="let product">{{ product.description }}</td>
+          <ng-container matColumnDef="fileDescription"  >
+            <th mat-header-cell *matHeaderCellDef class="text-center font-bold"  >fileDescription</th>
+            <td mat-cell *matCellDef="let product"   class="truncate"> <textarea [disabled]="true" cols="30" rows="5"> {{ product.fileDescription }}</textarea></td>
           </ng-container>
-          <ng-container matColumnDef="size">
+
+          <ng-container matColumnDef="fileType">
             <th mat-header-cell *matHeaderCellDef class="text-center font-bold" mat-sort-header disableClear>
-              size
+              File Type
             </th>
-            <td mat-cell *matCellDef="let product">{{ product.size }}</td>
-          </ng-container>
-          <ng-container matColumnDef="category">
-            <th mat-header-cell *matHeaderCellDef class="text-center font-bold" mat-sort-header disableClear>
-              Category
-            </th>
-            <td mat-cell *matCellDef="let product">{{ product.category.name }}</td>
+            <td mat-cell *matCellDef="let product">{{ product.fileType }}</td>
           </ng-container>
           <ng-container matColumnDef="created_at">
             <th mat-header-cell *matHeaderCellDef class="text-center font-bold" mat-sort-header disableClear>
@@ -65,13 +52,19 @@
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef class="text-center font-bold">Action</th>
             <td mat-cell *matCellDef="let product" class="py-2">
-              <button mat-icon-button routerLink="/resources/{{product.id}}" class="focus:outline-none">
-                <mat-icon class="text-violet-950-500">visibility</mat-icon>
+              <button mat-icon-button (click)="openFileDetail(product.id)" class="focus:outline-none">
+                <mat-icon class="text-green-950">visibility</mat-icon>
               </button>
-              <button mat-icon-button routerLink="/resources/{{product.id}}/update" class="focus:outline-none">
-                <mat-icon class="text-blue-500">edit</mat-icon>
+              <button mat-icon-button routerLink="/resources/files/{{product.id}}/update" class="focus:outline-none">
+                <mat-icon class="text-yellow-500">edit</mat-icon>
               </button>
-              <button mat-icon-button (click)="deleteProduct(product.id)" class="focus:outline-none">
+              <button mat-icon-button  (click)="DownloadFile(product.id)" class="focus:outline-none">
+                <mat-icon class="text-blue-500">download</mat-icon>
+              </button>
+              <button mat-icon-button  (click)="shareThisFile(product.id)" class="focus:outline-none">
+                <mat-icon class="text-blue-800">share</mat-icon>
+              </button>
+              <button mat-icon-button (click)="openConfirmationDialog(product.id)" class="focus:outline-none">
                 <mat-icon class="text-red-500">delete</mat-icon>
               </button>
             </td>

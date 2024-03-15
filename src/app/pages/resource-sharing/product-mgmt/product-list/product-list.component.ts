@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
+import { FileService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,47 +7,47 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-list.component.css','./card.css']
 })
 export class ProductListComponent implements OnInit {
-  products: any[];
+ files: any[];
   selectedCategory: string = 'all';
 
   selectCategory(category: string): void {
     this.selectedCategory = category;
   }
 
-  constructor(private shopService: ProductService) { }
+  constructor(private fileService: FileService) { }
 
   ngOnInit() {
-    this.getAllProducts();
+    this.getAllFiles();
   }
 
-  getAllProducts() {
-    this.shopService.getAllProducts().subscribe(data => {
-      this.products = data;
-      console.log(this.products);
+  getAllFiles() {
+    this.fileService.getAllFiles().subscribe(data => {
+      this.files = data;
+      console.log(this.files);
 
     });
   }
 
-  searchProducts(query: string) {
-    this.shopService.searchProducts(query).subscribe(data => {
-      this.products = data.products;
+  searchFiles(query: string) {
+    this.fileService.searchFiles(query).subscribe(data => {
+      this.files = data.Files;
     });
   }
 
-  addProduct(product: any) {
-    this.shopService.addResource(product).subscribe(data => {
+  addFile(File: any) {
+    this.fileService.addResource(File).subscribe(data => {
       // Handle response
     });
   }
 
-  updateProduct(productId: number, product: any) {
-    this.shopService.updateProduct(productId, product).subscribe(data => {
+  updateFile(FileId: number,file: any) {
+    this.fileService.updateFile(FileId,file).subscribe(data => {
       // Handle response
     });
   }
 
-  deleteProduct(productId: number) {
-    this.shopService.deleteProduct(productId).subscribe(data => {
+  deleteFile(FileId: number) {
+    this.fileService.deleteFile(FileId).subscribe(data => {
       // Handle response
     });
   }

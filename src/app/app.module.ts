@@ -60,6 +60,7 @@ import { KnowledgeDetailComponent } from './pages/resource-sharing/knowledge-mgm
 import { KnowledgeCreateComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-create/knowledge-create.component';
 import { KnowledgeMgmtComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-mgmt.component';
 import { AddNewButtonComponent } from './shared/add-new-button/add-new-button.component';
+import { ShareFileDialogComponent } from './pages/resource-sharing/product-mgmt/share-file-dialog/share-file-dialog.component';
 
 export function playerFactory() {
   return player;
@@ -113,7 +114,8 @@ export function playerFactory() {
     KnowledgeDetailComponent,
     KnowledgeCreateComponent,
     KnowledgeMgmtComponent,
-    AddNewButtonComponent
+    AddNewButtonComponent,
+    ShareFileDialogComponent
 
   ],
   imports: [

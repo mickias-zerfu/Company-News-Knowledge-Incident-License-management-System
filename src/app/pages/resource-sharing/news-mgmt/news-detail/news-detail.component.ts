@@ -32,6 +32,8 @@ onError() {
   fetchBlogDetails(blogId: number) {
     this.blogService.getBlogById(blogId).subscribe(blog => {
       this.blog = blog;
+
+      // this.blog.image_url = `http://localhost:5195/api/SharedResource/Images/${this.blog.image_url}`;
       console.log(this.blog, 'blog single');
 
     });

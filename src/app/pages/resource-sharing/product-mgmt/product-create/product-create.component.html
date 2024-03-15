@@ -4,46 +4,29 @@
       <div class="container px-4">
         <div class="container mx-auto px-4 py-16">
           <h2 class="text-2xl font-bold mb-4 text-left" mat-dialog-title>{{ isEditMode ? 'Edit Resource' : 'Add Resource' }}</h2>
-          <form [formGroup]="ResourceForm" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-gray-800"
+          <form class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-gray-800"
             (ngSubmit)="onSubmit()">
 
             <!-- Resource Name -->
             <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
               <mat-label>Resource Name</mat-label>
-              <input matInput formControlName="ResourceName" placeholder="Enter the Resource name" required>
+              <input matInput [(ngModel)]="resource.fileTitle" name="fileTitle" placeholder="Enter the Resource name" required>
             </mat-form-field>
 
             <!-- Description -->
             <mat-form-field class="col-span-full"appearance="outline">
-              <mat-label>Description</mat-label>
-              <textarea matInput rows="4" formControlName="description" placeholder="Enter the Resource description"
+              <mat-label>Resource Description</mat-label>
+              <textarea matInput rows="4" [(ngModel)]="resource.fileDescription" name="fileDescription" placeholder="Enter the Resource description"
                 required></textarea>
             </mat-form-field>
+            <div >
+              <label for="featuredImage" class="block text-lg mb-2">Featured Image:</label>
 
-            <!-- Size -->
-            <!-- <mat-form-field class="col-span-full sm:col-span-1">
-              <mat-label>Size</mat-label>
-              <input matInput type="number" formControlName="size" placeholder="Enter the Resource Size" required>
-            </mat-form-field> -->
-
-
-            <!-- Category -->
-            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4"appearance="outline">
-              <mat-label>Category</mat-label>
-              <mat-select formControlName="category" placeholder="Select a category" required>
-                <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <!-- Image -->
-            <div class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4">
-              <mat-label>Reource</mat-label>
-              <input type="file" (change)="onFileChange($event)" required>
+        <input type="file" id="featuredImage" class="p-2" (change)="handleFileUpload($event)" accept="*" />
+              <!-- <input type="file" id="featuredImage" class="p-2" formControlName="fileData" (change)="handleFileUpload($event)" accept="*" /> -->
             </div>
-
             <!-- Submit Button -->
-            <button mat-raised-button color="primary" class="col-span-full"
-              [disabled]="ResourceForm.invalid && isSubmitted">{{ isEditMode ? 'Update Resource' : 'Add Resource' }}</button>
+            <button mat-raised-button color="primary" class="col-span-full" >{{ isEditMode ? 'Update Resource' : 'Add Resource' }}</button>
           </form>
         </div>
       </div>

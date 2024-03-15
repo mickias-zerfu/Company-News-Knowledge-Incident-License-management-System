@@ -44,20 +44,22 @@
                     <div class="flex justify-between mt-4">
                       <div>
                         <p class="font-bold">Posted on:</p>
-                        <p>{{ blog.created_at   }}</p>
+                        <p>{{ blog.created_at }}</p>
                       </div>
                       <div *ngIf=" blog.created_at!= blog.updated_at ">
                         <p class="font-bold">Updated on:</p>
-                        <p>{{ blog.updated_at   }}</p>
+                        <p>{{ blog.updated_at }}</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="action flex justify-between p-4">
-                  <button  (click)="updateBlog(blog.id)"class="p-2 bg-yellow-600 rounded-sm font-semibold" routerLinkActive="nav-link active" [routerLink]="['../news/' + blog.id]">
-                 <mat-icon>edit</mat-icon> </button>
-                  <button  (click)="deleteBlog(blog.id)"class="p-2 bg-red-600 rounded-sm font-semibold" routerLinkActive="nav-link active" [routerLink]="['../news/' + blog.id]">
-                 <mat-icon>delete</mat-icon> </button>
+                  <button (click)="updateBlog(blog.id)" class="p-2 bg-yellow-600 rounded-sm font-semibold"
+                    routerLinkActive="nav-link active">
+                    <mat-icon>edit</mat-icon> </button>
+                  <button (click)="openConfirmationDialog(blog.id)" class="p-2 bg-red-600 rounded-sm font-semibold"
+                    routerLinkActive="nav-link active">
+                    <mat-icon>delete</mat-icon> </button>
                 </div>
               </div>
             </div>
