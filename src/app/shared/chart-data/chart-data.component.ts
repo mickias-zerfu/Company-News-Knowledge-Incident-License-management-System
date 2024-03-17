@@ -1,6 +1,23 @@
 import { Component, ViewChild } from '@angular/core';
-import { ChartConfiguration, ChartData, ChartType, ChartEvent } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+import ExportingModule from 'highcharts/modules/exporting';
+import SunsetTheme from 'highcharts/themes/sunset.js';
+import * as Highcharts from "highcharts";
+
+// The modules will work for all charts.
+ExportingModule(Highcharts);
+SunsetTheme(Highcharts);
+
+Highcharts.setOptions({
+  title: {
+    style: {
+      color: 'tomato'
+    }
+  },
+  legend: {
+    enabled: false
+  }
+});
+
 
 @Component({
   selector: 'app-chart-data',
@@ -8,68 +25,38 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['./chart-data.component.css']
 })
 export class ChartDataComponent {
-  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+  Highcharts: typeof Highcharts = Highcharts; // Highcharts, it's Highcharts
 
-  // Pie
-  public pieChartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: true,
-        position: 'left',
-      }
-      // datalabels: {
-      //   formatter: (value: any, ctx: any) => {
-      //     if (ctx.chart.data.labels) {
-      //       return ctx.chart.data.labels[ctx.dataIndex];
-      //     }
-      //   },
-      // },
-    },
+  optFromInputString: string = `
+  {
+    "title": { "text": "Licenses Status" },
+    "series": [{
+      "data": [11,2,3],
+      "zones": [{
+        "value": 7.2,
+        "dashStyle": "dot",
+        "color": "red"
+      }]
+    }, {
+      "data": [5,6,7]
+    }]
+  }
+  `;
+
+  optFromInput: Highcharts.Options = JSON.parse(this.optFromInputString);
+  updateFromInput: boolean = false;
+
+  // Demonstrate chart instance
+  logChartInstance(chart: Highcharts.Chart) {
+    console.log('Chart instance: ', chart);
+  }
+
+
+  seriesTypes: {[key: string]: string} = {
+    line: 'column',
+    column: 'scatter',
+    scatter: 'spline',
+    spline: 'line'
   };
-  public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: [['TOTAL'], 'RTGS', 'ETH-SWITCH'],
-    datasets: [
-      {
-        data: [300, 500, 100],
-        backgroundColor: ['#b32649', '#b30049', '#b32ff9'],
-        hoverBackgroundColor: ['#184738b0 ', '#507548b0 ', '#faffe0b0 '],
-      },
-    ],
-  };
-  public pieChartType: ChartType = 'pie';
-  // public pieChartPlugins = [DatalabelsPlugin];
-
-  // events
-  public chartClicked({
-    event,
-    active,
-  }: {
-    event: ChartEvent;
-    active: object[];
-  }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({
-    event,
-    active,
-  }: {
-    event: ChartEvent;
-    active: object[];
-  }): void {
-    console.log(event, active);
-  }
-
-  changeLegendPosition(): void {
-    if (this.pieChartOptions?.plugins?.legend) {
-      this.pieChartOptions.plugins.legend.position =
-        this.pieChartOptions.plugins.legend.position === 'left'
-          ? 'top'
-          : 'left';
-    }
-
-    this.chart?.render();
-  }
 
 }

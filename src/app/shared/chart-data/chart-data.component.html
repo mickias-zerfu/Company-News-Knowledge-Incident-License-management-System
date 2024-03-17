@@ -1,11 +1,9 @@
-<canvas baseChart class="chart" [data]="pieChartData" [type]="pieChartType" [options]="pieChartOptions" class="pie-chart"
-style="height: 300px; width: 300px;">
-</canvas>
-
-<mat-divider style="margin: 1em 0"></mat-divider>
-
-<div class="button-row mx-8 px-8">
-  <!-- <button mat-button mat-raised-button color="primary" (click)="changeLegendPosition()">
-    Change Legend Position
-  </button> -->
-</div>
+<article>
+  <highcharts-chart
+    [Highcharts]="Highcharts"
+    [options]="optFromInput"
+    [(update)]="updateFromInput"
+    [oneToOne]=true
+    (chartInstance)="logChartInstance($event)"
+  ></highcharts-chart>
+</article>

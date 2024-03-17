@@ -54,12 +54,10 @@ import { IncidentDetailComponent } from './pages/resource-sharing/incident-mgmt/
 import { IncidentCreateComponent } from './pages/resource-sharing/incident-mgmt/incident-create/incident-create.component';
 import { IncidentMgmtComponent } from './pages/resource-sharing/incident-mgmt/incident-mgmt.component';
 import { NewsListComponent } from './pages/resource-sharing/news-mgmt/news-list/news-list.component';
-import { IncidentListComponent } from './pages/resource-sharing/incident-mgmt/incident-list/incident-list.component';
 import { KnowledgeListComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-list/knowledge-list.component';
 import { KnowledgeDetailComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-detail/knowledge-detail.component';
 import { KnowledgeCreateComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-create/knowledge-create.component';
 import { KnowledgeMgmtComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-mgmt.component';
-import { AddNewButtonComponent } from './shared/add-new-button/add-new-button.component';
 import { ShareFileDialogComponent } from './pages/resource-sharing/product-mgmt/share-file-dialog/share-file-dialog.component';
 
 export function playerFactory() {
@@ -114,7 +112,6 @@ export function playerFactory() {
     KnowledgeDetailComponent,
     KnowledgeCreateComponent,
     KnowledgeMgmtComponent,
-    AddNewButtonComponent,
     ShareFileDialogComponent
 
   ],

@@ -6,43 +6,47 @@ import { ReportCard } from 'src/app/models/report-card.model';
   templateUrl: './license-dashboard.component.html',
   styleUrls: ['./license-dashboard.component.css']
 })
-export class LicenseDashboardComponent implements OnInit{
-
+export class LicenseDashboardComponent implements OnInit {
   topcardsLicense: ReportCard[] = [];
 
 
   ngOnInit(): void {
     this.gettopcardsLicenseData()
   }
+
+  addNewLicense() {
+
+  }
+
   gettopcardsLicenseData() {
     this.topcardsLicense.push(
       {
         bgcolor: 'bg-red-500',
         icon: 'atm',
         title: '7',
-        subtitle: 'Active',
-        link:'lists?status=active'
+        subtitle: 'Active License',
+        link: 'lists?status=active'
       },
       {
         bgcolor: 'bg-red-900',
         icon: 'money-bill',
         title: '2',
-        subtitle: 'Pending',
-        link:'lists?status=pending'
+        subtitle: 'Pending License',
+        link: 'lists?status=pending'
       },
       {
         bgcolor: 'bg-yellow-900',
         icon: 'local_offer',
         title: '8',
         subtitle: 'Software Products',
-        link:'products'
+        link: 'products'
       },
       {
         bgcolor: 'bg-red-500',
         icon: 'cancel',
         title: '1',
-        subtitle: 'Expired',
-        link:'lists?status=expired'
+        subtitle: 'Expired License',
+        link: 'lists?status=expired'
       }
     )
   }
