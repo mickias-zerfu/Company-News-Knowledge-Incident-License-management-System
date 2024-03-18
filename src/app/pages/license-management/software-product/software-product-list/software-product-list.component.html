@@ -1,10 +1,22 @@
-<h1>list component</h1>
 <section>
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Manage Zemen's Software and Products</h2>
+    </div>
+  </section>
+  <div class="flex justify-end pr-16">
+    <div>
+      <p class="text-gray-600 pl-16">The typical order would be: Software Product -> License Manager (Optional) -> License.</p>
+    </div>
+    <app-add-new-button buttonText="Add New Software" (click)="onAddSoftware()"></app-add-new-button>
+  </div>
   <div class="container py-8 px-4">
     <div class="flex justify-center space-x-4 w-full gap gap-2">
-      <div class="flex flex-wrap justify-center">
-        <div *ngFor="let product of products" >
-         <app-software-product-detail [product]="product"></app-software-product-detail>
+      <!-- <div class="flex flex-wrap justify-center"> -->
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+        <div *ngFor="let product of softwareProducts">
+          <app-software-product-detail [product]="product"></app-software-product-detail>
         </div>
       </div>
     </div>

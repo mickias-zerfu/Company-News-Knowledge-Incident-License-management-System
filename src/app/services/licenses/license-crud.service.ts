@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LicenseModel } from 'src/app/models/license.model';
+import { License } from 'src/app/models/license/license.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +11,18 @@ export class LicenseCrudService {
 
   constructor(private http: HttpClient) { }
 
-  getLicenses(): Observable<LicenseModel[]> {
-    return this.http.get<LicenseModel[]>(this.baseUrl);
+  getLicenses(): Observable<License[]> {
+    return this.http.get<License[]>(this.baseUrl);
+  }
+  getLicenseById(id: number): Observable<License> {
+    return this.http.get<License>(`${this.baseUrl}/${id}`);
+  }
+  createLicense(license: License): Observable<License> {
+    return this.http.post<License>(this.baseUrl, license);
   }
 
-  getLicenseById(id: number): Observable<LicenseModel> {
-    return this.http.get<LicenseModel>(`${this.baseUrl}/${id}`);
-  }
-
-  createLicense(license: LicenseModel): Observable<LicenseModel> {
-    return this.http.post<LicenseModel>(this.baseUrl, license);
-  }
-
-  updateLicense(id: number, license: LicenseModel): Observable<LicenseModel> {
-    return this.http.put<LicenseModel>(`${this.baseUrl}/${id}`, license);
+  updateLicense(id: number, license: License): Observable<License> {
+    return this.http.put<License>(`${this.baseUrl}/${id}`, license);
   }
 
   deleteLicense(id: number): Observable<void> {

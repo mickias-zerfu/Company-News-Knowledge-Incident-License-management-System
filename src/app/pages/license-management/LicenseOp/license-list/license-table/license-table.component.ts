@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { LicenseModel } from 'src/app/models/license.model';
+import { License } from 'src/app/models/license/license.model';
 
 
 
@@ -22,7 +22,7 @@ export interface UserData {
 })
 export class LicenseTableComponent implements OnInit, AfterViewInit {
 
-  licenses: LicenseModel[];
+  licenses: License[];
   displayedColumns: string[] = ['id', 'licenseKey', 'activationStatus', 'quantity', 'expirationDate', 'assignedUsers', 'softwareProduct', 'AgreementStartDate', 'AgreementEndDate', 'Action'];
 
   dataSource: MatTableDataSource<any>;
@@ -37,7 +37,7 @@ export class LicenseTableComponent implements OnInit, AfterViewInit {
     // this.dataSource = new MatTableDataSource(users);
   }
   ngOnInit() {
-    this.http.get<LicenseModel[]>('/assets/data/licenses.json').subscribe(
+    this.http.get<License[]>('/assets/data/licenses.json').subscribe(
       (data) => {
         this.licenses = data;
         console.log(this.licenses);

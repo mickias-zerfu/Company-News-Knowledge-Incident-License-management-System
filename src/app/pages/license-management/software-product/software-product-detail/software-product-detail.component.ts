@@ -1,4 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { SoftwareProductService } from 'src/app/services/licenses/software-product.service';
+import { ToastService } from 'src/app/services/toast.service';
+import { ConfirmDialogComponent, ConfirmDialogData } from 'src/app/shared/confirm-modal/confirm-dialog.component';
+import { SoftwareProductFormComponent } from '../software-product-form/software-product-form.component';
 
 @Component({
   selector: 'app-software-product-detail',
@@ -8,19 +14,49 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SoftwareProductDetailComponent  implements OnInit {
 
   @Input() product: any;
+  constructor(private router: Router, private productService: SoftwareProductService,
+    private toastService: ToastService,private dialog: MatDialog) {}
+
   ngOnInit(): void {
-    this.product = {
-      "id": 1,
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://placehold.co/600x400",
-    }
+  }
+  // editProduct() {
+  //   // Navigate to the edit page with the product id as a parameter
+  //   this.router.navigate(['licenses/software/', this.product.id, 'update']);
+  // }
+
+  editProduct(softwareId:number) {
+    const dialogRef = this.dialog.open(SoftwareProductFormComponent, {
+      width: '600px', // Adjust the width as needed
+      data: {isEditMode: true, softwareId}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+  deleteProduct() {
+    this.productService.deleteSoftwareProduct(this.product.id).subscribe(
+      () => {
+        this.toastService.showSuccess('This software is Deleted', 'Close', 2000);
+        this.router.navigate(['/licenses/softwares']);
+      },
+      error => {
+        this.toastService.showError('This software is Not Deleted', 'Close', 2000);
+      }
+    );
+  }
+
+  openConfirmationDialog(): void {
+    const dialogData: ConfirmDialogData = {
+      title: 'Confirmation',
+      message: 'Are you sure you want to delete this resource?',
+      callback: (confirmed: boolean) => {
+        if (confirmed) {
+          this.deleteProduct();
+        }
+      }
+    };
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: dialogData
+    });
   }
 }
 

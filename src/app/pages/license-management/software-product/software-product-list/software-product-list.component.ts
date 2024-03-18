@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { SoftwareProduct } from 'src/app/models/license/software.model';
+import { SoftwareProductService } from 'src/app/services/licenses/software-product.service';
+import { SoftwareProductFormComponent } from '../software-product-form/software-product-form.component';
 
 @Component({
   selector: 'app-software-product-list',
@@ -6,63 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./software-product-list.component.css']
 })
 export class SoftwareProductListComponent implements OnInit {
-
-  products: any[] = [
-    {
-      "id": 1,
-      "title": "CR2",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://placehold.co/600x400",
-      "images": ["...", "...", "..."]
-    },
-    {
-      "id": 1,
-      "title": "IDK",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://placehold.co/600x400",
-      "images": ["...", "...", "..."]
-    },
-    {
-      "id": 1,
-      "title": "IDK",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://placehold.co/600x400",
-      "images": ["...", "...", "..."]
-    },
-    {
-      "id": 1,
-      "title": "IDGAF",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://placehold.co/600x400",
-      "images": ["...", "...", "..."]
-    },
-  ]
+  softwareProducts: SoftwareProduct[] = [];
+  constructor(private softwareProductService: SoftwareProductService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.products = this.products;
+    this.loadSoftwareProducts();
+  }
+  onAddSoftware() {
+    const dialogRef = this.dialog.open(SoftwareProductFormComponent, {
+      width: '600px', // Adjust the width as needed
+      data: { 'isEditMode': false, 'softwareId': undefined }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+  loadSoftwareProducts(): void {
+    this.softwareProductService.getSoftwareProducts().subscribe(products => {
+      this.softwareProducts = products;
+    });
   }
 }
