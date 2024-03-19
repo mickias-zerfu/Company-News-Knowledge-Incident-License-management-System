@@ -1,72 +1,84 @@
-<form class="example-form" [formGroup]="licenseForm">
-  <mat-form-field appearance="outline" class="mx-2 p-4 block">
-    <mat-label>License Key</mat-label>
-    <input matInput formControlName="licenseKey" required>
-    <!-- <mat-error *ngIf="licenseForm.get('licenseKey').invalid && licenseForm.get('licenseKey').touched"> -->
-      <!-- License key is required. -->
-    <!-- </mat-error> -->
-  </mat-form-field>
+<form [formGroup]="licenseForm" (ngSubmit)="onSubmit()" class="p-4 bg-white shadow-md rounded-lg">
+  <h2 class="text-xl font-bold mb-4">Create License</h2>
 
-  <mat-form-field appearance="outline" class="mx-2 p-4 block">
-    <mat-label>Activation Status</mat-label>
-    <mat-select formControlName="activationStatus" required>
-      <mat-option value="Active">Active</mat-option>
-      <mat-option value="Inactive">Inactive</mat-option>
-    </mat-select>
-    <!-- <mat-error *ngIf="licenseForm.get('activationStatus').invalid && licenseForm.get('activationStatus').touched"> -->
-      <!-- Activation status is required. -->
-    <!-- </mat-error> -->
-  </mat-form-field>
+  <!-- First Row: Issued To and Issued By -->
+  <div class="flex flex-wrap -mx-2 mb-4">
+    <!-- Issued To -->
+    <div class="w-full md:w-1/2 px-2 mb-4">
+      <label for="issuedTo" class="block text-sm font-medium text-gray-700">Issued To</label>
+      <input type="text" id="issuedTo" formControlName="issuedTo" class="mt-1 p-2 border rounded-md w-full" required>
+      <div *ngIf="licenseForm.get('issuedTo')?.invalid && licenseForm.get('issuedTo')?.touched"
+        class="text-red-500 text-sm mt-1">Issued To is required</div>
+    </div>
 
-  <mat-form-field appearance="outline" class="mx-2 p-4 block">
-    <mat-label>Expiration Date</mat-label>
-    <input matInput [matDatepicker]="expirationDate" formControlName="expirationDate" required>
-    <mat-datepicker-toggle matSuffix [for]="expirationDate"></mat-datepicker-toggle>
-    <mat-datepicker #expirationDate></mat-datepicker>
-    <!-- <mat-error *ngIf="licenseForm.get('expirationDate').invalid && licenseForm.get('expirationDate').touched"> -->
-      <!-- Expiration date is required. -->
-    <!-- </mat-error> -->
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="mx-2 p-4 block">
-    <mat-label>Assigned Users</mat-label>
-    <input matInput formControlName="assignedUsers" required>
-    <!-- <mat-error *ngIf="licenseForm.get('assignedUsers').invalid && licenseForm.get('assignedUsers').touched"> -->
-      <!-- Assigned users are required. -->
-    <!-- </mat-error> -->
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="mx-2 p-4 block">
-    <mat-label>Software Product</mat-label>
-    <input matInput formControlName="softwareProduct" required>
-    <!-- <mat-error *ngIf="licenseForm.get('softwareProduct').invalid && licenseForm.get('softwareProduct').touched"> -->
-      <!-- Software product is required. -->
-    <!-- </mat-error> -->
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="mx-2 p-4 block">
-    <mat-label>Agreement Start Date</mat-label>
-    <input matInput [matDatepicker]="agreementStartDate" formControlName="agreementStartDate" required>
-    <mat-datepicker-toggle matSuffix [for]="agreementStartDate"></mat-datepicker-toggle>
-    <mat-datepicker #agreementStartDate></mat-datepicker>
-    <!-- <mat-error *ngIf="licenseForm.get('agreementStartDate').invalid && licenseForm.get('agreementStartDate').touched"> -->
-      <!-- Agreement start date is required. -->
-    <!-- </mat-error> -->
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="mx-2 p-4 block">
-    <mat-label>Agreement End Date</mat-label>
-    <input matInput [matDatepicker]="agreementEndDate" formControlName="agreementEndDate" required>
-    <mat-datepicker-toggle matSuffix [for]="agreementEndDate"></mat-datepicker-toggle>
-    <mat-datepicker #agreementEndDate></mat-datepicker>
-    <!-- <mat-error *ngIf="licenseForm.get('agreementEndDate').invalid && licenseForm.get('agreementEndDate').touched"> -->
-      <!-- Agreement end date is required. -->
-    <!-- </mat-error> -->
-  </mat-form-field>
-
-  <div class="button-container">
-    <button mat-raised-button color="primary" type="submit" [disabled]="licenseForm.invalid">
-      Save License
-    </button>
+    <!-- Issued By -->
+    <div class="w-full md:w-1/2 px-2 mb-4">
+      <label for="issuedBy" class="block text-sm font-medium text-gray-700">Issued By</label>
+      <input type="text" id="issuedBy" formControlName="issuedBy" class="mt-1 p-2 border rounded-md w-full" required>
+      <div *ngIf="licenseForm.get('issuedBy')?.invalid && licenseForm.get('issuedBy')?.touched"
+        class="text-red-500 text-sm mt-1">Issued By is required</div>
+    </div>
   </div>
+
+  <!-- Second Row: Creation Date and Expiration Date -->
+  <div class="flex flex-wrap -mx-2 mb-4">
+    <!-- Creation Date -->
+    <div class="w-full md:w-1/2 px-2 mb-4">
+      <label for="creationDate" class="block text-sm font-medium text-gray-700">Creation Date</label>
+      <input type="date" id="creationDate" formControlName="creationDate" class="mt-1 p-2 border rounded-md w-full"
+        required>
+      <div *ngIf="licenseForm.get('creationDate')?.invalid && licenseForm.get('creationDate')?.touched"
+        class="text-red-500 text-sm mt-1">Creation Date is required</div>
+    </div>
+
+    <!-- Expiration Date -->
+    <div class="w-full md:w-1/2 px-2 mb-4">
+      <label for="expirationDate" class="block text-sm font-medium text-gray-700">Expiration Date</label>
+      <input type="date" id="expirationDate" formControlName="expirationDate" class="mt-1 p-2 border rounded-md w-full"
+        required>
+      <div *ngIf="licenseForm.get('expirationDate')?.invalid && licenseForm.get('expirationDate')?.touched"
+        class="text-red-500 text-sm mt-1">Expiration Date is required</div>
+    </div>
+  </div>
+
+  <!-- Third Row: Max Users and License Type -->
+  <div class="flex flex-wrap -mx-2 mb-4">
+    <!-- Max Users -->
+    <div class="w-full md:w-1/2 px-2 mb-4">
+      <label for="maxUsers" class="block text-sm font-medium text-gray-700">Max Users</label>
+      <input type="number" id="maxUsers" formControlName="maxUsers" class="mt-1 p-2 border rounded-md w-full" required>
+      <div *ngIf="licenseForm.get('maxUsers')?.invalid && licenseForm.get('maxUsers')?.touched"
+        class="text-red-500 text-sm mt-1">Max Users is required</div>
+    </div>
+
+    <!-- License Type -->
+    <div class="w-full md:w-1/2 px-2 mb-4">
+      <label for="licenseType" class="block text-sm font-medium text-gray-700">License Type</label>
+      <select id="licenseType" formControlName="licenseType" class="mt-1 p-2 border rounded-md w-full" required>
+        <option *ngFor="let type of licenseTypes" [value]="type.value">{{ type.text }}</option>
+      </select>
+      <div *ngIf="licenseForm.get('licenseType')?.invalid && licenseForm.get('licenseType')?.touched"
+        class="text-red-500 text-sm mt-1">License Type is required</div>
+    </div>
+
+  </div>
+  <!-- Software Product -->
+  <div class="w-full md:w-1/2 px-2 mb-4">
+    <label for="softwareProduct" class="block text-sm font-medium text-gray-700">Software Product</label>
+    <select id="softwareProduct" formControlName="softwareProductId" class="mt-1 p-2 border rounded-md w-full" required>
+      <option *ngFor="let product of softwareProducts" [value]="product.id">{{ product.name }}</option>
+    </select>
+    <div *ngIf="licenseForm.get('softwareProduct')?.invalid && licenseForm.get('softwareProduct')?.touched"
+      class="text-red-500 text-sm mt-1">Software Product is required</div>
+  </div>
+
+  <!-- Notes -->
+  <div class="mb-4">
+    <label for="notes" class="block text-sm font-medium text-gray-700">Notes</label>
+    <textarea id="notes" formControlName="notes" class="mt-1 p-2 border rounded-md w-full" rows="3"></textarea>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit"
+    class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">Submit</button>
 </form>

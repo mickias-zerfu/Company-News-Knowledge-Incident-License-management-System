@@ -1,16 +1,15 @@
-<section>
-  <mat-card>
-    <mat-card-header>
-      <h2 class="text-2xl font-bold mb-4">List of Licenses currently Zemen bank Uses</h2>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="container mx-auto px-4 py-2">
-        <div class="flex items-end justify-end mb-4">
-          <button mat-raised-button color="accent" class="ml-2" routerLink="/licenses/add" routerLinkActive="active">
-            Add License</button>
-        </div>
-      </div>
-      <app-license-table></app-license-table>
-    </mat-card-content>
-  </mat-card>
+<section class="p-4">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Manage Zemen's Certificates</h2>
+    </div>
+  </section>
+
+  <div class="flex justify-between items-center mt-4">
+    <div class="text-gray-600">
+      <p class="pl-4">The typical order would be: Software Product -> License Manager (Optional) -> License.</p>
+    </div>
+    <app-add-new-button buttonText="Add New License" (click)="onAddLicense()"></app-add-new-button>
+  </div>
+  <app-license-table></app-license-table>
 </section>

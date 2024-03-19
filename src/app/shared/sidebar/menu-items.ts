@@ -2,30 +2,30 @@ import { RouteInfo } from './sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
 
-  {
-    path: '/dashboard',
-    title: 'Dashboard',
-    icon: 'dashboard',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/transactions',
-    title: 'Transactions',
-    icon: 'money',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/service',
-    title: 'Service',
-    icon: 'event',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
+  // {
+  //   path: '/dashboard',
+  //   title: 'Dashboard',
+  //   icon: 'dashboard',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // },
+  // {
+  //   path: '/transactions',
+  //   title: 'Transactions',
+  //   icon: 'money',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // },
+  // {
+  //   path: '/service',
+  //   title: 'Service',
+  //   icon: 'event',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // },
   {
     path: '/resources',
     title: 'Resource Sharing',
@@ -73,14 +73,14 @@ export const ROUTES: RouteInfo[] = [
         extralink: false,
         submenu: []
       },
-      {
-        path: '/resources/categories',
-        title: 'Category',
-        icon: 'category',
-        class: 'sub-menu',
-        extralink: false,
-        submenu: []
-      },
+      // {
+      //   path: '/resources/categories',
+      //   title: 'Category',
+      //   icon: 'category',
+      //   class: 'sub-menu',
+      //   extralink: false,
+      //   submenu: []
+      // },
     ]
   },
   {
@@ -107,15 +107,15 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/licenses/users',
-        title: 'Users',
+        path: '/licenses/lmanagers',
+        title: 'License Mangers',
         icon: 'portrait',
         class: 'sub-menu',
         extralink: false,
         submenu: []
       },
       {
-        path: '/licenses/products',
+        path: '/licenses/softwares',
         title: 'Software / Products',
         icon: 'computer',
         class: 'sub-menu',
