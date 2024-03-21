@@ -8,7 +8,7 @@ import { LicenseManager } from 'src/app/models/license/LicenseManager';
   providedIn: 'root'
 })
 export class LicenseManagerService {
-  private baseUrl = '/api/licensemanagers'; // Replace with your API endpoint
+  private baseUrl = 'http://localhost:5195/api/licensemanagers'; // Replace with your API endpoint
 
   constructor(private http: HttpClient) { }
 

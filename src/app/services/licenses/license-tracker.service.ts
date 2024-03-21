@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LicenseTrackerService {
-  private baseUrl = '/api/licenses'; // Replace with your API endpoint
+  private baseUrl = 'http://localhost:5195/api/licenses'; // Replace with your API endpoint
 
   constructor(private http: HttpClient) { }
 

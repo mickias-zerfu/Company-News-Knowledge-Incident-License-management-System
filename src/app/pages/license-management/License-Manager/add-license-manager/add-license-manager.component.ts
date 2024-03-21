@@ -1,10 +1,109 @@
-import { Component } from '@angular/core';
+// add-license-manager.component.ts
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { LicenseManager } from 'src/app/models/license/LicenseManager';
+import { BlogService } from 'src/app/services/blog.service';
+import { LicenseManagerService } from 'src/app/services/licenses/license-manager.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-add-license-manager',
   templateUrl: './add-license-manager.component.html',
   styleUrls: ['./add-license-manager.component.css']
 })
-export class AddLicenseManagerComponent {
+export class AddLicenseManagerComponent implements OnInit {
+  licenseManagerForm: FormGroup;
+  licenseManager: LicenseManager = new LicenseManager();
+  isEditMode = false;
+  lmanagerId: number;
+  isSubmitted = false;
+  imagePreview: string | ArrayBuffer | null;
 
+  constructor(private fb: FormBuilder, private fileservice: BlogService, private licenseManagerService: LicenseManagerService,
+    private toastService: ToastService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private router: Router) { }
+
+  ngOnInit(): void {
+    this.createForm();
+  }
+
+  createForm(): void {
+    this.licenseManagerForm = this.fb.group({
+      email: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      role: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      isActive: [true, Validators.required]
+    });
+  }
+  onFileSelected(event: any): void {
+    const fileToUpload: File = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    if (fileToUpload) {
+      reader.readAsDataURL(fileToUpload);
+    }
+    const formData = new FormData();
+    formData.append('fileDetails.FileDetails', fileToUpload);
+    console.log(formData, 'fileDetails.FileDetails');
+
+    this.fileservice.uploadBlogImage(formData)
+      .subscribe(
+        (res) => {
+          console.log('Upload success.', res);
+          this.licenseManager.profilePictureUrl = res.imageUrl;
+        },
+        (error: any) => {
+          console.log('Upload error:', error);
+        }
+      );
+  }
+  onSubmit(): void {
+    this.isSubmitted = true;
+    this.licenseManager = Object.assign(this.licenseManager, this.licenseManagerForm.value) as LicenseManager;
+
+    this.licenseManager.registrationDate = new Date();
+    console.log(this.licenseManager as LicenseManager, 'licenseManager');
+
+
+    if (this.isEditMode && this.lmanagerId !== undefined) {
+      this.updateSoftware(this.licenseManager);
+    } else {
+      this.addManager(this.licenseManager);
+    }
+  }
+
+  addManager(managerData: LicenseManager) {
+    console.log(managerData);
+
+    this.licenseManagerService.createLicenseManager(managerData).subscribe(
+      () => {
+        this.toastService.showSuccess('New managerData added', 'Close', 2000);
+        this.router.navigate(['/licenses/lmanagers/lists']);
+      },
+      error => {
+        this.toastService.showError('Failed to add new Software', 'Close', 2000);
+        console.error(error);
+      }
+    );
+  }
+  updateSoftware(managerData: LicenseManager) {
+
+    this.licenseManagerService.updateLicenseManager(this.lmanagerId, managerData).subscribe(
+      () => {
+        this.toastService.showSuccess('License updated', 'Close', 2000);
+        this.router.navigate(['/licenses/lmanagers/lists']);
+      },
+      error => {
+        this.toastService.showError('Failed to update License', 'Close', 2000);
+        console.error(error);
+      }
+    );
+  }
 }

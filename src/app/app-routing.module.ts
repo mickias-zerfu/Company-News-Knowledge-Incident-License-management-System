@@ -38,9 +38,10 @@ import { KnowledgeMgmtComponent } from './pages/resource-sharing/knowledge-mgmt/
 import { LicenseListComponent } from './pages/license-management/LicenseOp/license-list/license-list.component';
 import { LicenseFormComponent } from './pages/license-management/LicenseOp/license-form/license-form.component';
 import { LicenseDetailComponent } from './pages/license-management/LicenseOp/license-detail/license-detail.component';
-import { UsersMgmtComponent } from './pages/license-management/License-Manager/users-mgmt.component';
 import { AddLicenseManagerComponent } from './pages/license-management/License-Manager/add-license-manager/add-license-manager.component';
 import { DetailLicenseManagerComponent } from './pages/license-management/License-Manager/detail-license-manager/detail-license-manager.component';
+import { LmanagersMgmtComponent } from './pages/license-management/License-Manager/users-mgmt.component';
+import { ListLicenseManagerComponent } from './pages/license-management/License-Manager/list-license-manager/list-license-manager.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -113,8 +114,9 @@ const routes: Routes = [
       { path: "software/:id/update", component: SoftwareProductFormComponent, data: { isEditMode: true } },
       // ]
       // },
-      { path: "lmanagers", component: UsersMgmtComponent },
+      { path: "lmanagers", component: LmanagersMgmtComponent },
       // children: [
+      { path: "lmanagers/lists", component: ListLicenseManagerComponent },
       { path: "lmanagers/add", component: AddLicenseManagerComponent },
       { path: "lmanagers/:id", component: DetailLicenseManagerComponent },
       { path: "lmanagers/:id/update", component: AddLicenseManagerComponent, data: { isEditMode: true } },

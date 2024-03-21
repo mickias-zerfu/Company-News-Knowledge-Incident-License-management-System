@@ -8,7 +8,7 @@
   </div> -->
 
   <div class="overflow-x-auto">
-    <table mat-table [dataSource]="dataSource" matSort class="table-auto w-full">
+    <mat-table mat-table [dataSource]="dataSource" matSort class="table-auto w-full">
 
       <!-- ID Column -->
       <ng-container matColumnDef="id">
@@ -84,7 +84,7 @@
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell text-center" colspan="8">No data matching the filter</td>
       </tr>
-    </table>
+    </mat-table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
   </div>

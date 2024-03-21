@@ -1,1 +1,29 @@
-<p>list-license-manager works!</p>
+<!-- list-license-manager.component.html -->
+<div *ngFor="let licenseManager of licenseManagers">
+</div>
+<section class="pt-2 px-2">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">License Manager Responcible for Zemen's Software </h2>
+    </div>
+  </section>
+  <div class="flex justify-end pr-16">
+    <app-add-new-button buttonText="Add New Manager" (click)="addNewManager()"></app-add-new-button>
+  </div>
+  <div class="flex">
+    <section class="body-wrapper w-full align-center text-center px-16">
+      <section class="cards-container w-full py-8">
+        <div *ngIf="!licenseManagers">
+          <app-loading></app-loading>
+        </div>
+        <div class="manager-container" *ngIf="licenseManagers">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div *ngFor="let manager of licenseManagers let i = index  " class="manager-list-card">
+              <app-detail-license-manager [licenseManager]="manager"></app-detail-license-manager>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+</section>

@@ -31,7 +31,6 @@ import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/prod
 import { ProductDetailComponent } from './pages/resource-sharing/product-mgmt/product-detail/product-detail.component';
 import { ProductListComponent } from './pages/resource-sharing/product-mgmt/product-list/product-list.component';
 import { ProductCreateComponent } from './pages/resource-sharing/product-mgmt/product-create/product-create.component';
-import { ProductUpdateComponent } from './pages/resource-sharing/product-mgmt/product-update/product-update.component';
 import { CategoriesModalComponent } from './pages/resource-sharing/categories/categories-modal/categories-modal.component';
 import { LicenseModule } from './pages/license-management/license.module';
 import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
@@ -89,7 +88,6 @@ export function playerFactory() {
     CategoriesComponent,
     ConfirmDialogComponent,
     ProductMgmtComponent,
-    ProductUpdateComponent,
     ProductDetailComponent,
     ProductCreateComponent,
     ProductListComponent,

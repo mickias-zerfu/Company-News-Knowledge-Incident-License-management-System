@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
-export interface Topcard {
+export interface TopcardResrc {
   bgcolor: string,
   icon: string,
   title: string,
@@ -15,7 +15,7 @@ export interface Topcard {
 })
 export class ResourceDashboardComponent implements OnInit {
 
-  topcardsResource: Topcard[] = [];
+  topcardsResource: TopcardResrc[] = [];
   totalItems: number = 0;
   recentActivity: any[] = [];
   popularItems: any[] = [];

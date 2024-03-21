@@ -1,6 +1,6 @@
 import { License } from "./license.model";
 
-export interface LicenseManager {
+export class LicenseManager {
   id: number;
   email: string;
   firstName: string;

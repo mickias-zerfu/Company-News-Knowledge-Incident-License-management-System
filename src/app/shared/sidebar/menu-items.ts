@@ -2,30 +2,6 @@ import { RouteInfo } from './sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
 
-  // {
-  //   path: '/dashboard',
-  //   title: 'Dashboard',
-  //   icon: 'dashboard',
-  //   class: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
-  // {
-  //   path: '/transactions',
-  //   title: 'Transactions',
-  //   icon: 'money',
-  //   class: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
-  // {
-  //   path: '/service',
-  //   title: 'Service',
-  //   icon: 'event',
-  //   class: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
   {
     path: '/resources',
     title: 'Resource Sharing',

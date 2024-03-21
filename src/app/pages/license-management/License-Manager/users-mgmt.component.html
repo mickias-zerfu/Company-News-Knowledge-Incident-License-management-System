@@ -1,1 +1,37 @@
-<p>users-mgmt works!</p>
+<section class="p-4">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">License Managers Information</h2>
+    </div>
+  </section>
+
+  <div class="flex justify-between items-center m-4">
+    <div class="text-gray-600">
+      <p class="pl-4">The typical order would be: Software Product -> License Manager (Optional) -> License.</p>
+    </div>
+    <app-add-new-button buttonText="Add New Manager" (click)="addNewManager()"></app-add-new-button>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+    <ng-container *ngFor="let topcard of topcardsIb">
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="flex justify-center">
+          <div class="bg-{{ topcard.bgcolor }} rounded-full flex items-center justify-center h-16 w-16 mr-4">
+            <mat-icon>{{ topcard.icon }}</mat-icon>
+          </div>
+          <div class="text-center">
+            <h3 class="text-2xl font-semibold">{{ topcard.title }}</h3>
+            <p class="text-gray-600">{{ topcard.subtitle }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 mt-4 p-8">
+    <button (click)="checkExpiration()"
+      class="bg-red-900 hover:bg-red-900 text-white font-bold py-2 px-4 rounded w-full md:w-auto">Check
+      Expiration</button>
+    <button (click)="goToManagerList()"
+      class="bg-yellow-300 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">List of
+      Managers</button>
+  </div>
+</section>

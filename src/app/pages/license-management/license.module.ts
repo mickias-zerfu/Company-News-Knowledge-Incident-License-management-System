@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddLicenseManagerComponent } from './License-Manager/add-license-manager/add-license-manager.component';
 import { ListLicenseManagerComponent } from './License-Manager/list-license-manager/list-license-manager.component';
 import { DetailLicenseManagerComponent } from './License-Manager/detail-license-manager/detail-license-manager.component';
-import { UsersMgmtComponent } from './License-Manager/users-mgmt.component';
+import { LmanagersMgmtComponent } from './License-Manager/users-mgmt.component';
 import { LicenseDetailComponent } from './LicenseOp/license-detail/license-detail.component';
 import { LicenseFormComponent } from './LicenseOp/license-form/license-form.component';
 import { LicenseListComponent } from './LicenseOp/license-list/license-list.component';
@@ -26,7 +26,7 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
     LicenseDashboardComponent,
     LicenseListComponent,
     LicenseManagementComponent,
-    UsersMgmtComponent,
+    LmanagersMgmtComponent,
     LicenseFormComponent,
     LicenseDetailComponent,
     SoftwareProductListComponent,

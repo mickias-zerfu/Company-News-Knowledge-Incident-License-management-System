@@ -1,1 +1,35 @@
-<p>detail-license-manager works!</p>
+<div class="bg-white rounded-lg shadow-lg p-6">
+  <div class="flex justify-between items-center mb-4">
+    <div class="flex-shrink-0 mr-4">
+      <img [src]="licenseManager.profilePictureUrl" alt="License Manager Image" class="w-32 h-32 rounded-full">
+    </div>
+  <div class="flex justify-left items-left mb-4">
+    <div>
+      <h2 class="text-xl font-semibold justify-left items-left ">{{ licenseManager.firstName }} {{
+        licenseManager.lastName }}</h2>
+      <p class="text-gray-600">{{ licenseManager.email }}</p>
+    </div>
+  </div>
+  </div>
+  <div class="mb-4">
+    <p class="text-lg font-semibold">Contact Information</p>
+    <div class="flex flex-wrap items-center">
+      <div class="flex items-center mr-8 mb-2">
+        <mat-icon class="mr-2">phone</mat-icon>
+        <span>{{ licenseManager.phoneNumber }}</span>
+      </div>
+      <div class="flex items-center">
+        <mat-icon class="mr-2">work</mat-icon>
+        <span>{{ licenseManager.role }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="action flex justify-end p-4">
+    <button (click)="updatelicenseManager(licenseManager.id)" class="mr-8 p-2 bg-yellow-400 rounded-sm font-semibold"
+      routerLinkActive="nav-link active">
+      <mat-icon>edit</mat-icon> </button>
+    <button (click)="openConfirmationDialog(licenseManager.id)" class="mr-8 p-2 bg-red-600 rounded-sm font-semibold"
+      routerLinkActive="nav-link active">
+      <mat-icon>delete</mat-icon> </button>
+  </div>
+</div>

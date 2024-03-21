@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { HttpClient } from '@angular/common/http';
 import { License } from 'src/app/models/license/license.model';
 import { LicenseCrudService } from 'src/app/services/licenses/license-crud.service';
 import { ConfirmDialogComponent, ConfirmDialogData } from 'src/app/shared/confirm-modal/confirm-dialog.component';
@@ -33,6 +32,7 @@ export class LicenseTableComponent implements OnInit {
     // Assuming you have an API endpoint to fetch licenses
     this.licenseService.getLicenses().subscribe({
       next: (licenses) => {
+        console.log('Fetched licenses:', licenses);
         this.dataSource = new MatTableDataSource(licenses);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
