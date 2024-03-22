@@ -34,7 +34,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/resources/manageincidents',
+        path: '/resources/incidents',
         title: 'Incident Tracking',
         icon: 'bug_report',
         class: 'sub-menu',

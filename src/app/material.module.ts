@@ -27,6 +27,7 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatStepperModule } from "@angular/material/stepper";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatStepperModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    MatChipsModule
 
   ],
   exports: [
@@ -88,6 +90,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatExpansionModule,
     MatStepperModule,
     MatProgressSpinnerModule,
+    MatChipsModule
 
   ],
 })

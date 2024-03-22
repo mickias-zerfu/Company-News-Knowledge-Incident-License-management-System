@@ -12,7 +12,7 @@ export class NewsDetailComponent implements OnInit {
   blog: BlogModel;
   recentBlogList: BlogModel[] = [];
   blogId: number;
-  defaultImage:any;
+  defaultImage: any;
 
 
   constructor(private route: ActivatedRoute, private blogService: BlogService) { }
@@ -25,9 +25,9 @@ export class NewsDetailComponent implements OnInit {
     });
   }
 
-onError() {
-  this.defaultImage = '../../../../../assets/imageNotLoading.png';
-}
+  onError() {
+    this.defaultImage = '../../../../../assets/imageNotLoading.png';
+  }
 
   fetchBlogDetails(blogId: number) {
     this.blogService.getBlogById(blogId).subscribe(blog => {
@@ -42,7 +42,7 @@ onError() {
   fetchRecentBlogs() {
     this.blogService.getAllBlogs().subscribe(data => {
       this.recentBlogList = data.slice(0, 4);
-      console.log(this.recentBlogList,'recents . . . ');
+      console.log(this.recentBlogList, 'recents . . . ');
 
     });
     // this.recentBlogList = postsInfo // Assuming you want to display the second, third, and fourth blog as recent blogs

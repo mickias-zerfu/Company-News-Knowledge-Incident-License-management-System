@@ -58,6 +58,7 @@ import { KnowledgeDetailComponent } from './pages/resource-sharing/knowledge-mgm
 import { KnowledgeCreateComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-create/knowledge-create.component';
 import { KnowledgeMgmtComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-mgmt.component';
 import { ShareFileDialogComponent } from './pages/resource-sharing/product-mgmt/share-file-dialog/share-file-dialog.component';
+import { IncidentListComponent } from './pages/resource-sharing/incident-mgmt/incident-list/incident-list.component';
 
 export function playerFactory() {
   return player;
@@ -104,6 +105,7 @@ export function playerFactory() {
     NewsDetailComponent,
     IncidentDetailComponent,
     IncidentCreateComponent,
+    IncidentListComponent,
     IncidentMgmtComponent,
     NewsListComponent,
     KnowledgeListComponent,

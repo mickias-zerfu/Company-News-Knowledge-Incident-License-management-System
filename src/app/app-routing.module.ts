@@ -82,11 +82,10 @@ const routes: Routes = [
       { path: "files/:id/update", component: ProductCreateComponent, data: { isEditMode: true } },
 
 
-      { path: "incidents", component: IncidentListComponent },
-      { path: "manageincidents", component: IncidentMgmtComponent },
-      { path: "incidents/add", component: IncidentCreateComponent },
-      { path: "incidents/:id", component: IncidentDetailComponent },
-      { path: "incidents/:id/update", component: IncidentCreateComponent, data: { isEditMode: true } },
+      { path: "incidents", component: IncidentMgmtComponent },
+      { path: "incident/add", component: IncidentCreateComponent },
+      { path: "incident/:id", component: IncidentDetailComponent },
+      { path: "incident/:id/update", component: IncidentCreateComponent, data: { isEditMode: true } },
 
       { path: "knowledges", component: KnowledgeListComponent },
       { path: "manageknowledges", component: KnowledgeMgmtComponent },
