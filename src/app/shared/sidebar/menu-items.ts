@@ -49,18 +49,10 @@ export const ROUTES: RouteInfo[] = [
         extralink: false,
         submenu: []
       },
-      // {
-      //   path: '/resources/categories',
-      //   title: 'Category',
-      //   icon: 'category',
-      //   class: 'sub-menu',
-      //   extralink: false,
-      //   submenu: []
-      // },
     ]
   },
   {
-    path: '/licenses',
+    path: '',
     title: 'License Management',
     icon: 'alarm',
     class: '',
@@ -84,7 +76,7 @@ export const ROUTES: RouteInfo[] = [
       },
       {
         path: '/licenses/lmanagers',
-        title: 'License Mangers',
+        title: 'License Managers',
         icon: 'portrait',
         class: 'sub-menu',
         extralink: false,
@@ -101,17 +93,17 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
-    path: '/user-management',
-    title: 'User Management',
-    icon: 'people',
+    path: '/checklist',
+    title: 'Daily Checklist',
+    icon: 'checklist',
     class: '',
     extralink: false,
     submenu: []
   },
   {
-    path: '/checklist',
-    title: 'Daily Checklist',
-    icon: 'checklist',
+    path: '/user-management',
+    title: 'User Management',
+    icon: 'people',
     class: '',
     extralink: false,
     submenu: []

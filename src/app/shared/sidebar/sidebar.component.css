@@ -1,4 +1,6 @@
-
+.sidebar-nav{
+  height: 100vh;
+}
 .side-wrapper {
   width: 250px;
   display: flex;
@@ -116,4 +118,6 @@ mat-divider {
   align-items: center;
   justify-content: center;
 }
-
+.active{
+  color: #B87333 !important;
+}

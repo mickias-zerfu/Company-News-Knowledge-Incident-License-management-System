@@ -27,28 +27,13 @@ export class ProductListComponent implements OnInit {
 
     });
   }
-
-  searchFiles(query: string) {
-    this.fileService.searchFiles(query).subscribe(data => {
-      this.files = data.Files;
+  downloadFile(fileId: any) {
+    this.fileService.downloadFile(fileId).subscribe(data => {
+      // this.router.navigateByUrl('file:///'+ data.filepath)
+      const fileUrl = `http://localhost:5195/api/SharedResource/DownloadFile/${fileId}`;
+      // Open the file in a new browser tab or window
+      window.open(fileUrl, '_blank');
     });
   }
 
-  addFile(File: any) {
-    this.fileService.addResource(File).subscribe(data => {
-      // Handle response
-    });
-  }
-
-  updateFile(FileId: number,file: any) {
-    this.fileService.updateFile(FileId,file).subscribe(data => {
-      // Handle response
-    });
-  }
-
-  deleteFile(FileId: number) {
-    this.fileService.deleteFile(FileId).subscribe(data => {
-      // Handle response
-    });
-  }
 }
