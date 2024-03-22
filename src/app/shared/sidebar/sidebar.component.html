@@ -1,68 +1,43 @@
-  <nav class="sidebar-nav pb-8 hm-screen">
-    <ul id="sidebarnav">
-      <li class="sidebar-item">
-        <img
-          class="avatar mat-elevation-z8 rounded"
-          src="../../../assets/user_avatar.png"
-        />
-        <h4 class="name">Yekoye Mihret</h4>
-        <p class="designation">Senior IB Officer</p>
-        <mat-divider></mat-divider>
-      </li>
-      <ul>
-        <ng-container *ngFor="let sidebarnavItem of sidebarnavItems">
-          <li
-            class="sidebar-item"
-            [class.active]="showMenu === sidebarnavItem.title"
-          >
-            <div
-              class="nav-small-cap"
-              *ngIf="sidebarnavItem.extralink === true"
-            >
-              {{ sidebarnavItem.title }}
-            </div>
-            <a
-              class="sidebar-link waves-effect waves-dark flex items-center space-x-2 cursor-pointer"
-              [routerLink]="
-                sidebarnavItem.class === '' ? [sidebarnavItem.path] : null
-              "
-              [ngClass]="[sidebarnavItem.class]"
-              *ngIf="!sidebarnavItem.extralink"
-              (click)="addExpandClass(sidebarnavItem.title)"
-              [routerLinkActive]="
-                sidebarnavItem.submenu.length !== 0 ? '' : 'active'
-              "
-            >
-             <mat-icon>{{ sidebarnavItem.icon }}</mat-icon>
-              <span class="flex items-center">
-              </span>
-              <span class="hide-menum">{{ sidebarnavItem.title }}</span>
-            </a>
-            <ul *ngIf="showMenu === sidebarnavItem.title" class="pl-8">
-              <li
-                class="sidebar-item"
-                [class.active]="showMenu === submenuItem.title"
-                *ngFor="let submenuItem of sidebarnavItem.submenu"
-              >
-                <a
-                  class="sidebar-link waves-effect waves-dark flex items-center space-x-2 cursor-pointer"
-                  [routerLink]="
-                    submenuItem.class !== '' ? [submenuItem.path] : null
-                  "
-                  [ngClass]="[submenuItem.class]"
-                  [routerLinkActive]="
-                    submenuItem.submenu.length !== 0 ? '' : 'active'
-                  "
-                >
-                  <span class="flex items-center">
-                    <mat-icon>{{ submenuItem.icon }}</mat-icon>
-                  </span>
-                  <span class="hide-menum">{{ submenuItem.title }}</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ng-container>
-      </ul>
+<!-- sidebar.component.html -->
+<nav class="sidebar-nav pb-8 ">
+  <ul id="sidebarnav">
+    <li class="sidebar-item">
+      <img class="avatar mat-elevation-z8 rounded" src="../../../assets/user_avatar.png" />
+      <h4 class="name">Yekoye Mihret</h4>
+      <p class="designation">Senior IB Officer</p>
+      <mat-divider></mat-divider>
+    </li>
+    <ul>
+      <ng-container *ngFor="let item of sidebarnavItems">
+        <li class="sidebar-item" [class.active]="isMenuItemActive(item)">
+          <div class="nav-small-cap" *ngIf="item.extralink">
+            {{ item.title }}
+          </div>
+          <a class="sidebar-link waves-effect waves-dark flex items-center space-x-2 cursor-pointer"
+             [routerLink]="(item.class === '') ? [item.path] : null"
+             [ngClass]="[item.class]"
+             *ngIf="!item.extralink"
+             (click)="addExpandClass(item.title)"
+             [routerLinkActive]="(item.submenu.length !== 0) ? '' : 'active'">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span class="hide-menum">{{ item.title }}</span>
+          </a>
+          <ul *ngIf="showMenu === item.title" class="pl-8">
+            <li class="sidebar-item" [class.active]="isSubMenuItemActive(subItem)" *ngFor="let subItem of item.submenu">
+              <a class="sidebar-link waves-effect waves-dark flex items-center space-x-2 cursor-pointer"
+                 [routerLink]="(subItem.class !== '') ? [subItem.path] : null"
+                 [ngClass]="[subItem.class]"
+                 [routerLinkActive]="(subItem.submenu.length !== 0) ? '' : 'active'">
+                <span class="flex items-center">
+                  <mat-icon>{{ subItem.icon }}</mat-icon>
+                </span>
+                <span class="hide-menum">{{ subItem.title }}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ng-container>
+
     </ul>
-  </nav>
+  </ul>
+</nav>
