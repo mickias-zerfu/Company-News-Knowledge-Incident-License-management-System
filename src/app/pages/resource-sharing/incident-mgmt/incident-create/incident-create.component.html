@@ -1,6 +1,11 @@
 <!-- incident-create.component.html -->
 <div class="p-6">
-  <h2 class="text-3xl font-bold mb-8">{{ isEditMode ? 'Edit Registered': 'Create New' }} Incident</h2>
+
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">{{ isEditMode ? 'Edit Registered': 'Create New' }} Incident</h2>
+    </div>
+  </section>
   <div class="form-container">
 
     <form [formGroup]="incidentForm" (ngSubmit)="onSubmit()" class="space-y-4">

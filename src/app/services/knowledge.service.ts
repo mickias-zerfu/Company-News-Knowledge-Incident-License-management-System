@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class KnowledgeService {
-  private apiUrl = 'http://localhost:5195/api/knowledge';
+  private apiUrl = 'http://localhost:5195/api/KnowledgeBase';
   constructor(private http: HttpClient) { }
 
   getAllKnowledges(): Observable<any> {

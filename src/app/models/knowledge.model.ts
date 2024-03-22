@@ -1,4 +1,4 @@
-export interface KnowledgeModel {
+export class KnowledgeModel {
   id:                 number;
   problem:            string;
   problemDescription: string;

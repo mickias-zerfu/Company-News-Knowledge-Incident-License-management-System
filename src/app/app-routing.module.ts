@@ -89,9 +89,9 @@ const routes: Routes = [
 
       { path: "knowledges", component: KnowledgeListComponent },
       { path: "manageknowledges", component: KnowledgeMgmtComponent },
-      { path: "knowledges/add", component: KnowledgeCreateComponent },
-      { path: "knowledges/:id", component: KnowledgeDetailComponent },
-      { path: "knowledges/:id/update", component: KnowledgeCreateComponent, data: { isEditMode: true } },
+      { path: "knowledge/add", component: KnowledgeCreateComponent },
+      { path: "knowledge/:id", component: KnowledgeDetailComponent },
+      { path: "knowledge/:id/update", component: KnowledgeCreateComponent, data: { isEditMode: true } },
 
     ]
   },

@@ -1,1 +1,35 @@
-<p>knowledge-detail works!</p>
+<div *ngIf="knowledge">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Registered knowledge Detail</h2>
+    </div>
+  </section>
+  <mat-card class="mb-8">
+    <mat-card-header class="p-8 justify-start text-left">
+      <h3 class="text-2xl font-semibold mb-4 pt-4 pl-8">{{ knowledge.problem }}</h3>
+    </mat-card-header>
+    <mat-card-content class="p-8 text-left justify-start">
+      <p class="ml-8 pl-4">{{ knowledge.problemDescription }}</p>
+      <div class="mt-4 p-8">
+        <h4 class="text-xl font-semibold mb-2">Solution</h4>
+        <p>{{ knowledge.solution }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 mt-4 p-8 justify-between">
+        <button (click)="AddNewKnowledge()"
+          class="bg-red-900 hover:bg-red-900 text-white font-bold py-2 px-4 rounded w-full md:w-auto">Add new knowledge</button>
+        <button (click)="GoToknowledgeList()"
+          class="bg-green-700 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">List of
+          knowledges</button>
+        <button (click)="UpdateKnowledge()"
+          class="bg-yellow-300 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">Update this knowledge</button>
+        <button (click)="DeleteKnowledge()"
+          class="bg-gray-950 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">
+
+          Remove This knowledge</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
