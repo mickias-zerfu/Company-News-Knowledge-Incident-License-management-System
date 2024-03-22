@@ -3,33 +3,40 @@
     <section class="body-wrapper w-full align-center text-center px-4">
       <div class="container px-4">
         <div class="container mx-auto px-4 py-2">
-          <h2 class="text-2xl font-bold mb-4 text-left" mat-dialog-title>{{ isEditMode ? 'Edit Software' : 'Add Software' }}</h2>
+          <section class="hero-section bg-cover bg-center">
+            <div class="hero-content text-left pt-8 pb-8">
+              <h2 class="text-4xl font-bold text-red-700">{{ isEditMode ? 'Edit Software' : 'Add Software' }}</h2>
+            </div>
+          </section>
           <form class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-gray-800"
             (ngSubmit)="onSubmit()">
 
             <!-- Software Name -->
             <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
               <mat-label>Software Name</mat-label>
-              <input matInput [(ngModel)]="softwareProduct.name" name="name" placeholder="Enter the Software name" required>
+              <input matInput [(ngModel)]="softwareProduct.name" name="name" placeholder="Enter the Software name"
+                required>
             </mat-form-field>
 
             <!-- Version -->
             <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
               <mat-label>Version</mat-label>
-              <input matInput [(ngModel)]="softwareProduct.version" name="version" placeholder="Enter the Version" required>
+              <input matInput [(ngModel)]="softwareProduct.version" name="version" placeholder="Enter the Version"
+                required>
             </mat-form-field>
 
             <!-- Description -->
             <mat-form-field class="col-span-full" appearance="outline">
               <mat-label>Software Description</mat-label>
-              <textarea matInput rows="4" [(ngModel)]="softwareProduct.description" name="description" placeholder="Enter the Software description"
-                required></textarea>
+              <textarea matInput rows="4" [(ngModel)]="softwareProduct.description" name="description"
+                placeholder="Enter the Software description" required></textarea>
             </mat-form-field>
 
             <!-- Vendor -->
             <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
               <mat-label>Vendor</mat-label>
-              <input matInput [(ngModel)]="softwareProduct.vendor" name="vendor" placeholder="Enter the Vendor" required>
+              <input matInput [(ngModel)]="softwareProduct.vendor" name="vendor" placeholder="Enter the Vendor"
+                required>
             </mat-form-field>
 
             <!-- Release Date -->
@@ -40,7 +47,12 @@
 
             <!-- Remaining fields -->
 
-            <button mat-raised-button color="primary" class="col-span-full">{{ isEditMode ? 'Update Software' : 'Add Software' }}</button>
+            <div class="mt-4">
+              <div class="flex justify-end">
+                <button class="bg-red-500 hover:bg-red-700 text-white font-semi-bold py-2 px-4 rounded" type="submit">
+                  Submit</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>

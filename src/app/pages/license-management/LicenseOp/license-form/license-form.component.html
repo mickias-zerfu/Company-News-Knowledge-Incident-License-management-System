@@ -1,5 +1,10 @@
 <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()" class="p-4 bg-white shadow-md rounded-lg">
-  <h2 class="text-xl font-bold mb-4">Create License</h2>
+
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Create License</h2>
+    </div>
+  </section>
 
   <!-- First Row: Issued To and Issued By -->
   <div class="flex flex-wrap -mx-2 mb-4">
@@ -79,6 +84,10 @@
   </div>
 
   <!-- Submit Button -->
-  <button type="submit"
-    class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">Submit</button>
+  <div class="mt-4">
+    <div class="flex justify-end">
+      <button class="bg-red-500 hover:bg-red-700 text-white font-semi-bold py-2 px-4 rounded" type="submit">
+        Submit</button>
+    </div>
+  </div>
 </form>

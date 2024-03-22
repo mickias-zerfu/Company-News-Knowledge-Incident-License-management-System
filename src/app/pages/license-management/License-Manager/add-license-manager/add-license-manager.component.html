@@ -1,4 +1,10 @@
 <!-- add-license-manager.component.html -->
+
+<section class="hero-section bg-cover bg-center">
+  <div class="hero-content text-left pt-8 pb-8">
+    <h2 class="text-4xl font-bold text-red-700">Add license Manager</h2>
+  </div>
+</section>
 <form [formGroup]="licenseManagerForm" class="p-6 space-y-4">
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
@@ -36,7 +42,10 @@
       formControlName="isActive"
     >
   </div>
-  <button mat-raised-button color="primary" (click)="onSubmit()">
-    {{ isEditMode ? 'Update' : 'Submit' }}
-  </button>
+  <div class="mt-4">
+    <div class="flex justify-end">
+      <button class="bg-red-500 hover:bg-red-700 text-white font-semi-bold py-2 px-4 rounded" type="submit"(click)="onSubmit()">
+        {{ isEditMode ? 'Update' : 'Submit' }}</button>
+    </div>
+  </div>
 </form>
