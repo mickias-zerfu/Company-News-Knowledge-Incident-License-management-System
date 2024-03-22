@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LicenseCrudService } from 'src/app/services/licenses/license-crud.service';
 import { LicenseManagerService } from 'src/app/services/licenses/license-manager.service';
+import { AddLicenseManagerComponent } from './add-license-manager/add-license-manager.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -10,7 +12,7 @@ export interface TopcardManager {
   icon: string,
   title: string,
   subtitle: string,
-  link:string
+  link: string
 }
 @Component({
   selector: 'app-lmangers-mgmt',
@@ -22,7 +24,7 @@ export class LmanagersMgmtComponent {
   topcardsIb: TopcardManager[] = [];
 
 
-  constructor(private router: Router, private licenseManagerService: LicenseManagerService, private licensecrudService: LicenseCrudService) { }
+  constructor(private router: Router, private licenseManagerService: LicenseManagerService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getIbData()
@@ -33,8 +35,12 @@ export class LmanagersMgmtComponent {
   }
 
   addNewManager(): void {
-    this.router.navigate(['/licenses/lmanagers/add'])
-    console.log('Add new manager triggered');
+    const dialogRef = this.dialog.open(AddLicenseManagerComponent, {
+      width: '600px', // Adjust the width as needed
+      data: { 'isEditMode': false, 'softwareId': undefined }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   goToManagerList(): void {
@@ -49,20 +55,20 @@ export class LmanagersMgmtComponent {
       subtitle: '10 managers',
       link: '/license-managers'
     },
-    {
-      bgcolor: 'blue-500',
-      icon: 'settings',
-      title: 'Active License Managers',
-      subtitle: '5 active managers',
-      link: '/active-license-managers'
-    },
-    {
-      bgcolor: 'green-500',
-      icon: 'notifications',
-      title: 'Inactive License Managers',
-      subtitle: '5 inactive managers',
-      link: '/inactive-license-managers'
-    }
+      {
+        bgcolor: 'blue-500',
+        icon: 'settings',
+        title: 'Active License Managers',
+        subtitle: '5 active managers',
+        link: '/active-license-managers'
+      },
+      {
+        bgcolor: 'green-500',
+        icon: 'notifications',
+        title: 'Inactive License Managers',
+        subtitle: '5 inactive managers',
+        link: '/inactive-license-managers'
+      }
 
     )
   }

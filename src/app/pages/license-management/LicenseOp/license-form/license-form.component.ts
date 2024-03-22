@@ -66,12 +66,9 @@ export class LicenseFormComponent implements OnInit {
       softwareProductId : softwareProductId
     };
 
-    // Call your license service to add the license
-      console.error('Selected license  found',licenseData );
     this.licenseService.createLicense(licenseData).subscribe(
       (response) => {
         this.toastService.showSuccess('License added successfully');
-        // Redirect to the license list page or any other page
         this.router.navigate(['/licenses']);
       },
       (error) => {
