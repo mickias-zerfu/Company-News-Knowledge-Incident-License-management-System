@@ -7,14 +7,17 @@ import { BlogService } from 'src/app/services/blog.service';
   templateUrl: './news-list.component.html',
   styleUrls: ['./news-list.component.css']
 })
-export class NewsListComponent  implements OnInit{
+export class NewsListComponent implements OnInit {
   blogListObject: BlogModel[];
+  defaultImage:any=null;
   constructor(private blogService: BlogService) { }
 
   ngOnInit() {
     this.getAllBlogs();
   }
-
+  onError() {
+    this.defaultImage = '../../../../../assets/imageNotLoading.png';
+  }
   evenBackground(index: any) {
     return ((Math.floor(index / 2) + index % 2) % 2 === 0) ? true : false;
   }

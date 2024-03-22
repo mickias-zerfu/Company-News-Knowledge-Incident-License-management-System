@@ -1,0 +1,23 @@
+<div class="share-file-dialog bg-white p-6 rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold mb-4">Share File</h2>
+  <form [formGroup]="shareForm" (ngSubmit)="openOutlook()" class="space-y-4">
+    <div class="flex flex-col">
+      <label for="recipientEmail" class="text-lg mb-1">Recipient's Email:</label>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Recipient's Email</mat-label>
+        <input matInput formControlName="recipientEmail" id="recipientEmail">
+        <mat-error *ngIf="shareForm.get('recipientEmail')?.invalid && shareForm.get('recipientEmail')?.touched">Invalid email address</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="flex flex-col">
+      <label for="message" class="text-lg mb-1">Message:</label>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Message</mat-label>
+        <textarea matInput formControlName="message" id="message"></textarea>
+        <mat-error *ngIf="shareForm.get('message')?.invalid && shareForm.get('message')?.touched">Message is required</mat-error>
+      </mat-form-field>
+    </div>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"  [disabled]="shareForm.invalid">Share</button>
+  </form>
+</div>
+

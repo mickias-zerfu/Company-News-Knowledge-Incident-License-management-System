@@ -1,8 +1,8 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { CategoryModel } from 'src/app/models/category.model';
-import { ProductService } from 'src/app/services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ResourceUploadModel } from 'src/app/models/product.model';
+import { FileService } from 'src/app/services/product.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -12,93 +12,81 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class ProductCreateComponent implements OnInit {
 
-  ResourceForm: FormGroup;
+  resource: ResourceUploadModel = new ResourceUploadModel();
   isEditMode = false;
-  id: any;
-  categories: CategoryModel[] = [
-    { id: 1, name: 'Category 1', icon: '' },
-    { id: 2, name: 'Category 2', icon: '' },
-    { id: 3, name: 'Category 3', icon: '' }
-  ];
-  imageDisplay: any;
+  fileId: number;
   isSubmitted = false;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private productService: ProductService,
+    private fileService: FileService,
     private toastService: ToastService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.isEditMode = data['isEditMode'] || false;
     });
-
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      console.log(params, "------------------");
-      console.log(this.id, "------------------");
-    });
-
-    this.ResourceForm = this.formBuilder.group({
-      ResourceName: ['', Validators.required],
-      description: ['', Validators.required],
-      size: ['', Validators.required],
-      category: ['', Validators.required],
-      image: [null, Validators.required],
-      isFeatured: [false]
-    });
-    // If it is an edit mode, you can pre-fill the form with existing resource data
     if (this.isEditMode) {
-      this.populateFormWithResourceData();
+      this.route.params.subscribe(params => {
+        this.fileId = +params['id']; // Convert to number
+      });
+      this.populateFormWithResourceData(this.fileId);
     }
   }
 
-  onFileChange(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      const fileReader = new FileReader();
-      fileReader.onload = () => {
-        if (fileReader.result) {
-          this.imageDisplay = fileReader.result;
-        }
-      };
-      fileReader.readAsDataURL(file);
-
-      // Clear the value of the file input
-      event.target.value = '';
-
-      this.ResourceForm.patchValue({ image: file });
-      this.ResourceForm.get('image')?.updateValueAndValidity();
-    }
+  handleFileUpload(event: any) {
+    const fileToUpload = event.target.files[0];
+    this.resource.FileDetails = fileToUpload; // Set the file directly in the resource object
   }
 
-  private populateFormWithResourceData(): void {
-    // Fetch the existing resource data and populate the form fields
-    // Example: this.ResourceForm.patchValue({ title: existingResource.title, description: existingResource.description, ... });
+  private populateFormWithResourceData(id: number) {
+    this.fileService.getFileById(id).subscribe(data => {
+      this.resource = data as ResourceUploadModel;
+    });
   }
 
   onSubmit() {
     this.isSubmitted = true;
-
-    if (this.ResourceForm.invalid) {
-      return;
-    }
-
+    // if (this.ResourceForm.invalid) {
+    //   return;
+    // }
     const formData = new FormData();
-    Object.keys(this.ResourceForm.value).forEach((key) => {
-      formData.append(key, this.ResourceForm.value[key]);
-    });
+    formData.append('fileTitle', this.resource.fileTitle);
+    formData.append('fileDescription', this.resource.fileDescription);
+    formData.append('fileDetails', this.resource.FileDetails);
 
-    this.productService.addResource(formData).subscribe(() => {
-      this.toastService.showSuccess('New Resource added', 'Close', 2000);
-    });
-
-    console.log(this.ResourceForm.value);
-    console.log(formData);
+    if (this.isEditMode && this.fileId !== undefined) {
+      this.updateResource(formData);
+    } else {
+      this.addResource(formData);
+    }
   }
 
-  get ResourceFormControls() {
-    return this.ResourceForm.controls;
+  addResource(formData: FormData) {
+    this.fileService.addResource(formData).subscribe(
+      () => {
+        this.toastService.showSuccess('New Resource added', 'Close', 2000);
+        this.router.navigate(['/resources/managefiles']);
+      },
+      error => {
+        this.toastService.showError('Failed to add new resource', 'Close', 2000);
+        console.error(error);
+      }
+    );
   }
+  updateResource(formData: FormData) {
+
+    this.fileService.updateFile(this.fileId, formData).subscribe(
+      () => {
+        this.toastService.showSuccess('Resource updated', 'Close', 2000);
+        this.router.navigate(['/resources/files/' + this.fileId]);
+      },
+      error => {
+        this.toastService.showError('Failed to update resource', 'Close', 2000);
+        console.error(error);
+      }
+    );
+  }
+
 }

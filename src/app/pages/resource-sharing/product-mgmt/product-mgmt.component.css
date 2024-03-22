@@ -2,3 +2,10 @@
 :host ::ng-deeep th.mat-header-cell {
   text-align: center;
 }
+.truncate{
+
+  max-width: 200px; /* Set maximum width */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Display ellipsis (...) for overflow content */
+  white-space: wrap; /* Prevent wrapping */
+}

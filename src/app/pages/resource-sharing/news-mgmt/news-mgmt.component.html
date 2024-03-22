@@ -1,75 +1,71 @@
 <section class="pt-2 px-2">
-      <section class="hero-section bg-cover bg-center">
-        <div class="hero-content text-left pt-8 pb-8">
-          <h2 class="text-4xl font-bold text-red-700">Zemen in News and Our Blogs</h2>
-        </div>
-      </section>
-    <div class="flex">
-      <section class="body-wrapper w-full align-center text-center px-16">
-        <section class="cards-container w-full py-8">
-          <div *ngIf="!blogListObject">
-            <app-loading></app-loading>
-          </div>
-          <div class="blog-container" *ngIf="blogListObject">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <!-- Repeat the following code block for each blog -->
-              <div *ngFor="let blog of blogListObject let i = index  "class="blog-list-card"
-              [class.even-background]="evenBackground(i)" [class.odd-background]="oddBackground(i)">
-                <div class="card shadow-lg rounded-lg">
-                  <div class="flex items-center mb-2">
-                    <!-- <div class="ml-2">
-                      <h4 class="w-12 font-bold text-xl">{{ blog.id}}</h4>
-                    </div> -->
-                    <div class="flex justify-center px-4 rounded mb-4">
-                      <img src="{{ blog.image_url }}" alt="Blog Image" class="w-48 p-2 rounded">
-                    </div>
-                  </div>
-                  <div class="blog-detail">
-                    <div class="content p-4">
-                      <div class="text-left">
-                        <p class="font-bold">Title: {{ blog.title }}</p>
-                      </div>
-                      <div class="mt-4">
-                        <p class="truncate">{{ blog.content }}</p>
-                      </div>
-                      <div class="flex justify-between mt-4">
-                        <div>
-                          <p class="font-bold">Posted on:</p>
-                          <p>{{ blog.created_at | date }}</p>
-                        </div>
-                        <div>
-                          <p class="font-bold">Updated on:</p>
-                          <p>{{ blog.updated_at | date }}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="action flex justify-center p-4">
-                    <button class="p-4" mat-raised-button routerLinkActive="nav-link active" [routerLink]="['../news/' + blog.id]">
-                      <span class="_circle" aria-hidden="true">
-                      <span class="_icon arrow"></span>
-                      </span>
-                      <span class="button-text">Read More</span>
-                    </button>
-                    <button class="p-4" mat-raised-button routerLinkActive="nav-link active" [routerLink]="['../news/' + blog.id]">
-                      <span class="_circle" aria-hidden="true">
-                      <span class="_icon arrow"></span>
-                      </span>
-                      <span class="button-text">Update </span>
-                    </button>
-                    <button class="p-4" mat-raised-button routerLinkActive="nav-link active" [routerLink]="['../news/' + blog.id]">
-                      <span class="_circle" aria-hidden="true">
-                      <span class="_icon arrow"></span>
-                      </span>
-                      <span class="button-text">Delete</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- End of blog code block -->
-            </div>
-          </div>
-        </section>
-      </section>
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Manage Zemen Posted News and Blogs</h2>
     </div>
   </section>
+  <div class="flex justify-end pr-16">
+    <app-add-new-button buttonText="Add New News / Blog" (click)="addBlog()"></app-add-new-button>
+  </div>
+  <div class="flex">
+    <section class="body-wrapper w-full align-center text-center px-16">
+      <section class="cards-container w-full py-8">
+        <div *ngIf="!blogListObject">
+          <app-loading></app-loading>
+        </div>
+        <div class="blog-container" *ngIf="blogListObject">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div *ngFor="let blog of blogListObject let i = index  " class="blog-list-card">
+              <div class="card shadow-lg rounded-lg">
+                <div class="flex justify-around mb-2">
+                  <div class="flex justify-center px-4 rounded mb-4">
+                    <img src="{{ blog.image_url }}" alt="Blog Image" class="w-32 p-2 rounded">
+                  </div>
+                  <button [routerLink]="['../news/' + blog.id]"
+                    class="flex items-center cursor-pointer text-gray-800 font-semibold tracking-widest rounded-md duration-300 hover:gap-2 hover:translate-x-3">
+                    Seee More
+                    <svg class="w-5 h-5" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                        stroke-linejoin="round" stroke-linecap="round"></path>
+                    </svg>
+                  </button>
+
+                </div>
+                <div class="blog-detail">
+                  <div class="content p-4">
+                    <div class="text-left">
+                      <p class="font-bold">Title: {{ blog.title }}</p>
+                    </div>
+                    <div class="mt-4">
+                      <p class="truncate">{{ blog.content }}</p>
+                    </div>
+                    <div class="flex justify-between mt-4">
+                      <div>
+                        <p class="font-bold">Posted on:</p>
+                        <p>{{ blog.created_at }}</p>
+                      </div>
+                      <div *ngIf=" blog.created_at!= blog.updated_at ">
+                        <p class="font-bold">Updated on:</p>
+                        <p>{{ blog.updated_at }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="action flex justify-between p-4">
+                  <button (click)="updateBlog(blog.id)" class="p-2 bg-yellow-600 rounded-sm font-semibold"
+                    routerLinkActive="nav-link active">
+                    <mat-icon>edit</mat-icon> </button>
+                  <button (click)="openConfirmationDialog(blog.id)" class="p-2 bg-red-600 rounded-sm font-semibold"
+                    routerLinkActive="nav-link active">
+                    <mat-icon>delete</mat-icon> </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+</section>

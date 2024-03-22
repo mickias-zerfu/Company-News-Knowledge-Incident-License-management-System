@@ -1,1 +1,15 @@
-<p>knowledge-mgmt works!</p>
+<section class="pt-2 px-2" *ngIf="knowledges">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Manage Zemen's IB Shared Resources</h2>
+    </div>
+  </section>
+  <div class="flex justify-end pr-16">
+    <app-add-new-button buttonText="Save New Knowledge to Knowledge Base" [routerLink]="['../knowledge/add']" style="width: 250px;"></app-add-new-button>
+  </div>
+  <div>
+    <section>
+      <app-knowledge-list [knowledges]="knowledges"></app-knowledge-list>
+    </section>
+  </div>
+</section>

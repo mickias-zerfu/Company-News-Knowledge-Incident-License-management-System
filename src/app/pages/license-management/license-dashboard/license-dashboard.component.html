@@ -1,41 +1,46 @@
-<section class="flex px-4 md:px-8 lg:px-16">
-  <div class="w-full md:w-1/2 lg:w-1/2 p-4">
-    <div>
-      <h2 class="text-4xl text-neutral-500">Licenses Expiration Date Tracker</h2>
-      <app-chart-data></app-chart-data>
+<section class="pt-2 px-2">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Licenses Expiration Date Tracker</h2>
     </div>
+  </section>
+  <div class="flex justify-end pr-16">
+    <app-add-new-button buttonText="Add New Licenses" (click)="addNewLicense()"></app-add-new-button>
   </div>
-  <div class="w-full md:w-1/2 lg:w-1/2 p-4">
-    <div>
-      <section class="cards-container w-full">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-          <div class="card" *ngFor="let topcard of topcardsLicense">
-            <!-- Card content goes here -->
-            <div class="card-item">
-              <a  routerLink="{{topcard.link}}">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                  <div class="text-left">
+  <section class="flex px-2 md:px-2 lg:px-2">
+    <div class="w-full md:w-1/2 lg:w-1/2 p-4">
+      <div style="width: 410px;">
+        <app-chart-data></app-chart-data>
+      </div>
+    </div>
+    <div class="w-full md:w-1/2 lg:w-1/2 p-4">
+      <div>
+        <section class="cards-container w-full">
+          <div class="flex flex-wrap">
+            <div class="w-full md:w-1/2 p-4" *ngFor="let topcard of topcardsLicense">
+              <mat-card>
+                <mat-card-header>
+                  <div class="text-center align-middle justify-center">
                     <div
                       class="icon-container rounded-full flex align-center items-center justify-center h-16 w-16 {{ topcard.bgcolor }}">
                       <mat-icon>{{ topcard.icon }}</mat-icon>
                     </div>
                   </div>
+                </mat-card-header>
+                <mat-card-content>
                   <div class="text-center">
                     <span class="text-2xl font-semibold">{{ topcard.title }}</span>
                     <br>
                     <span class="text-gray-600">{{ topcard.subtitle }}</span>
                   </div>
                   <div class="mt-2 flex align-center items-center justify-center">
-                    <a class="text-xl text-white" routerLink="{{topcard.link}}" mat-raised-button>Learn More</a>
+                    <a class="text-xl text-red-700" routerLink="{{topcard.link}}">{{topcard.linkText}}</a>
                   </div>
-                </div>
-              </a>
+                </mat-card-content>
+              </mat-card>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
-  </div>
-</section>
-
-<app-license-list></app-license-list>
+  </section>

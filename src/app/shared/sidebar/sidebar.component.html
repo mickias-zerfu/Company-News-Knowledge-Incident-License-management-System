@@ -1,15 +1,3 @@
-
-  <!-- <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button> -->
-    <!-- <button type="button" mat-button (click)="drawer.toggle()">
-      <mat-icon *ngIf="drawer.isOpen()">keyboard_arrow_left</mat-icon>
-      <mat-icon *ngIf="!drawer.isOpen()">keyboard_arrow_right</mat-icon>
-    </button> -->
-  <!-- </div> -->
-
-  <!-- <mat-drawer #drawer class="example-sidenav" mode="side"> -->
   <nav class="sidebar-nav pb-8 hm-screen">
     <ul id="sidebarnav">
       <li class="sidebar-item">
@@ -45,17 +33,11 @@
                 sidebarnavItem.submenu.length !== 0 ? '' : 'active'
               "
             >
-
-            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon> -->
-             <!-- <i [class]="iconData.icon" [style.color]="iconData.color"></i> -->
              <mat-icon>{{ sidebarnavItem.icon }}</mat-icon>
               <span class="flex items-center">
-                <!--  <p-icon> {{ sidebarnavItem.icon }}</p-icon> -->
               </span>
               <span class="hide-menum">{{ sidebarnavItem.title }}</span>
             </a>
-
-            <!-- Nested Submenu -->
             <ul *ngIf="showMenu === sidebarnavItem.title" class="pl-8">
               <li
                 class="sidebar-item"
@@ -79,23 +61,8 @@
                 </a>
               </li>
             </ul>
-            <!-- End of Nested Submenu -->
-
-            <!-- <mat-drawer-container class="example-container" autosize>
-
-
-
-
-</mat-drawer-container> -->
-            <!-- </li></ng-container
-        >
-      </ul>
-    </ul>
-  </nav></mat-drawer
-> -->
           </li>
         </ng-container>
       </ul>
     </ul>
   </nav>
-<!-- </mat-drawer> -->

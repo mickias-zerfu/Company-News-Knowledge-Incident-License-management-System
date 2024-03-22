@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LicenseDashboardComponent } from './license-dashboard/license-dashboard.component';
-import { LicenseListComponent } from './license-list/license-list.component';
 import { LicenseManagementComponent } from './license-management.component';
-import { VendorsMgmtComponent } from './vendors-mgmt/vendors-mgmt.component';
-import { UsersMgmtComponent } from './users-mgmt/users-mgmt.component';
 import { MaterialModule } from 'src/app/material.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { LicenseFormComponent } from './license-form/license-form.component';
-import { LicenseDetailComponent } from './license-detail/license-detail.component';
 import { SoftwareProductListComponent } from './software-product/software-product-list/software-product-list.component';
 import { SoftwareProductFormComponent } from './software-product/software-product-form/software-product-form.component';
 import { SoftwareProductDetailComponent } from './software-product/software-product-detail/software-product-detail.component';
-import { LicenseTableComponent } from './license-list/license-table/license-table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddLicenseManagerComponent } from './License-Manager/add-license-manager/add-license-manager.component';
+import { ListLicenseManagerComponent } from './License-Manager/list-license-manager/list-license-manager.component';
+import { DetailLicenseManagerComponent } from './License-Manager/detail-license-manager/detail-license-manager.component';
+import { LmanagersMgmtComponent } from './License-Manager/users-mgmt.component';
+import { LicenseDetailComponent } from './LicenseOp/license-detail/license-detail.component';
+import { LicenseFormComponent } from './LicenseOp/license-form/license-form.component';
+import { LicenseListComponent } from './LicenseOp/license-list/license-list.component';
+import { LicenseTableComponent } from './LicenseOp/license-list/license-table/license-table.component';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -23,22 +26,29 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LicenseDashboardComponent,
     LicenseListComponent,
     LicenseManagementComponent,
-    VendorsMgmtComponent,
-    UsersMgmtComponent,
+    LmanagersMgmtComponent,
     LicenseFormComponent,
     LicenseDetailComponent,
     SoftwareProductListComponent,
     SoftwareProductFormComponent,
     SoftwareProductDetailComponent,
     LicenseTableComponent,
+    AddLicenseManagerComponent,
+    ListLicenseManagerComponent,
+    DetailLicenseManagerComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     AppRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MatDialogModule
 
-  ]
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} } // Provide MAT_DIALOG_DATA
+  ],
 })
 export class LicenseModule { }

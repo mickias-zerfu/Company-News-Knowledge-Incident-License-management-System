@@ -31,7 +31,6 @@ import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/prod
 import { ProductDetailComponent } from './pages/resource-sharing/product-mgmt/product-detail/product-detail.component';
 import { ProductListComponent } from './pages/resource-sharing/product-mgmt/product-list/product-list.component';
 import { ProductCreateComponent } from './pages/resource-sharing/product-mgmt/product-create/product-create.component';
-import { ProductUpdateComponent } from './pages/resource-sharing/product-mgmt/product-update/product-update.component';
 import { CategoriesModalComponent } from './pages/resource-sharing/categories/categories-modal/categories-modal.component';
 import { LicenseModule } from './pages/license-management/license.module';
 import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
@@ -54,11 +53,12 @@ import { IncidentDetailComponent } from './pages/resource-sharing/incident-mgmt/
 import { IncidentCreateComponent } from './pages/resource-sharing/incident-mgmt/incident-create/incident-create.component';
 import { IncidentMgmtComponent } from './pages/resource-sharing/incident-mgmt/incident-mgmt.component';
 import { NewsListComponent } from './pages/resource-sharing/news-mgmt/news-list/news-list.component';
-import { IncidentListComponent } from './pages/resource-sharing/incident-mgmt/incident-list/incident-list.component';
 import { KnowledgeListComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-list/knowledge-list.component';
 import { KnowledgeDetailComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-detail/knowledge-detail.component';
 import { KnowledgeCreateComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-create/knowledge-create.component';
 import { KnowledgeMgmtComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-mgmt.component';
+import { ShareFileDialogComponent } from './pages/resource-sharing/product-mgmt/share-file-dialog/share-file-dialog.component';
+import { IncidentListComponent } from './pages/resource-sharing/incident-mgmt/incident-list/incident-list.component';
 
 export function playerFactory() {
   return player;
@@ -89,7 +89,6 @@ export function playerFactory() {
     CategoriesComponent,
     ConfirmDialogComponent,
     ProductMgmtComponent,
-    ProductUpdateComponent,
     ProductDetailComponent,
     ProductCreateComponent,
     ProductListComponent,
@@ -106,12 +105,14 @@ export function playerFactory() {
     NewsDetailComponent,
     IncidentDetailComponent,
     IncidentCreateComponent,
+    IncidentListComponent,
     IncidentMgmtComponent,
     NewsListComponent,
     KnowledgeListComponent,
     KnowledgeDetailComponent,
     KnowledgeCreateComponent,
-    KnowledgeMgmtComponent
+    KnowledgeMgmtComponent,
+    ShareFileDialogComponent
 
   ],
   imports: [

@@ -1,0 +1,42 @@
+<!-- add-license-manager.component.html -->
+<form [formGroup]="licenseManagerForm" class="p-6 space-y-4">
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Email">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstName" placeholder="First Name">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName" placeholder="Last Name">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Role</mat-label>
+    <input matInput formControlName="role" placeholder="Role">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Phone Number</mat-label>
+    <input matInput formControlName="phoneNumber" placeholder="Phone Number">
+  </mat-form-field>
+  <div>
+    <label class="block mb-1">Profile Picture</label>
+    <input type="file" accept="image/*" (change)="onFileSelected($event)">
+  </div>
+  <!-- <div class="flex items-center space-x-4">
+    <span class="block">Active:</span>
+    <mat-slide-toggle formControlName="isActive" ></mat-slide-toggle>
+  </div> -->
+  <div class="flex items-center space-x-4">
+    <span class="block">Active:</span>
+
+    <input
+      type="checkbox"
+      formControlName="isActive"
+    >
+  </div>
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    {{ isEditMode ? 'Update' : 'Submit' }}
+  </button>
+</form>

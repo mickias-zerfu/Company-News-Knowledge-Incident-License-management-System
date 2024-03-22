@@ -1,0 +1,15 @@
+<section class="p-4">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Manage Zemen's Certificates</h2>
+    </div>
+  </section>
+
+  <div class="flex justify-between items-center mt-4">
+    <div class="text-gray-600">
+      <p class="pl-4">The typical order would be: Software Product -> License Manager (Optional) -> License.</p>
+    </div>
+    <app-add-new-button buttonText="Add New License" (click)="onAddLicense()"></app-add-new-button>
+  </div>
+  <app-license-table></app-license-table>
+</section>

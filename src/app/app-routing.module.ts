@@ -11,17 +11,12 @@ import { CategoriesComponent } from './pages/resource-sharing/categories/categor
 import { ProductMgmtComponent } from './pages/resource-sharing/product-mgmt/product-mgmt.component';
 import { ResourceDashboardComponent } from './pages/resource-sharing/resource-dashboard/resource-dashboard.component';
 import { ProductCreateComponent } from './pages/resource-sharing/product-mgmt/product-create/product-create.component';
-import { ProductDetailComponent } from './pages/resource-sharing/product-mgmt/product-detail/product-detail.component';
 import { LicenseManagementComponent } from './pages/license-management/license-management.component';
 import { LicenseDashboardComponent } from './pages/license-management/license-dashboard/license-dashboard.component';
-import { LicenseListComponent } from './pages/license-management/license-list/license-list.component';
-import { VendorsMgmtComponent } from './pages/license-management/vendors-mgmt/vendors-mgmt.component';
 import { ServicesComponent } from './pages/transaction-monitoring/services/services.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
 import { TransactionsComponent } from './pages/transaction-monitoring/transactions/transactions.component';
 import { NotificationsComponent } from './shared/notifications/notifications.component';
-import { LicenseFormComponent } from './pages/license-management/license-form/license-form.component';
-import { LicenseDetailComponent } from './pages/license-management/license-detail/license-detail.component';
 import { SoftwareProductListComponent } from './pages/license-management/software-product/software-product-list/software-product-list.component';
 import { SoftwareProductFormComponent } from './pages/license-management/software-product/software-product-form/software-product-form.component';
 import { SoftwareProductDetailComponent } from './pages/license-management/software-product/software-product-detail/software-product-detail.component';
@@ -31,7 +26,6 @@ import { NewsMgmtComponent } from './pages/resource-sharing/news-mgmt/news-mgmt.
 import { NewsCreateComponent } from './pages/resource-sharing/news-mgmt/news-create/news-create.component';
 import { NewsDetailComponent } from './pages/resource-sharing/news-mgmt/news-detail/news-detail.component';
 import { NewsListComponent } from './pages/resource-sharing/news-mgmt/news-list/news-list.component';
-import { ProductUpdateComponent } from './pages/resource-sharing/product-mgmt/product-update/product-update.component';
 import { ProductListComponent } from './pages/resource-sharing/product-mgmt/product-list/product-list.component';
 import { IncidentListComponent } from './pages/resource-sharing/incident-mgmt/incident-list/incident-list.component';
 import { IncidentCreateComponent } from './pages/resource-sharing/incident-mgmt/incident-create/incident-create.component';
@@ -41,6 +35,13 @@ import { KnowledgeCreateComponent } from './pages/resource-sharing/knowledge-mgm
 import { KnowledgeDetailComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-detail/knowledge-detail.component';
 import { KnowledgeListComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-list/knowledge-list.component';
 import { KnowledgeMgmtComponent } from './pages/resource-sharing/knowledge-mgmt/knowledge-mgmt.component';
+import { LicenseListComponent } from './pages/license-management/LicenseOp/license-list/license-list.component';
+import { LicenseFormComponent } from './pages/license-management/LicenseOp/license-form/license-form.component';
+import { LicenseDetailComponent } from './pages/license-management/LicenseOp/license-detail/license-detail.component';
+import { AddLicenseManagerComponent } from './pages/license-management/License-Manager/add-license-manager/add-license-manager.component';
+import { DetailLicenseManagerComponent } from './pages/license-management/License-Manager/detail-license-manager/detail-license-manager.component';
+import { LmanagersMgmtComponent } from './pages/license-management/License-Manager/users-mgmt.component';
+import { ListLicenseManagerComponent } from './pages/license-management/License-Manager/list-license-manager/list-license-manager.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -77,21 +78,20 @@ const routes: Routes = [
       { path: "files", component: ProductListComponent },
       { path: "managefiles", component: ProductMgmtComponent },
       { path: "files/add", component: ProductCreateComponent },
-      { path: "files/:id", component: ProductDetailComponent },
-      { path: "files/:id/update", component: ProductUpdateComponent },
+      // { path: "files/:id", component: ProductDetailComponent },
+      { path: "files/:id/update", component: ProductCreateComponent, data: { isEditMode: true } },
 
 
-      { path: "incidents", component: IncidentListComponent },
-      { path: "manageincidents", component: IncidentMgmtComponent },
-      { path: "incidents/add", component: IncidentCreateComponent },
-      { path: "incidents/:id", component: IncidentDetailComponent },
-      { path: "incidents/:id/update", component: IncidentCreateComponent, data: { isEditMode: true } },
+      { path: "incidents", component: IncidentMgmtComponent },
+      { path: "incident/add", component: IncidentCreateComponent },
+      { path: "incident/:id", component: IncidentDetailComponent },
+      { path: "incident/:id/update", component: IncidentCreateComponent, data: { isEditMode: true } },
 
       { path: "knowledges", component: KnowledgeListComponent },
       { path: "manageknowledges", component: KnowledgeMgmtComponent },
-      { path: "knowledges/add", component: KnowledgeCreateComponent },
-      { path: "knowledges/:id", component: KnowledgeDetailComponent },
-      { path: "knowledges/:id/update", component: KnowledgeCreateComponent, data: { isEditMode: true } },
+      { path: "knowledge/add", component: KnowledgeCreateComponent },
+      { path: "knowledge/:id", component: KnowledgeDetailComponent },
+      { path: "knowledge/:id/update", component: KnowledgeCreateComponent, data: { isEditMode: true } },
 
     ]
   },
@@ -104,30 +104,23 @@ const routes: Routes = [
       { path: "", component: LicenseDashboardComponent }, // Default route should be placed at the end
       { path: "lists", component: LicenseListComponent },
       { path: "add", component: LicenseFormComponent },
-      { path: "products", component: SoftwareProductListComponent },
-      // children: [
-      { path: "", component: SoftwareProductListComponent },
-      { path: "products/add", component: SoftwareProductFormComponent },
-      { path: "products/:id", component: SoftwareProductDetailComponent },
-      { path: "products/:id/update", component: SoftwareProductFormComponent, data: { isEditMode: true } },
+      { path: "license/:id/update", component: LicenseFormComponent },
+      { path: "license/:id", component: LicenseDetailComponent },
+
+      { path: "softwares", component: SoftwareProductListComponent },
+      { path: "software/add", component: SoftwareProductFormComponent },
+      { path: "software/:id", component: SoftwareProductDetailComponent },
+      { path: "software/:id/update", component: SoftwareProductFormComponent, data: { isEditMode: true } },
       // ]
       // },
-      {        path: "users",        component: UserManagementComponent },
-        // children: [
-          { path: "user/add", component: UserManagementComponent },
-          { path: "user/:id", component: UserManagementComponent },
-          { path: "user/:id/update", component: UserManagementComponent, data: { isEditMode: true } },
-        // ]
+      { path: "lmanagers", component: LmanagersMgmtComponent },
+      // children: [
+      { path: "lmanagers/lists", component: ListLicenseManagerComponent },
+      { path: "lmanagers/add", component: AddLicenseManagerComponent },
+      { path: "lmanagers/:id", component: DetailLicenseManagerComponent },
+      { path: "lmanagers/:id/update", component: AddLicenseManagerComponent, data: { isEditMode: true } },
+      // ]
       // },
-      {
-        path: "vendors",
-        component: VendorsMgmtComponent,
-        children: [
-          { path: "add", component: VendorsMgmtComponent },
-          { path: ":id", component: VendorsMgmtComponent },
-          { path: ":id/update", component: VendorsMgmtComponent, data: { isEditMode: true } }
-        ]
-      },
       // { path: ":id", component: LicenseDetailComponent },
       // { path: ":id/update", component: LicenseFormComponent, data: { isEditMode: true } },
     ]

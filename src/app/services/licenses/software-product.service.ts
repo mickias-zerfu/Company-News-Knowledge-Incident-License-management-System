@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SoftwareProduct } from 'src/app/models/software.model';
+import { SoftwareProduct } from 'src/app/models/license/software.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SoftwareProductService {
-  private baseUrl = '/api/software-products'; // Replace with your API endpoint
+  private baseUrl = 'http://localhost:5195/api/softwareproducts'; // Replace with your API endpoint
 
   constructor(private http: HttpClient) { }
 
@@ -23,11 +23,11 @@ export class SoftwareProductService {
     return this.http.post<SoftwareProduct>(this.baseUrl, softwareProduct);
   }
 
-  updateSoftwareProduct(id: number, softwareProduct: SoftwareProduct): Observable<SoftwareProduct> {
-    return this.http.put<SoftwareProduct>(`${this.baseUrl}/${id}`, softwareProduct);
+  updateSoftwareProduct(id: number, softwareProduct: SoftwareProduct): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, softwareProduct);
   }
 
-  deleteSoftwareProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  deleteSoftwareProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }

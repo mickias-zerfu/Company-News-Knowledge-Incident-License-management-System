@@ -1,1 +1,41 @@
-<p>knowledge-create works!</p>
+<!-- incident-create.component.html -->
+<div class="p-6">
+
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">{{ isEditMode ? 'Edit Registered': 'Create New' }}  Knowledge Entry</h2>
+    </div>
+  </section>
+  <form [formGroup]="knowledgeForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Problem</mat-label>
+      <input matInput formControlName="problem" placeholder="Enter problem">
+      <mat-error *ngIf="knowledgeForm.get('problem')?.invalid && (knowledgeForm.get('problem')?.dirty || knowledgeForm.get('problem')?.touched)">
+        Problem is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Problem Description</mat-label>
+      <textarea matInput formControlName="problemDescription" placeholder="Enter problem description" rows="5"></textarea>
+      <mat-error *ngIf="knowledgeForm.get('problemDescription')?.invalid && (knowledgeForm.get('problemDescription')?.dirty || knowledgeForm.get('problemDescription')?.touched)">
+        Problem description is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Solution</mat-label>
+      <textarea matInput formControlName="solution" placeholder="Enter solution" rows="5"></textarea>
+      <mat-error *ngIf="knowledgeForm.get('solution')?.invalid && (knowledgeForm.get('solution')?.dirty || knowledgeForm.get('solution')?.touched)">
+        Solution is required.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="mt-4">
+      <div class="flex justify-end">
+        <button class="bg-red-500 hover:bg-red-700 text-white font-semi-bold py-2 px-4 rounded" type="submit">
+          {{ isEditMode ? 'Update' : 'Submit' }} Knowledge to Knowledge Base</button>
+      </div>
+    </div>
+  </form>
+</div>

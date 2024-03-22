@@ -1,1 +1,73 @@
-<p>incident-detail works!</p>
+<div *ngIf="incident">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Registered Incident Detail</h2>
+    </div>
+  </section>
+  <mat-card class="mb-8">
+    <mat-card-content class="p-8 justify-start text-left">
+      <h3 class="text-2xl font-semibold mb-4 pt-4 pl-8">{{ incident.incidentTitle }}</h3>
+      <p class="text-lg mb-4  pl-16">{{ incident.incidentDescription }}</p>
+      <div class="p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-8 ">
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-blue-600">Status Action</h3>
+            <ul>
+              <li *ngFor="let action of incident.statusAction">
+                <div class="flex items-center space-x-2">
+                  <mat-icon class="text-blue-500">check_circle_outline</mat-icon>
+                  <p class="text-lg">{{ action }}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-green-600">Quick Reviews</h3>
+            <ul>
+              <li *ngFor="let review of incident.quickReviews">
+                <div class="flex items-center space-x-2">
+                  <mat-icon class="text-green-500">comment</mat-icon>
+                  <p class="text-lg">{{ review }}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex flex-row w-full justify-around p-8">
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-yellow-600">Solution To Incident</h3>
+            <ul>
+              <li *ngFor="let solution of incident.solutionToIncident">
+                <div class="flex items-center space-x-2">
+                  <mat-icon class="text-yellow-500">lightbulb</mat-icon>
+                  <p class="text-lg">{{ solution }}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4 text-purple-600">Remark</h3>
+            <p class="text-lg">{{ incident.remark }}</p>
+          </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 mt-4 p-8 justify-between">
+        <button (click)="AddNewIncident()"
+          class="bg-red-900 hover:bg-red-900 text-white font-bold py-2 px-4 rounded w-full md:w-auto">Add new Incident</button>
+        <button (click)="GoToIncidentList()"
+          class="bg-green-700 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">List of
+          Incidents</button>
+        <button (click)="UpdateIncident()"
+          class="bg-yellow-300 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">Update this Incident</button>
+        <button (click)="DeleteIncident()"
+          class="bg-gray-950 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">
+
+          Remove This Incident</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

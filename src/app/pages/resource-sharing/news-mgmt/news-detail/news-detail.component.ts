@@ -11,7 +11,9 @@ import { BlogService } from 'src/app/services/blog.service';
 export class NewsDetailComponent implements OnInit {
   blog: BlogModel;
   recentBlogList: BlogModel[] = [];
-  blogId: number
+  blogId: number;
+  defaultImage: any;
+
 
   constructor(private route: ActivatedRoute, private blogService: BlogService) { }
 
@@ -23,9 +25,15 @@ export class NewsDetailComponent implements OnInit {
     });
   }
 
+  onError() {
+    this.defaultImage = '../../../../../assets/imageNotLoading.png';
+  }
+
   fetchBlogDetails(blogId: number) {
-    this.blogService.getBlog(blogId).subscribe(blog => {
+    this.blogService.getBlogById(blogId).subscribe(blog => {
       this.blog = blog;
+
+      // this.blog.image_url = `http://localhost:5195/api/SharedResource/Images/${this.blog.image_url}`;
       console.log(this.blog, 'blog single');
 
     });
@@ -34,7 +42,7 @@ export class NewsDetailComponent implements OnInit {
   fetchRecentBlogs() {
     this.blogService.getAllBlogs().subscribe(data => {
       this.recentBlogList = data.slice(0, 4);
-      console.log(this.recentBlogList,'recents . . . ');
+      console.log(this.recentBlogList, 'recents . . . ');
 
     });
     // this.recentBlogList = postsInfo // Assuming you want to display the second, third, and fourth blog as recent blogs
