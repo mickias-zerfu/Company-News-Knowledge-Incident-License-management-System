@@ -18,6 +18,8 @@ import { LicenseFormComponent } from './LicenseOp/license-form/license-form.comp
 import { LicenseListComponent } from './LicenseOp/license-list/license-list.component';
 import { LicenseTableComponent } from './LicenseOp/license-list/license-table/license-table.component';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { AssignmentComponent } from './LicenseOp/license-list/license-table/assignment/assignment.component';
+import { AssignmentLicenseComponent } from './License-Manager/detail-license-manager/assignment-license/assignment-license.component';
 
 
 
@@ -36,6 +38,8 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
     AddLicenseManagerComponent,
     ListLicenseManagerComponent,
     DetailLicenseManagerComponent,
+    AssignmentComponent,
+    AssignmentLicenseComponent,
   ],
   imports: [
     CommonModule,

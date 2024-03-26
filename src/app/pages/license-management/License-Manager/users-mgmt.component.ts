@@ -31,7 +31,13 @@ export class LmanagersMgmtComponent {
   }
   checkExpiration(): void {
     // Logic to trigger the check expiration API
-    console.log('Check expiration triggered');
+    this.licenseManagerService.checkExpiration().subscribe((res) => {
+
+      console.log(res);
+    }, (err) => {
+
+      console.error(err);
+    } )
   }
 
   addNewManager(): void {

@@ -21,6 +21,9 @@ export class LicenseCrudService {
     return this.http.post<License>(this.baseUrl, license);
   }
 
+  assignLicenseManagers(licenseId: any, selectedManagers: any) {
+    return this.http.post(`${this.baseUrl}/assignmanager/${licenseId}`, selectedManagers);
+  }
   updateLicense(id: number, license: License): Observable<License> {
     return this.http.put<License>(`${this.baseUrl}/${id}`, license);
   }

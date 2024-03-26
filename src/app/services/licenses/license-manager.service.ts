@@ -8,7 +8,8 @@ import { LicenseManager } from 'src/app/models/license/LicenseManager';
   providedIn: 'root'
 })
 export class LicenseManagerService {
-  private baseUrl = 'http://localhost:5195/api/licensemanagers'; // Replace with your API endpoint
+
+  private baseUrl = 'http://localhost:5195/api/licensemanagers'; // Replace with your API endpointlicensemanagers/0/licenses
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +25,14 @@ export class LicenseManagerService {
     return this.http.post<LicenseManager>(this.baseUrl, licenseManager);
   }
 
+
+  assignLicensesToManager(licenseId: any, selectedLicenses: any) {
+    return this.http.post(`${this.baseUrl}/${licenseId}/assignmanager/`, selectedLicenses);
+  }
+
+  checkExpiration() {
+    return this.http.post(`http://localhost:5195/api/licenses/checkexpiration`,'')
+  }
   updateLicenseManager(id: number, licenseManager: LicenseManager): Observable<any> {
     return this.http.put(`${this.baseUrl}/${id}`, licenseManager);
   }

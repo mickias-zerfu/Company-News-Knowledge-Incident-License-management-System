@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Topcard } from '../dashboard/dashboard.component';
+import { Topcard } from 'src/app/models/top-card.model';
 
 @Component({
   selector: 'app-user-management',
@@ -23,19 +23,22 @@ export class UserManagementComponent {
         bgcolor: 'bg-red-500',
         icon: 'cog',
         title: '78,000',
-        subtitle: 'Total User'
+        subtitle: 'Total User',
+        link:''
       },
       {
         bgcolor: 'bg-red-900',
         icon: 'money-bill',
         title: '28',
-        subtitle: 'Active Users'
+        subtitle: 'Active Users',
+        link:''
       },
       {
         bgcolor: 'bg-yellow-900',
         icon: 'sign-out',
         title: '8',
-        subtitle: 'InActive Users'
+        subtitle: 'InActive Users',
+        link:''
       }
     )
   }

@@ -1,0 +1,17 @@
+<!-- assignment.component.html -->
+<div class="p-4">
+  <h2 class="text-lg font-semibold mb-4">Assign Managers</h2>
+  <div *ngFor="let manager of managers">
+    <li class="flex items-center mb-2" >
+      <label class="flex items-center">
+        <input  class="dark:border-white-400/20 dark:scale-50 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-8 h-8"
+        type="checkbox" [(ngModel)]="manager.selected" [value]="manager.id">
+        <span class="ml-2 semi-bold text-l ">{{ manager.firstName }} {{ manager.lastName }} <span class="italic">{{manager.email}}</span></span>
+      </label>
+    </li>
+  </div>
+</div>
+<div class="p-4 bg-gray-100 flex justify-end">
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-button color="primary" (click)="assignManagers()">Assign</button>
+</div>

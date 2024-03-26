@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Topcard } from '../../dashboard/dashboard.component';
+import { Topcard } from 'src/app/models/top-card.model';
 
 @Component({
   selector: 'app-transaction-dashboard',
@@ -20,31 +20,36 @@ export class TransactionDashboardComponent  implements OnInit {
         bgcolor: 'bg-red-500',
         icon: 'cog',
         title: '78,000',
-        subtitle: ' Total Transaction'
+        subtitle: ' Total Transaction',
+        link:''
       },
       {
         bgcolor: 'bg-red-900',
         icon: 'money-bill',
         title: '28',
-        subtitle: 'EthSwitch'
+        subtitle: 'EthSwitch',
+        link:''
       },
       {
         bgcolor: 'bg-yellow-900',
         icon: 'sign-out',
         title: '8',
-        subtitle: 'RGTS'
+        subtitle: 'RGTS',
+        link:''
       },
       {
         bgcolor: 'bg-violet-500',
         icon: 'dollar',
         title: '4',
-        subtitle: 'Bill Payment'
+        subtitle: 'Bill Payment',
+        link:''
       },
       {
         bgcolor: 'bg-green-900',
         icon: 'times-circle',
         title: '7',
-        subtitle: 'Total Rejected'
+        subtitle: 'Total Rejected',
+        link:''
       }
     )
   }

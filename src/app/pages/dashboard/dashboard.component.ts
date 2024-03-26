@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { ChartConfiguration } from 'chart.js';
+import { Topcard } from 'src/app/models/top-card.model';
 
-
-
-export interface Topcard {
-  bgcolor: string,
-  icon: string,
-  title: string,
-  subtitle: string
-}
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -28,31 +20,36 @@ export class DashboardComponent implements OnInit {
         bgcolor: 'bg-red-500',
         icon: 'cog',
         title: '78,000',
-        subtitle: ' Total Transaction'
+        subtitle: ' Total Transaction',
+        link:''
       },
       {
         bgcolor: 'bg-red-900',
         icon: 'money-bill',
         title: '28',
-        subtitle: 'EthSwitch'
+        subtitle: 'EthSwitch',
+        link:''
       },
       {
         bgcolor: 'bg-yellow-900',
         icon: 'sign-out',
         title: '8',
-        subtitle: 'RGTS'
+        subtitle: 'RGTS',
+        link:''
       },
       {
         bgcolor: 'bg-violet-500',
         icon: 'dollar',
         title: '4',
-        subtitle: 'Bill Payment'
+        subtitle: 'Bill Payment',
+        link:''
       },
       {
         bgcolor: 'bg-green-900',
         icon: 'times-circle',
         title: '7',
-        subtitle: 'Total Rejected'
+        subtitle: 'Total Rejected',
+        link:''
       }
     )
   }

@@ -6,6 +6,8 @@ import { License } from 'src/app/models/license/license.model';
 import { LicenseCrudService } from 'src/app/services/licenses/license-crud.service';
 import { ConfirmDialogComponent, ConfirmDialogData } from 'src/app/shared/confirm-modal/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { LicenseManagerService } from 'src/app/services/licenses/license-manager.service';
+import { AssignmentComponent } from './assignment/assignment.component';
 
 @Component({
   selector: 'app-license-table',
@@ -13,13 +15,16 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./license-table.component.css']
 })
 export class LicenseTableComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'issuedTo', 'issuedBy', 'creationDate', 'expirationDate', 'maxUsers', 'activated', 'licenseType', 'softwareProduct', 'action'];
+  displayedColumns: string[] = ['id', 'issuedTo', 'issuedBy', 'creationDate', 'expirationDate', 'maxUsers', 'activated', 'licenseType', 'softwareProduct', 'Assignment', 'action'];
   dataSource: MatTableDataSource<License>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private licenseService: LicenseCrudService,private dialog: MatDialog) {
+  managers: any[] = []; // Array to store the list of managers
+  displayAssignForm: boolean = false; // Variable to control the display of the form
+  selectedManagers: any[] = []; // Array to store the selected managers
+  constructor(private licenseService: LicenseCrudService, private licenseManagersService: LicenseManagerService, private dialog: MatDialog) {
     this.dataSource = new MatTableDataSource<License>([]);
   }
 
@@ -47,7 +52,28 @@ export class LicenseTableComponent implements OnInit {
     // Logic to edit the license with the provided ID
     console.log(`Editing license with ID: ${licenseId}`);
   }
+  getLicenseManager(licenseId:any) {
+    this.licenseManagersService.getLicenseManagers().subscribe((managers: any[]) => {
+      this.managers = managers;
+      this.displayAssignForm = true; // Display the form
+      const dialogRef = this.dialog.open(AssignmentComponent, {
+        width: '500px',
+        data: { managers: this.managers , LicenseId:licenseId}
+      });
 
+      dialogRef.afterClosed().subscribe(selectedManagers => {
+        // Handle the selected managers here
+        this.licenseService.assignLicenseManagers(licenseId, selectedManagers).subscribe();
+        console.log(selectedManagers);
+      });
+    });
+  }
+  assignLicenseManager(licenseId: number): void {
+    // Logic to assign selected managers
+    console.log(this.selectedManagers);
+    // Send the selected managers to your TypeScript logic for further processing
+
+  }
   deleteLicense(licenseId: number): void {
     const dialogData: ConfirmDialogData = {
       title: 'Confirmation',

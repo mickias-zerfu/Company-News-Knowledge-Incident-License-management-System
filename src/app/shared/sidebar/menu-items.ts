@@ -52,7 +52,7 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
-    path: '',
+    path: '/licenses/',
     title: 'License Management',
     icon: 'alarm',
     class: '',

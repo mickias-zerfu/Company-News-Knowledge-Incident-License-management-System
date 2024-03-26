@@ -112,7 +112,7 @@ export class IncidentCreateComponent implements OnInit {
     else {
       const newIncident: Incident = { ...this.incidentForm.value, created_at: new Date().toDateString() };
 
-      this.incidentService.addIncident(this.incident).subscribe({
+      this.incidentService.addIncident(newIncident).subscribe({
         next: () => {
           this.router.navigate(['/resources/incidents']);
         }
