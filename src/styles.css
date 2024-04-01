@@ -2,18 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 ::ng-deep .mdc-notched-outline__notch {
   border-right: none !important;
 }
-.mdc-notched-outline__notch
-{
+.mdc-notched-outline__notch {
   border-right: none;
 }
-::ng-deep .mdc-notched-outline__notch
-{
+::ng-deep .mdc-notched-outline__notch {
   border-right: none;
+}
+::ng-deep    .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  max-width: 672px;
+  height: 400px;
+}
+
+.mat-mdc-snack-bar-container {
+  &.info-toast {
+    color: white !important;
+    --mdc-snackbar-container-color: #e1b919;
+    --mat-snack-bar-button-color: rgb(0, 0, 0);
+    --mdc-snackbar-supporting-text-color: rgb(188, 21, 21);
+
+  }
+}
+.mat-mdc-snack-bar-container {
+  &.success-toast {
+    color: white !important;
+    --mdc-snackbar-container-color: #0e8e30;
+    --mat-snack-bar-button-color: rgb(0, 0, 0);
+    --mdc-snackbar-supporting-text-color: rgb(255, 255, 255);
+  }
+}
+.mat-mdc-snack-bar-container {
+  &.error-toast {
+    color: white !important;
+    --mdc-snackbar-container-color: #ff0000;
+    --mat-snack-bar-button-color: rgb(0, 0, 0);
+    --mdc-snackbar-supporting-text-color: rgb(239, 234, 234);
+  }
 }
