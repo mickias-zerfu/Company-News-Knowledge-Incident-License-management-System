@@ -14,6 +14,8 @@ export class IncidentCreateComponent implements OnInit {
   incident: Incident = new Incident();
   incidentForm: FormGroup;
   statusActions: string[] = [];
+
+
   quickReviews: string[] = [];
   solutionToIncidents: string[] = [];
   isEditMode: boolean = false;
@@ -41,7 +43,7 @@ export class IncidentCreateComponent implements OnInit {
     this.incidentForm = new FormGroup({
       incidentTitle: new FormControl('', Validators.required),
       incidentDescription: new FormControl('', Validators.required),
-      statusActions: new FormControl(this.statusActions, Validators.required),
+      statusAction: new FormControl(this.statusActions, Validators.required),
       quickReviews: new FormControl(this.quickReviews, Validators.required),
       solutionToIncident: new FormControl(this.solutionToIncidents, Validators.required),
       remark: new FormControl('')
@@ -58,9 +60,9 @@ export class IncidentCreateComponent implements OnInit {
     this.solutionToIncidents = this.incident.solutionToIncident;
   }
   addStatusAction(actionInput: HTMLInputElement): void {
-
-    const action = actionInput.value.trim(); if (action.trim()) {
-
+    debugger
+    const action = actionInput.value.trim();
+    if (action.trim()) {
       this.statusActions.push(action.trim());
       this.incidentForm.get('statusAction')?.setValue(this.statusActions);
       console.log(this.statusActions);
