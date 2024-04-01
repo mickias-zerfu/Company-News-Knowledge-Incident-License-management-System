@@ -6,6 +6,6 @@ export class Incident {
   quickReviews:        string[];
   solutionToIncident:  string[];
   remark:              string;
-  created_at:         string;
-  updated_at:         string;
+  created_at:          string;
+  updated_at:          string;
 }
