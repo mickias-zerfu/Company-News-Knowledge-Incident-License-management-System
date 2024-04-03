@@ -14,7 +14,7 @@
         <div>
           <label for="featuredImage" class="block text-lg mb-2">Featured Image:</label>
           <input type="file" id="featuredImage" class="p-2" (change)="handleImageUpload($event)" accept="image/*" />
-          <img [src]="imagePreview" alt="Selected Image" class="w-96 h-auto" *ngIf="imagePreview" />
+          <img [src]="imagePreview" alt="Selected Image"   *ngIf="imagePreview"  class="w-64 h-64 p-2 rounded"/>
         </div>
         <div class="col-span-2">
           <label for="content" class="block text-lg mb-2">Content:</label>

@@ -17,17 +17,8 @@
               [class.even-background]="evenBackground(i)" [class.odd-background]="oddBackground(i)">
               <div class="card shadow-lg rounded-lg">
                 <div class="flex items-center mb-2">
-                  <!-- <div class="ml-2">
-                  <h4 class="w-12 font-bold text-xl">{{ blog.id }}</h4>
-                </div> -->
                   <div class="flex justify-center px-4 rounded mb-4">
                     <img src="{{ blog.image_url }}" alt="Blog Image" class="w-48 p-2 rounded">
-
-                    <!-- <img *ngIf="!defaultImage; else defaultImg" [src]="blog.image_url" (error)="onError()" class="w-48 p-2 rounded">
-
-                    <ng-template #defaultImg>
-                      <img [src]="defaultImage">
-                    </ng-template> -->
                   </div>
                 </div>
                 <div class="blog-detail">
@@ -43,7 +34,7 @@
                         <p class="font-bold">Posted on:</p>
                         <p>{{ blog.created_at | date }}</p>
                       </div>
-                      <div *ngIf=" blog.created_at!= blog.updated_at ">
+                      <div *ngIf=" blog.updated_at!= null ">
                         <p class="font-bold">Updated on:</p>
                         <p>{{ blog.updated_at | date }}</p>
                       </div>
