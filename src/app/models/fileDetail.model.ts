@@ -7,9 +7,10 @@ export class FileDetails {
 }
 
 export enum FileType {
-  Image = 'Image',
-  Document = 'Document',
-  Video = 'Video',
-  Audio = 'Audio',
-  Other = 'Other'
+  Image,
+  Document,
+  Video,
+  Audio,
+  Software,
+  Archive
 }
