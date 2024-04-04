@@ -48,9 +48,6 @@ export class ProductCreateComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitted = true;
-    // if (this.ResourceForm.invalid) {
-    //   return;
-    // }
     const formData = new FormData();
     formData.append('fileTitle', this.resource.fileTitle);
     formData.append('fileDescription', this.resource.fileDescription);
@@ -80,7 +77,7 @@ export class ProductCreateComponent implements OnInit {
     this.fileService.updateFile(this.fileId, formData).subscribe(
       () => {
         this.toastService.showSuccess('Resource updated', 'Close', 2000);
-        this.router.navigate(['/resources/files/' + this.fileId]);
+        this.router.navigate(['/resources/managefiles']);
       },
       error => {
         this.toastService.showError('Failed to update resource', 'Close', 2000);

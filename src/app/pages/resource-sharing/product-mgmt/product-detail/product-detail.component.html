@@ -1,23 +1,33 @@
- <app-loading *ngIf="!fileDetails"></app-loading>
+<app-loading *ngIf="!fileDetails"></app-loading>
 <div class="file-detail-dialog bg-white p-6 rounded-lg shadow-md" *ngIf="fileDetails">
-  <h2 class="text-2xl font-bold mb-4">File Detail</h2>
-  <div class="flex flex-col">
+  <div class="hero-content text-left pt-8 pb-8">
+    <h2 class="text-4xl font-bold text-red-700">{{ fileDetails.fileTitle }} file in Detail</h2>
+  </div>
+  <div class="flex flex-row">
     <label class="text-lg mb-1">File Title:</label>
     <p>{{ fileDetails.fileTitle }}</p>
   </div>
   <div class="flex flex-col" style="max-width: 600px !important; white-space: wrap;">
     <label class="text-lg mb-1">File Description:</label>
-    <textarea [disabled]="true" cols="30" rows="10" class="whitespace-pre-wrap">{{ fileDetails.fileDescription  }}</textarea>
+    <textarea [disabled]="true" cols="30" rows="10"
+      class="whitespace-pre-wrap">{{ fileDetails.fileDescription  }}</textarea>
   </div>
-  <div class="flex flex-col">
-    <label class="text-lg mb-1">File Name:</label>
-    <p>{{ fileDetails.fileName }}</p>
+  <div class="flex flex-row">
+    <div class="flex flex-row">
+      <label class="text-lg mb-1">File Name:</label>
+      <p>{{ fileDetails.fileName }}</p>
+    </div>
+    <div  class="flex flex-row from-neutral-950 italic mx-4">
+      <label class="text-lg mb-1">This is </label>
+      <p>{{ fileDetails.fileName }} type file.</p>
+    </div>
+
   </div>
 
   <div class="flex justify-between mt-6">
-    <button mat-button color="primary" (click)="editFile(fileDetails.id)">Edit</button>
-    <button mat-button color="primary" (click)="shareFile()">Share</button>
-    <button mat-button color="primary" (click)="downloadFile()">Download</button>
-    <button mat-button color="warn" (click)="openConfirmationDialog()">Delete</button>
+    <button mat-raised-button  style="background-color: #F2994A;"  (click)="editFile(fileDetails.id)">Edit</button>
+    <button mat-raised-button  style="background-color: #1ABC9C;" (click)="shareFile()">Share</button>
+    <button mat-raised-button  style="background-color: #3498DB;" (click)="downloadFile()">Download</button>
+    <button mat-raised-button color="warn" (click)="openConfirmationDialog()">Delete</button>
   </div>
 </div>

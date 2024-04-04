@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { LicenseDashboardService } from 'src/app/services/licenses/license-dashboard.service';
 export interface ReportCardLicense {
   bgcolor: string,
   icon: string,
-  title: string,
+  count: string,
   subtitle: string,
   link:string,
   linkText:string
@@ -14,6 +15,7 @@ export interface ReportCardLicense {
 })
 export class LicenseDashboardComponent implements OnInit {
   topcardsLicense: ReportCardLicense[] = [];
+  constructor(private dashboardService: LicenseDashboardService) { }
 
 
   ngOnInit(): void {
@@ -25,11 +27,14 @@ export class LicenseDashboardComponent implements OnInit {
   }
 
   gettopcardsLicenseData() {
-    this.topcardsLicense.push(
+
+    this.dashboardService.getTotalCounts().subscribe((data: any) => {
+
+      this.topcardsLicense = [
       {
         bgcolor: 'bg-red-500',
         icon: 'atm',
-        title: '7',
+        count: data.licenseCount,
         subtitle: ' Active License Registered',
         link: 'lists',
         linkText: 'License List'
@@ -37,7 +42,7 @@ export class LicenseDashboardComponent implements OnInit {
       {
         bgcolor: 'bg-red-900',
         icon: 'money-bill',
-        title: '2',
+        count: data.licenseManagerCount,
         subtitle: 'License Managers',
         link: 'lmanagers',
         linkText: 'Managers List'
@@ -45,7 +50,7 @@ export class LicenseDashboardComponent implements OnInit {
       {
         bgcolor: 'bg-yellow-900',
         icon: 'local_offer',
-        title: '8',
+        count: data.softwareCount,
         subtitle: 'Software Products',
         link: 'softwares',
         linkText: 'Softwares'
@@ -53,11 +58,13 @@ export class LicenseDashboardComponent implements OnInit {
       {
         bgcolor: 'bg-red-500',
         icon: 'cancel',
-        title: '1',
+        count: data.expiredCount,
         subtitle: 'Expired License Registered',
         link: 'lists',
         linkText: ' License List'
       }
-    )
-  }
+    ];
+  });
+}
+
 }

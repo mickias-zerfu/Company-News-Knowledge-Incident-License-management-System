@@ -60,12 +60,10 @@ export class IncidentCreateComponent implements OnInit {
     this.solutionToIncidents = this.incident.solutionToIncident;
   }
   addStatusAction(actionInput: HTMLInputElement): void {
-    debugger
     const action = actionInput.value.trim();
     if (action.trim()) {
       this.statusActions.push(action.trim());
       this.incidentForm.get('statusAction')?.setValue(this.statusActions);
-      console.log(this.statusActions);
       actionInput.value = '';
     }
   }
@@ -86,7 +84,6 @@ export class IncidentCreateComponent implements OnInit {
 
       this.solutionToIncidents.push(action.trim());
       this.incidentForm.get('solutionToIncident')?.setValue(this.solutionToIncidents);
-      console.log(this.solutionToIncidents);
       actionInput.value = '';
 
     }

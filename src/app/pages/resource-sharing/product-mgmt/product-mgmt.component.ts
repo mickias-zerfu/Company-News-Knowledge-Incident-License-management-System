@@ -6,6 +6,7 @@ import { FileService } from 'src/app/services/product.service';
 import { ShareFileDialogComponent } from 'src/app/pages/resource-sharing/product-mgmt/share-file-dialog/share-file-dialog.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ConfirmDialogComponent, ConfirmDialogData } from 'src/app/shared/confirm-modal/confirm-dialog.component';
+import { FileType } from 'src/app/models/fileDetail.model';
 
 @Component({
   selector: 'app-product-mgmt',
@@ -27,17 +28,33 @@ export class ProductMgmtComponent implements OnInit {
     this.fileService.getAllFiles().subscribe(data => {
       this.products = data;
       console.log(this.products);
+
     });
   }
-
+  getFileType(fileTypeNumber: number): string {
+    switch (fileTypeNumber) {
+      case FileType.Image:
+        return 'Image';
+      case FileType.Document:
+        return 'Document';
+      case FileType.Video:
+        return 'Video';
+      case FileType.Audio:
+        return 'Audio';
+      case FileType.Software:
+        return 'Software';
+      case FileType.Archive:
+        return 'Archive';
+      default:
+        return 'Unknown';
+    }
+  }
   openFileDetail(fileId:number): void {
 
     const dialogRef = this.dialog.open(ProductDetailComponent, {
       width: '800px', // Adjust the width as needed
       data: { fileId } // Pass fileId as data to ShareFileDialogComponent
     });
-
-    // Subscribe to dialog closed event to handle any actions after dialog is closed
     dialogRef.afterClosed().subscribe(result => {
       // Handle any actions after dialog is closed (if needed)
     });
@@ -45,9 +62,7 @@ export class ProductMgmtComponent implements OnInit {
 
   DownloadFile(fileId: any) {
     this.fileService.downloadFile(fileId).subscribe(data => {
-      // this.router.navigateByUrl('file:///'+ data.filepath)
-      const fileUrl = `http://localhost:5195/api/SharedResource/DownloadFile/${fileId}`;
-      // Open the file in a new browser tab or window
+      const fileUrl = data.filePath;
       window.open(fileUrl, '_blank');
     });
   }
@@ -64,7 +79,7 @@ export class ProductMgmtComponent implements OnInit {
   }
   deleteFile(fileId: number): void {
     this.fileService.deleteFile(fileId).subscribe(data => {
-      this.router.navigate(['/resources/managefiles']);
+      this.getAllFiles();
     })
   }
   openConfirmationDialog(fileId:number): void {
