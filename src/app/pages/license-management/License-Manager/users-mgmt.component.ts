@@ -11,8 +11,7 @@ export interface TopcardManager {
   bgcolor: string,
   icon: string,
   title: string,
-  subtitle: string,
-  link: string
+  subtitle: string
 }
 @Component({
   selector: 'app-lmangers-mgmt',
@@ -37,7 +36,7 @@ export class LmanagersMgmtComponent {
     }, (err) => {
 
       console.error(err);
-    } )
+    })
   }
 
   addNewManager(): void {
@@ -54,26 +53,24 @@ export class LmanagersMgmtComponent {
     console.log('Go to manager list triggered');
   }
   getIbData() {
-    this.topcardsIb.push({
-      bgcolor: 'red-500',
-      icon: 'home',
-      title: 'Total License Managers',
-      subtitle: '10 managers',
-      link: '/license-managers'
-    },
+    this.topcardsIb.push(
       {
-        bgcolor: 'blue-500',
-        icon: 'settings',
-        title: 'Active License Managers',
-        subtitle: '5 active managers',
-        link: '/active-license-managers'
+        bgcolor: 'red-500',
+        icon: 'apps_outage',
+        title: 'Add Software or Products to eb Licensed',
+        subtitle: 'e.g. Sysaid'
       },
       {
-        bgcolor: 'green-500',
-        icon: 'notifications',
-        title: 'Inactive License Managers',
-        subtitle: '5 inactive managers',
-        link: '/inactive-license-managers'
+        bgcolor: 'blue-500',
+        icon: 'security',
+        title: 'Add the License for the addes software or product',
+        subtitle: 'e.g. CR2-abcd-EFGH-HIJK-MICKEY'
+      },
+      {
+        bgcolor: 'yellow-500',
+        icon: 'person',
+        title: 'Add The manager who will be Responsible for that Software',
+        subtitle: 'Mr. Yekoye Mihret'
       }
 
     )

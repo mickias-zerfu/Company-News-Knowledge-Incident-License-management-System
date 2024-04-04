@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Topcard } from 'src/app/models/top-card.model';
+import {  Topcard } from 'src/app/models/top-card.model';
 
 @Component({
   selector: 'app-dashboard',
