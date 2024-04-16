@@ -1,13 +1,16 @@
   import { HttpClient } from '@angular/common/http';
   import { Injectable } from '@angular/core';
   import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
   @Injectable({
     providedIn: 'root'
   })
   export class DashboardService {
-    private apiUrl = 'http://localhost:5195/api/Dashboard';
-    constructor(private http: HttpClient) { }
+    private apiUrl:string;
+    constructor(private http: HttpClient) {
+      this.apiUrl = environment.baseUrl + 'Dashboard';
+    }
 
   // Method to get total counts for all entities
   getTotalCounts(): Observable<any> {

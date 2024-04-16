@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NewsComment } from '../models/comment.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
-  private baseUrl = 'http://localhost:5195/api/Comment';
-
-  constructor(private http: HttpClient) { }
+  private baseUrl: String;
+    constructor(private http: HttpClient) {
+    this.baseUrl = environment.baseUrl + 'Comment';
+  }
 
   // Get comments for a specific news
   getComments(newsId: number): Observable<NewsComment[]> {
