@@ -3,15 +3,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LicenseManager } from 'src/app/models/license/LicenseManager';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LicenseManagerService {
 
-  private baseUrl = 'http://localhost:5195/api/licensemanagers'; // Replace with your API endpointlicensemanagers/0/licenses
+  private baseUrl: string;// = 'http://localhost:5195/api/licensemanagers'; // Replace with your API endpointlicensemanagers/0/licenses
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+    this.baseUrl = environment.baseUrl + 'licensemanagers';
+  }
 
   getLicenseManagers(): Observable<LicenseManager[]> {
     return this.http.get<LicenseManager[]>(this.baseUrl);
@@ -31,7 +35,7 @@ export class LicenseManagerService {
   }
 
   checkExpiration() {
-    return this.http.post(`http://localhost:5195/api/licenses/checkexpiration`,'')
+    return this.http.post(`${this.baseUrl}licenses/checkexpiration`, '')
   }
   updateLicenseManager(id: number, licenseManager: LicenseManager): Observable<any> {
     return this.http.put(`${this.baseUrl}/${id}`, licenseManager);

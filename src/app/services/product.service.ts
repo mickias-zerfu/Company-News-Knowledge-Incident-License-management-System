@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ResourceUploadModel } from '../models/product.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
-  private apiUrl = 'http://localhost:5195/api/SharedResource';
-  constructor(private http: HttpClient) { }
+  private apiUrl : string;
+  constructor(private http: HttpClient) {
+    this.apiUrl = environment.baseUrl + 'SharedResource';
+  }
 
   getAllFiles(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
