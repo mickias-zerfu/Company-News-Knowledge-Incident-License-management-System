@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 
 @Component({
@@ -7,21 +7,18 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'TXN-Monitoring';
-  isAdmin: boolean = false;
-  isLoggedIn: boolean = false;
+  title = 'TXN-Monitoring'; 
   drawer: { opened: boolean } = { opened: true };
+  @Input() isAdmin = false;
+  @Input() isLoggedIn = false;
 
   constructor(private cdr: ChangeDetectorRef, private authService: AuthService) { }
-  ngOnInit() {
-    // debugger
+  ngOnInit() { 
     this.checkLoginStatus();
   }
   checkLoginStatus() {
     this.isLoggedIn = this.authService.isAuthenticate();
-    this.authService.loginStatusChanged.subscribe((isUserLoggedIn: boolean) => {
-      debugger
-      console.log('---------------isUserLoggedIn authService.loginStatusChanged.subscribe app', isUserLoggedIn);
+    this.authService.loginStatusChanged.subscribe((isUserLoggedIn: boolean) => {  
       this.isLoggedIn = isUserLoggedIn;
       this.cdr.detectChanges();
     });
