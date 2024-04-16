@@ -1,21 +1,25 @@
-<div class="flex h-screen items-center justify-center bg-gray-100">
+<div class="flex h-screen items-center justify-center bg-gray-50 login">
   <form (ngSubmit)="login()" class="w-full max-w-sm bg-white rounded-lg shadow-lg p-6">
     <div class="text-center">
       <img class="w-24 mx-auto mb-6" alt="Logo" src="../../../assets/logo.png" />
-      <h2 class="text-3xl font-bold text-gray-800">Wel Come Admin !</h2>
+      <h2 class="text-3xl font-bold text-gray-800">Wel Come !</h2>
     </div>
     <div class="mt-8">
-      <input type="text" pInputText name="username" type="text" placeholder="Username" required
-        [(ngModel)]="loginModel.userName" />
 
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>User Name</mat-label>
+        <input matInput name="username" placeholder="Enter Your Domain Name" [(ngModel)]="loginModel.userName" required>
+      </mat-form-field> 
     </div>
     <div class="mt-4">
-      <input type="text" pInputText name="password" type="password" placeholder="Password" required
-      [(ngModel)]="loginModel.password"/>
+        <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Password</mat-label> 
+          <input matInput  name="password"  type="password" placeholder="Enter Your Password"  [(ngModel)]="loginModel.password"  required> 
+        </mat-form-field> 
     </div>
     <div class="mt-6">
-      <button
-        class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-lg shadow-neumorphic">
+      <button  
+        class="w-full bg-red-700 hover:bg-red-900 text-white py-2 px-4 rounded-lg ">
         Login
       </button>
     </div>

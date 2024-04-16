@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseUrl: "",
-  basePublicUrl: "",
+  baseUrl: "http://localhost:6060/api/",
+  basePublicUrl: "'http://localhost:6060/",
   name: "Production"
 };

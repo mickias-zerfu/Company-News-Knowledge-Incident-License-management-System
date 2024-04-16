@@ -53,7 +53,7 @@ export class AuthService {
           console.log('Is User Authentication successful: ' + val);
         })
       );
-    } else {
+    } else { 
       const user = {
         UserName: userName,
         Password: password

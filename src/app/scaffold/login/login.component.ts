@@ -18,16 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-  }
-
-    // debugger
-    // if(this.loginModel.userName === 'Admin' && this.loginModel.password === '12345'){
-
-    // }else{
-    //   this.loginFailed = true;
-    // }
-
-
+  } 
   login(): void {
     this.authService.login(this.loginModel.userName, this.loginModel.password).subscribe(
       (isAuthenticated) => {
