@@ -5,7 +5,7 @@ import { delay, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 
-export interface User {
+export interface User1 {
   id: number;
   username: string;
   role: string; // 'admin', 'sub-admin or user' etc
@@ -18,7 +18,7 @@ export interface User {
 })
 export class AuthService {
 
-  private user: User | any;
+  // private user: User | any;
   isUserLoggedIn: boolean = false;
   userRole: string = '';
   isAuthenticated: boolean = false;
@@ -26,7 +26,7 @@ export class AuthService {
   public loginStatusChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  private apiUrl: string; 
+  private apiUrl: string;
 
   constructor(private http: HttpClient) {
     this.apiUrl = environment.baseUrl + 'user/login';
@@ -72,36 +72,35 @@ export class AuthService {
         }),
         delay(100)
       );
-    } 
+    }
   }
   public logout(): void {
     this.setUserLoggedIn(false, '');
     localStorage.removeItem('isUserLoggedIn');
     localStorage.removeItem('userRole');
+    this.emitLoginStatus();
   }
 
-  getCurrentUser(): User | null {
-    const userJson = localStorage.getItem('userRole');
+  // getCurrentUser(): User | null {
+  //   const userJson = localStorage.getItem('userRole');
 
-    if (userJson) {
-      return JSON.parse(userJson);
-    }
-    return null;
-  }
+  //   if (userJson) {
+  //     return JSON.parse(userJson);
+  //   }
+  //   return null;
+  // }
 
   public isAuthenticate(): boolean {
     const storeData = localStorage.getItem('isUserLoggedIn');
-    const roleData = localStorage.getItem('userRole');
-
-    console.log('StoreData Auth isAuthenticate: ' + storeData);
-    console.log('roleData: isAuthenticate: ' + roleData);
-
     if (storeData === 'true') {
       this.emitLoginStatus();
       return true;
     }
-
     return false;
+  }
+  public getRoleOfLoggedInUser(): any {
+    const userRole = localStorage.getItem('userRole');
+      return userRole;
   }
 
   private setUserLoggedIn(isLoggedIn: boolean, role: string): void {

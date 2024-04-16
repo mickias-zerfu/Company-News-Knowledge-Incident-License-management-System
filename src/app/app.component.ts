@@ -7,38 +7,32 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'TXN-Monitoring'; 
+  title = 'Resource Sharing Platform';
   drawer: { opened: boolean } = { opened: true };
-  @Input() isAdmin = false;
-  @Input() isLoggedIn = false;
+  isAdmin = false;
+  isLoggedIn = false;
 
   constructor(private cdr: ChangeDetectorRef, private authService: AuthService) { }
-  ngOnInit() { 
+  ngOnInit() {
     this.checkLoginStatus();
   }
   checkLoginStatus() {
     this.isLoggedIn = this.authService.isAuthenticate();
-    this.authService.loginStatusChanged.subscribe((isUserLoggedIn: boolean) => {  
+    this.authService.loginStatusChanged.subscribe((isUserLoggedIn: boolean) => {
       this.isLoggedIn = isUserLoggedIn;
-      this.cdr.detectChanges();
-    });
-    const storeData = localStorage.getItem('isUserLoggedIn');
-    const roleData = localStorage.getItem('userRole');
-
-    console.log('StoreData app: ' + storeData);
-    console.log('roleData app: ' + roleData);
-
-    if (storeData === 'true') {
-      this.isLoggedIn = true;
-
+      const roleData = this.authService.getRoleOfLoggedInUser();
       if (roleData === 'admin') {
         this.isAdmin = true;
-        console.log('this.isLoggedIn if storeData === true && roleData === admin app', this.isLoggedIn);
+      }
+      else if (roleData === 'subadmin') {
+        this.isAdmin = true;
+      }
+      else if (roleData === 'user') {
+        this.isAdmin = false;
       }
 
-      console.log('this.isLoggedIn if storeData === true app', this.isLoggedIn);
-    }
-
+      this.cdr.detectChanges();
+    });
     this.cdr.detectChanges();
 
   }
