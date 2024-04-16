@@ -2,9 +2,9 @@
 <nav class="sidebar-nav pb-8 ">
   <ul id="sidebarnav">
     <li class="sidebar-item">
-      <img class="avatar mat-elevation-z8 rounded" src="../../../assets/user_avatar.png" />
-      <h4 class="name">Yekoye Mihret</h4>
-      <p class="designation">Senior IB Officer</p>
+      <img class="avatar mat-elevation-z8 h-24 w-24 rounded" src="../../../assets/user_avatar.png" />
+      <!--<h4 class="name">Yekoye Mihret</h4>-->
+      <!--<p class="designation">Senior IB Officer</p>-->
       <mat-divider></mat-divider>
     </li>
     <ul>
@@ -22,7 +22,7 @@
             <mat-icon>{{ item.icon }}</mat-icon>
             <span class="hide-menum">{{ item.title }}</span>
           </a>
-          <ul *ngIf="showMenu === item.title || showMenu !== item.title" class="pl-8">
+          <ul *ngIf="showMenu === item.title " class="pl-8">
             <li class="sidebar-item" [class.active]="isSubMenuItemActive(subItem)" *ngFor="let subItem of item.submenu">
               <a class="sidebar-link waves-effect waves-dark flex items-center space-x-2 cursor-pointer"
                  [routerLink]="(subItem.class !== '') ? [subItem.path] : null"

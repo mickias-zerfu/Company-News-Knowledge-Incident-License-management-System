@@ -1,5 +1,5 @@
 .sidebar-nav{
-  height: 100vh;
+  height:max-content!important;
 }
 .side-wrapper {
   width: 250px;

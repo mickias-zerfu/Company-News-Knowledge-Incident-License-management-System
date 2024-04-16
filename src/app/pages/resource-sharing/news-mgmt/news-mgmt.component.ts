@@ -44,8 +44,7 @@ export class NewsMgmtComponent implements OnInit {
   deleteBlog(BlogId: number) {
     this.blogService.deleteBlog(BlogId).subscribe(data => {
       // Toaster
-      console.log(data);
-      this.router.navigate(['/resources/managenews']);
+      this.getAllBlogs()
     });
   }
   openConfirmationDialog(fileId: number): void {

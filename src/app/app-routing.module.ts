@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: "notifications", component: NotificationsComponent },
 
 
-  { path: "dashboard", component: DashboardComponent },
+  { path: "dashboard", component: ResourceDashboardComponent },
 
 
   { path: "transactions", component: TransactionsComponent },

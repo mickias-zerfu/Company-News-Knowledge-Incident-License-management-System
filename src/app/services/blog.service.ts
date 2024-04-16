@@ -2,21 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BlogModel } from '../models/blog.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
-  private apiUrl = 'http://localhost:5195/api/news'; // Replace with your API endpoint URL
+  private apiUrl: string;// = 'http://localhost:5195/api/news'; // Replace with your API endpoint URL
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.apiUrl = environment.baseUrl + 'news';
+  }
 
   getBlogById(id: number): Observable<BlogModel> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<BlogModel>(url);
   }
   uploadBlogImage(formData: FormData): Observable<any> {
-    return this.http.post<any>('http://localhost:5195/api/Files/PostSingleFile', formData);
+    return this.http.post<any>(`${environment.baseUrl}Files/PostSingleFile`, formData);
   }
   addBlog(blog: BlogModel): Observable<BlogModel> {
     return this.http.post<BlogModel>(this.apiUrl, blog);
@@ -28,8 +31,6 @@ export class BlogService {
 
   updateBlogContent(id: number, content: BlogModel): Observable<BlogModel> {
     const url = `${this.apiUrl}/${id}`;
-    // const updatedBlog = { content: content };
-    console.log(content);
     return this.http.put<any>(url, content);
   }
   deleteBlog(id: number): Observable<void> {

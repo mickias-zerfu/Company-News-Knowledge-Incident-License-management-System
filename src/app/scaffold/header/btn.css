@@ -1,7 +1,7 @@
 .button {
   --color: #dd1748;
   padding: 0.8em 1.7em;
-  background-color: var(--primary);
+  background-color:  ghostwhite;
   border-radius: .3em;
   position: relative;
   overflow: hidden;

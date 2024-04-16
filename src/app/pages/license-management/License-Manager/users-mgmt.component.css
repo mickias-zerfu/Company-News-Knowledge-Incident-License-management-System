@@ -1,0 +1,4 @@
+.polygon {
+  clip-path: polygon(75% 0%, 100% 49%, 75% 100%, 0% 100%, 21% 58%, 0% 0%);
+  background-color:#EEEEEE;
+}

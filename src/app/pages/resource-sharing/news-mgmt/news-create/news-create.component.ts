@@ -2,6 +2,7 @@ import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogModel } from 'src/app/models/blog.model';
+import { FileDetails } from 'src/app/models/fileDetail.model';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -52,7 +53,7 @@ export class NewsCreateComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log('Upload success.', res);
-          this.post.image_url = res.imageUrl;
+          this.post.image_url = res.fileUrl;
           this.onUploadFinished.emit(res);
         },
         (error: any) => {

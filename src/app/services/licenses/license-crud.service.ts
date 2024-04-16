@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { License } from 'src/app/models/license/license.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LicenseCrudService {
-  private baseUrl = 'http://localhost:5195/api/licenses'; // Replace with your API endpoint
+  private baseUrl:string; // = 'http://localhost:5195/api/licenses'; // Replace with your API endpoint
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.baseUrl = environment.baseUrl + 'licenses';
+  }
 
   getLicenses(): Observable<License[]> {
     return this.http.get<License[]>(this.baseUrl);
@@ -31,4 +34,5 @@ export class LicenseCrudService {
   deleteLicense(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
 }

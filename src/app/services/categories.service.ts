@@ -2,14 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CategoryModel } from '../models/category.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
-  private apiUrl = 'http://localhost:5144/api/products'; // Replace with your API endpoint URL
-
-  constructor(private http: HttpClient) { }
+  private apiUrl: string;
+  constructor(private http: HttpClient) {
+    this.apiUrl = environment.baseUrl + 'news';
+  }
 
   getAllCategorys(): Observable<CategoryModel[]> {
     return this.http.get<CategoryModel[]>(this.apiUrl);
