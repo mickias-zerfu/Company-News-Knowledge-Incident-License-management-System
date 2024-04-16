@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 
-export interface User {
+export interface User1 {
   id: number;
   username: string;
   role: string; // 'admin', 'sub-admin or user' etc
@@ -17,62 +18,89 @@ export interface User {
 })
 export class AuthService {
 
-  private user: User | any;
+  // private user: User | any;
   isUserLoggedIn: boolean = false;
   userRole: string = '';
   isAuthenticated: boolean = false;
 
   public loginStatusChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private http: HttpClient) {
 
+  private apiUrl: string;
+
+  constructor(private http: HttpClient) {
+    this.apiUrl = environment.baseUrl + 'user/login';
   }
 
   public login(userName: string, password: string): Observable<any> {
 
     if (userName === 'admin' && password === 'admin') {
       this.setUserLoggedIn(true, 'admin');
-    } else if (userName === 'subadmin' && password === 'subadmin') {
-      this.setUserLoggedIn(true, 'subadmin');
-    } else {
-      this.setUserLoggedIn(true, 'user');
+      this.emitLoginStatus();
+      return of(this.isUserLoggedIn).pipe(
+        delay(100),
+        tap(val => {
+          console.log('Is User Authentication successful: ' + val);
+        })
+      );
     }
-    this.emitLoginStatus();
-    return of(this.isUserLoggedIn).pipe(
-      delay(100),
-      tap(val => {
-        console.log('Is User Authentication successful: ' + val);
-      })
-    );
+    else if (userName === 'subadmin' && password === 'subadmin') {
+      this.setUserLoggedIn(true, 'subadmin');
+      this.emitLoginStatus();
+      return of(this.isUserLoggedIn).pipe(
+        delay(100),
+        tap(val => {
+          console.log('Is User Authentication successful: ' + val);
+        })
+      );
+    } else { 
+      const user = {
+        UserName: userName,
+        Password: password
+      };
+      return this.http.post<any>(this.apiUrl, user).pipe(
+        map(result => {
+          if (result) {
+            this.setUserLoggedIn(true, 'user');
+            this.emitLoginStatus();
+            console.log('Is User Authentication successful: true');
+          } else {
+            this.setUserLoggedIn(false, '');
+            console.log('Is User Authentication successful: false');
+          }
+          return this.isUserLoggedIn;
+        }),
+        delay(100)
+      );
+    }
   }
   public logout(): void {
     this.setUserLoggedIn(false, '');
     localStorage.removeItem('isUserLoggedIn');
     localStorage.removeItem('userRole');
+    this.emitLoginStatus();
   }
 
-  getCurrentUser(): User | null {
-    const userJson = localStorage.getItem('userRole');
+  // getCurrentUser(): User | null {
+  //   const userJson = localStorage.getItem('userRole');
 
-    if (userJson) {
-      return JSON.parse(userJson);
-    }
-    return null;
-  }
+  //   if (userJson) {
+  //     return JSON.parse(userJson);
+  //   }
+  //   return null;
+  // }
 
   public isAuthenticate(): boolean {
     const storeData = localStorage.getItem('isUserLoggedIn');
-    const roleData = localStorage.getItem('userRole');
-
-    console.log('StoreData Auth isAuthenticate: ' + storeData);
-    console.log('roleData: isAuthenticate: ' + roleData);
-
     if (storeData === 'true') {
       this.emitLoginStatus();
       return true;
     }
-
     return false;
+  }
+  public getRoleOfLoggedInUser(): any {
+    const userRole = localStorage.getItem('userRole');
+      return userRole;
   }
 
   private setUserLoggedIn(isLoggedIn: boolean, role: string): void {

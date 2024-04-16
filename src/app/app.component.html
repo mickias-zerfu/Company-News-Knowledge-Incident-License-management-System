@@ -2,7 +2,7 @@
   <div style="display: block;">
   <app-header [isAdmin]="isAdmin" [isLoggedIn]="isLoggedIn" ></app-header>
   </div>
-  <div class="sidenav-content text-left" style="width: 250px;"  *ngIf="isAdmin" >
+  <div class="sidenav-content text-left" style="width: 250px;"  *ngIf="isLoggedIn && isAdmin" >
     <button type="button" (click)="drawer.toggle()" style="width: 250px;"
       class="flex items-left justify-start align-middle place-self-center  px-4 py-2  rounded-t-lg">
       <div *ngIf="drawer.opened" class=" flex items-center justify-center align-middle place-self-center ">
@@ -15,7 +15,7 @@
   </div>
   <div class="flex">
     <mat-drawer #drawer class="example-sidenav hw-screen" mode="side" [opened]="isAdmin">
-      <div *ngIf="isAdmin" [ngStyle]="{ 'display': !drawer.opened ? 'none' : 'block' }">
+      <div *ngIf="isLoggedIn && isAdmin" [ngStyle]="{ 'display': !drawer.opened ? 'none' : 'block' }">
         <app-sidebar class="h-screen"></app-sidebar>
       </div>
     </mat-drawer>

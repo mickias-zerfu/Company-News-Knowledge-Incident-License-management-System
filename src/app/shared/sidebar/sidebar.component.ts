@@ -1,7 +1,8 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, Input } from '@angular/core';
 import { ROUTES } from './menu-items';
 import { RouteInfo } from './sidebar.metadata';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 //declare var $: any;
 
@@ -13,10 +14,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SidebarComponent implements OnInit {
   showMenu: string = '';
   public sidebarnavItems: RouteInfo[] = [];
+  @Input() isAdmin = false;
+  @Input() isLoggedIn = false;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute, private authService: AuthService
   ) { }
 
   ngOnInit() {

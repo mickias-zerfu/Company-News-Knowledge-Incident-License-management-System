@@ -1,45 +1,48 @@
-import { Component } from '@angular/core';
-import { Topcard } from 'src/app/models/top-card.model';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
   styleUrls: ['./user-management.component.css']
 })
-export class UserManagementComponent {
+export class UserManagementComponent implements OnInit {
+  userManagementStatus: string;
+  users: any[]; // Array to hold mock user data
+  displayedColumns: string[] = ['name', 'email', 'role', 'action'];
+  dataSource: MatTableDataSource<any>;
 
-  topcardsIb: Topcard[] = [];
-
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.getIbData()
+  constructor() {
+    this.dataSource = new MatTableDataSource<any>();
   }
 
-  getIbData() {
-    this.topcardsIb.push(
-      {
-        bgcolor: 'bg-red-500',
-        icon: 'cog',
-        title: '78,000',
-        subtitle: 'Total User',
-        link:''
-      },
-      {
-        bgcolor: 'bg-red-900',
-        icon: 'money-bill',
-        title: '28',
-        subtitle: 'Active Users',
-        link:''
-      },
-      {
-        bgcolor: 'bg-yellow-900',
-        icon: 'sign-out',
-        title: '8',
-        subtitle: 'InActive Users',
-        link:''
-      }
-    )
+  ngOnInit(): void {
+    // Initialize mock user data
+    this.users = [
+      { name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+      { name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+      { name: 'Alice Johnson', email: 'alice@example.com', role: 'User' }
+    ];
+
+    // Set user management status
+    this.userManagementStatus = 'Active';
+
+    // Set data source for MatTable
+    this.dataSource.data = this.users;
+  }
+
+  // Method to add a new user (mock action)
+  addNewUser(): void {
+    // Mock action to add a new user
+    console.log('Adding a new user...');
+  }
+
+  // Method to delete a user (mock action)
+  deleteUser(user: any): void {
+    // Mock action to delete a user
+    console.log(`Deleting user: ${user.name}`);
+    // Remove the user from the array
+    this.users = this.users.filter(u => u !== user);
+    this.dataSource.data = this.users; // Update data source for MatTable
   }
 }

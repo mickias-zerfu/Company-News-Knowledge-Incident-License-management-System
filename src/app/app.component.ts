@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 
 @Component({
@@ -7,41 +7,32 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'TXN-Monitoring';
-  isAdmin: boolean = false;
-  isLoggedIn: boolean = false;
+  title = 'Resource Sharing Platform';
   drawer: { opened: boolean } = { opened: true };
+  isAdmin = false;
+  isLoggedIn = false;
 
   constructor(private cdr: ChangeDetectorRef, private authService: AuthService) { }
   ngOnInit() {
-    // debugger
     this.checkLoginStatus();
   }
   checkLoginStatus() {
     this.isLoggedIn = this.authService.isAuthenticate();
     this.authService.loginStatusChanged.subscribe((isUserLoggedIn: boolean) => {
-      debugger
-      console.log('---------------isUserLoggedIn authService.loginStatusChanged.subscribe app', isUserLoggedIn);
       this.isLoggedIn = isUserLoggedIn;
-      this.cdr.detectChanges();
-    });
-    const storeData = localStorage.getItem('isUserLoggedIn');
-    const roleData = localStorage.getItem('userRole');
-
-    console.log('StoreData app: ' + storeData);
-    console.log('roleData app: ' + roleData);
-
-    if (storeData === 'true') {
-      this.isLoggedIn = true;
-
+      const roleData = this.authService.getRoleOfLoggedInUser();
       if (roleData === 'admin') {
         this.isAdmin = true;
-        console.log('this.isLoggedIn if storeData === true && roleData === admin app', this.isLoggedIn);
+      }
+      else if (roleData === 'subadmin') {
+        this.isAdmin = true;
+      }
+      else if (roleData === 'user') {
+        this.isAdmin = false;
       }
 
-      console.log('this.isLoggedIn if storeData === true app', this.isLoggedIn);
-    }
-
+      this.cdr.detectChanges();
+    });
     this.cdr.detectChanges();
 
   }
