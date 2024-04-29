@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subject, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -7,42 +8,42 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css', 'btn.css', 'menubtn.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
+
+  private destroy$: Subject<void> = new Subject<void>();
 
 
   @Input() isAdmin = false;
   @Input() isLoggedIn = false;
+  user: any;
+  private authSubscription: Subscription;
 
-  constructor(private router: Router, public activatedRoute: ActivatedRoute, private authService: AuthService, ) { }
+  constructor(private router: Router, public activatedRoute: ActivatedRoute, private authService: AuthService,) { }
 
   ngOnInit() {
-    // let storeData = localStorage.getItem("isUserLoggedIn");
-    // let roleData = localStorage.getItem("userRole");
-    // console.log("StoreData header: " + storeData);
-    // console.log("roleData header: " + roleData);
-    // if (storeData == "true" && roleData == "admin") {
-    //   this.isLoggedIn = true;
-    //   this.isAdmin = true;
-    // }
-    // else if (storeData == "true") {
-    //   this.isLoggedIn = true;
-    // }
-    // else{
-    //   this.isAdmin = false;
-    // this.isLoggedIn = false;}
-
-    // console.log("isLoggedIn", this.isLoggedIn);
+    this.user = JSON.parse(localStorage.getItem('user_data') as any);
+    this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+      if (this.isLoggedIn) {
+        if (!this.isAdmin) {
+          this.isAdmin = this.user.role_id === 1 || this.user.role_id === 2;
+        }
+      }
+    });
   }
 
-  ngOnDestroy(): void { }
-
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
   logout() {
-    console.log("logged out");
-    localStorage.removeItem("isUserLoggedIn");
-     localStorage.removeItem("userRole");
-    // this.authenticationService.removeSession();
-
-    this.authService.loginStatusChanged.emit(false);
-    this.router.navigate(["home"]);
+    if (confirm('Are you sure?')) {
+      this.authService.logout();
+      return true;
+    } else {
+      return false;
+    }
   }
+
 }

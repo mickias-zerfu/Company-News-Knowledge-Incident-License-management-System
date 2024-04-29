@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,29 +12,27 @@ export class AppComponent implements OnInit {
   drawer: { opened: boolean } = { opened: true };
   isAdmin = false;
   isLoggedIn = false;
+  private authSubscription: Subscription;
+  user: any;
 
   constructor(private cdr: ChangeDetectorRef, private authService: AuthService) { }
   ngOnInit() {
+    this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+      if (this.isLoggedIn) {
+        this.user = JSON.parse(localStorage.getItem('user_data') as any);
+        this.checkLoginStatus();
+      }
+    });
     this.checkLoginStatus();
   }
   checkLoginStatus() {
-    this.isLoggedIn = this.authService.isAuthenticate();
-    this.authService.loginStatusChanged.subscribe((isUserLoggedIn: boolean) => {
-      this.isLoggedIn = isUserLoggedIn;
-      const roleData = this.authService.getRoleOfLoggedInUser();
-      if (roleData === 'admin') {
-        this.isAdmin = true;
-      }
-      else if (roleData === 'subadmin') {
-        this.isAdmin = true;
-      }
-      else if (roleData === 'user') {
-        this.isAdmin = false;
-      }
-
-      this.cdr.detectChanges();
-    });
+    if (this.user) {
+      this.isLoggedIn = true;
+    }
+    if (!this.isAdmin) {
+      this.isAdmin = this.user.role_id === 1 || this.user.role_id === 2;
+    }
     this.cdr.detectChanges();
-
   }
 }

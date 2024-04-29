@@ -42,6 +42,11 @@ import { AddLicenseManagerComponent } from './pages/license-management/License-M
 import { DetailLicenseManagerComponent } from './pages/license-management/License-Manager/detail-license-manager/detail-license-manager.component';
 import { LmanagersMgmtComponent } from './pages/license-management/License-Manager/users-mgmt.component';
 import { ListLicenseManagerComponent } from './pages/license-management/License-Manager/list-license-manager/list-license-manager.component';
+import { UserListComponent } from './pages/user-management/user-list/user-list.component';
+import { UserFormComponent } from './pages/user-management/user-form/user-form.component';
+import { UserDetailComponent } from './pages/user-management/user-detail/user-detail.component';
+import { AccessDeniedComponent } from './shared/access-denied/access-denied.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -51,47 +56,44 @@ const routes: Routes = [
   { path: "notifications", component: NotificationsComponent },
 
 
-  { path: "dashboard", component: ResourceDashboardComponent },
+  { path: "dashboard", component: ResourceDashboardComponent , canActivate: [AuthGuard] },
 
 
-  { path: "transactions", component: TransactionsComponent },
-  { path: "service", component: ServicesComponent },
-  { path: "user-management", component: UserManagementComponent },
-  { path: "help", component: FaqsComponent },
+  { path: "transactions", component: TransactionsComponent , canActivate: [AuthGuard] },
+  { path: "service", component: ServicesComponent , canActivate: [AuthGuard] },
+  { path: "help", component: FaqsComponent   },
   // Daily Checklist
-  { path: "checklist", component: DailyChecklistComponent },
+  { path: "checklist", component: DailyChecklistComponent , canActivate: [AuthGuard] },
 
   // Resources
   {
     path: "resources", component: ResourceSharingComponent,
     children: [
-      { path: "", component: ResourceDashboardComponent },
+      { path: "status", component: ResourceDashboardComponent   , canActivate: [AuthGuard] },
 
-      { path: "categories", component: CategoriesComponent },
+      { path: "news", component: NewsListComponent   , canActivate: [AuthGuard] },
+      { path: "managenews", component: NewsMgmtComponent   , canActivate: [AuthGuard] },
+      { path: "news/add", component: NewsCreateComponent   , canActivate: [AuthGuard] },
+      { path: "news/:id", component: NewsDetailComponent   , canActivate: [AuthGuard] },
+      { path: "news/:id/update", component: NewsCreateComponent, data: { isEditMode: true }   , canActivate: [AuthGuard] },
 
-      { path: "news", component: NewsListComponent },
-      { path: "managenews", component: NewsMgmtComponent },
-      { path: "news/add", component: NewsCreateComponent },
-      { path: "news/:id", component: NewsDetailComponent },
-      { path: "news/:id/update", component: NewsCreateComponent, data: { isEditMode: true } },
-
-      { path: "files", component: ProductListComponent },
-      { path: "managefiles", component: ProductMgmtComponent },
-      { path: "files/add", component: ProductCreateComponent },
-      // { path: "files/:id", component: ProductDetailComponent },
-      { path: "files/:id/update", component: ProductCreateComponent, data: { isEditMode: true } },
+      { path: "files", component: ProductListComponent   , canActivate: [AuthGuard] },
+      { path: "managefiles", component: ProductMgmtComponent   , canActivate: [AuthGuard] },
+      { path: "files/add", component: ProductCreateComponent   , canActivate: [AuthGuard] },
+      // { path: "files/:id", component: ProductDetailComponent   , canActivate: [AuthGuard] },
+      { path: "files/:id/update", component: ProductCreateComponent, data: { isEditMode: true }   , canActivate: [AuthGuard] },
 
 
-      { path: "incidents", component: IncidentMgmtComponent },
-      { path: "incident/add", component: IncidentCreateComponent },
-      { path: "incident/:id", component: IncidentDetailComponent },
-      { path: "incident/:id/update", component: IncidentCreateComponent, data: { isEditMode: true } },
+      { path: "incidents", component: IncidentMgmtComponent   , canActivate: [AuthGuard] },
+      { path: "incident/add", component: IncidentCreateComponent   , canActivate: [AuthGuard] },
+      { path: "incident/:id", component: IncidentDetailComponent   , canActivate: [AuthGuard] },
+      { path: "incident/:id/update", component: IncidentCreateComponent, data: { isEditMode: true }   , canActivate: [AuthGuard] },
 
-      { path: "knowledges", component: KnowledgeListComponent },
-      { path: "manageknowledges", component: KnowledgeMgmtComponent },
-      { path: "knowledge/add", component: KnowledgeCreateComponent },
-      { path: "knowledge/:id", component: KnowledgeDetailComponent },
-      { path: "knowledge/:id/update", component: KnowledgeCreateComponent, data: { isEditMode: true } },
+      { path: "knowledges", component: KnowledgeListComponent   , canActivate: [AuthGuard] },
+      { path: "manageknowledges", component: KnowledgeMgmtComponent   , canActivate: [AuthGuard] },
+      { path: "knowledge/add", component: KnowledgeCreateComponent   , canActivate: [AuthGuard] },
+      { path: "knowledge/:id", component: KnowledgeDetailComponent   , canActivate: [AuthGuard] },
+      { path: "knowledge/:id/update", component: KnowledgeCreateComponent, data: { isEditMode: true }   , canActivate: [AuthGuard] },
 
     ]
   },
@@ -101,31 +103,40 @@ const routes: Routes = [
     path: "licenses",
     component: LicenseManagementComponent,
     children: [
-      { path: "", component: LicenseDashboardComponent }, // Default route should be placed at the end
-      { path: "lists", component: LicenseListComponent },
-      { path: "add", component: LicenseFormComponent },
-      { path: "license/:id/update", component: LicenseFormComponent },
-      { path: "license/:id", component: LicenseDetailComponent },
+      { path: "", component: LicenseDashboardComponent , canActivate: [AuthGuard] }, // Default route should be placed at the end
+      { path: "lists", component: LicenseListComponent , canActivate: [AuthGuard] },
+      { path: "add", component: LicenseFormComponent , canActivate: [AuthGuard] },
+      { path: "license/:id/update", component: LicenseFormComponent , canActivate: [AuthGuard] },
+      { path: "license/:id", component: LicenseDetailComponent , canActivate: [AuthGuard] },
 
-      { path: "softwares", component: SoftwareProductListComponent },
-      { path: "software/add", component: SoftwareProductFormComponent },
-      { path: "software/:id", component: SoftwareProductDetailComponent },
-      { path: "software/:id/update", component: SoftwareProductFormComponent, data: { isEditMode: true } },
+      { path: "softwares", component: SoftwareProductListComponent , canActivate: [AuthGuard] },
+      { path: "software/add", component: SoftwareProductFormComponent , canActivate: [AuthGuard] },
+      { path: "software/:id", component: SoftwareProductDetailComponent , canActivate: [AuthGuard] },
+      { path: "software/:id/update", component: SoftwareProductFormComponent, data: { isEditMode: true } , canActivate: [AuthGuard] },
       // ]
-      // },
-      { path: "lmanagers", component: LmanagersMgmtComponent },
+      // , canActivate: [AuthGuard] },
+      { path: "lmanagers", component: LmanagersMgmtComponent , canActivate: [AuthGuard] },
       // children: [
-      { path: "lmanagers/lists", component: ListLicenseManagerComponent },
-      { path: "lmanagers/add", component: AddLicenseManagerComponent },
-      { path: "lmanagers/:id", component: DetailLicenseManagerComponent },
-      { path: "lmanagers/:id/update", component: AddLicenseManagerComponent, data: { isEditMode: true } },
-      // ]
-      // },
-      // { path: ":id", component: LicenseDetailComponent },
-      // { path: ":id/update", component: LicenseFormComponent, data: { isEditMode: true } },
+      { path: "lmanagers/lists", component: ListLicenseManagerComponent , canActivate: [AuthGuard] },
+      { path: "lmanagers/add", component: AddLicenseManagerComponent , canActivate: [AuthGuard] },
+      { path: "lmanagers/:id", component: DetailLicenseManagerComponent , canActivate: [AuthGuard] },
+      { path: "lmanagers/:id/update", component: AddLicenseManagerComponent, data: { isEditMode: true } , canActivate: [AuthGuard] },
+
     ]
   },
+  // User Management
 
+
+  { path: "users", component: UserManagementComponent  , canActivate: [AuthGuard]   },
+  { path: "users/lists", component: UserListComponent  , canActivate: [AuthGuard]   },
+  { path: "users/manageusers", component: UserManagementComponent   , canActivate: [AuthGuard]  },
+  { path: "users/add", component: UserFormComponent   , canActivate: [AuthGuard]  },
+  { path: "users/:id", component: UserDetailComponent   , canActivate: [AuthGuard]  },
+  { path: "users/:id/update", component: UserFormComponent, data: { isEditMode: true }   , canActivate: [AuthGuard]  },
+
+  // access Denied
+
+  { path: "access-denied", component: AccessDeniedComponent },
 
   // Static pages
   { path: "about-us", component: AboutUsComponent },

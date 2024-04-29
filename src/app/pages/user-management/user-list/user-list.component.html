@@ -1,1 +1,78 @@
-<p>user-list works!</p>
+<mat-card class="bg-white shadow-md rounded-md">
+  <div class="dashboard-section bg-gray-200 p-8">
+    <div class="mb-4">
+      <div class="flex justify-around">
+        <h2 class="text-lg font-semibold">Sub Admin Table <mat-icon class="text-gray-600">person_outline</mat-icon></h2>
+        <span class="flex-grow"></span>
+        <div class="flex justify-between">
+          <mat-form-field appearance="outline" class="justify-center align-middle">
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput [(ngModel)]="searchItem.item" (keyup)="searchEvent(searchItem.item)" required name="search_item" type="text" class="w-full">
+          </mat-form-field>
+          <button mat-button type="submit" (click)="dateRangeChange()" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md">
+            Search
+          </button>
+          <div class="flex justify-end pr-2 pl-8">
+            <mat-icon class="text-white">plus_circle_outline</mat-icon>
+            <app-add-new-button buttonText="Add New User" [routerLink]="['../add']"></app-add-new-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-card-content>
+    <div class="flex items-center mb-4">
+      <mat-card-actions class="flex items-end justify-end">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 mt-4 pl-8 justify-between">
+          <button [disabled]="checkedArray.length < 1" (click)="statusChange(1)" class="bg-red-600 hover:bg-red-900 text-white font-bold py-2 px-4 rounded w-full md:w-auto">ACTIVE</button>
+          <button [disabled]="checkedArray.length < 1" (click)="statusChange(0)" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">DEACTIVE</button>
+          <button [disabled]="checkedArray.length < 1" (click)="multiDelete()" class="bg-yellow-600 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">DELETE</button>
+        </div>
+      </mat-card-actions>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="table-auto min-w-full">
+        <thead>
+          <tr class="bg-gray-800 text-white">
+            <th class="px-4 py-2">
+              <input type="checkbox" name="checkAll" [(ngModel)]="checkAll" (ngModelChange)="checkAllChange()">
+            </th>
+            <th class="px-4 py-2">S.No</th>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Email</th>
+            <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of data; let i = index" class="border-b border-gray-200 hover:bg-gray-100">
+            <td class="px-4 py-2">
+              <input type="checkbox" name="check" [(ngModel)]="user.isChecked" (ngModelChange)="checkChange()">
+            </td>
+            <td class="px-4 py-2">{{ i+1 }}</td>
+            <td class="px-4 py-2">{{ user.name }}</td>
+            <td class="px-4 py-2">{{ user.email }}</td>
+            <td class="px-4 py-2">
+              <button size="tiny" *ngIf="user.status == 0" (click)="ActiveUser(user._id, i)" class="bg-red-600 hover:bg-red-900 text-white font-bold py-1 px-2 rounded">Inactive</button>
+              <button size="tiny" *ngIf="user.status == 1" (click)="InactiveUser(user._id, i)" class="bg-green-600 hover:bg-green-900 text-white font-bold py-1 px-2 rounded">Active</button>
+            </td>
+
+            <td class="px-4 py-2">
+              <!-- Button to delete user -->
+              <button mat-icon-button  size="tiny" [routerLink]="['/admin/view', user._id]" >
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-icon-button size="tiny" (click)="deleteUser(user._id, i)" >
+                <mat-icon class="text-yellow-600 hover:text-orange-600"  >edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" size="tiny" (click)="deleteUser(user._id, i)" >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+           </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
