@@ -31,19 +31,20 @@ export class AppComponent implements OnInit {
   checkLoginStatus() {
     if (this.user) {
       this.isLoggedIn = true;
-    }
-    if (!this.isAdmin) {
-      this.isAdmin = this.user.role_id === 1 || this.user.role_id === 2;
+      if (!this.isAdmin) {
+        this.user = JSON.parse(localStorage.getItem('user_data') as any);
+        this.isAdmin = this.user.role_id === 1 || this.user.role_id === 2;
+      }
     }
     this.cdr.detectChanges();
   }
 
-  AddSuperAdmin(){
+  AddSuperAdmin() {
     this.adminService.AddSuperAdminInit().subscribe((res: any) => {
       if (res.status === 200) {
         this.checkLoginStatus();
       }
     })
 
-    }
+  }
 }

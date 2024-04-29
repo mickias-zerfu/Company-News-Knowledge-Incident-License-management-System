@@ -21,10 +21,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private router: Router, public activatedRoute: ActivatedRoute, private authService: AuthService,) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('user_data') as any);
     this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
       if (this.isLoggedIn) {
+    this.user = JSON.parse(localStorage.getItem('user_data') as any);
         if (!this.isAdmin) {
           this.isAdmin = this.user.role_id === 1 || this.user.role_id === 2;
         }

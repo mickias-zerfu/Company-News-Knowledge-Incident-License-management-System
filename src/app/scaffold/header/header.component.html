@@ -64,7 +64,7 @@
             </a>
           </li>
           <li class="donation w-full"  *ngIf="isLoggedIn" >
-            <h6>Hello, {{user.name }}</h6>
+            <h6 *ngIf="user">Hello, {{user.name }}</h6>
             <a routerLinkActive="active" (click)="logout()" class="btn text-white font-bold">
               <button class="button w-full">Logout</button>
             </a>
