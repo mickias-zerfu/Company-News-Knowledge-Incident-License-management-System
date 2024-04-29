@@ -42,18 +42,7 @@ export class AuthService {
       return this.http.post(`${this.apiUrl}admin/login`, user);
     }
     else {
-      return this.http.post<any>(this.apiUrl + 'user/login', user).pipe(
-        map(result => {
-          if (result) {
-            localStorage.setItem('user_data', JSON.stringify({roleId:'0'}));
-            this.setUserLoggedIn(true);
-          } else {
-            this.setUserLoggedIn(false);
-          }
-          return this.isUserLoggedIn;
-        }),
-        delay(100)
-      );
+      return this.http.post<any>(this.apiUrl + 'user/login', user);
     }
   }
   public logout(): void {
@@ -63,15 +52,6 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    const storeData = localStorage.getItem('isUserLoggedIn');
-    if (storeData === 'true') {
-      return true;
-    }
-    return false;
-  }
-  private setUserLoggedIn(isLoggedIn: boolean): void {
-    this.isUserLoggedIn = isLoggedIn;
-    this.isLoggedInSubject.next(isLoggedIn);
-    localStorage.setItem('isUserLoggedIn', isLoggedIn ? 'true' : 'false');
-  }
+    return !!localStorage.getItem('token');
+  } 
 }
