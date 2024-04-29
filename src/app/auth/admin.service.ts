@@ -8,9 +8,15 @@ import { environment } from 'src/environments/environment';
 export class AdminService {
 
   // 'http://localhost:5195/api/admin/getSingleSubAdmin?request=1' \
-  baseUrl = 'http://localhost:5195/api/';
-  constructor(private http: HttpClient) { }
+  baseUrl = '';
 
+  constructor(private http: HttpClient) {
+    this.baseUrl = environment.baseUrl + '';
+  }
+
+  AddSuperAdminInit() {
+    return this.http.post(`${this.baseUrl}Startup`,'')
+  }
   getAdminList(data: any) {
     return this.http.post(`${this.baseUrl}admin/getSubAdmin`, data)
   }

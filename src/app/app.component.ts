@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import { Observable, Subscription } from 'rxjs';
+import { AdminService } from './auth/admin.service';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,9 @@ export class AppComponent implements OnInit {
   private authSubscription: Subscription;
   user: any;
 
-  constructor(private cdr: ChangeDetectorRef, private authService: AuthService) { }
+  constructor(private cdr: ChangeDetectorRef, private authService: AuthService, private adminService: AdminService) { }
   ngOnInit() {
+    this.AddSuperAdmin();
     this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
       if (this.isLoggedIn) {
@@ -35,4 +37,13 @@ export class AppComponent implements OnInit {
     }
     this.cdr.detectChanges();
   }
+
+  AddSuperAdmin(){
+    this.adminService.AddSuperAdminInit().subscribe((res: any) => {
+      if (res.status === 200) {
+        this.checkLoginStatus();
+      }
+    })
+
+    }
 }
