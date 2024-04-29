@@ -15,7 +15,7 @@ export class AdminService {
   }
 
   AddSuperAdminInit() {
-    return this.http.post(`${this.baseUrl}Startup`,'')
+    return this.http.post(`${this.baseUrl}Startup/start`,'')
   }
   getAdminList(data: any) {
     return this.http.post(`${this.baseUrl}admin/getSubAdmin`, data)
