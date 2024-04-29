@@ -30,7 +30,7 @@ export class AuthService {
   public get isLoggedIn$(): Observable<boolean> {
     return this.isLoggedInSubject.asObservable();
   }
-   private hasToken(): boolean {
+  private hasToken(): boolean {
     return !!localStorage.getItem('token');
   }
   public login(userName: string, password: string): Observable<any> {
@@ -45,6 +45,7 @@ export class AuthService {
       return this.http.post<any>(this.apiUrl + 'user/login', user).pipe(
         map(result => {
           if (result) {
+            localStorage.setItem('user_data', JSON.stringify({roleId:'0'}));
             this.setUserLoggedIn(true);
           } else {
             this.setUserLoggedIn(false);
