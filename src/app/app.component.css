@@ -5,5 +5,7 @@
   transform: scale(1);
 }
 .sidenav-content{
-  background-color: #e8e8e8c2;
+  background-color: #e8e8e0;
+  border-left: 0.5px solid #adada7;
+  min-height: 400px !important;
 }
