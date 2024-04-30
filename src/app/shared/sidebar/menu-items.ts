@@ -10,7 +10,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
-        path: '/resources',
+        path: '/resources/status',
         title: 'Status',
         icon: 'tonality',
         class: 'sub-menu',
@@ -101,7 +101,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/user-management',
+    path: '/users',
     title: 'User Management',
     icon: 'people',
     class: '',

@@ -1,0 +1,29 @@
+<section class="h-screen">
+  <div class="title-container">
+  <section class="hero-section bg-cover bg-center pl-8">
+    <div class="hero-content text-center pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">Access Denied</h2>
+    </div>
+  </section>
+</div>
+<div class="flex items-center justify-center">
+  <div class="disvider  h-64 w-64">
+    <app-denied-lottie> </app-denied-lottie>
+  </div>
+</div>
+<div class="px-6 py-8 bg-white shadow-md rounded-lg">
+
+  <p class="mt-2 text-gray-600">
+    You don't have permission to access this page.
+  </p>
+
+  <p class="text-gray-600">
+    Please contact your administrator or login as an admin.
+  </p>
+  <div class="flex  justify-end mx-4">
+    <button class="bg-red-500 hover:bg-red-700 text-white font-semi-bold py-2 px-4 rounded"  [routerLink]="['../login']" routerLinkActive="router-link-active">
+     Login as different User/ Super Admin</button>
+  </div>
+
+</div>
+</section>

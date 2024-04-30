@@ -10,9 +10,15 @@ import { AppRoutingModule } from '../app-routing.module';
 import { LoadingComponent } from './loading/loading.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { AddNewButtonComponent } from './add-new-button/add-new-button.component';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
+import { DeniedLottieComponent } from './access-denied/denied-lottie/denied-lottie.component';
 
 
-
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+export function playerFactory() {
+  return player;
+}
 @NgModule({
   declarations: [
     ChartDataComponent,
@@ -22,9 +28,12 @@ import { AddNewButtonComponent } from './add-new-button/add-new-button.component
     PagenotfoundComponent,
     LoadingComponent,
     AddNewButtonComponent,
+    AccessDeniedComponent,
+    DeniedLottieComponent,
   ],
   imports: [
     CommonModule,
+    LottieModule.forRoot({ player: playerFactory }),
     HighchartsChartModule,
     MaterialModule,
     AppRoutingModule

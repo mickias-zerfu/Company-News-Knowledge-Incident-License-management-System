@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class UserManagementComponent implements OnInit {
   userManagementStatus: string;
   users: any[]; // Array to hold mock user data
-  displayedColumns: string[] = ['name', 'email', 'role', 'action'];
+  displayedColumns: string[] = ['name', 'email', 'role', 'permission', 'action'];
   dataSource: MatTableDataSource<any>;
 
   constructor() {
@@ -18,11 +18,6 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit(): void {
     // Initialize mock user data
-    this.users = [
-      { name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-      { name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
-      { name: 'Alice Johnson', email: 'alice@example.com', role: 'User' }
-    ];
 
     // Set user management status
     this.userManagementStatus = 'Active';

@@ -14,7 +14,7 @@
     </button>
   </div>
   <div class="flex">
-    <mat-drawer #drawer class="example-sidenav hw-screen" mode="side" [opened]="isAdmin">
+    <mat-drawer #drawer class="example-sidenav hw-screen bg-gray-200" mode="side" [opened]="true">
       <div *ngIf="isLoggedIn && isAdmin" [ngStyle]="{ 'display': !drawer.opened ? 'none' : 'block' }">
         <app-sidebar class="h-screen"></app-sidebar>
       </div>

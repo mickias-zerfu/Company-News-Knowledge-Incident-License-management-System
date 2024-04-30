@@ -9,11 +9,16 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class HomeComponent implements OnInit {
 
   isLoggedIn = false;
+  user:any;
 
   constructor(private authService: AuthService,) { }
   ngOnInit() {
-    // this.isLoggedIn = localStorage.getItem("isUserLoggedIn") ? false : true;
-    // console.log("isUserLoggedIn", this.isLoggedIn);
+
+    this.user = JSON.parse(localStorage.getItem('user_data') as any);
+
+    if (this.user) {
+      this.isLoggedIn = true;
+    }
 
   }
 

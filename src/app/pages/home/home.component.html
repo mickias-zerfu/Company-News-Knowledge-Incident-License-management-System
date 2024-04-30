@@ -20,9 +20,23 @@
                 </a>
               </li> -->
               <li class="notification w-full">
-                <a routerLinkActive="active" [routerLink]="['../login']" class="btn text-white font-bold"  >
-                  <button class="button w-full"><mat-icon class="textxl">user</mat-icon> Latest News </button>
-                </a>
+
+                <ng-container *ngIf="isLoggedIn; else elseBlock">
+                  <a routerLinkActive="active" [routerLink]="['../resources/news']">
+                    <button class="button w-full"> <mat-icon class="textxl">insert_drive_file</mat-icon> Latest News
+                    </button>
+                  </a>
+                </ng-container>
+                <ng-template #elseBlock>
+                  <a routerLinkActive="active" [routerLink]="['../login']">
+                    <button class="button w-full">
+                      <mat-icon class="textxl">lock</mat-icon>
+                      Login to see the latest News
+                    </button>
+                  </a>
+
+                </ng-template>
+
               </li>
             </ul>
           </div>

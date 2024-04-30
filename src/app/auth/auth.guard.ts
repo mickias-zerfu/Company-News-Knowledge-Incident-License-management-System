@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService, User } from './auth.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,65 +11,76 @@ export class AuthGuard implements CanActivate {
 
   constructor(private auth: AuthService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot): boolean {
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    var userInfo: any = JSON.parse(localStorage.getItem('user_data') as string);  
+    var token = localStorage.getItem('token')
+    //console.log(userInfo)
+    debugger
+    //if (!userInfo || !token) {
+    //  this.router.navigate(['/login']);
+    //  return false;
+    //}
 
-    const isUserLoggedIn = localStorage.getItem('isUserLoggedIn') === 'true';
-    const userRole = localStorage.getItem('userRole');
-
-    if (isUserLoggedIn) {
-      if (route.data['roles'] && route.data['roles'].indexOf(userRole) === -1) {
-        // User does not have the required role to access the route
-        this.router.navigate(['/unauthorized']);
-        return false;
+    if (userInfo['role_id'] == 1 || userInfo['role_id'] == 2) {
+      if (userInfo['role_id'] == 2) {
+        return true;
       }
-      // User is logged in and has the required role
-      return true;
-    }
+      else if (userInfo['role_id'] == 1) {
+        const accessCheck = (access: number) => {
+          const data = userInfo.access.find((element: any) => Number(element) == access);
+          if (data) {
+            return true;
+          } else {
+            this.accessDenied();
+            return false;
+          }
+        };
 
-    // User is not logged in, redirect to the login page
-    this.router.navigate(['/login']);
-    return false;
-  }
-
-}
-
-/*
-    // Get the expected role from route data
-    const expectedRole = route.data['expectedRole'];
-
-    // Get current user from AuthService
-    const currentUser = this.auth.getCurrentUser();
-
-    // Check if user is authenticated
-    if (!this.auth.isAuthenticate()) {
-      this.router.navigate(['login']);
-      return false;
-    }
-
-    // Check if route has role requirement
-    if (expectedRole) {
-
-      // User's role should match route's expected role
-      if (currentUser) {
-        if (currentUser.role === expectedRole) {
+        if (state.url.search('resources/status') !== -1 || state.url.search('dashboard') !== -1) {
           return true;
-
-          // User's role doesn't match, redirect to unauthorized
+        }
+        if (state.url.search('news') !== -1 || state.url.search('managenews') !== -1) {
+          return accessCheck(1);
+        } else if (state.url.search('knowledges') !== -1 || state.url.search('knowledge') !== -1) {
+          return accessCheck(2);
+        } else if (state.url.search('incidents') !== -1 || state.url.search('incident') !== -1) {
+          return accessCheck(3);
+        } else if (state.url.search('files') !== -1 || state.url.search('managefiles') !== -1) {
+          return accessCheck(4);
+        } else if (state.url.search('knowledges') !== -1 || state.url.search('knowledge') !== -1) {
+          return accessCheck(4);
+        } else if (state.url.search('licenses') !== -1) {
+          return accessCheck(5);
+        } else if (state.url.search('downtime') !== -1) {
+          return accessCheck(6);
+        } else if (state.url.search('checklist') !== -1) {
+          return accessCheck(7);
+        } else if (state.url.search('users') !== -1) {
+          return accessCheck(8);
         } else {
-          this.router.navigate(['unauthorized']);
           return false;
         }
       }
-      else {
+    }
+    else if (userInfo['role_id'] == 0) {
+
+      if (state.url.search('news') !== -1) {
         return true;
       }
-
-
-
-      // Route has no role requirement, allow access
+      else if (state.url.search('files') !== -1) {
+        return true;
+      }
     }
-    else {
-      return true;
+    else { 
+      return false;
     }
+    return false;
+  }
 
-    */
+  accessDenied() {
+    this.router.navigate(['/access-denied']);
+    return false;
+  }
+}

@@ -1,61 +1,26 @@
 <div class="user-management-container">
   <!-- User management status -->
-  <p class="text-gray-600">User management status: <span class="font-semibold">{{ userManagementStatus }}</span></p>
 
   <!-- Dashboard and Breadcrumbs -->
-  <div class="dashboard-section bg-gray-200 p-4 rounded-lg mb-4">
-    <h1 class="text-lg font-semibold">Dashboard and Breadcrumbs</h1>
-    <!-- Mock content for dashboard -->
-    <p>This is the dashboard section. Add your content here.</p>
-  </div>
-
-  <!-- Actions and Links -->
-  <div class="actions-section bg-white p-4 rounded-lg mb-4">
-    <h1 class="text-lg font-semibold mb-2">Some actions and links</h1>
-    <!-- Button to add a new user -->
-    <button mat-raised-button color="primary" (click)="addNewUser()">Add New User</button>
-    <!-- Mock list of users -->
-    <ul class="mt-4">
-      <li *ngFor="let user of users" class="mb-2">{{ user.name }}</li>
-    </ul>
-  </div>
-
-  <!-- Tables -->
-  <div class="tables-section bg-white p-4 rounded-lg">
-    <h1 class="text-lg font-semibold mb-2">Some tables</h1>
-    <!-- Mock table with user data -->
-    <table mat-table [dataSource]="users" class="w-full">
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let user">{{ user.name }}</td>
-      </ng-container>
-
-      <!-- Email Column -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
-        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
-      </ng-container>
-
-      <!-- Role Column -->
-      <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef>Role</th>
-        <td mat-cell *matCellDef="let user">{{ user.role }}</td>
-      </ng-container>
-
-      <!-- Action Column -->
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Action</th>
-        <td mat-cell *matCellDef="let user">
-          <!-- Button to delete user -->
-          <button mat-icon-button color="warn" (click)="deleteUser(user)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+  <div class="dashboard-section   p-8 ">
+    <div class="mb-4">
+      <div class="flex justify-around ">
+        <h2 class="text-lg font-semibold">User Management Dashboard</h2>
+        <span class="flex-grow"></span>
+        <div class="flex justify-between">
+          <mat-form-field appearance="outline" class="justify-center align-middle">
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="Search Users">
+          </mat-form-field>
+          <div class="flex justify-end pr-2 pl-8">
+            <app-add-new-button buttonText="Add New User" [routerLink]="['../users/add']"></app-add-new-button>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-start pr-2 pl-8 mb-8">
+        <button class="bg-red-500 hover:bg-red-700 text-white font-semi-bold py-2 px-4 rounded" type="button"
+          [routerLink]="['../users/lists']">List of Users</button>
+      </div>
+    </div>
   </div>
 </div>

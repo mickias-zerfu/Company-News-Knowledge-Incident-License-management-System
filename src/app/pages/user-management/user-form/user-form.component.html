@@ -1,1 +1,79 @@
-<p>user-form works!</p>
+<mat-card class="p-1">
+  <section class="hero-section bg-cover bg-center pl-8">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700">{{ id ? 'Edit Subadmin' : 'Add Subadmin' }}</h2>
+    </div>
+  </section>
+  <mat-card-content>
+    <form #newForm="ngForm" (ngSubmit)="newForm.valid && userSubmit(newForm.value)" class="space-y-6">
+      <div>
+        <mat-form-field appearance="outline" class="w-2/3 px-8">
+          <mat-label class="  text-sm font-medium text-gray-700">Full Name</mat-label>
+          <input type="text" name="name" [(ngModel)]="userData.name" #name="ngModel" matInput placeholder="Name"
+            minlength="3" maxlength="55" pattern="^[a-zA-Z0-9_ ]+$" required>
+          <mat-error *ngIf="name.invalid && (name.dirty || name.touched) || newForm.submitted">
+            <span class="text-red-600" *ngIf="name.hasError('required')">Name is required.</span>
+            <span class="text-red-600" *ngIf="name.hasError('pattern')">Invalid format name.</span>
+            <span class="text-red-600" *ngIf="name.hasError('minlength')">Name should be at least 3 characters
+              long.</span>
+            <span class="text-red-600" *ngIf="name.hasError('maxlength')">Name should not exceed 55 characters.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" class="w-2/3  px-8">
+          <mat-label class="  text-sm font-medium text-gray-700">Email Address</mat-label>
+          <input type="email" name="email" [(ngModel)]="userData.email" #email="ngModel" matInput placeholder="Email"
+            autocomplete="off" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            (keydown.space)="$event.preventDefault();"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <div *ngIf="email.invalid && (email.dirty || email.touched) || newForm.submitted">
+            <span class="text-red-600" *ngIf="email.hasError('required')">Email is required.</span>
+            <span class="text-red-600" *ngIf="email.hasError('pattern')">Email format is not correct.</span>
+          </div>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" class="w-2/3 px-8">
+        <mat-label class="  text-sm font-medium text-gray-700">Select Access</mat-label>
+        <mat-select multiple name="access" [(ngModel)]="userData.access" class="mt-1">
+          <mat-option *ngFor="let doc of accessArray" [value]="doc.value">{{doc.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-error *ngIf="access.invalid">Access is required</mat-error>
+      <div class="flex items-center space-x-4 pl-8 w-2/3" *ngIf="!id">
+        <button type="button" (click)="passwordGenerate()" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm
+          px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Generate
+          Password</button>
+        <div class="relative w-full flex items-center">
+          <mat-form-field appearance="outline" class="flex-grow">
+            <mat-label class="text-sm font-medium text-gray-700">Password</mat-label>
+            <input type="{{ showPassword ? 'text' : 'password' }}" name="password" [(ngModel)]="userData.passwordHash"
+              #password="ngModel" matInput placeholder="Password" required
+              pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$"
+              class="mt-1 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          </mat-form-field>
+          <button mat-icon-button type="button" (click)="toggleShowPassword()"
+            class="absolute inset-y-0 right-0 pr-3 focus:outline-none">
+            <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="password.invalid && (password.dirty || password.touched) || newForm.submitted">
+          <span class="text-red-600" *ngIf="password.hasError('required')">Password is required</span>
+          <span class="text-red-600" *ngIf="password.hasError('pattern')">Password should have 1 Number, 1
+            Capital, 1 Small letter, and minimum 6 characters length</span>
+        </div>
+      </div>
+
+      <div class="mt-4 flex justify-around w-2/3">
+        <div class=" ">
+          <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-semi-bold py-2 px-4 rounded" (click)="goBack()"
+            type="button">Go Back</button>
+        </div>
+        <div class="flex  ">
+          <button class="bg-red-500 hover:bg-red-700 text-white font-semi-bold py-2 px-4 rounded" type="submit">
+            Submit User</button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
