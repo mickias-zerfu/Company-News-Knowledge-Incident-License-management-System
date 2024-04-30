@@ -38,9 +38,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
   logout() {
-    if (confirm('Are you sure?')) {
+    if (confirm('Are you sure?')) { 
       this.authService.logout();
-      return true;
+      this.authService.isLoggedInSubject.next(false);
+      //location.reload();
+      return this.router.navigate(['login']);
     } else {
       return false;
     }

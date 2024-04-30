@@ -15,12 +15,12 @@
   </div> -->
   <div class="flex">
     <mat-drawer #drawer class="example-sidenav hw-screen bg-gray-200" mode="side" [opened]="true">
-      <div *ngIf=" isAdmin" [ngStyle]="{ 'display': !drawer.opened ? 'none' : 'block' }">
-        <app-sidebar class="h-screen"></app-sidebar>
+      <div *ngIf="isLoggedIn" [ngStyle]="{ 'display': !drawer.opened ? 'none' : 'block' }">
+        <app-sidebar class="h-screen" *ngIf="isAdmin" ></app-sidebar>
       </div>
     </mat-drawer>
     <div class="sidenav-content flex text-left bg-gray-300" *ngIf=" isAdmin">
-      <button class="flex items-center justify-center w-10" (click)="drawer.toggle()">
+      <button class="flex items-center justify-center w-6" (click)="drawer.toggle()">
         <div class="flex flex-col">
           <div *ngIf="drawer.opened"> <mat-icon class="text-red-700 text-2xl mb-1"> chevron_left
             </mat-icon>
