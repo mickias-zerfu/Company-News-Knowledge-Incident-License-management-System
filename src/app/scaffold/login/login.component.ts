@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.authService.login(this.loginModel.userName, this.loginModel.password).subscribe(
       (res) => {
-        debugger
+        //debugger
         this.authService.isLoggedInSubject.next(true)
         if (res['response'].status == 1) {
           this.toastrService.showSuccess('Success', res['response'].message);

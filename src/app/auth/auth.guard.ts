@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     var userInfo: any = JSON.parse(localStorage.getItem('user_data') as string);  
     var token = localStorage.getItem('token')
     //console.log(userInfo)
-    debugger
+    //debugger
     //if (!userInfo || !token) {
     //  this.router.navigate(['/login']);
     //  return false;
