@@ -97,10 +97,9 @@ export class IncidentCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.incident.created_at = new Date().toDateString();
     if (this.isEditMode) {
-      this.incident = { ...this.incident, ... this.incidentForm.value };
       this.incident.updated_at = new Date().toDateString();
+      this.incident = { ...this.incident, ... this.incidentForm.value };
       this.incidentService.updateIncident(this.incident.id, this.incident).subscribe({
         next: () => {
           this.router.navigate(['/resources/incidents']);
@@ -108,7 +107,7 @@ export class IncidentCreateComponent implements OnInit {
         error: (err) => console.log(err)
       });
     }
-    else {
+    else { 
       const newIncident: Incident = { ...this.incidentForm.value, created_at: new Date().toDateString() };
 
       this.incidentService.addIncident(newIncident).subscribe({
