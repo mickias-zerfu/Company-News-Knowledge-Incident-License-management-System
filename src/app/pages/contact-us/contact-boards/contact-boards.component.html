@@ -1,5 +1,8 @@
-<div class="board-member">
-  <img [src]="member.image" [alt]="member.name" width="250" height="600">
+<div class="board-member flex flex-row">
+  <img [src]="member.image" [alt]="member.name" width="250" height="150">
+  <div>
+
   <h4>{{ member.name }}</h4>
   <p>{{ member.title }}</p>
+  </div>
 </div>

@@ -2,3 +2,16 @@
   width: 80%;
   margin: 0 auto;
 }
+.hero-section{
+  background-image: url("./../../../assets/logo_zemen.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  margin: 0px;
+  padding: 0px;
+  height: 100px;
+}
+p{
+  text-align: justify;
+
+}
