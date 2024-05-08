@@ -14,7 +14,8 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    var userInfo: any = JSON.parse(localStorage.getItem('user_data') as string);  
+      var userInfo: any =  localStorage.getItem('access');
+      var userRole: any =  localStorage.getItem('roleId');
     var token = localStorage.getItem('token')
     //console.log(userInfo)
     //debugger
@@ -23,13 +24,13 @@ export class AuthGuard implements CanActivate {
     //  return false;
     //}
 
-    if (userInfo['role_id'] == 1 || userInfo['role_id'] == 2) {
-      if (userInfo['role_id'] == 2) {
+    if (userRole == 1 || userRole == 2) {
+      if (userRole == 2) {
         return true;
       }
-      else if (userInfo['role_id'] == 1) {
+      else if (userRole == 1) {
         const accessCheck = (access: number) => {
-          const data = userInfo.access.find((element: any) => Number(element) == access);
+          const data = userInfo.find((element: any) => Number(element) == access);
           if (data) {
             return true;
           } else {
@@ -64,7 +65,7 @@ export class AuthGuard implements CanActivate {
         }
       }
     }
-    else if (userInfo['role_id'] == 0) {
+    else if (userRole == 0) {
 
       if (state.url.search('news') !== -1) {
         return true;
@@ -73,7 +74,7 @@ export class AuthGuard implements CanActivate {
         return true;
       }
     }
-    else { 
+    else {
       return false;
     }
     return false;

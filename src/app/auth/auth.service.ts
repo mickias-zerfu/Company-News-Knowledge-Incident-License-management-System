@@ -34,14 +34,19 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
   public login(userName: string, password: string): Observable<any> {
-    const user = {
-      UserName: userName,
-      Password: password
-    };
+
     if (userName.includes('@')) {
-      return this.http.post(`${this.apiUrl}admin/login`, user);
+      const admin = {
+        Email: userName,
+        Password: password
+      };
+      return this.http.post(`${this.apiUrl}admin/login`, admin);
     }
     else {
+      const user = {
+        UserName: userName,
+        Password: password
+      };
       return this.http.post<any>(this.apiUrl + 'user/login', user);
     }
   }
@@ -53,5 +58,5 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
-  } 
+  }
 }

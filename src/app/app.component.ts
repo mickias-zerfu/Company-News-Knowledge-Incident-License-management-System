@@ -14,37 +14,23 @@ export class AppComponent implements OnInit {
   isAdmin = false;
   isLoggedIn = false;
   private authSubscription: Subscription;
-  user: any;
+  userRole: any;
 
   constructor(private cdr: ChangeDetectorRef, private authService: AuthService, private adminService: AdminService) { }
   ngOnInit() {
-    this.AddSuperAdmin();
     this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
+      // debugger
       if (this.isLoggedIn) {
-        this.user = JSON.parse(localStorage.getItem('user_data') as any);
-        this.checkLoginStatus();
+        this.userRole = localStorage.getItem('roleId') ;
+        console.log(this.userRole, '  user role  ');
+        this.isAdmin =   this.userRole == 1 || this.userRole == 2;
+
+        console.log( this.isAdmin, '  a r  ',      this.userRole , ' l  ' ,  this.isLoggedIn    );
+
       }
     });
-    this.checkLoginStatus();
-  }
-  checkLoginStatus() {
-    if (this.user) {
-      this.isLoggedIn = true;
-      if (!this.isAdmin) {
-        this.user = JSON.parse(localStorage.getItem('user_data') as any);
-        this.isAdmin = this.user.role_id === 1 || this.user.role_id === 2;
-      }
-    }
     this.cdr.detectChanges();
   }
 
-  AddSuperAdmin() {
-    this.adminService.AddSuperAdminInit().subscribe((res: any) => {
-      if (res.status === 200) {
-        this.checkLoginStatus();
-      }
-    })
-
-  }
 }

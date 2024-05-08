@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Input() isAdmin = false;
   @Input() isLoggedIn = false;
   user: any;
+  userRole: any;
   private authSubscription: Subscription;
 
   constructor(private router: Router, public activatedRoute: ActivatedRoute, private authService: AuthService,) { }
@@ -24,9 +25,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
       if (this.isLoggedIn) {
-    this.user = JSON.parse(localStorage.getItem('user_data') as any);
+        this.user = localStorage.getItem('displayName');
+        this.userRole = localStorage.getItem('roleId');
         if (!this.isAdmin) {
-          this.isAdmin = this.user.role_id === 1 || this.user.role_id === 2;
+          this.isAdmin = this.userRole  === 1 || this.userRole  === 2;
         }
       }
     });
@@ -38,7 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
   logout() {
-    if (confirm('Are you sure?')) { 
+    if (confirm('Are you sure?')) {
       this.authService.logout();
       this.authService.isLoggedInSubject.next(false);
       //location.reload();

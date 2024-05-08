@@ -33,20 +33,24 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.authService.login(this.loginModel.userName, this.loginModel.password).subscribe(
       (res) => {
-        //debugger
+        debugger
+        console.log(res);
+
         this.authService.isLoggedInSubject.next(true)
-        if (res['response'].status == 1) {
-          this.toastrService.showSuccess('Success', res['response'].message);
+        if (res.status == 1) {
+          this.toastrService.showSuccess('Success', res.message);
           localStorage.setItem('isUserLoggedIn', 'true');
-          localStorage.setItem('token', res['response'].token);
-          localStorage.setItem('user_id', res['response']['response'].user_id)
-          localStorage.setItem('user_data', JSON.stringify(res['response']['response']['user_data'])) 
-          if (res['response']['response']['user_data']['role_id'] == 1 || res['response']['response']['user_data']['role_id'] == 2) {
-            location.reload();
+          localStorage.setItem('token', res['token']);
+          localStorage.setItem('displayName', res['displayName']);
+          localStorage.setItem('status', res['status']);
+          localStorage.setItem('roleId', res['roleId']);
+          localStorage.setItem('access', res['access']);
+          if (res['roleId'] == 1 || res['roleId'] == 2) {
+            // location.reload();
             this.router.navigateByUrl('/dashboard')
           }
-          else if (res['response']['response']['user_data'].role_id == 0) {
-           this.authService.isLoggedInSubject.next(true) 
+          else if (res['roleId'] == 0) {
+           this.authService.isLoggedInSubject.next(true)
             this.router.navigateByUrl('/resources/news')
           }
         }
@@ -57,4 +61,3 @@ export class LoginComponent implements OnInit {
       });
   }
 }
-
