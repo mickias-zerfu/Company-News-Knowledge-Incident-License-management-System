@@ -18,7 +18,7 @@ export class AdminService {
     return this.http.post(`${this.baseUrl}Startup/start`,'')
   }
   getAdminList(data: any) {
-    return this.http.post(`${this.baseUrl}admin/getSubAdmin`, data)
+    return this.http.get(`${this.baseUrl}admin/getSubAdmin`)
   }
 
   inactiveSubadmin(data: any) {

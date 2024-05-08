@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/auth/admin.service';
-import { SubAdminModel } from 'src/app/models/SubadminModel';
+import { SubAdminModel, SubAdminModelCreate } from 'src/app/models/SubadminModel';
 import { ToastService } from 'src/app/services/toast.service';
 
 interface Permission {
@@ -20,7 +20,7 @@ interface Role {
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
-  userData: SubAdminModel = new SubAdminModel();
+  userData: SubAdminModelCreate = new SubAdminModelCreate();
 
   id: any;
   showPassword = false;
@@ -71,8 +71,6 @@ export class UserFormComponent implements OnInit {
     this.showPassword = false
   }
   createNewSubAdmin = async (formData: any) => {
-    this.userData['roleId'] = 1;
-    this.userData['status'] = 1; // 1 = active, 0 = inactive, 2 = pending, 3 = rejected, 4 = banned, 5 = deleted, '1');
     console.log(this.userData, 'user data')
     this.adminservice.insertSubAdmin(this.userData).subscribe((response: any) => {
       if (response['message']) {
@@ -138,7 +136,7 @@ export class UserFormComponent implements OnInit {
   }
   passwordGenerate() {
     let pass = this.generatePassword(6)
-    this.userData['passwordHash'] = pass
+    this.userData['password'] = pass
   }
   toggleShowPassword() {
     this.showPassword = !this.showPassword

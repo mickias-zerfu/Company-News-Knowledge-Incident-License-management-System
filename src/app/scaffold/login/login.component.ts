@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.authService.login(this.loginModel.userName, this.loginModel.password).subscribe(
       (res) => {
-        debugger
+        // debugger
         console.log(res);
 
         this.authService.isLoggedInSubject.next(true)

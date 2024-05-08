@@ -9,3 +9,9 @@ export class SubAdminModel {
   createdAt: Date;
   updatedAt: Date;
 }
+export class SubAdminModelCreate {
+  displayName: string;
+  email: string;
+  access: number[] | null;
+  password: string;
+}
