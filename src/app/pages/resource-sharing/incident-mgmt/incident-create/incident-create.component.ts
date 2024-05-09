@@ -13,11 +13,9 @@ import { IncidentService } from 'src/app/services/incident.service';
 export class IncidentCreateComponent implements OnInit {
   incident: Incident = new Incident();
   incidentForm: FormGroup;
-  statusActions: string[] = [];
-
-
+  statusAction: string[] = [];
   quickReviews: string[] = [];
-  solutionToIncidents: string[] = [];
+  solutionToIncident: string[] = [];
   isEditMode: boolean = false;
 
   constructor(private incidentService: IncidentService, private router: Router,
@@ -43,9 +41,9 @@ export class IncidentCreateComponent implements OnInit {
     this.incidentForm = new FormGroup({
       incidentTitle: new FormControl('', Validators.required),
       incidentDescription: new FormControl('', Validators.required),
-      statusAction: new FormControl(this.statusActions, Validators.required),
+      statusAction: new FormControl(this.statusAction, Validators.required),
       quickReviews: new FormControl(this.quickReviews, Validators.required),
-      solutionToIncident: new FormControl(this.solutionToIncidents, Validators.required),
+      solutionToIncident: new FormControl(this.solutionToIncident, Validators.required),
       remark: new FormControl('')
     });
   }
@@ -55,15 +53,15 @@ export class IncidentCreateComponent implements OnInit {
       incidentDescription: this.incident.incidentDescription,
       remark: this.incident.remark
     });
-    this.statusActions = this.incident.statusAction;
+    this.statusAction = this.incident.statusAction;
     this.quickReviews = this.incident.quickReviews;
-    this.solutionToIncidents = this.incident.solutionToIncident;
+    this.solutionToIncident = this.incident.solutionToIncident;
   }
   addStatusAction(actionInput: HTMLInputElement): void {
     const action = actionInput.value.trim();
     if (action.trim()) {
-      this.statusActions.push(action.trim());
-      this.incidentForm.get('statusAction')?.setValue(this.statusActions);
+      this.statusAction.push(action.trim());
+      this.incidentForm.get('statusAction')?.setValue(this.statusAction);
       actionInput.value = '';
     }
   }
@@ -82,8 +80,8 @@ export class IncidentCreateComponent implements OnInit {
 
     const action = actionInput.value.trim(); if (action.trim()) {
 
-      this.solutionToIncidents.push(action.trim());
-      this.incidentForm.get('solutionToIncident')?.setValue(this.solutionToIncidents);
+      this.solutionToIncident.push(action.trim());
+      this.incidentForm.get('solutionToIncident')?.setValue(this.solutionToIncident);
       actionInput.value = '';
 
     }
@@ -107,7 +105,7 @@ export class IncidentCreateComponent implements OnInit {
         error: (err) => console.log(err)
       });
     }
-    else { 
+    else {
       const newIncident: Incident = { ...this.incidentForm.value, created_at: new Date().toDateString() };
 
       this.incidentService.addIncident(newIncident).subscribe({

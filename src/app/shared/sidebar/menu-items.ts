@@ -3,7 +3,7 @@ import { RouteInfo } from './sidebar.metadata';
 export const ROUTES: RouteInfo[] = [
 
   {
-    path: '/resources',
+    path: '/resources/status',
     title: 'Resource Sharing',
     icon: 'folder',
     class: '',

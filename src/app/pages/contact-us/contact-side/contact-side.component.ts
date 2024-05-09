@@ -20,7 +20,7 @@ boardMembers: BoardMember[] = [
     {
       name: 'Tewodros Nigussie',
       title: 'Officer',
-      image: '  assets/user_avatar.png'
+      image: '  assets/tedy.jpg'
     },
     {
       name: 'Mikiyas Zerfu',

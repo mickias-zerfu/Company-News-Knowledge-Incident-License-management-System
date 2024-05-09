@@ -23,6 +23,7 @@ import { ResourceDashboardComponent } from './resource-dashboard/resource-dashbo
 
 const routes: Routes = [
 
+  // { path: "", redirectTo: "resources/status", pathMatch: "full" },
   { path: "status", component: ResourceDashboardComponent, canActivate: [AuthGuard] },
 
   { path: "news", component: NewsListComponent, canActivate: [AuthGuard] },

@@ -42,14 +42,14 @@
             </button>
           </div>
         </div>
-        <div class="mb-2" *ngIf="statusActions.length>0">
+        <div class="mb-2" *ngIf="statusAction.length>0">
           <h3 class="text-l font-semibold mb-1 text-yellow-600 justify-start text-left">Added statusActions </h3>
           <ul>
-            <li *ngFor="let statusAction of statusActions" class="p-2 mt-2">
+            <li *ngFor="let statusAct of statusAction" class="p-2 mt-2">
               <div class="flex items-center space-x-2">
                 <mat-icon class="text-green-500">comment</mat-icon>
-                <p class="text-small">{{ statusAction }}</p>
-                <button type="button" mat-mini-fab color="link" (click)="removeFromArray(statusActions, statusAction)"
+                <p class="text-small">{{ statusAct }}</p>
+                <button type="button" mat-mini-fab color="link" (click)="removeFromArray(statusAction, statusAct)"
                   class="ml-4"><mat-icon class="text-red-500">highlight_remove</mat-icon>
                 </button>
               </div>
@@ -104,14 +104,14 @@
             </button>
           </div>
         </div>
-        <div class="mb-2" *ngIf="solutionToIncidents.length>0">
+        <div class="mb-2" *ngIf="solutionToIncident.length>0">
           <h3 class="text-l font-semibold mb-1 text-yellow-600 justify-start text-left ">Added Solution To Incident</h3>
           <ul>
-            <li *ngFor="let solution of solutionToIncidents" class="mt-1">
+            <li *ngFor="let solution of solutionToIncident" class="mt-1">
               <div class="flex items-center space-x-2">
                 <mat-icon class="text-yellow-500">lightbulb</mat-icon>
                 <p class="text-small  whitespace-wrap">{{ solution }}</p>
-                <button type="button" mat-mini-fab color="link" (click)="removeFromArray(solutionToIncidents, solution)"
+                <button type="button" mat-mini-fab color="link" (click)="removeFromArray(solutionToIncident, solution)"
                   class="ml-4"><mat-icon class="text-red-500">highlight_remove</mat-icon>
                 </button>
               </div>
