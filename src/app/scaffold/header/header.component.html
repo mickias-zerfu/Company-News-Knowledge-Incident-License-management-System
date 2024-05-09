@@ -72,7 +72,7 @@
           <ng-container *ngIf="authService.currentUser$ | async as user">
             <div class=" " style="cursor: pointer;">
               <a class="flex flex-row">
-                <strong>Welcome {{user.displayName}}</strong>
+                <strong>Welcome {{user.displayName | uppercase }}</strong>
                 <button mat-icon-button [matMenuTriggerFor]="menu" >
                   <mat-icon>more_vert</mat-icon>
                 </button>
