@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './scaffold/header/header.component';
 import { FooterComponent } from './scaffold/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LottieModule } from 'ngx-lottie';
@@ -34,6 +34,7 @@ import { HomeComponent } from './pages/home/home.component';
  import { UserManagementModule } from './pages/user-management/user-management.module';
 import { ResourceSharingModule } from './pages/resource-sharing/resource-sharing.module';
 import { LicenseModule } from './pages/license-management/license.module';
+import { Interceptor } from './auth/my.interceptor';
 
 export function playerFactory() {
   return player;
@@ -79,7 +80,10 @@ export function playerFactory() {
   ],
   exports: [
   ],
-  providers: [],
+
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

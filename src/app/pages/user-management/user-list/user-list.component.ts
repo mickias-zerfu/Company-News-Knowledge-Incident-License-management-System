@@ -38,8 +38,9 @@ export class UserListComponent implements OnInit {
 
     this.adminservice.getAdminList(params).subscribe((res: any) => {
       this.data = res;
-      console.log(this.data), 'data';
-    });
+      console.log(res), 'data  -----------------------';
+    }, error => console.log(error, ' ERrrrrrrrrrrrrrrrrrrroooor')
+    );
   }
 
   onDeleteConfirm(event:any): void {

@@ -101,7 +101,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/users',
+    path: 'user/users',
     title: 'User Management',
     icon: 'people',
     class: '',

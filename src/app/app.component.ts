@@ -11,26 +11,27 @@ import { AdminService } from './auth/admin.service';
 export class AppComponent implements OnInit {
   title = 'Resource Sharing Platform';
   drawer: { opened: boolean } = { opened: true };
-  isAdmin = false;
+  isAdmin$ = this.authService.isAdminSubject;
   isLoggedIn = false;
-  private authSubscription: Subscription;
   userRole: any;
 
-  constructor(private cdr: ChangeDetectorRef, private authService: AuthService, private adminService: AdminService) { }
+  constructor(public authService: AuthService) { }
   ngOnInit() {
-    this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-      // debugger
-      if (this.isLoggedIn) {
-        this.userRole = localStorage.getItem('roleId') ;
-        console.log(this.userRole, '  user role  ');
-        this.isAdmin =   this.userRole == 1 || this.userRole == 2;
-
-        console.log( this.isAdmin, '  a r  ',      this.userRole , ' l  ' ,  this.isLoggedIn    );
-
-      }
-    });
-    this.cdr.detectChanges();
+    this.loadCurrentUser();
+    this.checkLoadAdmin();
+  }
+  loadCurrentUser() {
+    const token = localStorage.getItem('token');
+    this.authService.loadCurrentUser(token).subscribe();
   }
 
+  checkLoadAdmin() {
+    let AdminRoleId = localStorage.getItem('roleId');
+    this.authService.isAdminSubject.subscribe(isAdmin => {
+      console.log(isAdmin, 'is admin app');
+
+      // update component property
+    // if (AdminRoleId == '1' || AdminRoleId == '2') { this.isAdmin = true };
+    })
+  }
 }

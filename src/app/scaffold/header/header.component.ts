@@ -13,16 +13,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
 
-  @Input() isAdmin = false;
+  @Input() isAdmin: boolean| null= false;
   @Input() isLoggedIn = false;
   user: any;
   userRole: any;
   private authSubscription: Subscription;
 
-  constructor(private router: Router, public activatedRoute: ActivatedRoute, private authService: AuthService,) { }
+  constructor(private router: Router, public activatedRoute: ActivatedRoute, public authService: AuthService,) { }
 
   ngOnInit() {
-    this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
+    this.authSubscription = this.authService.isAdmin$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
       if (this.isLoggedIn) {
         this.user = localStorage.getItem('displayName');
@@ -42,9 +42,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout() {
     if (confirm('Are you sure?')) {
       this.authService.logout();
-      this.authService.isLoggedInSubject.next(false);
+      this.authService.isAdminSubject.next(false);
       //location.reload();
-      return this.router.navigate(['login']);
+      return this.router.navigate(['user/login']);
     } else {
       return false;
     }

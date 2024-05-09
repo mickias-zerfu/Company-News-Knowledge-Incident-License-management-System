@@ -30,7 +30,7 @@ boardMembers: BoardMember[] = [
     {
       name: 'Birhan Addisu',
       title: 'Officer',
-      image: '  assets/user_avatar.png'
+      image: '  assets/brhan.jpg'
     },
     {
       name: 'Fasik Desalegn',
