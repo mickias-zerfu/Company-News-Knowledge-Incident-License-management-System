@@ -6,25 +6,47 @@
       </div>
       <div class=" gap-4 p-4">
 
-        <div>
-          <label for="title" class="block text-lg mb-2">Title:</label>
-          <input type="text" id="title" class="w-full border border-gray-300 rounded-md p-2" [(ngModel)]="post.title" />
-        </div>
+        <form #newsForm="ngForm" >
+          <div>
+            <label for="title" class="block text-lg mb-2">Title:</label>
+            <input type="text" name="title" id="title" class="w-full border border-gray-300 rounded-md p-2"
+                   [(ngModel)]="post.title" minlength="5" required />
 
-        <div>
-          <label for="featuredImage" class="block text-lg mb-2">Featured Image:</label>
-          <input type="file" id="featuredImage" class="p-2" (change)="handleImageUpload($event)" accept="image/*" />
-          <img [src]="imagePreview" alt="Selected Image"   *ngIf="imagePreview"  class="w-64 h-64 p-2 rounded"/>
-        </div>
-        <div class="col-span-2">
-          <label for="content" class="block text-lg mb-2">Content:</label>
-          <textarea id="content" class="w-full h-40 border border-gray-300 rounded-md p-2"
-            [(ngModel)]="post.content"></textarea>
-        </div>
+            <mat-error *ngIf="newsForm.controls['title'].invalid && (newsForm.controls['title'].dirty || newsForm.controls['title'].touched)">
+              <span *ngIf="newsForm.controls['title'].hasError('required')">Title is required.</span>
+              <span *ngIf="newsForm.controls['title'].hasError('minlength')">
+                Title should be at least 5
+                characters long.
+              </span>
+            </mat-error>
 
-        <div class="flex justify-end pr-16">
-          <app-add-new-button buttonText="{{ isEditMode ? 'Update Post' : 'Submit Post'}}"  (click)="submitPost()"></app-add-new-button>
-        </div>
+          </div>
+
+          <div>
+            <label for="featuredImage" name="featuredImage" class="block text-lg mb-2">Featured Image:</label>
+            <input type="file" id="featuredImage" class="p-2" (change)="handleImageUpload($event)" accept="image/*" required /> 
+            <img [src]="imagePreview" alt="Selected Image" *ngIf="imagePreview" class="w-64 h-64 p-2 rounded" />
+          </div>
+          <div class="col-span-2">
+            <label for="content" class="block text-lg mb-2">Content:</label>
+            <textarea name="content" id="content" class="w-full h-40 border border-gray-300 rounded-md p-2"
+                      [(ngModel)]="post.content" minlength="10" required></textarea>
+
+            <mat-error *ngIf="newsForm.controls['content'].invalid && (newsForm.controls['content'].dirty || newsForm.controls['content'].touched)">
+              <span *ngIf="newsForm.controls['content'].hasError('required')">Content is required.</span>
+              <span *ngIf="newsForm.controls['content'].hasError('minlength')">
+                Content should be at least 10
+                characters long.
+              </span>
+            </mat-error>
+
+          </div>
+
+          <div class="flex justify-end pr-16">
+            <app-add-new-button buttonText="{{ isEditMode ? 'Update Post' : 'Submit Post'}}"
+                                (click)="submitPost()"></app-add-new-button>
+          </div>
+        </form>
       </div>
     </section>
   </div>

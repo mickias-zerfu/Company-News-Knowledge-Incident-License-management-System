@@ -12,7 +12,7 @@ export class Interceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = localStorage.getItem('token');
 
-        if (token) {
+        if (token !=null) {
             const headers = new HttpHeaders().set("authentication", `Bearer ${token}`);
             const AuthRequest = request.clone({ headers: headers });
 
@@ -24,12 +24,18 @@ export class Interceptor implements HttpInterceptor {
                     }
                     return throwError(err);
                 }),
-                tap(event => {
-                    if (event instanceof HttpResponse && event.headers.get('token')) {
-                        localStorage.setItem('token', event.headers.get('token') || '');
-                    }
-                })
-            );
+              tap(event => {
+                if (event instanceof HttpResponse) {
+                  if (event.headers.get('token')) {
+                    localStorage.setItem('token', event.headers.get('token') as string);
+                  }
+                  if (event['status'] == 401) {
+                    localStorage.clear();
+                    this.router.navigate(['user/login']);
+                  }
+                }
+                return event;
+              })            );
         } else {
             return next.handle(request);
         }

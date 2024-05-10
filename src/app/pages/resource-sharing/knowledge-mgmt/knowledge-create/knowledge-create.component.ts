@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { KnowledgeModel } from 'src/app/models/knowledge.model';
 import { KnowledgeService } from 'src/app/services/knowledge.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-knowledge-create',
@@ -18,7 +19,8 @@ export class KnowledgeCreateComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private knowledgeService: KnowledgeService
+    private knowledgeService: KnowledgeService,
+    private toastService: ToastService,
   ) { }
 
   ngOnInit(): void {
@@ -34,9 +36,18 @@ export class KnowledgeCreateComponent implements OnInit {
 
   initForm(): void {
     this.knowledgeForm = this.fb.group({
-      problem: ['', Validators.required],
-      problemDescription: ['', Validators.required],
-      solution: ['', Validators.required]
+      problem: ['', [
+        Validators.required,
+        Validators.minLength(5),
+      ]],
+      problemDescription: ['', [
+        Validators.required,
+        Validators.minLength(20),
+      ]],
+      solution: ['', [
+        Validators.required,
+        Validators.minLength(10),
+      ]]
     });
   }
 
@@ -47,11 +58,13 @@ export class KnowledgeCreateComponent implements OnInit {
         const updatedKnowledge: KnowledgeModel = { ...formValueUpdate, id: this.knowledgeId, updated_at: new Date().toDateString() };
         this.knowledgeService.updateKnowledge(this.knowledgeId, updatedKnowledge).subscribe(() => {
           this.router.navigate(['resources/knowledge', this.knowledgeId]);
+          this.toastService.showSuccess('Knowledge Base update successfully.', 'Close', 2000);
         });
       } else {
         const formValueNew = { ...this.knowledgeForm.value, created_at: new Date().toDateString() };
         this.knowledgeService.addKnowledge(formValueNew).subscribe(() => {
           this.router.navigate(['resources/manageknowledges']);
+          this.toastService.showSuccess('Knowledge Base added successfully.', 'Close', 2000);
         });
       }
     }

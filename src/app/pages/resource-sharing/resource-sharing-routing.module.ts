@@ -44,7 +44,7 @@ const routes: Routes = [
   { path: "incident/:id", component: IncidentDetailComponent, canActivate: [AuthGuard] },
   { path: "incident/:id/update", component: IncidentCreateComponent, data: { isEditMode: true }, canActivate: [AuthGuard] },
 
-  { path: "knowledges", component: KnowledgeListComponent, canActivate: [AuthGuard] },
+  { path: "knowledges", component: KnowledgeMgmtComponent, canActivate: [AuthGuard] },
   { path: "manageknowledges", component: KnowledgeMgmtComponent, canActivate: [AuthGuard] },
   { path: "knowledge/add", component: KnowledgeCreateComponent, canActivate: [AuthGuard] },
   { path: "knowledge/:id", component: KnowledgeDetailComponent, canActivate: [AuthGuard] },

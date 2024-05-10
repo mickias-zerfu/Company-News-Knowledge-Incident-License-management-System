@@ -21,7 +21,7 @@
               </li> -->
               <li class="notification w-full">
 
-                <ng-container *ngIf="isLoggedIn; else elseBlock">
+                <ng-container *ngIf="authService.currentUser$ | async as user else elseBlock"> 
                   <a routerLinkActive="active" [routerLink]="['../resources/news']">
                     <button class="button w-full"> <mat-icon class="textxl">insert_drive_file</mat-icon> Latest News
                     </button>

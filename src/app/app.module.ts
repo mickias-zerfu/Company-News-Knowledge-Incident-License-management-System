@@ -82,7 +82,7 @@ export function playerFactory() {
   ],
 
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

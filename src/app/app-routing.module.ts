@@ -19,12 +19,9 @@ const routes: Routes = [
   { path: 'user', loadChildren: () =>
     import('./pages/user-management/user-management-routing.module').then(m => m.UserManagementRoutingModule) },
 
-  { path: "notifications", component: NotificationsComponent },
+  { path: "notifications", component: NotificationsComponent }, 
 
-
-  { path: "dashboard", component: ResourceDashboardComponent, canActivate: [AuthGuard] },
-
-
+  { path: "dashboard", component: ResourceDashboardComponent, canActivate: [AuthGuard] }, 
   { path: "transactions", component: TransactionsComponent, canActivate: [AuthGuard] },
   { path: "service", component: ServicesComponent, canActivate: [AuthGuard] },
   { path: "help", component: FaqsComponent },

@@ -34,9 +34,9 @@ export class AuthService {
       this.currentUserSource.next(null);
       return of(null);
     }
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${token}`);
-    return this.http.get<User>(this.apiUrl + 'admin/getSingleSubAdmin', { headers }).pipe(
+    //let headers = new HttpHeaders();
+    //headers = headers.set('Authorization', `Bearer ${token}`);, { headers }
+    return this.http.get<User>(this.apiUrl + 'admin/getSingleSubAdmin').pipe(
       map(user => {
         if (user) {
           localStorage.setItem('token', user.token);

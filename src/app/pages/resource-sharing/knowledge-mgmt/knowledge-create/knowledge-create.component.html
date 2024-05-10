@@ -10,24 +10,27 @@
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>Problem</mat-label>
       <input matInput formControlName="problem" placeholder="Enter problem">
-      <mat-error *ngIf="knowledgeForm.get('problem')?.invalid && (knowledgeForm.get('problem')?.dirty || knowledgeForm.get('problem')?.touched)">
-        Problem is required.
+      <mat-error *ngIf="knowledgeForm.controls['problem'].invalid && (knowledgeForm.controls['problem'].dirty || knowledgeForm.controls['problem'].touched)">
+        <span *ngIf="knowledgeForm.controls['problem'].hasError('required')">Problem title is required.</span>
+        <span *ngIf="knowledgeForm.controls['problem'].hasError('minlength')">Problem title should be at least 5 characters long.</span>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>Problem Description</mat-label>
       <textarea matInput formControlName="problemDescription" placeholder="Enter problem description" rows="5"></textarea>
-      <mat-error *ngIf="knowledgeForm.get('problemDescription')?.invalid && (knowledgeForm.get('problemDescription')?.dirty || knowledgeForm.get('problemDescription')?.touched)">
-        Problem description is required.
+      <mat-error *ngIf="knowledgeForm.controls['problemDescription'].invalid && (knowledgeForm.controls['problemDescription'].dirty || knowledgeForm.controls['problemDescription'].touched)">
+        <span *ngIf="knowledgeForm.controls['problemDescription'].hasError('required')">Problem Description is required.</span>
+        <span *ngIf="knowledgeForm.controls['problemDescription'].hasError('minlength')">Problem description should be at least 20 characters long.</span>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>Solution</mat-label>
       <textarea matInput formControlName="solution" placeholder="Enter solution" rows="5"></textarea>
-      <mat-error *ngIf="knowledgeForm.get('solution')?.invalid && (knowledgeForm.get('solution')?.dirty || knowledgeForm.get('solution')?.touched)">
-        Solution is required.
+      <mat-error *ngIf="knowledgeForm.controls['solution'].invalid && (knowledgeForm.controls['solution'].dirty || knowledgeForm.controls['solution'].touched)">
+        <span *ngIf="knowledgeForm.controls['solution'].hasError('required')">Incident title is required.</span>
+        <span *ngIf="knowledgeForm.controls['solution'].hasError('minlength')">solution should be at least 10 characters long.</span>
       </mat-error>
     </mat-form-field>
 

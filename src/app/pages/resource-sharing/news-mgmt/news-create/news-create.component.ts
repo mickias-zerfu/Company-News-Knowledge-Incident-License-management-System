@@ -1,9 +1,11 @@
 import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogModel } from 'src/app/models/blog.model';
 import { FileDetails } from 'src/app/models/fileDetail.model';
 import { BlogService } from 'src/app/services/blog.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-news-create',
@@ -19,7 +21,9 @@ export class NewsCreateComponent implements OnInit {
   progress: number;
   message: string;
   @Output() public onUploadFinished = new EventEmitter();
-  constructor(private blogservice: BlogService, private router: Router, private route: ActivatedRoute) { }
+  @ViewChild('newsForm') newsForm: NgForm;
+  constructor(private blogservice: BlogService, private router: Router, private route: ActivatedRoute,
+    private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {
@@ -63,30 +67,30 @@ export class NewsCreateComponent implements OnInit {
   }
 
   submitPost() {
-    // check idEditMode
-    if (this.isEditMode && this.post.id !== undefined) {
-      this.UpdatePost(this.post.id);
-    }
-    else {
-      // Add your logic here to handle the submission of the post
-      this.post.created_at = new Date().toDateString();
-      this.blogservice.addBlog(this.post).subscribe(
-        (res) => {
-          console.log(res);
-          this.router.navigate(['/resources/managenews']);
-        }
-      )
-      console.log(this.post);
+    if (this.newsForm.valid) {
+      if (this.isEditMode && this.post.id !== undefined) {
+        this.UpdatePost(this.post.id);
+      }
+      else {
+        // Add your logic here to handle the submission of the post
+        this.post.created_at = new Date().toDateString();
+        this.blogservice.addBlog(this.post).subscribe(
+          (res) => { 
+            this.router.navigate(['/resources/managenews']);
+            this.toastService.showSuccess('News posted successfully.', 'Close', 2000);
+          }
+        ) 
+      }
     }
   }
 
   UpdatePost(postId: number) {
     this.post.created_at = this.post.created_at;
-    this.post.created_at = new Date().toDateString();
+    this.post.updated_at = new Date().toDateString();
     this.blogservice.updateBlogContent(postId, this.post).subscribe(
       (res) => {
         this.router.navigate(['/resources/managenews']);
-        console.log(res);
+        this.toastService.showSuccess('News updated successfully', 'Close', 2000); 
       }
     )
   }
