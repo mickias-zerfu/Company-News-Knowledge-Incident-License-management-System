@@ -9,6 +9,7 @@
       <section class="cards-container w-full py-8">
         <div *ngIf="!blogListObject">
           <app-loading></app-loading>
+          <h4> No News Found yet . . . </h4>
         </div>
         <div class="blog-container" *ngIf="blogListObject">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -24,7 +25,7 @@
                 <div class="blog-detail">
                   <div class="content p-4">
                     <div class="text-left">
-                      <p class="font-bold">Title: {{ blog.title }}</p>
+                      <p class="font-bold"> {{ blog.title }}</p>
                     </div>
                     <div class="mt-4">
                       <p class="truncate">{{ blog.content }}</p>

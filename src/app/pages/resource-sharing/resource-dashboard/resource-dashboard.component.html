@@ -2,7 +2,7 @@
   <h1 class="text-4xl font-bold text-gray-800 p-4 mt-8">Resource Sharing Dashboard</h1>
   <div class="flex flex-wrap justify-between px-16">
     <div class="card" class="w-full md:w-1/2 xl:w-1/4 p-4" *ngFor='let topcard of topcardsResource'>
-      <div class="card-item " [routerLink]="topcard.link">
+      <div class="card-item " [routerLink]="'../'+ topcard.link">
         <div class="bg-white rounded-lg shadow-lg p-6 h-full">
           <div class="text-left">
             <div [ngStyle]="{'background-color': topcard.bgcolor}"
@@ -20,4 +20,11 @@
     </div>
   </div>
 </section>
-<hr class="border-t-2 border-gray-300 my-6">
+<hr class="border-t-2 border-gray-300 h-32">
+<div class="home-top ">
+  <div class="flex items-center justify-center">
+    <div class="disvider" style="height:100px; width:100px; animation:backwards 4s ease normal;">
+      <app-lottie-animation></app-lottie-animation>
+    </div>
+  </div>
+</div>

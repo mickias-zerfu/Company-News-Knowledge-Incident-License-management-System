@@ -1,35 +1,45 @@
-<app-loading *ngIf="!files"></app-loading>
+<div class="pt-16">
+
+  <app-loading *ngIf="!files" class="pt-16"></app-loading>
+
+</div>
+
 <div class="p-8">
 
-<section class="hero-section bg-cover bg-center">
-  <div class="hero-content text-left pt-8 pb-8">
-    <h2 class="text-4xl font-bold text-red-700"> Zemen's IB Shared Resources</h2>
-  </div>
-</section>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-  <ng-container *ngFor="let fileDetails of files">
-    <div class="file-detail-dialog bg-white p-6 rounded-lg shadow-md">
-      <div>
-        <div class="flex flex-col mb-4">
-          <p  class="text-lg mb-1">{{ fileDetails.fileTitle }}</p>
-        </div>
-        <div class="flex flex-col mb-4" style="max-width: 600px;">
-          <textarea [disabled]="true" cols="30" rows="5"
-            class="whitespace-pre-wrap p-2 border border-gray-300 rounded">{{ fileDetails.fileDescription }}</textarea>
-        </div>
-        <div class="flex justify-end">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="downloadFile(fileDetails.id)">
-            <svg class="h-6 w-6 mr-2 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M16 17l-4 4m0 0l-4-4m4 4V3"></path>
-            </svg>
-            Download
-          </button>
+  <section class="hero-section bg-cover bg-center" *ngIf="files">
+    <div class="hero-content text-left pt-8 pb-8" *ngIf="files.length <= 0 ">
+      <h2 class="text-4xl font-bold text-red-700"> Zemen's IB Shared Resources</h2>
+      <h6> No files Shared Yet!!!</h6>
+    </div>
+    <div class="hero-content text-left pt-8 pb-8" *ngIf="files.length > 0 ">
+      <h2 class="text-4xl font-bold text-red-700"> Zemen's IB Shared Resources</h2>
+    </div>
+  </section>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" *ngIf="files">
+    <ng-container *ngFor="let fileDetails of files">
+      <div class="file-detail-dialog bg-white p-6 rounded-lg shadow-md">
+        <div>
+          <div class="flex flex-col mb-4">
+            <p class="text-lg mb-1">{{ fileDetails.fileTitle }}</p>
+          </div>
+          <div class="flex flex-col mb-4" style="max-width: 600px;">
+            <textarea [disabled]="true" cols="30" rows="5"
+              class="whitespace-pre-wrap p-2 border border-gray-300 rounded">{{ fileDetails.fileDescription }}</textarea>
+          </div>
+          <div class="flex justify-end">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              (click)="downloadFile(fileDetails.id)">
+              <svg class="h-6 w-6 mr-2 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 17l-4 4m0 0l-4-4m4 4V3">
+                </path>
+              </svg>
+              Download
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </ng-container>
-</div>
+    </ng-container>
+  </div>
 
 </div>

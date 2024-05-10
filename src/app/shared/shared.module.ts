@@ -16,6 +16,9 @@ import { DeniedLottieComponent } from './access-denied/denied-lottie/denied-lott
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LottieAnimationComponent } from '../pages/home/lottie-animation/lottie-animation.component';
 export function playerFactory() {
   return player;
 }
@@ -30,11 +33,15 @@ export function playerFactory() {
     AddNewButtonComponent,
     AccessDeniedComponent,
     DeniedLottieComponent,
+    LottieAnimationComponent,
   ],
   imports: [
     CommonModule,
     LottieModule.forRoot({ player: playerFactory }),
     HighchartsChartModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MaterialModule,
     AppRoutingModule
   ],
@@ -42,6 +49,7 @@ export function playerFactory() {
     ChartDataComponent,
     LoadingComponent,
     AddNewButtonComponent,
+    LottieAnimationComponent,
   ]
 })
 export class SharedModule { }

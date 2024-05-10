@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   isLoggedIn = false;
   user:any;
 
-  constructor(private authService: AuthService,) { }
+  constructor(public authService: AuthService,) { }
   ngOnInit() {
 
     this.user = JSON.parse(localStorage.getItem('user_data') as any);

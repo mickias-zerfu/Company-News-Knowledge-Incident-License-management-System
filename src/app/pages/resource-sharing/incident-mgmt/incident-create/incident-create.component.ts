@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Incident } from 'src/app/models/incident.model';
 import { IncidentService } from 'src/app/services/incident.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-incident-create',
@@ -13,17 +14,13 @@ import { IncidentService } from 'src/app/services/incident.service';
 export class IncidentCreateComponent implements OnInit {
   incident: Incident = new Incident();
   incidentForm: FormGroup;
-
-
-  statusActions: string[] = []; 
+  statusAction: string[] = [];
   quickReviews: string[] = [];
-  solutionToIncidents: string[] = [];
-
-
+  solutionToIncident: string[] = [];
   isEditMode: boolean = false;
 
   constructor(private incidentService: IncidentService, private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.isEditMode = this.route.snapshot.data['isEditMode'] || false;
@@ -33,7 +30,7 @@ export class IncidentCreateComponent implements OnInit {
       // Fetch incident details and populate the form for editing
       this.incidentService.getIncidentById(incidentId).subscribe({
         next: (incident: Incident) => {
-          this.incident = incident;
+          this.incident = incident; 
           this.populateForm();
         },
         error: (err) => console.log(err)
@@ -43,12 +40,23 @@ export class IncidentCreateComponent implements OnInit {
 
   initForm(): void {
     this.incidentForm = new FormGroup({
-
-      incidentTitle: new FormControl('', Validators.required),
-      incidentDescription: new FormControl('', Validators.required),
-      statusAction: new FormControl(this.statusActions, Validators.required),
-      quickReviews: new FormControl(this.quickReviews, Validators.required),
-      solutionToIncident: new FormControl(this.solutionToIncidents, Validators.required),
+      incidentTitle: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      incidentDescription: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+      ]),
+      statusAction: new FormControl(this.statusAction, [
+        Validators.required,
+      ]),
+      quickReviews: new FormControl(this.quickReviews, [
+        Validators.required,
+      ]),
+      solutionToIncident: new FormControl(this.solutionToIncident, [
+        Validators.required,
+      ]),
       remark: new FormControl('')
     });
   }
@@ -56,18 +64,18 @@ export class IncidentCreateComponent implements OnInit {
     this.incidentForm.patchValue({
       incidentTitle: this.incident.incidentTitle,
       incidentDescription: this.incident.incidentDescription,
-      remark: this.incident.remark
+      remark: this.incident.remark  
     });
-    this.statusActions = this.incident.statusAction;
+    this.statusAction = this.incident.statusAction;
     this.quickReviews = this.incident.quickReviews;
-    this.solutionToIncidents = this.incident.solutionToIncident;
+    this.solutionToIncident = this.incident.solutionToIncident;
   }
 
   addStatusAction(actionInput: HTMLInputElement): void {
     const action = actionInput.value.trim();
     if (action.trim()) {
-      this.statusActions.push(action.trim());
-      this.incidentForm.get('statusAction')?.setValue(this.statusActions);
+      this.statusAction.push(action.trim());
+      this.incidentForm.get('statusAction')?.setValue(this.statusAction);
       actionInput.value = '';
     }
   }
@@ -76,8 +84,7 @@ export class IncidentCreateComponent implements OnInit {
     const action = actionInput.value.trim(); if (action.trim()) {
 
       this.quickReviews.push(action.trim());
-      this.incidentForm.get('quickReviews')?.setValue(this.quickReviews);
-      console.log(this.quickReviews);
+      this.incidentForm.get('quickReviews')?.setValue(this.quickReviews); 
       actionInput.value = '';
 
     }
@@ -86,8 +93,8 @@ export class IncidentCreateComponent implements OnInit {
 
     const action = actionInput.value.trim(); if (action.trim()) {
 
-      this.solutionToIncidents.push(action.trim());
-      this.incidentForm.get('solutionToIncident')?.setValue(this.solutionToIncidents);
+      this.solutionToIncident.push(action.trim());
+      this.incidentForm.get('solutionToIncident')?.setValue(this.solutionToIncident);
       actionInput.value = '';
 
     }
@@ -101,26 +108,45 @@ export class IncidentCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.isEditMode) {
-      this.incident.updated_at = new Date().toDateString();
-      this.incident = { ...this.incident, ... this.incidentForm.value };
-      this.incidentService.updateIncident(this.incident.id, this.incident).subscribe({
-        next: () => {
-          this.router.navigate(['/resources/incidents']);
-        },
-        error: (err) => console.log(err)
-      });
-    }
-    else { 
-      const newIncident: Incident = { ...this.incidentForm.value, created_at: new Date().toDateString() };
+    if (this.incidentForm.valid) {
+      if (
+        this.statusAction.length === 0 || this.quickReviews.length === 0 || this.solutionToIncident.length === 0
+      ) { 
+        this.toastService.showError('Please fill the required fields.', 'Close', 2000);
+        return;
+      }
+      if (this.isEditMode) {
+        this.incident.updated_at = new Date().toDateString();
+        this.incidentForm.get('statusAction')?.setValue(this.statusAction);
+        this.incidentForm.get('quickReviews')?.setValue(this.quickReviews);
+        this.incidentForm.get('solutionToIncident')?.setValue(this.solutionToIncident);
+        const newIncident: Incident = { ...this.incident, ... this.incidentForm.value };
+        console.log(newIncident, "before sending to the api ")
+        console.log(this.incident, "before sending to the api ")
+        console.log(this.incidentForm.value, "before sending to the api ")
+        this.incidentService.updateIncident(this.incident.id, newIncident).subscribe({
+          next: () => {
+            this.router.navigate(['/resources/incidents']);
+            this.toastService.showSuccess('Incident updated successfully.', 'Close', 2000);
+          },
+          error: (err) => { 
+            this.toastService.showError('Faild to update incident', 'Close', 2000);
+          }
+        });
+      }
+      else {
+        const newIncident: Incident = { ...this.incidentForm.value, created_at: new Date().toDateString() };
 
-      this.incidentService.addIncident(newIncident).subscribe({
-        next: () => {
-          this.router.navigate(['/resources/incidents']);
-        }
-        , error: err => console.log(err)
-      })
+        this.incidentService.addIncident(newIncident).subscribe({
+          next: () => {
+            this.router.navigate(['/resources/incidents']);
+            this.toastService.showSuccess('Incident added successfully.', 'Close', 2000);
+          },
+          error: err => { 
+            this.toastService.showError('Failed to add incident', 'Close', 2000);
+          }
+        })
+      }
     }
-
   }
 }

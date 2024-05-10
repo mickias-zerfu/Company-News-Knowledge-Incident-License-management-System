@@ -7,27 +7,31 @@
           <h3 class="text-xl font-bold title">About Us</h3>
           <div class="  mt-4">
             <!-- <img src="../../../assets/images/logos/logo.png" alt="Logo" class="w-32 h-32 mr-2"> -->
-            <p class="text-white-900">Zemen Bank is Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, ab. In recusandae vel rerum
-              aspernatur illum temporibus aliquam laborum, unde perspiciatis quibusdam dolores rem dolore tempora soluta
-              est facilis dolor?.</p>
+            <p class="text-white-900">Welcome to Zemen Bank, a leading financial institution committed to delivering
+              innovative banking solutions tailored to meet the diverse needs of our customers.</p>
           </div>
         </div>
 
-        <div class=" usefull text-center">
-          <h6 class="text-uppercase text-xl font-bold title">Quick Links</h6>
+        <div class=" usefull text-left">
+          <h6 class="text-uppercase text-xl font-bold title">Team Members</h6>
           <ul class="menuitems">
             <li class="menuitem">
-              <a routerLinkActive="active" [routerLink]="['home']">Home</a>
+              <a href="https://www.linkedin.com/in/mickiaszerfu/">{{"Mikiyas Zerfu"  }}</a>
             </li>
             <li class="menuitem">
-              <a routerLinkActive="active" [routerLink]="['aboutus']">Services</a>
+              <a  href="#">{{"Birhan Addisu"  }}</a>
             </li>
             <li class="menuitem">
-              <a routerLinkActive="active" [routerLink]="['aboutus']">About us</a>
+              <a  href="#">Tewodros Nigussie</a>
             </li>
             <li class="menuitem">
-              <a routerLinkActive="active" [routerLink]="['contactus']">
-                Contact us</a>
+              <a  href="#">Yekoye Mihret</a>
+            </li>
+            <li class="menuitem">
+              <a href="#">Yonathan Desalegn</a>
+            </li>
+            <li class="menuitem">
+              <a href="#">fasika desalegn</a>
             </li>
           </ul>
         </div>
@@ -41,7 +45,7 @@
                 <li class="list-inline-item py-1">
                   <button class="button">
                     <span class="icon" aria-hidden="true">
-                      <!-- <img src="../../../assets/icons/social/icons8-facebook.svg"> -->
+                      <img src="../../../assets/icons/social/icons8-facebook.svg">
                     </span>
                     <span class="button-text"><a href="https://www.facebook.com/">Facebook</a></span>
                   </button>
@@ -49,7 +53,7 @@
                 <li class="list-inline-item py-1">
                   <button class="button">
                     <div class="icon" aria-hidden="true">
-                      <!-- <img src="../../../assets/icons/social/icons8-linkedin.svg"> -->
+                      <img src="../../../assets/icons/social/icons8-linkedin.svg">
                     </div>
                     <p>
                       <span class="button-text"> <a href="https://www.linkedin.com/in/mickiaszerfu">Linkedin</a>
@@ -60,7 +64,7 @@
                 <li class="list-inline-item py-1">
                   <button class="button">
                     <div class="icon">
-                      <!-- <img src="../../../assets/icons/social/icons8-youtube.svg"> -->
+                      <img src="../../../assets/icons/social/icons8-youtube.svg">
                     </div>
                     <p><span class="button-text"> <a href="https://www.youtube.com/">YouTube</a></span>
                     </p>
@@ -77,9 +81,10 @@
     </div>
   </div>
   <div class="bg-gray-800 py-4">
-    <div class="container mx-auto text-center text-white">
-      <p>&copy; 2023 Zemen Bank. All rights reserved.</p>
-      <p>Developed by <a href="http://www.linkedin.com/in/mickiaszerfu"><span class="font-bold">Mikiyas Zerfu</span></a>
+    <div class="container mx-auto text-center text-white"><p>
+      &copy; {{ "2024" | date: 'yyyy' }} Zemen Bank. All rights reserved.
+    </p>
+      <p>Developed by <a href="http://www.linkedin.com/in/mickiaszerfu"><span class="font-bold">Digital Channel Management Online Banking Team</span></a>
       </p>
     </div>
   </div>

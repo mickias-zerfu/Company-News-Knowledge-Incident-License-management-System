@@ -9,7 +9,7 @@
       <div>
         <mat-form-field appearance="outline" class="w-2/3 px-8">
           <mat-label class="  text-sm font-medium text-gray-700">Full Name</mat-label>
-          <input type="text" name="name" [(ngModel)]="userData.name" #name="ngModel" matInput placeholder="Name"
+          <input type="text" name="name" [(ngModel)]="userData.displayName" #name="ngModel" matInput placeholder="Name"
             minlength="3" maxlength="55" pattern="^[a-zA-Z0-9_ ]+$" required>
           <mat-error *ngIf="name.invalid && (name.dirty || name.touched) || newForm.submitted">
             <span class="text-red-600" *ngIf="name.hasError('required')">Name is required.</span>
@@ -47,7 +47,7 @@
         <div class="relative w-full flex items-center">
           <mat-form-field appearance="outline" class="flex-grow">
             <mat-label class="text-sm font-medium text-gray-700">Password</mat-label>
-            <input type="{{ showPassword ? 'text' : 'password' }}" name="password" [(ngModel)]="userData.passwordHash"
+            <input type="{{ showPassword ? 'text' : 'password' }}" name="password" [(ngModel)]="userData.password"
               #password="ngModel" matInput placeholder="Password" required
               pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$"
               class="mt-1 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">

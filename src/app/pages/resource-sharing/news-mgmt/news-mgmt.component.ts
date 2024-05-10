@@ -22,8 +22,6 @@ export class NewsMgmtComponent implements OnInit {
   getAllBlogs() {
     this.blogService.getAllBlogs().subscribe(data => {
       this.blogListObject = data;
-      console.log(this.blogListObject);
-
     });
   }
 

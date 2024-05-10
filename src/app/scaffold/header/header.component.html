@@ -6,8 +6,8 @@
         <div class="header">
           <div class="flex items-center logo">
             <a class="logo-Image" alt="Logo" href="/home"></a>
-            <h1 class="ml-2 text-2xl font-bold font-ubuntu leading-tight ">
-               Digital Channel Automation System
+            <h1 class="ml-2 text-2xl font-bold leading-tight header-font">
+              Digital Channel Automation System
             </h1>
           </div>
         </div>
@@ -22,13 +22,13 @@
                   [routerLink]="['home']">Home</a>
               </button>
             </li>
-            <li class="flex-grow"  *ngIf="isLoggedIn" >
+            <li class="flex-grow" *ngIf="authService.currentUser$ | async as user">
               <button class="learn-more">
                 <a class="button-text hover:font-bold" routerLinkActive="nav-link active"
                   [routerLink]="['resources/news']">News</a>
               </button>
             </li>
-            <li class="flex-grow"  *ngIf="isLoggedIn" >
+            <li class="flex-grow" *ngIf="authService.currentUser$ | async as user">
               <button class="learn-more">
                 <a class="button-text hover:font-bold" routerLinkActive="nav-link active"
                   [routerLink]="['resources/files']">Resources</a>
@@ -58,17 +58,40 @@
               <button class="button w-full"><mat-icon class="textxl">notification_important</mat-icon> </button>
             </a>
           </li>-->
-          <li class="donation w-full" *ngIf="!isLoggedIn">
-            <a routerLinkActive="active" [routerLink]="['login']" class="btn text-white font-bold">
+          <ng-container *ngIf="(authService.currentUser$ | async) === null">
+            <a routerLinkActive="active" [routerLink]="['user/login']" class="btn text-white font-bold">
               <button class="button w-full">Login </button>
             </a>
-          </li>
-          <li class="donation w-full"  *ngIf="isLoggedIn" >
-            <h6 *ngIf="user">Hello, {{user.name }}</h6>
+          </ng-container>
+          <!-- <li class="donation w-full" *ngIf="!isLoggedIn">
+            <a routerLinkActive="active" [routerLink]="['user/login']" class="btn text-white font-bold">
+              <button class="button w-full">Login </button>
+            </a>
+          </li> -->
+
+          <ng-container *ngIf="authService.currentUser$ | async as user">
+            <div class=" " style="cursor: pointer;">
+              <a class="flex flex-row">
+                <strong>Welcome {{user.displayName | uppercase }}</strong>
+                <button mat-icon-button [matMenuTriggerFor]="menu" >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+              </a>
+              <mat-menu #menu="matMenu">
+                <li class="py-1" mat-menu-item (click)="authService.logout()" >
+                  <a class="button-text hover:font-bold" >
+                    <button class="button w-full"> <mat-icon class="button-text text-red-600 hover:font-bold">logout</mat-icon>Logout </button>
+                  </a>
+                </li>
+              </mat-menu>
+            </div>
+          </ng-container>
+          <!-- <li class="donation w-full" *ngIf="isLoggedIn">
+            <h6 *ngIf="user">Hello, {{user }}</h6>
             <a routerLinkActive="active" (click)="logout()" class="btn text-white font-bold">
               <button class="button w-full">Logout</button>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

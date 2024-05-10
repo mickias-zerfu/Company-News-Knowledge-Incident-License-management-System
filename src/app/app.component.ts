@@ -11,40 +11,27 @@ import { AdminService } from './auth/admin.service';
 export class AppComponent implements OnInit {
   title = 'Resource Sharing Platform';
   drawer: { opened: boolean } = { opened: true };
-  isAdmin = false;
+  isAdmin$ = this.authService.isAdminSubject;
   isLoggedIn = false;
-  private authSubscription: Subscription;
-  user: any;
+  userRole: any;
 
-  constructor(private cdr: ChangeDetectorRef, private authService: AuthService, private adminService: AdminService) { }
+  constructor(public authService: AuthService) { }
   ngOnInit() {
-    this.AddSuperAdmin();
-    this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-      if (this.isLoggedIn) {
-        this.user = JSON.parse(localStorage.getItem('user_data') as any);
-        this.checkLoginStatus();
-      }
-    });
-    this.checkLoginStatus();
+    this.loadCurrentUser();
+    this.checkLoadAdmin();
   }
-  checkLoginStatus() {
-    if (this.user) {
-      this.isLoggedIn = true;
-      if (!this.isAdmin) {
-        this.user = JSON.parse(localStorage.getItem('user_data') as any);
-        this.isAdmin = this.user.role_id === 1 || this.user.role_id === 2;
-      }
-    }
-    this.cdr.detectChanges();
+  loadCurrentUser() {
+    const token = localStorage.getItem('token');
+    this.authService.loadCurrentUser(token).subscribe();
   }
 
-  AddSuperAdmin() {
-    this.adminService.AddSuperAdminInit().subscribe((res: any) => {
-      if (res.status === 200) {
-        this.checkLoginStatus();
-      }
+  checkLoadAdmin() {
+    let AdminRoleId = localStorage.getItem('roleId');
+    this.authService.isAdminSubject.subscribe(isAdmin => {
+      console.log(isAdmin, 'is admin app');
+
+      // update component property
+    // if (AdminRoleId == '1' || AdminRoleId == '2') { this.isAdmin = true };
     })
-
   }
 }

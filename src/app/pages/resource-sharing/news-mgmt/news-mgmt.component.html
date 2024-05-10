@@ -14,7 +14,10 @@
           <app-loading></app-loading>
         </div>
         <div class="blog-container" *ngIf="blogListObject">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" *ngIf="blogListObject.length<=0">
+            <h4 class="text-gray-500">No News yet !!!</h4>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" *ngIf="blogListObject.length>0">
             <div *ngFor="let blog of blogListObject let i = index  " class="blog-list-card">
               <div class="card shadow-lg rounded-lg">
                 <div class="flex justify-around mb-2">

@@ -42,6 +42,7 @@ nav{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .menu-button {
@@ -102,6 +103,7 @@ mat-divider {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .menu-button {
@@ -117,6 +119,7 @@ mat-divider {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Ubuntu', sans-serif;
 }
 .active{
   color: #B87333 !important;

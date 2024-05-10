@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceUploadModel } from 'src/app/models/product.model';
 import { FileService } from 'src/app/services/product.service';
@@ -16,6 +17,7 @@ export class ProductCreateComponent implements OnInit {
   isEditMode = false;
   fileId: number;
   isSubmitted = false;
+  @ViewChild('resourceForm') resourceForm: NgForm;
 
   constructor(
     private fileService: FileService,
@@ -61,13 +63,14 @@ export class ProductCreateComponent implements OnInit {
   }
 
   addResource(formData: FormData) {
+
     this.fileService.addResource(formData).subscribe(
       () => {
-        this.toastService.showSuccess('New Resource added', 'Close', 2000);
+        this.toastService.showSuccess('New Resource added successfully.', 'Close', 2000);
         this.router.navigate(['/resources/managefiles']);
       },
       error => {
-        this.toastService.showError('Failed to add new resource', 'Close', 2000);
+        this.toastService.showSuccess('Resource updated successfully', 'Close', 2000);
         console.error(error);
       }
     );

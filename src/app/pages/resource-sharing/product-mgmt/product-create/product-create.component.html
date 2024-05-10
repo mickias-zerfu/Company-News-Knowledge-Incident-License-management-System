@@ -8,19 +8,27 @@
       </section>
       <div class="container px-4">
         <form class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-gray-800"
-          (ngSubmit)="onSubmit()">
+          (ngSubmit)="onSubmit()" #resourceForm="ngForm">
 
           <!-- Resource Name -->
           <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
             <mat-label>Resource Name</mat-label>
             <input matInput [(ngModel)]="resource.fileTitle" name="fileTitle" placeholder="Enter the Resource name"
-              required>
+                   required minlength="5">
+            <mat-error *ngIf="resourceForm.controls['fileTitle'].invalid && (resourceForm.controls['fileTitle'].dirty || resourceForm.controls['fileTitle'].touched)">
+              <span *ngIf="resourceForm.controls['fileTitle'].hasError('required')">Resource Name is required.</span>
+              <span *ngIf="resourceForm.controls['fileTitle'].hasError('minlength')">Resource Name should be at least 5 characters long.</span>
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="col-span-full" appearance="outline">
             <mat-label>Resource Description</mat-label>
             <textarea matInput rows="4" [(ngModel)]="resource.fileDescription" name="fileDescription"
-              placeholder="Enter the Resource description" required></textarea>
+                      placeholder="Enter the Resource description" minlength="20" required></textarea>
+            <mat-error *ngIf="resourceForm.controls['fileDescription'].invalid && (resourceForm.controls['fileDescription'].dirty || resourceForm.controls['fileDescription'].touched)">
+              <span *ngIf="resourceForm.controls['fileDescription'].hasError('required')"><div>File Description is required.</div></span>
+              <span *ngIf="resourceForm.controls['fileDescription'].hasError('minlength')"><div>File Description should be at least 20 characters long.</div></span>
+            </mat-error>
           </mat-form-field>
           <div>
             <label for="File" class="block text-lg mb-2">Resource File to be shared:</label>

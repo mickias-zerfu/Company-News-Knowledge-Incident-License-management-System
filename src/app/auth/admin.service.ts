@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -15,10 +15,14 @@ export class AdminService {
   }
 
   AddSuperAdminInit() {
-    return this.http.post(`${this.baseUrl}Startup/start`,'')
+    return this.http.post(`${this.baseUrl}Startup/start`, '')
   }
   getAdminList(data: any) {
-    return this.http.post(`${this.baseUrl}admin/getSubAdmin`, data)
+    // debugger
+    // let token = localStorage.getItem('token')
+    // let headers = new HttpHeaders();
+    // headers = headers.set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.baseUrl}admin/getSubAdmin` )
   }
 
   inactiveSubadmin(data: any) {
@@ -33,8 +37,8 @@ export class AdminService {
     return this.http.post(`${this.baseUrl}admin/deleteSubAdmin`, data)
   }
   insertSubAdmin(data: any) {
-    console.log('data',data)
-     return this.http.post(`${this.baseUrl}admin/insert`, data)
+    console.log('data', data)
+    return this.http.post(`${this.baseUrl}admin/insert`, data)
   }
   updateSubAdmin(data: any) {
     return this.http.post(`${this.baseUrl}admin/updateSubAdmin`, data)
@@ -43,10 +47,9 @@ export class AdminService {
     return this.http.post(`${this.baseUrl}admin/getSingleSubAdmin`, data)
   }
 
-  export(data: any) {
-    return this.http.post(`${this.baseUrl}admin/export`,data)
+  checkEmailExists(email: string) {
+    return this.http.get<boolean>(this.baseUrl + 'admin/emailExists?email=' + email);
   }
-
   multiStatusChange(data: any) {
     return this.http.post(`${this.baseUrl}admin/multiStatusChange`, data)
   }

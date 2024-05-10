@@ -8,21 +8,35 @@ import { Component, OnInit } from '@angular/core';
 export class ContactSideComponent implements OnInit {
 boardMembers: BoardMember[] = [
     {
-      name: 'Yekoye Mihret',
+      name: 'Yonathan Abebe',
       title: 'Senior Officer',
-      image: ' assets/yekoye.png'
+      image: ' assets/user_avatar.png'
     },
     {
       name: 'Yekoye Mihret',
       title: 'Senior Officer',
-      image: '  assets/yekoye.png'
+      image: 'assets/yekoye.png'
     },
     {
-      name: 'Yekoye Mihret',
-      title: 'Senior Officer',
-      image: '  assets/yekoye.png'
+      name: 'Tewodros Nigussie',
+      title: 'Officer',
+      image: '  assets/tedy.jpg'
     },
-    // Add more board members as needed
+    {
+      name: 'Mikiyas Zerfu',
+      title: 'Officer',
+      image: '  assets/user_avatar.png'
+    },
+    {
+      name: 'Birhan Addisu',
+      title: 'Officer',
+      image: '  assets/brhan.jpg'
+    },
+    {
+      name: 'Fasik Desalegn',
+      title: 'Officer',
+      image: '  assets/user_avatar.png'
+    },
   ];
   constructor() { }
 

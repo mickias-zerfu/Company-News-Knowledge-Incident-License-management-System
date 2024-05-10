@@ -15,15 +15,18 @@ export class LoginComponent implements OnInit {
 
   public loginModel: LoginModel = new LoginModel();
   loginFailed: boolean = false;
+  returnUrl: string;
 
-  constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute,
-    private toastrService: ToastService,) { }
+  constructor(private authService: AuthService, private router: Router,
+    private toastrService: ToastService,
+    private activatedRoute: ActivatedRoute) {
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/home'
+  }
 
   ngOnInit(): void {
     let token = localStorage.getItem('token')
-    let user_id = localStorage.getItem('user_id')
-    let user_data = localStorage.getItem('user_data')
-    if (token && user_id && user_data) {
+    let userRole = localStorage.getItem('roleId')
+    if (token && userRole) {
       this.router.navigate(['/dashboard'])
     } else {
       null
@@ -31,30 +34,10 @@ export class LoginComponent implements OnInit {
     }
   }
   login(): void {
-    this.authService.login(this.loginModel.userName, this.loginModel.password).subscribe(
-      (res) => {
-        debugger
-        this.authService.isLoggedInSubject.next(true)
-        if (res['response'].status == 1) {
-          this.toastrService.showSuccess('Success', res['response'].message);
-          localStorage.setItem('isUserLoggedIn', 'true');
-          localStorage.setItem('token', res['response'].token);
-          localStorage.setItem('user_id', res['response']['response'].user_id)
-          localStorage.setItem('user_data', JSON.stringify(res['response']['response']['user_data'])) 
-          if (res['response']['response']['user_data']['role_id'] == 1 || res['response']['response']['user_data']['role_id'] == 2) {
-            location.reload();
-            this.router.navigateByUrl('/dashboard')
-          }
-          else if (res['response']['response']['user_data'].role_id == 0) {
-           this.authService.isLoggedInSubject.next(true) 
-            this.router.navigateByUrl('/resources/news')
-          }
-        }
-        else {
-          this.router.navigateByUrl('/login')
-          this.toastrService.showError('Error', res['message']);
-        }
-      });
+    this.authService.login(this.loginModel.userName, this.loginModel.password).subscribe({
+      next: () => {
+        this.router.navigateByUrl(this.returnUrl)
+      }
+    });
   }
 }
-

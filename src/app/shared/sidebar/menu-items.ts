@@ -3,7 +3,7 @@ import { RouteInfo } from './sidebar.metadata';
 export const ROUTES: RouteInfo[] = [
 
   {
-    path: '/resources',
+    path: '/resources/status',
     title: 'Resource Sharing',
     icon: 'folder',
     class: '',
@@ -101,7 +101,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/users',
+    path: 'user/users',
     title: 'User Management',
     icon: 'people',
     class: '',

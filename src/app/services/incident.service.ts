@@ -32,6 +32,8 @@ export class IncidentService {
   }
   updateIncident(IncidentId: number, Incident: any): Observable<any> {
     const url = `${this.apiUrl}/${IncidentId}`;
+
+    console.log(Incident, "inside sending to the api ")
     return this.http.put<any>(url, Incident);
   }
 
