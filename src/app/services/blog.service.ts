@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BlogModel } from '../models/blog.model';
 import { environment } from 'src/environments/environment';
@@ -26,7 +26,10 @@ export class BlogService {
   }
 
   getAllBlogs(): Observable<BlogModel[]> {
-    return this.http.get<BlogModel[]>(this.apiUrl);
+    let token = localStorage.getItem('token')
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${token}`);
+    return this.http.get<BlogModel[]>(this.apiUrl, {headers});
   }
 
   updateBlogContent(id: number, content: BlogModel): Observable<BlogModel> {

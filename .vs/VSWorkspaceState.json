@@ -2,7 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\assets\\data"
+    "\\src\\app",
+    "\\src\\app\\pages",
+    "\\src\\app\\pages\\resource-sharing",
+    "\\src\\app\\pages\\resource-sharing\\incident-mgmt",
+    "\\src\\app\\scaffold",
+    "\\src\\app\\scaffold\\header",
+    "\\src\\app\\scaffold\\login",
+    "\\src\\app\\services"
   ],
+  "SelectedNode": "\\src\\app\\scaffold\\header\\header.component.ts",
   "PreviewInSolutionExplorer": false
 }

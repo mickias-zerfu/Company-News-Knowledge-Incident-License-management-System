@@ -72,7 +72,8 @@
           <ng-container *ngIf="authService.currentUser$ | async as user">
             <div class=" " style="cursor: pointer;">
               <a class="flex flex-row">
-                <strong>Welcome {{user.displayName | uppercase }}</strong>
+                <strong class="text-gray-700">Welcome {{user.displayName | uppercase }} </strong>
+                <img src="../../../assets/avator.webp" width="32" height="16"/> 
                 <button mat-icon-button [matMenuTriggerFor]="menu" >
                   <mat-icon>more_vert</mat-icon>
                 </button>
@@ -85,13 +86,7 @@
                 </li>
               </mat-menu>
             </div>
-          </ng-container>
-          <!-- <li class="donation w-full" *ngIf="isLoggedIn">
-            <h6 *ngIf="user">Hello, {{user }}</h6>
-            <a routerLinkActive="active" (click)="logout()" class="btn text-white font-bold">
-              <button class="button w-full">Logout</button>
-            </a>
-          </li> -->
+          </ng-container> 
         </ul>
       </div>
     </div>

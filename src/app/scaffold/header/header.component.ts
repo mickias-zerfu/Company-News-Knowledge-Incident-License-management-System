@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.user = localStorage.getItem('displayName');
         this.userRole = localStorage.getItem('roleId');
         if (!this.isAdmin) {
-          this.isAdmin = this.userRole  === 1 || this.userRole  === 2;
+          this.isAdmin = this.userRole  == 1 || this.userRole  == 2;
         }
       }
     });

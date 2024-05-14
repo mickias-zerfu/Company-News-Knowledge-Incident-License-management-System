@@ -19,10 +19,10 @@ export class AdminService {
   }
   getAdminList(data: any) {
     // debugger
-    // let token = localStorage.getItem('token')
-    // let headers = new HttpHeaders();
-    // headers = headers.set('Authorization', `Bearer ${token}`);
-    return this.http.get(`${this.baseUrl}admin/getSubAdmin` )
+     let token = localStorage.getItem('token')
+     let headers = new HttpHeaders();
+     headers = headers.set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.baseUrl}admin/getSubAdmin`, {headers} )
   }
 
   inactiveSubadmin(data: any) {
