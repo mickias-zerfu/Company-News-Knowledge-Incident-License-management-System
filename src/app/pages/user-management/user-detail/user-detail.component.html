@@ -1,1 +1,22 @@
-<p>user-detail works!</p>
+<div *ngIf="user">
+  <section class="hero-section bg-cover bg-center">
+    <div class="hero-content text-left pt-8 pb-8">
+      <h2 class="text-4xl font-bold text-red-700 px-4">User Detail</h2>
+    </div>
+  </section>
+  <mat-card class="mb-8">
+    <mat-card-header class="p-8 justify-start text-left"> 
+      <h3 class="text-2xl font-semibold mb-4 pt-4 pl-8">{{ user.displayName }}</h3>
+    </mat-card-header>
+    <mat-card-content class="p-8 text-left justify-start">
+      <p class="ml-8 pl-4">{{ user.email }}</p>
+      <p class="ml-8 pl-4">{{ user.access }}</p>
+      <p class="ml-8 pl-4">{{ user.status }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 mt-4 p-8 justify-between"> 
+      </div>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

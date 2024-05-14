@@ -38,7 +38,7 @@ export class UserListComponent implements OnInit {
 
     this.adminservice.getAdminList(params).subscribe((res: any) => {
       this.data = res;
-      console.log(res), 'data  -----------------------';
+      console.info(this.data)
     }, error => console.log(error, ' ERrrrrrrrrrrrrrrrrrrroooor')
     );
   }
@@ -50,67 +50,60 @@ export class UserListComponent implements OnInit {
       event.confirm.reject();
     }
   }
-
-  InactiveUser = async (Id : any, Indexis :any) => {
+  InactiveUser(id: string, indexis: any): boolean {
     if (confirm('Are you sure you want to Change status?')) {
-      const newformData = new FormData();
-      newformData.append('id', Id);
-      await this.adminservice.inactiveSubadmin(newformData).subscribe((response:any) => {
-        if (response['status'] == 1) {
+      console.log(id);
+      this.adminservice.inactiveSubadmin(id).subscribe(
+        (response: any) => {
           this.toastrService.showSuccess('success', response['message']);
-          this.ngOnInit()
-        } else {
-          this.toastrService.showError('danger', 'There was an error please try after some time!!');
+        },
+        (error) => {
+          console.error(error);
+          // Handle error
         }
-      });
+      );
     } else {
       return false;
     }
-
     return true;
   }
 
-  ActiveUser = async (Id : any, Indexis :any) => {
+  ActiveUser(id: string, indexis: any): boolean {
     if (confirm('Are you sure you want to Change status?')) {
-      const newformData = new FormData();
-      newformData.append('id', Id);
-      await this.adminservice.activeSubadmin(newformData).subscribe((response:any) => {
-        if (response['status'] == 1) {
+      console.log(id);
+      this.adminservice.activeSubadmin(id).subscribe(
+        (response: any) => {
           this.toastrService.showSuccess('success', response['message']);
-          this.ngOnInit()
-        } else {
-          this.toastrService.showError('danger', 'There was an error please try after some time!!');
+        },
+        (error) => {
+          console.error(error);
+          // Handle error
         }
-      });
+      );
     } else {
       return false;
     }
-
     return true;
   }
 
-  deleteUser = async (Id : any, Indexis :any) => {
+  deleteUser(id: string, indexis: any): boolean {
     if (confirm('Are you sure you want to Delete user?')) {
-      const newformData = new FormData();
-      newformData.append('user_id', Id);
-      await this.adminservice.deleteSubAdmin(newformData).subscribe((response : any) => {
-        if (response['status'] == 1) {
-          if (Indexis !== -1) {
-            this.data.splice(Indexis, 1);
-            this.toastrService.showSuccess('success', response['message']);
-          } else {
-            this.toastrService.showSuccess('success', response['message']);
-          }
-        } else {
+      console.log(id);
+      this.adminservice.deleteSubAdmin(id).subscribe(
+        (response: any) => {
+          this.toastrService.showSuccess('success', response['message']);
+        },
+        (error) => {
+          console.error(error);
           this.toastrService.showError('danger', 'There was an error please try after some time!!');
+          // Handle error
         }
-      });
+      );
     } else {
       return false;
     }
-
     return true;
-  }
+  } 
 
   pageChanged(event:any) {
     this.getUsers(event, '')

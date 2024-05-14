@@ -61,12 +61,12 @@ export class UserFormComponent implements OnInit {
   }
 
   // update user fetch
-  updateUser(id: any) {
-    const newformData = new FormData();
-    newformData.append('user_id', this.id);
-    this.adminservice.getSingleSubAdmin(newformData).subscribe((res: any) => {
-      this.userData = res['response']
-      this.access = res['response']['access'].map(Number);
+  updateUser(userId: string) {
+    this.adminservice.subAdminById(userId).subscribe(res => {
+      console.log(res)
+      this.userData = res as SubAdminModelCreate;
+      console.log(this.userData)
+      //this.access = res['response']['access'].map(Number);
     })
     this.showPassword = false
   }
@@ -74,7 +74,7 @@ export class UserFormComponent implements OnInit {
     console.log(this.userData, 'user data')
     this.adminservice.insertSubAdmin(this.userData).subscribe((response: any) => {
       if (response['message']) {
-        this.router.navigate(['users/lists']);
+        this.router.navigate(['user/lists']);
         this.toastrService.showSuccess('success', response['message']);
       } else {
         this.toastrService.showError('error', response['message']);
@@ -92,7 +92,7 @@ export class UserFormComponent implements OnInit {
     newformData.append('access', temp);
     this.adminservice.updateSubAdmin(newformData).subscribe((response: any) => {
       if (response['status'] == 1) {
-        this.router.navigate(['admin/view', this.id]);
+        this.router.navigate(['user', this.id]);
         this.toastrService.showSuccess('success', response['message']);
       } else {
         this.toastrService.showError('success', response['message']);

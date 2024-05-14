@@ -23,18 +23,16 @@ export class AdminService {
      let headers = new HttpHeaders();
      headers = headers.set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.baseUrl}admin/getSubAdmin`, {headers} )
+  } 
+  inactiveSubadmin(id: string) {
+    return this.http.post(`${this.baseUrl}admin/inactiveSubadmin`, { id });
   }
 
-  inactiveSubadmin(data: any) {
-    return this.http.post(`${this.baseUrl}admin/inactiveSubadmin`, data)
+  activeSubadmin(id: string) {
+    return this.http.post(`${this.baseUrl}admin/activeSubadmin`, { id });
   }
-
-  activeSubadmin(data: any) {
-    return this.http.post(`${this.baseUrl}admin/activeSubadmin`, data)
-  }
-
   deleteSubAdmin(data: any) {
-    return this.http.post(`${this.baseUrl}admin/deleteSubAdmin`, data)
+    return this.http.post(`${this.baseUrl}admin/deleteSubAdmin`, {data})
   }
   insertSubAdmin(data: any) {
     console.log('data', data)
@@ -46,7 +44,10 @@ export class AdminService {
   getSingleSubAdmin(data: any) {
     return this.http.post(`${this.baseUrl}admin/getSingleSubAdmin`, data)
   }
-
+  subAdminById(id: string) {
+    console.log("................", id)
+    return this.http.post(`${this.baseUrl}admin/subAdminById`, { id });
+  }
   checkEmailExists(email: string) {
     return this.http.get<boolean>(this.baseUrl + 'admin/emailExists?email=' + email);
   }

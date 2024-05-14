@@ -54,19 +54,19 @@
             <td class="px-4 py-2">{{ user.name }}</td>
             <td class="px-4 py-2">{{ user.email }}</td>
             <td class="px-4 py-2">
-              <button size="tiny" *ngIf="user.status == 0" (click)="ActiveUser(user._id, i)" class="bg-red-600 hover:bg-red-900 text-white font-bold py-1 px-2 rounded">Inactive</button>
-              <button size="tiny" *ngIf="user.status == 1" (click)="InactiveUser(user._id, i)" class="bg-green-600 hover:bg-green-900 text-white font-bold py-1 px-2 rounded">Active</button>
+              <button size="tiny" *ngIf="user.status == 0" (click)="ActiveUser(user.id, i)" class="bg-red-600 hover:bg-red-900 text-white font-bold py-1 px-2 rounded">Inactive</button>
+              <button size="tiny" *ngIf="user.status == 1" (click)="InactiveUser(user.id, i)" class="bg-green-600 hover:bg-green-900 text-white font-bold py-1 px-2 rounded">Active</button>
             </td>
 
             <td class="px-4 py-2">
               <!-- Button to delete user -->
-              <button mat-icon-button  size="tiny" [routerLink]="['/admin/view', user._id]" >
+              <button mat-icon-button  size="tiny" [routerLink]="['/user/', user.id]" >
                 <mat-icon>visibility</mat-icon>
               </button>
-              <button mat-icon-button size="tiny" (click)="deleteUser(user._id, i)" >
+              <button mat-icon-button size="tiny"  [routerLink]="['/user/', user.id, 'update']"  >
                 <mat-icon class="text-yellow-600 hover:text-orange-600"  >edit</mat-icon>
               </button>
-              <button mat-icon-button color="warn" size="tiny" (click)="deleteUser(user._id, i)" >
+              <button mat-icon-button color="warn" size="tiny" (click)="deleteUser(user.id, i)" >
                 <mat-icon>delete</mat-icon>
               </button>
             </td>
