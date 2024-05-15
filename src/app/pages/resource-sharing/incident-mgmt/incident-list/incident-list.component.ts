@@ -24,6 +24,7 @@ export class IncidentListComponent {
   deleteFile(fileId: number): void {
     this.incidentService.deleteIncident(fileId).subscribe(data => {
       this.router.navigate(['/resources/incidents']);
+      location.reload();
     })
   }
   openConfirmationDialog(fileId:number): void {

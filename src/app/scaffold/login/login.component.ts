@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         console.log("errrrrrrrror")
-          this.toastrService.showError("Some Errorr occuered ", 'Close', 2000); 
+          this.toastrService.showError( error.error.message, 'Close', 2000); 
 
       }
     });

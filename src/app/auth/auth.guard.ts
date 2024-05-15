@@ -14,9 +14,10 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      var userInfo: any =  localStorage.getItem('access');
+    var userInfo: any = localStorage.getItem('access');
+      console.log(userInfo)
       var userRole: any =  localStorage.getItem('roleId');
-    var token = localStorage.getItem('token')
+      var token = localStorage.getItem('token')
     //console.log(userInfo)
     //debugger
     //if (!userInfo || !token) {
@@ -30,7 +31,8 @@ export class AuthGuard implements CanActivate {
       }
       else if (userRole == 1) {
         const accessCheck = (access: number) => {
-          const data = userInfo.find((element: any) => Number(element) == access);
+          const accessArray = userInfo.split(',').map(Number); 
+          const data = accessArray.find((element: number) => element === access);
           if (data) {
             return true;
           } else {
@@ -38,6 +40,15 @@ export class AuthGuard implements CanActivate {
             return false;
           }
         };
+        //const accessCheck = (access: number) => {
+        //  const data = userInfo.find((element: any) => Number(element) == access);
+        //  if (data) {
+        //    return true;
+        //  } else {
+        //    this.accessDenied();
+        //    return false;
+        //  }
+        //};
 
         if (state.url.search('resources/status') !== -1 || state.url.search('dashboard') !== -1) {
           return true;

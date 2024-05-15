@@ -31,15 +31,15 @@ export class AdminService {
   activeSubadmin(id: string) {
     return this.http.post(`${this.baseUrl}admin/activeSubadmin`, { id });
   }
-  deleteSubAdmin(data: any) {
-    return this.http.post(`${this.baseUrl}admin/deleteSubAdmin`, {data})
+  deleteSubAdmin(id: string) {
+    return this.http.post(`${this.baseUrl}admin/deleteSubAdmin`, {id} )
   }
   insertSubAdmin(data: any) {
     console.log('data', data)
     return this.http.post(`${this.baseUrl}admin/insert`, data)
   }
-  updateSubAdmin(data: any) {
-    return this.http.post(`${this.baseUrl}admin/updateSubAdmin`, data)
+  updateSubAdmin(id:string, data: any) {
+    return this.http.put(`${this.baseUrl}admin/updateSubAdmin/${id}`, data)
   }
   getSingleSubAdmin(data: any) {
     return this.http.post(`${this.baseUrl}admin/getSingleSubAdmin`, data)

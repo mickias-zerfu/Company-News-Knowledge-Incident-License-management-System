@@ -82,24 +82,16 @@ export class UserFormComponent implements OnInit {
     });
 
   }
-  updateEditSubAdmin = async (formData: any) => {
-    const newformData = new FormData();
-    newformData.append('user_id', this.id);
-    newformData.append('name', formData.name.trim());
-    newformData.append('email', formData.email.trim().toLowerCase());
-    newformData.append('password', formData.password);
-    let temp = this.access.join(",");
-    newformData.append('access', temp);
-    this.adminservice.updateSubAdmin(newformData).subscribe((response: any) => {
-      if (response['status'] == 1) {
-        this.router.navigate(['user', this.id]);
+  updateEditSubAdmin = async (formData: any) => { 
+    this.adminservice.updateSubAdmin(this.id, this.userData).subscribe((response: any) => {
+      if (response['message']) {
+        this.router.navigate(['user/' + this.id]);
         this.toastrService.showSuccess('success', response['message']);
       } else {
-        this.toastrService.showError('success', response['message']);
+        this.toastrService.showError('error', response['message']);
       }
     });
-
-  }
+  } 
   userSubmit = async (formData: any) => {
 
     if (formData.name.trim().length < 3) {

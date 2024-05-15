@@ -12,7 +12,7 @@
             <input type="text" name="title" id="title" class="w-full border border-gray-300 rounded-md p-2"
                    [(ngModel)]="post.title" minlength="5" required />
 
-            <mat-error *ngIf="newsForm.controls['title'].invalid && (newsForm.controls['title'].dirty || newsForm.controls['title'].touched)">
+            <mat-error *ngIf="newsForm.controls['title']?.invalid && (newsForm.controls['title'].dirty || newsForm.controls['title'].touched)">
               <span *ngIf="newsForm.controls['title'].hasError('required')">Title is required.</span>
               <span *ngIf="newsForm.controls['title'].hasError('minlength')">
                 Title should be at least 5
@@ -32,7 +32,7 @@
             <textarea name="content" id="content" class="w-full h-40 border border-gray-300 rounded-md p-2"
                       [(ngModel)]="post.content" minlength="10" required></textarea>
 
-            <mat-error *ngIf="newsForm.controls['content'].invalid && (newsForm.controls['content'].dirty || newsForm.controls['content'].touched)">
+            <mat-error *ngIf="newsForm.controls['content']?.invalid && (newsForm.controls['content'].dirty || newsForm.controls['content'].touched)">
               <span *ngIf="newsForm.controls['content'].hasError('required')">Content is required.</span>
               <span *ngIf="newsForm.controls['content'].hasError('minlength')">
                 Content should be at least 10

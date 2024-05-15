@@ -1,22 +1,63 @@
-<div *ngIf="user">
-  <section class="hero-section bg-cover bg-center">
-    <div class="hero-content text-left pt-8 pb-8">
-      <h2 class="text-4xl font-bold text-red-700 px-4">User Detail</h2>
-    </div>
-  </section>
-  <mat-card class="mb-8">
-    <mat-card-header class="p-8 justify-start text-left"> 
-      <h3 class="text-2xl font-semibold mb-4 pt-4 pl-8">{{ user.displayName }}</h3>
-    </mat-card-header>
-    <mat-card-content class="p-8 text-left justify-start">
-      <p class="ml-8 pl-4">{{ user.email }}</p>
-      <p class="ml-8 pl-4">{{ user.access }}</p>
-      <p class="ml-8 pl-4">{{ user.status }}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 mt-4 p-8 justify-between"> 
-      </div>
-    </mat-card-actions>
-  </mat-card>
+<div class="flex justify-center items-center min-h-screen bg-gray-100"  *ngIf="user">
+  <div class="max-w-md mx-auto">
 
+    <section class="flex flex-col justify-center items-center bg-gradient-to-r from-indigo-500 to-purple-500 p-8 rounded-lg">
+      <h2 class="text-3xl font-bold text-white">
+        User Detail
+      </h2>
+    </section>
+
+    <mat-card class="bg-white shadow-md rounded-lg p-8">
+
+      <mat-card-header>
+        <div class="flex items-center">
+          <h3 class="text-2xl font-bold">
+            {{ user.displayName }}
+          </h3>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <div class="grid grid-cols-1 gap-6 mb-6">
+
+          <div class="flex">
+            <label class="block text-gray-700 mx-2 ">Email: </label>
+            <p>{{ user.email }}</p>
+          </div>
+
+          <div>
+            <label class="block text-gray-700">Access</label>
+            <ul *ngFor="let access of user.access">
+                <li class="px-4">{{access}} </li>
+            </ul> 
+          </div>
+
+          <div class="flex flex-row">
+            <label class="block text-gray-700 mx-2">Status</label> 
+            <button size="tiny" *ngIf="user.status == 0" (click)="ActiveUser(user.id )" class="bg-red-600 hover:bg-red-900 text-white font-bold py-1 px-2  rounded">Inactive</button>
+            <button size="tiny" *ngIf="user.status == 1" (click)="InactiveUser(user.id )" class="bg-green-600 hover:bg-green-900 text-white font-bold py-1 px-2 rounded">Active</button>
+
+          </div>
+
+        </div>
+
+      </mat-card-content>
+
+      <mat-card-actions class="flex items-center justify-end">
+
+        <button mat-icon-button size="tiny" [routerLink]="['/user/lists']">
+          <mat-icon>undo</mat-icon>
+        </button>
+        <button mat-icon-button size="tiny" [routerLink]="['/user/', user.id, 'update']">
+          <mat-icon class="text-yellow-600 hover:text-orange-600">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" size="tiny" (click)="deleteUser(user.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+
+    </mat-card>
+   
+  </div>
 </div>

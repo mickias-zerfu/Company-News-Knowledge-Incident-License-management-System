@@ -55,6 +55,7 @@ export class UserListComponent implements OnInit {
       console.log(id);
       this.adminservice.inactiveSubadmin(id).subscribe(
         (response: any) => {
+          location.reload()
           this.toastrService.showSuccess('success', response['message']);
         },
         (error) => {
@@ -73,6 +74,7 @@ export class UserListComponent implements OnInit {
       console.log(id);
       this.adminservice.activeSubadmin(id).subscribe(
         (response: any) => {
+          location.reload()
           this.toastrService.showSuccess('success', response['message']);
         },
         (error) => {
@@ -86,12 +88,13 @@ export class UserListComponent implements OnInit {
     return true;
   }
 
-  deleteUser(id: string, indexis: any): boolean {
+  deleteUser(id: string, indexis: any): boolean { 
     if (confirm('Are you sure you want to Delete user?')) {
       console.log(id);
       this.adminservice.deleteSubAdmin(id).subscribe(
         (response: any) => {
           this.toastrService.showSuccess('success', response['message']);
+          location.reload()
         },
         (error) => {
           console.error(error);

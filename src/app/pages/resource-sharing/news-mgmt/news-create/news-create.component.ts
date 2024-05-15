@@ -41,7 +41,7 @@ export class NewsCreateComponent implements OnInit {
   }
   handleImageUpload(event: any) {
     const fileToUpload = event.target.files[0];
-    // display image
+    // display image 
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result;
@@ -71,8 +71,11 @@ export class NewsCreateComponent implements OnInit {
       if (this.isEditMode && this.post.id !== undefined) {
         this.UpdatePost(this.post.id);
       }
-      else {
-        // Add your logic here to handle the submission of the post
+      else { 
+        if (!this.post.image_url) {
+          this.toastService.showError('Image is required.', 'Close', 2000);
+          return;
+        }
         this.post.created_at = new Date().toDateString();
         this.blogservice.addBlog(this.post).subscribe(
           (res) => { 

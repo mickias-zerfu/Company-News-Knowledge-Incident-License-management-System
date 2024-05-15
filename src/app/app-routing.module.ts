@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
@@ -12,6 +12,7 @@ import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.compon
 import { HomeComponent } from './pages/home/home.component';
 import { AccessDeniedComponent } from './shared/access-denied/access-denied.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ForgetPasswordComponent } from './scaffold/forget-password/forget-password.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -45,6 +46,7 @@ const routes: Routes = [
   // Static pages
   { path: "about-us", component: AboutUsComponent },
   { path: "contact-us", component: ContactUsComponent },
+  { path: "forget-password", component: ForgetPasswordComponent },
   { path: "**", component: PagenotfoundComponent },
 
 

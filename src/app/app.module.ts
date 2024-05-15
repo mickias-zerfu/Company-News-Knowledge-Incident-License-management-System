@@ -35,6 +35,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ResourceSharingModule } from './pages/resource-sharing/resource-sharing.module';
 import { LicenseModule } from './pages/license-management/license.module';
 import { Interceptor } from './auth/my.interceptor';
+import { ForgetPasswordComponent } from './scaffold/forget-password/forget-password.component';
 
 export function playerFactory() {
   return player;
@@ -62,6 +63,7 @@ export function playerFactory() {
     TransactionDashboardComponent,
     HomeComponent,
     ConfirmDialogComponent,
+    ForgetPasswordComponent,
 
   ],
   imports: [

@@ -64,6 +64,10 @@ export class ProductCreateComponent implements OnInit {
 
   addResource(formData: FormData) {
 
+    if (!this.resource.FileDetails) {
+      this.toastService.showError('No File selected', 'Close', 2000);
+      return;
+    }
     this.fileService.addResource(formData).subscribe(
       () => {
         this.toastService.showSuccess('New Resource added successfully.', 'Close', 2000);

@@ -64,6 +64,9 @@ export class IncidentCreateComponent implements OnInit {
     this.incidentForm.patchValue({
       incidentTitle: this.incident.incidentTitle,
       incidentDescription: this.incident.incidentDescription,
+      statusAction: this.incident.statusAction,
+      quickReviews:this.incident.quickReviews,
+      solutionToIncident : this.incident.solutionToIncident,
       remark: this.incident.remark  
     });
     this.statusAction = this.incident.statusAction;
@@ -109,12 +112,6 @@ export class IncidentCreateComponent implements OnInit {
 
   onSubmit(): void {
     if (this.incidentForm.valid) {
-      if (
-        this.statusAction.length === 0 || this.quickReviews.length === 0 || this.solutionToIncident.length === 0
-      ) { 
-        this.toastService.showError('Please fill the required fields.', 'Close', 2000);
-        return;
-      }
       if (this.isEditMode) {
         this.incident.updated_at = new Date().toDateString();
         this.incidentForm.get('statusAction')?.setValue(this.statusAction);
@@ -135,6 +132,13 @@ export class IncidentCreateComponent implements OnInit {
         });
       }
       else {
+
+        if (
+          this.statusAction.length === 0 || this.quickReviews.length === 0 || this.solutionToIncident.length === 0
+        ) {
+          this.toastService.showError('Please fill the required fields.', 'Close', 2000);
+          return;
+        }
         const newIncident: Incident = { ...this.incidentForm.value, created_at: new Date().toDateString() };
 
         this.incidentService.addIncident(newIncident).subscribe({
