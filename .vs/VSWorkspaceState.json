@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\auth",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\resource-sharing",
-    "\\src\\app\\pages\\resource-sharing\\incident-mgmt",
-    "\\src\\app\\scaffold",
-    "\\src\\app\\scaffold\\header",
-    "\\src\\app\\scaffold\\login",
-    "\\src\\app\\services"
+    "\\src\\app\\pages\\resource-sharing\\knowledge-mgmt",
+    "\\src\\app\\pages\\resource-sharing\\knowledge-mgmt\\knowledge-list",
+    "\\src\\app\\pages\\resource-sharing\\news-mgmt",
+    "\\src\\app\\pages\\user-management\\user-form",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\scaffold\\header\\header.component.ts",
+  "SelectedNode": "\\src\\environments\\environment.prod.ts",
   "PreviewInSolutionExplorer": false
 }

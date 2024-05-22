@@ -23,13 +23,13 @@
 
   <mat-card-content>
     <div class="flex items-center mb-4">
-      <mat-card-actions class="flex items-end justify-end">
+      <!--<mat-card-actions class="flex items-end justify-end">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 mt-4 pl-8 justify-between">
           <button [disabled]="checkedArray.length < 1" (click)="statusChange(1)" class="bg-red-600 hover:bg-red-900 text-white font-bold py-2 px-4 rounded w-full md:w-auto">ACTIVE</button>
           <button [disabled]="checkedArray.length < 1" (click)="statusChange(0)" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">DEACTIVE</button>
           <button [disabled]="checkedArray.length < 1" (click)="multiDelete()" class="bg-yellow-600 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto">DELETE</button>
         </div>
-      </mat-card-actions>
+      </mat-card-actions>-->
     </div>
     <div class="overflow-x-auto">
       <table class="table-auto min-w-full">
@@ -66,9 +66,9 @@
               <button mat-icon-button size="tiny"  [routerLink]="['/user/', user.id, 'update']"  >
                 <mat-icon class="text-yellow-600 hover:text-orange-600"  >edit</mat-icon>
               </button>
-              <button mat-icon-button color="warn" size="tiny" (click)="deleteUser(user.id, i)" >
+              <!--<button mat-icon-button color="warn" size="tiny" (click)="deleteUser(user.id, i)" >
                 <mat-icon>delete</mat-icon>
-              </button>
+              </button>-->
             </td>
            </tr>
         </tbody>

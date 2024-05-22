@@ -24,6 +24,8 @@ openFileDetail(fileId:number): void {
 deleteFile(fileId: number): void {
   this.knowledgeService.deleteKnowledge(fileId).subscribe(data => {
     this.router.navigate(['/resources/manageknowledges']);
+    location.reload();
+
   })
 }
 openConfirmationDialog(fileId:number): void {
