@@ -19,6 +19,6 @@ export class LottieAnimationComponent implements OnInit {
   };
 
   animationCreated(animationItem: AnimationItem): void {
-    console.log(animationItem);
+    // console.log(animationItem);
   }
 }

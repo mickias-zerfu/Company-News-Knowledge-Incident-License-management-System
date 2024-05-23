@@ -25,7 +25,7 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['id']; 
+      this.userId = params['id'];
       this.fetchUserDetails(this.userId);
     });
   }
@@ -38,19 +38,16 @@ export class UserDetailComponent implements OnInit {
           return this.accessArray.find(option => option.value === access)?.name;
         });
 
-      console.log(this.user)
     });
   }
 
   InactiveUser(id: string ): boolean {
     if (confirm('Are you sure you want to Change status?')) {
-      console.log(id);
       this.adminService.inactiveSubadmin(id).subscribe(
         (response: any) => {
           this.toastrService.showSuccess('success', response['message']);
         },
         (error) => {
-          console.error(error);
           // Handle error
         }
       );
@@ -62,13 +59,11 @@ export class UserDetailComponent implements OnInit {
 
   ActiveUser(id: string ): boolean {
     if (confirm('Are you sure you want to Change status?')) {
-      console.log(id);
       this.adminService.activeSubadmin(id).subscribe(
         (response: any) => {
           this.toastrService.showSuccess('success', response['message']);
         },
         (error) => {
-          console.error(error);
           // Handle error
         }
       );
@@ -79,13 +74,11 @@ export class UserDetailComponent implements OnInit {
   }
   deleteUser(id: string ): boolean {
     if (confirm('Are you sure you want to Delete user?')) {
-      console.log(id);
       this.adminService.deleteSubAdmin(id).subscribe(
         (response: any) => {
           this.toastrService.showSuccess('success', response['message']);
         },
         (error) => {
-          console.error(error);
           this.toastrService.showError('danger', 'There was an error please try after some time!!');
           // Handle error
         }
@@ -94,6 +87,6 @@ export class UserDetailComponent implements OnInit {
       return false;
     }
     return true;
-  } 
+  }
 
 }

@@ -36,6 +36,7 @@ import { ResourceSharingModule } from './pages/resource-sharing/resource-sharing
 import { LicenseModule } from './pages/license-management/license.module';
 import { Interceptor } from './auth/my.interceptor';
 import { ForgetPasswordComponent } from './scaffold/forget-password/forget-password.component';
+import { QuillModule } from 'ngx-quill';
 
 export function playerFactory() {
   return player;
@@ -71,6 +72,7 @@ export function playerFactory() {
     AppRoutingModule,
     BrowserAnimationsModule,
     LottieModule.forRoot({ player: playerFactory }),
+    QuillModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

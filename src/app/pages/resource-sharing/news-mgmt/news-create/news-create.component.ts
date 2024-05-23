@@ -3,7 +3,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogModel } from 'src/app/models/blog.model';
-import { FileDetails } from 'src/app/models/fileDetail.model';
+import { QuillModule } from 'ngx-quill'
 import { BlogService } from 'src/app/services/blog.service';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -41,7 +41,7 @@ export class NewsCreateComponent implements OnInit {
   }
   handleImageUpload(event: any) {
     const fileToUpload = event.target.files[0];
-    // display image 
+    // display image
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result;
@@ -66,23 +66,27 @@ export class NewsCreateComponent implements OnInit {
       );
   }
 
+  triggerValidation(controlName: string) {
+    this.newsForm.controls[controlName].markAsTouched();
+    this.newsForm.controls[controlName].updateValueAndValidity();
+  }
   submitPost() {
     if (this.newsForm.valid) {
       if (this.isEditMode && this.post.id !== undefined) {
         this.UpdatePost(this.post.id);
       }
-      else { 
+      else {
         if (!this.post.image_url) {
           this.toastService.showError('Image is required.', 'Close', 2000);
           return;
         }
         this.post.created_at = new Date().toDateString();
         this.blogservice.addBlog(this.post).subscribe(
-          (res) => { 
+          (res) => {
             this.router.navigate(['/resources/managenews']);
             this.toastService.showSuccess('News posted successfully.', 'Close', 2000);
           }
-        ) 
+        )
       }
     }
   }
@@ -93,7 +97,7 @@ export class NewsCreateComponent implements OnInit {
     this.blogservice.updateBlogContent(postId, this.post).subscribe(
       (res) => {
         this.router.navigate(['/resources/managenews']);
-        this.toastService.showSuccess('News updated successfully', 'Close', 2000); 
+        this.toastService.showSuccess('News updated successfully', 'Close', 2000);
       }
     )
   }

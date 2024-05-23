@@ -24,12 +24,12 @@
 
           <div>
             <label for="featuredImage" name="featuredImage" class="block text-lg mb-2">Featured Image:</label>
-            <input type="file" id="featuredImage" class="p-2" (change)="handleImageUpload($event)" accept="image/*" required /> 
+            <input type="file" id="featuredImage" class="p-2" (change)="handleImageUpload($event)" accept="image/*" required />
             <img [src]="imagePreview" alt="Selected Image" *ngIf="imagePreview" class="w-64 h-64 p-2 rounded" />
           </div>
-          <div class="col-span-2">
+          <!-- <div class="col-span-2">
             <label for="content" class="block text-lg mb-2">Content:</label>
-            <textarea name="content" id="content" class="w-full h-40 border border-gray-300 rounded-md p-2"
+            <textarea name="content_" id="content" class="w-full h-40 border border-gray-300 rounded-md p-2"
                       [(ngModel)]="post.content" minlength="10" required></textarea>
 
             <mat-error *ngIf="newsForm.controls['content']?.invalid && (newsForm.controls['content'].dirty || newsForm.controls['content'].touched)">
@@ -39,7 +39,25 @@
                 characters long.
               </span>
             </mat-error>
+          </div> -->
+          <div class="col-span-2">
+            <label for="content" class="block text-lg mb-2">Content:</label>
+            <quill-editor
+              [(ngModel)]="post.content"
+              [required]="true"
+              [minLength]="10"
+              class="content-editor w-full h-48"
+              [placeholder]="''"
+              (blur)="triggerValidation('content')"
+              name="content"
+            ></quill-editor>
 
+            <mat-error *ngIf="newsForm.controls['content']?.invalid && (newsForm.controls['content'].dirty || newsForm.controls['content'].touched)">
+              <span *ngIf="newsForm.controls['content'].hasError('required')">Content is required.</span>
+              <span *ngIf="newsForm.controls['content'].hasError('minlength')">
+                Content should be at least 10 characters long.
+              </span>
+            </mat-error>
           </div>
 
           <div class="flex justify-end pr-16">

@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     var userInfo: any = localStorage.getItem('access');
-      console.log(userInfo)
+      // console.log(userInfo)
       var userRole: any =  localStorage.getItem('roleId');
       var token = localStorage.getItem('token')
     //console.log(userInfo)
@@ -31,7 +31,7 @@ export class AuthGuard implements CanActivate {
       }
       else if (userRole == 1) {
         const accessCheck = (access: number) => {
-          const accessArray = userInfo.split(',').map(Number); 
+          const accessArray = userInfo.split(',').map(Number);
           const data = accessArray.find((element: number) => element === access);
           if (data) {
             return true;

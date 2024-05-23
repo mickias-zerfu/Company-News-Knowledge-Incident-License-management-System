@@ -29,13 +29,13 @@ export class UserManagementComponent implements OnInit {
   // Method to add a new user (mock action)
   addNewUser(): void {
     // Mock action to add a new user
-    console.log('Adding a new user...');
+    // console.log('Adding a new user...');
   }
 
   // Method to delete a user (mock action)
   deleteUser(user: any): void {
     // Mock action to delete a user
-    console.log(`Deleting user: ${user.name}`);
+    // console.log(`Deleting user: ${user.name}`);
     // Remove the user from the array
     this.users = this.users.filter(u => u !== user);
     this.dataSource.data = this.users; // Update data source for MatTable

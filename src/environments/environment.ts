@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://s-m-bwm-001:6060/api/",
+  baseUrl: "http://localhost:5195/api/",
   name: "local"
 };
 

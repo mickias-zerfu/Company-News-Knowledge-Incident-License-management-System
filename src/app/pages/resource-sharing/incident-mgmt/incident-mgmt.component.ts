@@ -24,7 +24,7 @@ export class IncidentMgmtComponent implements OnInit {
   getAllIncidentService() {
     this.incidentService.getAllIncidents().subscribe(data => {
       this.incidents = data;
-      console.log(this.incidents);
+      // console.log(this.incidents);
     });
   }
 

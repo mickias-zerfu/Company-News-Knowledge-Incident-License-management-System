@@ -40,7 +40,7 @@ export class NewsDetailComponent implements OnInit {
       this.blog = blog;
 
       // this.blog.image_url = `http://localhost:5195/api/SharedResource/Images/${this.blog.image_url}`;
-      console.log(this.blog, 'blog single');
+      // console.log(this.blog, 'blog single');
 
     });
   }
@@ -48,7 +48,7 @@ export class NewsDetailComponent implements OnInit {
   fetchRecentBlogs() {
     this.blogService.getAllBlogs().subscribe(data => {
       this.recentBlogList = data.slice(0, 4);
-      console.log(this.recentBlogList, 'recents . . . ');
+      // console.log(this.recentBlogList, 'recents . . . ');
 
     });
     // this.recentBlogList = postsInfo // Assuming you want to display the second, third, and fourth blog as recent blogs
@@ -61,7 +61,7 @@ export class NewsDetailComponent implements OnInit {
 
     this.commentService.addComment(newsId, this.comment).subscribe(
       (newComment) => {
-        console.log('Comment added:', newComment);
+        // console.log('Comment added:', newComment);
         const currentUrl = this.router.url + '?';
         this.router.navigateByUrl(currentUrl).then(() => {
           this.router.navigated = false;

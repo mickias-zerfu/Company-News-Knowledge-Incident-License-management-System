@@ -28,7 +28,7 @@ export class FileService {
   }
 
   addResource(File: any): Observable<any> {
-    console.log(File);
+    // console.log(File);
     return this.http.post<any>(this.apiUrl, File);
   }
   updateFile(FileId: number, File: any): Observable<any> {
