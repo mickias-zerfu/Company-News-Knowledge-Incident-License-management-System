@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Mikiyas.Zerfu\\Desktop\\web\\Angular\\TXN-Monitoring\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Mikiyas.Zerfu\\Desktop\\web\\Angular\\TXN-Monitoring\\src\\environments\\environment.prod.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\environments\\environment.prod.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Mikiyas.Zerfu\\Desktop\\web\\Angular\\TXN-Monitoring\\src\\environments\\environment.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\environments\\environment.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Mikiyas.Zerfu\\Desktop\\web\\Angular\\TXN-Monitoring\\src\\environments\\environment.prod.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\environments\\environment.prod.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Mikiyas.Zerfu\\Desktop\\web\\Angular\\TXN-Monitoring\\src\\app\\auth\\auth.guard.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
@@ -58,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,8 +74,7 @@
               "RelativeToolTip": "src\\app\\auth\\auth.guard.ts",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-05-20T11:58:00.431Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T11:58:00.431Z"
             },
             {
               "$type": "Document",
@@ -87,8 +86,7 @@
               "RelativeToolTip": "src\\app\\pages\\resource-sharing\\knowledge-mgmt\\knowledge-list\\knowledge-list.component.ts",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAABoAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-05-20T11:41:44.159Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T11:41:44.159Z"
             },
             {
               "$type": "Document",
@@ -100,8 +98,7 @@
               "RelativeToolTip": "src\\app\\pages\\resource-sharing\\knowledge-mgmt\\knowledge-list\\knowledge-list.component.html",
               "ViewState": "AQIAABgAAAAAAAAAAAAAAC0AAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-20T11:41:33.702Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T11:41:33.702Z"
             },
             {
               "$type": "Document",
@@ -113,8 +110,7 @@
               "RelativeToolTip": "src\\app\\pages\\resource-sharing\\knowledge-mgmt\\knowledge-mgmt.component.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-20T11:41:26.606Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T11:41:26.606Z"
             },
             {
               "$type": "Document",
@@ -126,8 +122,7 @@
               "RelativeToolTip": "src\\app\\pages\\user-management\\user-detail\\user-detail.component.html",
               "ViewState": "AQIAACcAAAAAAAAAAAAAADYAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-20T11:40:54.103Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T11:40:54.103Z"
             },
             {
               "$type": "Document",
@@ -139,31 +134,30 @@
               "RelativeToolTip": "src\\app\\pages\\user-management\\user-list\\user-list.component.html",
               "ViewState": "AQIAADYAAAAAAAAAAAAAAEQAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-20T11:40:21.195Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T11:40:21.195Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "environment.prod.ts",
               "DocumentMoniker": "C:\\Users\\Mikiyas.Zerfu\\Desktop\\web\\Angular\\TXN-Monitoring\\src\\environments\\environment.prod.ts",
               "RelativeDocumentMoniker": "src\\environments\\environment.prod.ts",
               "ToolTip": "C:\\Users\\Mikiyas.Zerfu\\Desktop\\web\\Angular\\TXN-Monitoring\\src\\environments\\environment.prod.ts",
               "RelativeToolTip": "src\\environments\\environment.prod.ts",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2024-05-20T10:59:13.191Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "environment.ts",
               "DocumentMoniker": "C:\\Users\\Mikiyas.Zerfu\\Desktop\\web\\Angular\\TXN-Monitoring\\src\\environments\\environment.ts",
               "RelativeDocumentMoniker": "src\\environments\\environment.ts",
               "ToolTip": "C:\\Users\\Mikiyas.Zerfu\\Desktop\\web\\Angular\\TXN-Monitoring\\src\\environments\\environment.ts",
               "RelativeToolTip": "src\\environments\\environment.ts",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAoAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2024-05-20T10:59:02.91Z",
               "EditorCaption": ""
@@ -178,8 +172,7 @@
               "RelativeToolTip": "src\\app\\pages\\user-management\\user-form\\user-form.component.ts",
               "ViewState": "AQIAAEQAAAAAAAAAAAAwwFkAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-05-20T11:44:01.913Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T11:44:01.913Z"
             },
             {
               "$type": "Document",
@@ -191,8 +184,7 @@
               "RelativeToolTip": "src\\app\\pages\\user-management\\user-management.component.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-20T11:40:05.929Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T11:40:05.929Z"
             },
             {
               "$type": "Document",
@@ -204,8 +196,7 @@
               "RelativeToolTip": "src\\index.html",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAB/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-20T07:07:52.399Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T07:07:52.399Z"
             },
             {
               "$type": "Document",
@@ -217,8 +208,7 @@
               "RelativeToolTip": "src\\app\\scaffold\\footer\\footer.component.html",
               "ViewState": "AQIAADkAAAAAAAAAAAAAADEAAABjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-20T07:03:47.658Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T07:03:47.658Z"
             }
           ]
         }
