@@ -5,12 +5,7 @@
     "\\src\\app",
     "\\src\\app\\auth",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\resource-sharing\\knowledge-mgmt",
-    "\\src\\app\\pages\\resource-sharing\\knowledge-mgmt\\knowledge-list",
-    "\\src\\app\\pages\\resource-sharing\\news-mgmt",
-    "\\src\\app\\pages\\user-management\\user-form",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\environments\\environment.prod.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -27,7 +27,7 @@ export class KnowledgeService {
   }
 
   addKnowledge(Knowledge: any): Observable<any> {
-    console.log(Knowledge);
+    // console.log(Knowledge);
     return this.http.post<any>(this.apiUrl, Knowledge);
   }
   updateKnowledge(KnowledgeId: number, Knowledge: any): Observable<any> {

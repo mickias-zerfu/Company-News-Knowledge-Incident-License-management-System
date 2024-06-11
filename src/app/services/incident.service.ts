@@ -27,13 +27,13 @@ export class IncidentService {
   }
 
   addIncident(Incident: any): Observable<any> {
-    console.log(Incident);
+    // console.log(Incident);
     return this.http.post<any>(this.apiUrl, Incident);
   }
   updateIncident(IncidentId: number, Incident: any): Observable<any> {
     const url = `${this.apiUrl}/${IncidentId}`;
 
-    console.log(Incident, "inside sending to the api ")
+    // console.log(Incident, "inside sending to the api ")
     return this.http.put<any>(url, Incident);
   }
 

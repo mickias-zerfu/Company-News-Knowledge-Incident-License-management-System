@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
 html,
 body {
   height: 100%;

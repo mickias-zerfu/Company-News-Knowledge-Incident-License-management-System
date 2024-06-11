@@ -26,6 +26,7 @@ import { ProductMgmtComponent } from './product-mgmt/product-mgmt.component';
 import { ShareFileDialogComponent } from './product-mgmt/share-file-dialog/share-file-dialog.component';
 import { ResourceDashboardComponent } from './resource-dashboard/resource-dashboard.component';
 import { ResourceSharingComponent } from './resource-sharing.component';
+import { QuillModule } from 'ngx-quill';
 
 
 
@@ -60,7 +61,8 @@ import { ResourceSharingComponent } from './resource-sharing.component';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+     QuillModule
   ]
 })
 export class ResourceSharingModule { }

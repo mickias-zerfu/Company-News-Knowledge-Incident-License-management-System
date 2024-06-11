@@ -40,8 +40,7 @@ export class UserFormComponent implements OnInit {
     { value: 4, name: 'File Management' },
     { value: 5, name: 'License Management' },
     { value: 6, name: 'Service Down Time Management' },
-    { value: 7, name: 'Daily CheckList Management' },
-    { value: 8, name: 'User Management' },
+    { value: 7, name: 'Daily CheckList Management' }, 
   ]
   constructor(private fb: FormBuilder,
     private adminservice: AdminService, private router: Router,
@@ -63,15 +62,15 @@ export class UserFormComponent implements OnInit {
   // update user fetch
   updateUser(userId: string) {
     this.adminservice.subAdminById(userId).subscribe(res => {
-      console.log(res)
+      // console.log(res)
       this.userData = res as SubAdminModelCreate;
-      console.log(this.userData)
+      // console.log(this.userData)
       //this.access = res['response']['access'].map(Number);
     })
     this.showPassword = false
   }
   createNewSubAdmin = async (formData: any) => {
-    console.log(this.userData, 'user data')
+    // console.log(this.userData, 'user data')
     this.adminservice.insertSubAdmin(this.userData).subscribe((response: any) => {
       if (response['message']) {
         this.router.navigate(['user/lists']);
@@ -82,7 +81,7 @@ export class UserFormComponent implements OnInit {
     });
 
   }
-  updateEditSubAdmin = async (formData: any) => { 
+  updateEditSubAdmin = async (formData: any) => {
     this.adminservice.updateSubAdmin(this.id, this.userData).subscribe((response: any) => {
       if (response['message']) {
         this.router.navigate(['user/' + this.id]);
@@ -91,7 +90,7 @@ export class UserFormComponent implements OnInit {
         this.toastrService.showError('error', response['message']);
       }
     });
-  } 
+  }
   userSubmit = async (formData: any) => {
 
     if (formData.name.trim().length < 3) {
@@ -134,12 +133,9 @@ export class UserFormComponent implements OnInit {
     this.showPassword = !this.showPassword
   }
   compareWithFn(item1: any, item2: any) {
-    console.log(item1)
-    console.log(item2)
     return item1 && item2 ? item1.value === item2.value : item1 === item2;
   }
   accessChange(e: any) {
-    console.log(e)
     this.userData.access = e
     this.access = e
   }

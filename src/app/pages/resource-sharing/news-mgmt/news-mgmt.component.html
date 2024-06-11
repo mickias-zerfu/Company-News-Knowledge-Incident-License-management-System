@@ -42,7 +42,8 @@
                       <p class="font-bold">Title: {{ blog.title }}</p>
                     </div>
                     <div class="mt-4">
-                      <p class="truncate">{{ blog.content }}</p>
+
+                      <div class="truncate" [innerHTML]="blog.content"></div> 
                     </div>
                     <div class="flex justify-between mt-4">
                       <div>

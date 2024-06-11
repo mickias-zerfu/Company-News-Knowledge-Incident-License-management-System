@@ -25,13 +25,13 @@
             <li class="flex-grow" *ngIf="authService.currentUser$ | async as user">
               <button class="learn-more">
                 <a class="button-text hover:font-bold" routerLinkActive="nav-link active"
-                  [routerLink]="['resources/news']">News</a>
+                  [routerLink]="['resources/blogs']">News</a>
               </button>
             </li>
             <li class="flex-grow" *ngIf="authService.currentUser$ | async as user">
               <button class="learn-more">
                 <a class="button-text hover:font-bold" routerLinkActive="nav-link active"
-                  [routerLink]="['resources/files']">Resources</a>
+                  [routerLink]="['resources/documents']">Resources</a>
               </button>
             </li>
             <li class="flex-grow">

@@ -36,14 +36,14 @@ export class ResourceDashboardComponent implements OnInit {
           icon: 'newspaper',
           count: data.newsCount,
           subtitle: 'Shared News',
-          link: 'news'
+          link: 'blogs'
         },
         {
           bgcolor: '#3C0753',
           icon: 'attach_file',
           count: data.sharedResourceCount,
           subtitle: 'File Shared Items',
-          link: 'files'
+          link: 'documents'
         },
         {
           bgcolor: '#B80000',

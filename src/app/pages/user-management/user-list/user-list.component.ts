@@ -38,7 +38,7 @@ export class UserListComponent implements OnInit {
 
     this.adminservice.getAdminList(params).subscribe((res: any) => {
       this.data = res;
-      console.info(this.data)
+      // console.info(this.data)
     }, error => console.log(error, ' ERrrrrrrrrrrrrrrrrrrroooor')
     );
   }
@@ -52,14 +52,14 @@ export class UserListComponent implements OnInit {
   }
   InactiveUser(id: string, indexis: any): boolean {
     if (confirm('Are you sure you want to Change status?')) {
-      console.log(id);
+      // console.log(id);
       this.adminservice.inactiveSubadmin(id).subscribe(
         (response: any) => {
           location.reload()
           this.toastrService.showSuccess('success', response['message']);
         },
         (error) => {
-          console.error(error);
+          // console.error(error);
           // Handle error
         }
       );
@@ -71,14 +71,14 @@ export class UserListComponent implements OnInit {
 
   ActiveUser(id: string, indexis: any): boolean {
     if (confirm('Are you sure you want to Change status?')) {
-      console.log(id);
+      // console.log(id);
       this.adminservice.activeSubadmin(id).subscribe(
         (response: any) => {
           location.reload()
           this.toastrService.showSuccess('success', response['message']);
         },
         (error) => {
-          console.error(error);
+          // console.error(error);
           // Handle error
         }
       );
@@ -88,16 +88,16 @@ export class UserListComponent implements OnInit {
     return true;
   }
 
-  deleteUser(id: string, indexis: any): boolean { 
+  deleteUser(id: string, indexis: any): boolean {
     if (confirm('Are you sure you want to Delete user?')) {
-      console.log(id);
+      // console.log(id);
       this.adminservice.deleteSubAdmin(id).subscribe(
         (response: any) => {
           this.toastrService.showSuccess('success', response['message']);
           location.reload()
         },
         (error) => {
-          console.error(error);
+          // console.error(error);
           this.toastrService.showError('danger', 'There was an error please try after some time!!');
           // Handle error
         }
@@ -106,7 +106,7 @@ export class UserListComponent implements OnInit {
       return false;
     }
     return true;
-  } 
+  }
 
   pageChanged(event:any) {
     this.getUsers(event, '')
@@ -139,12 +139,12 @@ export class UserListComponent implements OnInit {
     this.checkedArray = []
     this.data.forEach((element: any) => {
       if (element.isChecked) {
-        console.log(element)
+        // console.log(element)
         // this.checkedArray.push(element._id)
-        console.log(this.checkedArray)
+        // console.log(this.checkedArray)
       }
       else {
-        console.log('in else')
+        // console.log('in else')
         // var index = this.checkedArray.indexOf(element._id);
         // this.checkedArray.splice(index, 1);
       }
@@ -158,7 +158,7 @@ export class UserListComponent implements OnInit {
     else {
       this.checkAll = false
     }
-    console.log(this.checkedArray)
+    // console.log(this.checkedArray)
   }
 
   checkAllChange() {
@@ -178,12 +178,12 @@ export class UserListComponent implements OnInit {
 
   statusChange(status:any) {
     if (confirm('Are you sure?')) {
-      console.log(this.checkedArray)
+      // console.log(this.checkedArray)
       const newformData = new FormData();
       newformData.append('idArray', JSON.stringify(this.checkedArray))
       newformData.append('status', status)
       this.adminservice.multiStatusChange(newformData).subscribe((res:any) => {
-        console.log(res)
+        // console.log(res)
         if (res['status'] != -1) {
           this.checkAll = false
           this.ngOnInit()

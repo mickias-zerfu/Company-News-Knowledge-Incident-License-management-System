@@ -3,11 +3,13 @@ import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpHeaders, Http
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ToastService } from "../services/toast.service";
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
-    constructor(private router: Router) { }
+  constructor(private router: Router,
+    private toastrService: ToastService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       const token = localStorage.getItem('token'); 
@@ -20,8 +22,13 @@ export class Interceptor implements HttpInterceptor {
             return next.handle(AuthRequest).pipe(
                 catchError((err: HttpErrorResponse) => {
                     if (err.status == 401) {
-                        localStorage.clear();
-                        this.router.navigate(['/home']);
+                      localStorage.clear();
+                      this.toastrService.showError("You are not authorized, please log in", 'close', 2000)
+                        this.router.navigateByUrl('/user/login');
+                    } else if (err.status === 403) {
+                      // Redirect to access-denied route
+                      this.toastrService.showInfo("You Do not have This level of Authorization", 'close', 4000)
+                      this.router.navigate(['/access-denied']);
                     }
                     return throwError(err);
                 }),

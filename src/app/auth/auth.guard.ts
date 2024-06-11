@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { ToastService } from '../services/toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +10,14 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate {
 
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router,
+    private toastrService: ToastService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     var userInfo: any = localStorage.getItem('access');
-      console.log(userInfo)
+      // console.log(userInfo)
       var userRole: any =  localStorage.getItem('roleId');
       var token = localStorage.getItem('token')
     //console.log(userInfo)
@@ -31,7 +33,7 @@ export class AuthGuard implements CanActivate {
       }
       else if (userRole == 1) {
         const accessCheck = (access: number) => {
-          const accessArray = userInfo.split(',').map(Number); 
+          const accessArray = userInfo.split(',').map(Number);
           const data = accessArray.find((element: number) => element === access);
           if (data) {
             return true;
@@ -53,16 +55,24 @@ export class AuthGuard implements CanActivate {
         if (state.url.search('resources/status') !== -1 || state.url.search('dashboard') !== -1) {
           return true;
         }
-        if (state.url.search('news') !== -1 || state.url.search('managenews') !== -1) {
+        if (state.url.search('news') !== -1) {
           return accessCheck(1);
-        } else if (state.url.search('knowledges') !== -1 || state.url.search('knowledge') !== -1) {
+        } else if (state.url.search('managenews') !== -1) {
+          return accessCheck(1);
+        } else if (state.url.search('blogs') !== -1) {
+          return accessCheck(1);
+        }else if (state.url.search('knowledges') !== -1) {
+          return accessCheck(2);
+        } else if (state.url.search('knowledge') !== -1) { 
           return accessCheck(2);
         } else if (state.url.search('incidents') !== -1 || state.url.search('incident') !== -1) {
           return accessCheck(3);
-        } else if (state.url.search('files') !== -1 || state.url.search('managefiles') !== -1) {
+        } else if (state.url.search('files') !== -1 ) {
           return accessCheck(4);
-        } else if (state.url.search('knowledges') !== -1 || state.url.search('knowledge') !== -1) {
+        } else if (state.url.search('managefiles') !== -1) {
           return accessCheck(4);
+        } else if (state.url.search('documents') !== -1) {
+          return accessCheck(4); 
         } else if (state.url.search('licenses') !== -1) {
           return accessCheck(5);
         } else if (state.url.search('downtime') !== -1) {
@@ -71,23 +81,29 @@ export class AuthGuard implements CanActivate {
           return accessCheck(7);
         } else if (state.url.search('users') !== -1) {
           return accessCheck(8);
-        } else {
+        } else { 
+          this.toastrService.showInfo("You Do not have This level of Authorization", 'close', 4000)
+          this.router.navigate(['/access-denied']);
           return false;
         }
       }
     }
     else if (userRole == 0) {
 
-      if (state.url.search('news') !== -1) {
+      if (state.url.search('blogs') !== -1) {
         return true;
       }
-      else if (state.url.search('files') !== -1) {
+      else if (state.url.search('documents') !== -1) {
         return true;
       }
     }
-    else {
+    else { 
+      this.toastrService.showError("You are not authorized, please log in", 'close', 4000)
+      this.router.navigateByUrl('/user/login');
       return false;
     }
+    this.toastrService.showInfo("You Do not have This level of Authorization", 'close', 4000)
+    this.router.navigate(['/access-denied']);
     return false;
   }
 

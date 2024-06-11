@@ -18,6 +18,8 @@ export class ProductCreateComponent implements OnInit {
   fileId: number;
   isSubmitted = false;
   @ViewChild('resourceForm') resourceForm: NgForm;
+  maxFileSize = 10 * 1024 * 1024; // 5 MB
+  allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'pdf', 'docx', 'mp4', 'doc', 'xlsx', 'avi'];
 
   constructor(
     private fileService: FileService,
@@ -39,6 +41,16 @@ export class ProductCreateComponent implements OnInit {
 
   handleFileUpload(event: any) {
     const fileToUpload = event.target.files[0];
+    if (fileToUpload.size > this.maxFileSize) {
+      this.toastService.showError('File size exceeds the maximum allowed limit.', 'close', 2000);
+      return;
+    } 
+    const fileExtension = fileToUpload.name.split('.').pop().toLowerCase();
+    if (!this.allowedExtensions.includes(fileExtension)) {
+      this.toastService.showError('File type is not allowed.', 'close', 2000);
+      return;
+    }
+
     this.resource.FileDetails = fileToUpload; // Set the file directly in the resource object
   }
 
@@ -68,13 +80,14 @@ export class ProductCreateComponent implements OnInit {
       this.toastService.showError('No File selected', 'Close', 2000);
       return;
     }
+     
     this.fileService.addResource(formData).subscribe(
       () => {
         this.toastService.showSuccess('New Resource added successfully.', 'Close', 2000);
         this.router.navigate(['/resources/managefiles']);
       },
       error => {
-        this.toastService.showSuccess('Resource updated successfully', 'Close', 2000);
+        this.toastService.showError(error.error.message, 'Close', 4000);
         console.error(error);
       }
     );
@@ -87,7 +100,7 @@ export class ProductCreateComponent implements OnInit {
         this.router.navigate(['/resources/managefiles']);
       },
       error => {
-        this.toastService.showError('Failed to update resource', 'Close', 2000);
+        this.toastService.showError(error.error.message, 'Close', 4000);
         console.error(error);
       }
     );

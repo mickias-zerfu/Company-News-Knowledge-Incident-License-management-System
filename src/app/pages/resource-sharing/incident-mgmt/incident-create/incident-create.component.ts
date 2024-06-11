@@ -30,7 +30,7 @@ export class IncidentCreateComponent implements OnInit {
       // Fetch incident details and populate the form for editing
       this.incidentService.getIncidentById(incidentId).subscribe({
         next: (incident: Incident) => {
-          this.incident = incident; 
+          this.incident = incident;
           this.populateForm();
         },
         error: (err) => console.log(err)
@@ -67,7 +67,7 @@ export class IncidentCreateComponent implements OnInit {
       statusAction: this.incident.statusAction,
       quickReviews:this.incident.quickReviews,
       solutionToIncident : this.incident.solutionToIncident,
-      remark: this.incident.remark  
+      remark: this.incident.remark
     });
     this.statusAction = this.incident.statusAction;
     this.quickReviews = this.incident.quickReviews;
@@ -87,7 +87,7 @@ export class IncidentCreateComponent implements OnInit {
     const action = actionInput.value.trim(); if (action.trim()) {
 
       this.quickReviews.push(action.trim());
-      this.incidentForm.get('quickReviews')?.setValue(this.quickReviews); 
+      this.incidentForm.get('quickReviews')?.setValue(this.quickReviews);
       actionInput.value = '';
 
     }
@@ -118,15 +118,12 @@ export class IncidentCreateComponent implements OnInit {
         this.incidentForm.get('quickReviews')?.setValue(this.quickReviews);
         this.incidentForm.get('solutionToIncident')?.setValue(this.solutionToIncident);
         const newIncident: Incident = { ...this.incident, ... this.incidentForm.value };
-        console.log(newIncident, "before sending to the api ")
-        console.log(this.incident, "before sending to the api ")
-        console.log(this.incidentForm.value, "before sending to the api ")
         this.incidentService.updateIncident(this.incident.id, newIncident).subscribe({
           next: () => {
             this.router.navigate(['/resources/incidents']);
             this.toastService.showSuccess('Incident updated successfully.', 'Close', 2000);
           },
-          error: (err) => { 
+          error: (err) => {
             this.toastService.showError('Faild to update incident', 'Close', 2000);
           }
         });
@@ -146,7 +143,7 @@ export class IncidentCreateComponent implements OnInit {
             this.router.navigate(['/resources/incidents']);
             this.toastService.showSuccess('Incident added successfully.', 'Close', 2000);
           },
-          error: err => { 
+          error: err => {
             this.toastService.showError('Failed to add incident', 'Close', 2000);
           }
         })

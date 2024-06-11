@@ -30,7 +30,8 @@ export class ProductListComponent implements OnInit {
   downloadFile(fileId: any) {
 
     this.fileService.downloadFile(fileId).subscribe(data => {
-      const fileUrl = data.filePath;
+      const fileUrl = data.fileUrl; 
+      console.log(data)
       window.open(fileUrl, '_blank');
     });
     //this.fileService.downloadFile(fileId).subscribe(data => {

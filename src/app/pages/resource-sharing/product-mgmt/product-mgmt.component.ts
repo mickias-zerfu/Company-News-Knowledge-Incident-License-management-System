@@ -62,7 +62,7 @@ export class ProductMgmtComponent implements OnInit {
 
   DownloadFile(fileId: any) {
     this.fileService.downloadFile(fileId).subscribe(data => {
-      const fileUrl = data.filePath;
+      const fileUrl = data.fileUrl;
       window.open(fileUrl, '_blank');
     });
   }

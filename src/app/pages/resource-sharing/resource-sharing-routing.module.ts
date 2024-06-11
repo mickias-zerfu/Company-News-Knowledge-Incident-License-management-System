@@ -26,13 +26,14 @@ const routes: Routes = [
   // { path: "", redirectTo: "resources/status", pathMatch: "full" },
   { path: "status", component: ResourceDashboardComponent, canActivate: [AuthGuard] },
 
-  { path: "news", component: NewsListComponent, canActivate: [AuthGuard] },
+  { path: "blogs", component: NewsListComponent, canActivate: [AuthGuard] },
   { path: "managenews", component: NewsMgmtComponent, canActivate: [AuthGuard] },
   { path: "news/add", component: NewsCreateComponent, canActivate: [AuthGuard] },
+  { path: "blogs/:id", component: NewsDetailComponent, canActivate: [AuthGuard] },
   { path: "news/:id", component: NewsDetailComponent, canActivate: [AuthGuard] },
   { path: "news/:id/update", component: NewsCreateComponent, data: { isEditMode: true }, canActivate: [AuthGuard] },
 
-  { path: "files", component: ProductListComponent, canActivate: [AuthGuard] },
+  { path: "documents", component: ProductListComponent, canActivate: [AuthGuard] },
   { path: "managefiles", component: ProductMgmtComponent, canActivate: [AuthGuard] },
   { path: "files/add", component: ProductCreateComponent, canActivate: [AuthGuard] },
   // { path: "files/:id", component: ProductDetailComponent   , canActivate: [AuthGuard] },

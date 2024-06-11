@@ -92,3 +92,10 @@ button {
 .odd-background {
   background-color: #E8E8E8;
 }
+.truncate {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
