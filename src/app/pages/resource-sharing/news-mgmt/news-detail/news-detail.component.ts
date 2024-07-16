@@ -70,7 +70,7 @@ export class NewsDetailComponent implements OnInit {
         });
       },
       (error) => {
-        console.error('Error adding comment:', error);
+        //console.error('Error adding comment:', error);
       }
     );
   }

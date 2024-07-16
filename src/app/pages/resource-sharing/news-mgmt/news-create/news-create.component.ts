@@ -56,8 +56,8 @@ export class NewsCreateComponent implements OnInit {
     if (!this.allowedExtensions.includes(fileExtension)) {
       this.toastService.showError('File type is not allowed.', 'close', 2000);
       return;
-    }
-    if (fileToUpload.filename.length >= 25) {
+    } 
+    if (fileToUpload.name.length >= 25) {
       this.toastService.showError('File name character length more than 25 is not allowed.', 'close', 2000);
       return;
     }

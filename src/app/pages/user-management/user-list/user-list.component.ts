@@ -39,7 +39,8 @@ export class UserListComponent implements OnInit {
     this.adminservice.getAdminList(params).subscribe((res: any) => {
       this.data = res;
       // console.info(this.data)
-    }, error => console.log(error, ' ERrrrrrrrrrrrrrrrrrrroooor')
+    }, error =>
+      this.toastrService.showError('Error', 'Some Error from server when fetching the user list', 2000)
     );
   }
 

@@ -31,7 +31,7 @@ export class ProductDetailComponent implements OnInit {
         this.fileDetails = details;
       },
       (error) => {
-        console.error('Error fetching file details:', error);
+        //console.error('Error fetching file details:', error);
       }
     );
   }

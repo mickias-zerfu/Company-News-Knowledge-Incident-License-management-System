@@ -39,13 +39,13 @@
   top: calc(100% + 1em);
  }
 
- .button:hover::before, .button:hover::after {
+/* .button:hover::before, .button:hover::after {
   height: 410px;
   width: 410px;
- }
+ }*/
 
  .button:hover {
-  color:#ffffff !important;
+  /*color:#ffffff !important;*/
  }
 
  .button:active {

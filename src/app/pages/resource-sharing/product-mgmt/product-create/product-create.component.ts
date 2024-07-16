@@ -88,7 +88,7 @@ export class ProductCreateComponent implements OnInit {
       },
       error => {
         this.toastService.showError(error.error.message, 'Close', 4000);
-        console.error(error);
+        //console.error(error);
       }
     );
   }
@@ -101,7 +101,7 @@ export class ProductCreateComponent implements OnInit {
       },
       error => {
         this.toastService.showError(error.error.message, 'Close', 4000);
-        console.error(error);
+        //console.error(error);
       }
     );
   }

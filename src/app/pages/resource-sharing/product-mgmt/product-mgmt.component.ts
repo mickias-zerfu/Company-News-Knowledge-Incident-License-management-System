@@ -26,8 +26,7 @@ export class ProductMgmtComponent implements OnInit {
   }
   getAllFiles() {
     this.fileService.getAllFiles().subscribe(data => {
-      this.products = data;
-      console.log(this.products);
+      this.products = data; 
 
     });
   }

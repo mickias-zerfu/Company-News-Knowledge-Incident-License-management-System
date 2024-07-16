@@ -33,7 +33,7 @@ export class IncidentCreateComponent implements OnInit {
           this.incident = incident;
           this.populateForm();
         },
-        error: (err) => console.log(err)
+        //error: (err) => console.log(err)
       });
     }
   }

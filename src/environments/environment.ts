@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://s-m-bwm-001.zemenbank.local:6060/api/",
+  baseUrl: "http://localhost:5195/api/",
   name: "local"
 };
 

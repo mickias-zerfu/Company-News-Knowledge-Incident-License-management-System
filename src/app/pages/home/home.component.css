@@ -1,6 +1,14 @@
 .page{
   background-color: #ffffff;
 }
+.adisvider {
+  background-image: url("./../../../assets/bg_image_v1.PNG");
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  height: 600px !important;
+}
 .top-container {
   /* background-image: url("./../../../assets/cert.jpg"); */
   background-color: #ffffff;
@@ -18,17 +26,17 @@
 }
 .title {
   font-family: "Ubuntu", sans-serif;
-  font-size: 2.5em;
+  font-size: 2.0em;
   line-height: 1.5;
-  font-weight: 700;
+  font-weight: 600;
   color: #dd1748;
 }
 .sub-title {
   font-family: "Ubuntu", sans-serif;
-  font-weight: 600px;
-  font-size: 2.0em;
+  font-weight: 500px;
+  font-size: 1.5em;
   line-height: 1.5;
-  color: #dd1748;
+  color: #243647;
   padding-top: 2em;
 }
 .divider{

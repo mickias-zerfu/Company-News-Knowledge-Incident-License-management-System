@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
   getAllFiles() {
     this.fileService.getAllFiles().subscribe(data => {
       this.files = data;
-      console.log(this.files);
+      //console.log(this.files);
 
     });
   }
@@ -31,7 +31,7 @@ export class ProductListComponent implements OnInit {
 
     this.fileService.downloadFile(fileId).subscribe(data => {
       const fileUrl = data.fileUrl; 
-      console.log(data)
+      //console.log(data)
       window.open(fileUrl, '_blank');
     });
     //this.fileService.downloadFile(fileId).subscribe(data => {

@@ -24,12 +24,10 @@ export class AppComponent implements OnInit {
     const token = localStorage.getItem('token');
     const roleId = localStorage.getItem('roleId');
     if (token != null && (roleId == '1' || roleId == '2')) {
-      this.authService.loadCurrentUser(token).subscribe();
-      console.log('isAdmin,load current user min app');
+      this.authService.loadCurrentUser(token).subscribe(); 
     }
     if (token != null && (roleId == '1' || roleId == '2')) { 
-    this.authService.loadCurrentUser(token).subscribe();
-    console.log('isAdmin,load current user min app');
+    this.authService.loadCurrentUser(token).subscribe(); 
     } 
     else if (token != null && (roleId == '0')) {
       this.authService.loadDomainUser(token).subscribe();
@@ -39,8 +37,7 @@ export class AppComponent implements OnInit {
 
   checkLoadAdmin() {
     let AdminRoleId = localStorage.getItem('roleId');
-    this.authService.isAdminSubject.subscribe(isAdmin => {
-      console.log(isAdmin, 'is admin app');
+    this.authService.isAdminSubject.subscribe(isAdmin => { 
 
       // update component property
     // if (AdminRoleId == '1' || AdminRoleId == '2') { this.isAdmin = true };
