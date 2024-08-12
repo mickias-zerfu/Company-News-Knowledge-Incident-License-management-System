@@ -20,6 +20,8 @@ export class AddLicenseManagerComponent implements OnInit {
   lmanagerId: number;
   isSubmitted = false;
   imagePreview: string | ArrayBuffer | null;
+  maxFileSize = 5 * 1024 * 1024; // 5 MB
+  allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
   constructor(private fb: FormBuilder, private fileservice: BlogService, private licenseManagerService: LicenseManagerService,
     private toastService: ToastService,
@@ -40,7 +42,48 @@ export class AddLicenseManagerComponent implements OnInit {
       isActive: [true, Validators.required]
     });
   }
-  onFileSelected(event: any): void {
+  onFileSelected(event: any) {
+    const fileToUpload = event.target.files[0];
+    // File size validation
+    if (fileToUpload.size > this.maxFileSize) {
+      this.toastService.showError('File size exceeds the maximum allowed limit.', 'close', 2000);
+      return;
+    }
+
+    // File extension validation
+    const fileExtension = fileToUpload.name.split('.').pop().toLowerCase();
+    if (!this.allowedExtensions.includes(fileExtension)) {
+      this.toastService.showError('File type is not allowed.', 'close', 2000);
+      return;
+    }
+    if (fileToUpload.name.length >= 25) {
+      this.toastService.showError('File name character length more than 25 is not allowed.', 'close', 2000);
+      return;
+    }
+    // display image
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    if (fileToUpload) {
+      reader.readAsDataURL(fileToUpload);
+    }
+
+    // upload image
+    const formData = new FormData();
+    formData.append('fileDetails.FileDetails', fileToUpload);
+    this.fileservice.uploadBlogImage(formData)
+      .subscribe(
+        (res) => {
+          this.licenseManager.profilePictureUrl = res.fileUrl;  
+        },
+        (error: any) => {
+          this.toastService.showError(error.error.message, 'Close', 4000);
+        }
+      );
+  }
+
+  onFileSelected1(event: any): void {
     const fileToUpload: File = event.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
@@ -64,6 +107,9 @@ export class AddLicenseManagerComponent implements OnInit {
         }
       );
   }
+
+
+
   onSubmit(): void {
     this.isSubmitted = true;
     this.licenseManager = Object.assign(this.licenseManager, this.licenseManagerForm.value) as LicenseManager;
