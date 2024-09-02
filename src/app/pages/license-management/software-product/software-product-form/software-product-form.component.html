@@ -8,43 +8,89 @@
               <h2 class="text-4xl font-bold text-red-700">{{ isEditMode ? 'Edit Software' : 'Add Software' }}</h2>
             </div>
           </section>
-          <form class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-gray-800"
+          <form class="" #softwareForm="ngForm"
             (ngSubmit)="onSubmit()">
 
             <!-- Software Name -->
-            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
-              <mat-label>Software Name</mat-label>
-              <input matInput [(ngModel)]="softwareProduct.name" name="name" placeholder="Enter the Software name"
-                required>
-            </mat-form-field>
+            <div class="flex space-x-4 mb-4">
+                <mat-form-field class="w-1/2" appearance="outline" >
+                  <mat-label>Software Name</mat-label>
+                  <input matInput [(ngModel)]="softwareProduct.name" name="name" placeholder="Enter the Software name"
+                  minlength="3"  required>
 
-            <!-- Version -->
-            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
-              <mat-label>Version</mat-label>
-              <input matInput [(ngModel)]="softwareProduct.version" name="version" placeholder="Enter the Version"
-                required>
-            </mat-form-field>
+                  <mat-error *ngIf="softwareForm.controls['name']?.invalid && (softwareForm.controls['name'].dirty || softwareForm.controls['name'].touched)">
+                    <span *ngIf="softwareForm.controls['name'].hasError('required')">Software Name is required.</span>
+                    <span *ngIf="softwareForm.controls['name'].hasError('minlength')">
+                      Software Name should be at least 3
+                      characters long.
+                    </span>
+                  </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="w-1/2" appearance="outline">
+                  <mat-label>Version</mat-label>
+                  <input matInput [(ngModel)]="softwareProduct.version" name="version" placeholder="Enter the Version"
+                    required>
+
+                  <mat-error *ngIf="softwareForm.controls['version']?.invalid && (softwareForm.controls['version'].dirty || softwareForm.controls['version'].touched)">
+                    <span *ngIf="softwareForm.controls['version'].hasError('required')">Version is required.</span>
+                    <!-- <span *ngIf="softwareForm.controls['version'].hasError('minlength')">
+                      Version should be at least 3
+                      characters long.
+                    </span> -->
+                  </mat-error>
+
+                </mat-form-field>
+            </div>
 
             <!-- Description -->
-            <mat-form-field class="col-span-full" appearance="outline">
+            <mat-form-field class="w-full mb-4" appearance="outline">
               <mat-label>Software Description</mat-label>
               <textarea matInput rows="4" [(ngModel)]="softwareProduct.description" name="description"
-                placeholder="Enter the Software description" required></textarea>
-            </mat-form-field>
+              minlength="10"  placeholder="Enter the Software description" required></textarea>
+
+              <mat-error *ngIf="softwareForm.controls['description']?.invalid && (softwareForm.controls['description'].dirty || softwareForm.controls['description'].touched)">
+                <span *ngIf="softwareForm.controls['description'].hasError('required')">Software Description is required.</span>
+                <span *ngIf="softwareForm.controls['description'].hasError('minlength')">
+                  Software Description should be at least 10
+                  characters long.
+                </span>
+              </mat-error>
+
+            </mat-form-field>         
 
             <!-- Vendor -->
-            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
+            <div class="flex space-x-4">
+            <mat-form-field class="w-1/2" appearance="outline">
               <mat-label>Vendor</mat-label>
               <input matInput [(ngModel)]="softwareProduct.vendor" name="vendor" placeholder="Enter the Vendor"
-                required>
+              minlength="3"  required>
+
+              <mat-error *ngIf="softwareForm.controls['vendor']?.invalid && (softwareForm.controls['vendor'].dirty || softwareForm.controls['vendor'].touched)">
+                <span *ngIf="softwareForm.controls['vendor'].hasError('required')">Vendor Name is required.</span>
+                <span *ngIf="softwareForm.controls['vendor'].hasError('minlength')">
+                  Vendor Name should be at least 3
+                  characters long.
+                </span>
+              </mat-error>
+
             </mat-form-field>
 
             <!-- Release Date -->
-            <mat-form-field class="col-span-full sm:col-span-2 md:col-span-3 lg:col-span-4" appearance="outline">
+            <!-- <mat-form-field class="w-1/2" appearance="outline">
               <mat-label>Release Date</mat-label>
               <input matInput [(ngModel)]="softwareProduct.releaseDate" name="releaseDate" type="date" required>
             </mat-form-field>
-
+            </div> -->
+            
+            <mat-form-field appearance="outline" class="w-1/2">
+              <mat-label>Release Date</mat-label>
+              <input matInput [matDatepicker]="picker"  [(ngModel)]="softwareProduct.releaseDate" name="releaseDate" required>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
             <!-- Remaining fields -->
 
             <div class="mt-4">

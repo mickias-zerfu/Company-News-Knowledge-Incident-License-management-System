@@ -21,8 +21,17 @@ export class AssignmentComponent {
     this.dialogRef.close();
   }
 
+  // assignManagers(): void {
+  //   const selectedManagers = this.managers.filter(manager => manager.selected);
+  //   this.dialogRef.close(selectedManagers);
+  // }
+
   assignManagers(): void {
-    const selectedManagers = this.managers.filter(manager => manager.selected);
-    this.dialogRef.close(selectedManagers);
+    console.log();
+    
+    let  selectedManagers = this.managers.filter(manager  => manager.selected);
+    let selectedManagerIds = selectedManagers.map(manager => manager.id);
+    
+    this.dialogRef.close(selectedManagerIds);
   }
 }

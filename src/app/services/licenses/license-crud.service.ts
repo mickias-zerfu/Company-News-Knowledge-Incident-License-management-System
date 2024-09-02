@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { License } from 'src/app/models/license/license.model';
 import { environment } from 'src/environments/environment';
@@ -24,9 +24,20 @@ export class LicenseCrudService {
     return this.http.post<License>(this.baseUrl, license);
   }
 
-  assignLicenseManagers(licenseId: any, selectedManagers: any) {
-    return this.http.post(`${this.baseUrl}/assignmanager/${licenseId}`, selectedManagers);
+  // assignLicenseManagers(licenseId: any, selectedManagers: any) {
+  //   return this.http.post(`${this.baseUrl}/assignmanager/${licenseId}`, selectedManagers);
+  // }
+
+  assignLicenseManagers(licenseId: number, selectedManagers: number[]) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+  
+    console.log('Payload being sent:', selectedManagers);
+    
+    return this.http.post(`${this.baseUrl}/assignmanager/${licenseId}`, selectedManagers, { headers });
   }
+
   updateLicense(id: number, license: License): Observable<License> {
     return this.http.put<License>(`${this.baseUrl}/${id}`, license);
   }

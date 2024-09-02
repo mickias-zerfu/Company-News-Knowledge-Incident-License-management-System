@@ -1,6 +1,6 @@
-<div class="w-full rounded p-4 bg-white shadow-lg">
+<!-- <div class="w-full rounded p-4 bg-white shadow-lg">
   <div class="rounded-lg overflow-hidden flex flex-col items-center p-4">
-    <!-- Software Product Details -->
+    Software Product Details
     <div class="flex flex-col items-center">
       <h2 class="text-xl font-semibold mb-2">{{ product.name }}</h2>
       <p class="text-gray-600 mb-4">{{ product.description }}</p>
@@ -11,14 +11,77 @@
         </div>
         <div>
           <p class="text-gray-700"><span class="font-semibold">Release Date:</span> {{ product.releaseDate | date }}</p>
-          <!-- Add more properties as needed -->
+          Add more properties as needed
         </div>
       </div>
     </div>
-    <!-- Actions Section -->
+    Actions Section
     <div class="mt-4 flex items-center justify-between w-full">
       <button mat-raised-button color="primary" class="px-8" (click)="editProduct(product.id)">Edit</button>
       <button mat-raised-button color="warn" class="px-8" (click)="openConfirmationDialog()">Delete</button>
     </div>
   </div>
-</div>
+</div> -->
+
+<!-- <mat-accordion class="w-full">
+    <mat-expansion-panel >
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ product.name }}</mat-panel-title>
+        <mat-panel-description>{{ product.vendor }}</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="rounded-lg overflow-hidden flex flex-col items-center p-4">
+        Software Product Details
+        <div class="flex flex-col items-center">
+          <p class="text-gray-600 mb-4">{{ product.description }}</p>
+          <div class="grid grid-cols-2 gap-4 w-full">
+            <div>
+              <p class="text-gray-700"><span class="font-semibold">Version:</span> {{ product.version }}</p>
+              <p class="text-gray-700"><span class="font-semibold">Vendor:</span> {{ product.vendor }}</p>
+            </div>
+            <div>
+              <p class="text-gray-700"><span class="font-semibold">Release Date:</span> {{ product.releaseDate | date }}</p>
+              Add more properties as needed
+            </div>
+          </div>
+        </div>
+        Actions Section
+        <div class="mt-4 flex items-center justify-between w-full">
+          <button mat-raised-button color="primary" class="px-8" (click)="editProduct(product.id)">Edit</button>
+          <button mat-raised-button color="warn" class="px-8" (click)="openConfirmationDialog()">Delete</button>
+        </div>
+      </div>
+    </mat-expansion-panel>
+</mat-accordion> -->
+
+<!-- <div class="w-full"> -->
+<mat-accordion class="w-full ml-8">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ product.name }}</mat-panel-title>
+      <!-- <mat-panel-description>{{ product.vendor }}</mat-panel-description> -->
+      <mat-icon class="font-bold">expand_more</mat-icon>
+    </mat-expansion-panel-header>
+    <div class="rounded-lg overflow-hidden flex flex-col items-center p-4">
+      <!-- Software Product Details -->
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600 mb-4">{{ product.description }}</p>
+        <div class="grid grid-cols-2 gap-4 w-full">
+          <div>
+            <p class="text-gray-700"><span class="font-semibold">Version:</span> {{ product.version }}</p>
+            <p class="text-gray-700"><span class="font-semibold">Vendor:</span> {{ product.vendor }}</p>
+          </div>
+          <div>
+            <p class="text-gray-700"><span class="font-semibold">Release Date:</span> {{ product.releaseDate | date }}</p>
+            <!-- Add more properties as needed -->
+          </div>
+        </div>
+      </div>
+      <!-- Actions Section -->
+      <div class="mt-4 flex items-center justify-end w-full">
+        <button mat-raised-button color="primary" class="px-8 m-6" (click)="editProduct(product.id)">Edit</button>
+        <button mat-raised-button color="warn" class="px-8" (click)="openConfirmationDialog()">Delete</button>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<!-- </div> -->

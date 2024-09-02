@@ -68,6 +68,7 @@ export class LicenseTableComponent implements OnInit {
       });
     });
   }
+  
   assignLicenseManager(licenseId: number): void {
     // Logic to assign selected managers
     console.log(this.selectedManagers);

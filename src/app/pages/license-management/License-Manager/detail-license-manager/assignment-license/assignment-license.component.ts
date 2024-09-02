@@ -21,7 +21,12 @@ export class AssignmentLicenseComponent {
   }
 
   assignLicenses(): void {
-    const selectedLicenses = this.licenses.filter(License => License.selected);
-    this.dialogRef.close(selectedLicenses);
+    console.log();
+    
+    let  selectedLicenses = this.licenses.filter(License => License.selected);
+    let selectedLicenseIds = selectedLicenses.map(license => license.id);
+      
+    
+    this.dialogRef.close(selectedLicenseIds);
   }
 }

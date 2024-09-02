@@ -1,4 +1,5 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SoftwareProduct } from 'src/app/models/license/software.model';
@@ -16,6 +17,7 @@ export class SoftwareProductFormComponent implements OnInit {
   isEditMode = false;
   softwareId: number;
   isSubmitted = false;
+  @ViewChild('softwareForm') softwareForm: NgForm;
 
   constructor(
     private softwareProductService: SoftwareProductService,
@@ -44,6 +46,8 @@ export class SoftwareProductFormComponent implements OnInit {
     });
   }
   onSubmit() {
+    if (this.softwareForm.valid) {
+
     this.isSubmitted = true;
     // if (this.ResourceForm.invalid) {
     //   return;
@@ -54,6 +58,7 @@ export class SoftwareProductFormComponent implements OnInit {
     } else {
       this.addSoftware(this.softwareProduct);
     }
+  }
   }
 
   addSoftware(SoftwareData: SoftwareProduct) {
@@ -74,6 +79,8 @@ export class SoftwareProductFormComponent implements OnInit {
 
     this.softwareProductService.updateSoftwareProduct(this.softwareId, SoftwareData).subscribe(
       () => {
+        console.log(SoftwareData);
+        
         this.toastService.showSuccess('Software updated', 'Close', 2000);
         this.router.navigate(['/licenses/softwares']);
       },
