@@ -21,10 +21,7 @@ export class AddLicenseManagerComponent implements OnInit {
   isSubmitted = false;
   imagePreview: string | ArrayBuffer | null;
   maxFileSize = 5 * 1024 * 1024; // 5 MB
-  allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-
-  maxFileSize = 5 * 1024 * 1024; // 5 MB
-  allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+  allowedExtensions = ['jpg', 'jpeg', 'png', 'gif']; 
 
   constructor(private fb: FormBuilder, private fileservice: BlogService, private licenseManagerService: LicenseManagerService,
     private toastService: ToastService,
@@ -72,31 +69,7 @@ export class AddLicenseManagerComponent implements OnInit {
       phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.pattern(/^[0-9]+$/)]],
       isActive: [true, Validators.required]
     });
-  }
-  // onFileSelected(event: any): void {
-  //   const fileToUpload: File = event.target.files[0];
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     this.imagePreview = reader.result;
-  //   };
-  //   if (fileToUpload) {
-  //     reader.readAsDataURL(fileToUpload);
-  //   }
-  //   const formData = new FormData();
-  //   formData.append('fileDetails.FileDetails', fileToUpload);
-  //   console.log(formData, 'fileDetails.FileDetails');
-
-  //   this.fileservice.uploadBlogImage(formData)
-  //     .subscribe(
-  //       (res) => {
-  //         console.log('Upload success.', res);
-  //         this.licenseManager.profilePictureUrl = res.imageUrl;
-  //       },
-  //       (error: any) => {
-  //         console.log('Upload error:', error);
-  //       }
-  //     );
-  // }
+  } 
 
   onFileSelected(event: any) {
     const fileToUpload = event.target.files[0];
