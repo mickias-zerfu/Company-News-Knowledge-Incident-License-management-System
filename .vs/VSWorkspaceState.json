@@ -7,10 +7,7 @@
     "\\src\\app\\pages\\resource-sharing",
     "\\src\\app\\pages\\resource-sharing\\news-mgmt",
     "\\src\\app\\pages\\resource-sharing\\news-mgmt\\news-create",
-    "\\src\\app\\pages\\resource-sharing\\product-mgmt\\product-create",
-    "\\src\\app\\pages\\resource-sharing\\product-mgmt\\product-detail",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\pages\\resource-sharing\\news-mgmt\\news-create\\news-create.component.ts",
   "PreviewInSolutionExplorer": false
 }
