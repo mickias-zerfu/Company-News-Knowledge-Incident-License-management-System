@@ -1,4 +1,47 @@
-<div class="bg-white rounded-lg shadow-lg p-6">
+
+<mat-card class="license-card">
+  <mat-card-header>
+    <img mat-card-avatar [src]="licenseManager.profilePictureUrl" alt="License Manager Image" class="profile-picture">
+    <mat-card-title>{{ licenseManager.firstName }} {{ licenseManager.lastName }}</mat-card-title>
+    <mat-card-subtitle>{{ licenseManager.email }}</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <h3 class="contact-info-title">Contact Information</h3>
+    <div class="contact-info">
+      <div class="info-item">
+        <mat-icon>phone</mat-icon>
+        <span>{{ licenseManager.phoneNumber }}</span>
+      </div>
+      <div class="info-item">
+        <mat-icon>work</mat-icon>
+        <span>{{ licenseManager.role }}</span>
+      </div>
+    </div>
+  </mat-card-content>
+  
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="fetchLicenses(licenseManager.id)">
+      <mat-icon>assignment</mat-icon>
+      Assign Licenses to this Manager
+    </button>
+    <div class="action-buttons">
+      <button mat-icon-button color="accent" (click)="updatelicenseManager(licenseManager.id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="openConfirmationDialog(licenseManager.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+
+
+
+
+
+<!-- <div class="bg-white rounded-lg shadow-lg p-6">
   <div class="flex justify-between items-center mb-4">
     <div class="flex-shrink-0 mr-4">
       <img [src]="licenseManager.profilePictureUrl" alt="License Manager Image" class="w-32 h-32 rounded-full">
@@ -37,4 +80,11 @@
       >
       <mat-icon>delete</mat-icon> </button>
   </div>
-</div>
+</div> -->
+
+
+
+<!-- license-manager-card.component.html -->
+
+
+

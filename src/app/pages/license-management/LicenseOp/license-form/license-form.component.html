@@ -1,4 +1,3 @@
-<form [formGroup]="licenseForm" (ngSubmit)="onSubmit()" class="p-4 bg-white shadow-md rounded-lg">
 
   <section class="hero-section bg-cover bg-center">
     <div class="hero-content text-left pt-8 pb-8">
@@ -6,9 +5,129 @@
     </div>
   </section>
 
-  <!-- First Row: Issued To and Issued By -->
-  <div class="flex flex-wrap -mx-2 mb-4">
-    <!-- Issued To -->
+<form [formGroup]="licenseForm" (ngSubmit)="onSubmit()" class="p-4 bg-white shadow-md rounded-lg">
+
+  <div class="flex space-x-4">
+    <mat-form-field appearance="outline" class="w-1/2">
+      <mat-label>Issued To</mat-label>
+      <input matInput formControlName="issuedTo">
+
+      <mat-error *ngIf="licenseForm.controls['issuedTo']?.invalid && (licenseForm.controls['issuedTo'].dirty || licenseForm.controls['issuedTo'].touched)">
+        <span *ngIf="licenseForm.controls['issuedTo'].hasError('required')">Issued To is required.</span>
+        <span *ngIf="licenseForm.controls['issuedTo'].hasError('minlength')">
+          Issued To should be at least 3
+          characters long.
+        </span>
+      </mat-error>
+
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-1/2">
+      <mat-label>Issued By</mat-label>
+      <input matInput formControlName="issuedBy">
+
+      <mat-error *ngIf="licenseForm.controls['issuedBy']?.invalid && (licenseForm.controls['issuedBy'].dirty || licenseForm.controls['issuedBy'].touched)">
+        <span *ngIf="licenseForm.controls['issuedBy'].hasError('required')">Issued By is required.</span>
+        <span *ngIf="licenseForm.controls['issuedBy'].hasError('minlength')">
+          Issued By should be at least 3
+          characters long.
+        </span>
+      </mat-error>
+
+    </mat-form-field>
+</div>
+
+
+<div class="flex space-x-4">
+  <mat-form-field appearance="outline" class="w-1/2">
+    <mat-label>Creation Date</mat-label>
+    <input matInput [matDatepicker]="picker"  formControlName="creationDate" name="creationDate" required>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+
+    <mat-error *ngIf="licenseForm.controls['creationDate']?.invalid && (licenseForm.controls['creationDate'].dirty || licenseForm.controls['creationDate'].touched)">
+      <span *ngIf="licenseForm.controls['creationDate'].hasError('required')">Creation Date is required.</span>
+    </mat-error>
+  </mat-form-field>
+ 
+  <mat-form-field appearance="outline" class="w-1/2">
+    <mat-label>Expiration Date</mat-label>
+    <input matInput [matDatepicker]="picker1"  formControlName="expirationDate" name="expirationDate" required>
+    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+
+    <mat-error *ngIf="licenseForm.controls['creationDate']?.invalid && (licenseForm.controls['creationDate'].dirty || licenseForm.controls['creationDate'].touched)">
+      <span *ngIf="licenseForm.controls['creationDate'].hasError('required')">Expiration Date is required.</span>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="flex space-x-4">
+  <mat-form-field appearance="outline" class="w-1/2">
+    <mat-label>Max Users</mat-label>
+    <input matInput type="number" formControlName="maxUsers" placeholder="Max Users">
+
+    <mat-error *ngIf="licenseForm.controls['maxUsers']?.invalid && (licenseForm.controls['maxUsers'].dirty || licenseForm.controls['maxUsers'].touched)">
+      <span *ngIf="licenseForm.controls['maxUsers'].hasError('required')">Max Users is required.</span>
+    </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline" class="w-1/2">
+      <mat-label>License Type</mat-label>
+      <mat-select formControlName="licenseType">
+        <mat-option *ngFor="let type of licenseTypes" [value]="type.value">{{ type.text }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="licenseForm.controls['licenseType']?.invalid && (licenseForm.controls['licenseType'].dirty || licenseForm.controls['licenseType'].touched)">
+        <span *ngIf="licenseForm.controls['licenseType'].hasError('required')">License Type is required.</span>
+      </mat-error>
+   </mat-form-field>
+
+    <!-- <mat-label>License Type</mat-label>
+    <input matInput formControlName="licenseType" placeholder="License Type">
+    <mat-error *ngIf="licenseForm.controls['licenseType']?.invalid && (licenseForm.controls['licenseType'].dirty || licenseForm.controls['licenseType'].touched)">
+      <span *ngIf="licenseForm.controls['licenseType'].hasError('required')">License Type is required.</span>
+    </mat-error>
+  </mat-form-field> -->
+</div>
+
+<div class="flex space-x-4">
+      <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Software Product</mat-label>
+            <mat-select id="softwareProduct" formControlName="softwareProductId">
+              <mat-option *ngFor="let product of softwareProducts" [value]="product.id">{{ product.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="licenseForm.controls['softwareProduct']?.invalid && (licenseForm.controls['softwareProduct'].dirty || licenseForm.controls['softwareProduct'].touched)">
+              <span *ngIf="licenseForm.controls['softwareProduct'].hasError('required')">License Type is required.</span>
+            </mat-error>
+      </mat-form-field>
+
+       <!-- <div class="w-full md:w-1/2 px-2 mb-4">
+    <label for="softwareProduct" class="block text-sm font-medium text-gray-700">Software Product</label>
+    <select id="softwareProduct" formControlName="softwareProductId" class="mt-1 p-2 border rounded-md w-full" required>
+      <option *ngFor="let product of softwareProducts" [value]="product.id">{{ product.name }}</option>
+    </select>
+    <div *ngIf="licenseForm.get('softwareProduct')?.invalid && licenseForm.get('softwareProduct')?.touched"
+      class="text-red-500 text-sm mt-1">Software Product is required</div>
+  </div> -->
+</div>
+
+<div class="flex space-x-4">
+          <mat-form-field class="w-full" appearance="outline">
+            <mat-label>Note</mat-label>
+            <textarea matInput formControlName="notes" ></textarea>
+          </mat-form-field>
+</div>
+
+<div class="mt-4">
+    <div class="flex justify-end">
+      <button class="bg-red-500 hover:bg-red-700 text-white font-semi-bold py-2 px-4 rounded" type="submit">
+        Submit</button>
+    </div>
+  </div>
+</form>
+
+  <!-- <div class="flex flex-wrap -mx-2 mb-4">
+ 
     <div class="w-full md:w-1/2 px-2 mb-4">
       <label for="issuedTo" class="block text-sm font-medium text-gray-700">Issued To</label>
       <input type="text" id="issuedTo" formControlName="issuedTo" class="mt-1 p-2 border rounded-md w-full" required>
@@ -16,39 +135,37 @@
         class="text-red-500 text-sm mt-1">Issued To is required</div>
     </div>
 
-    <!-- Issued By -->
     <div class="w-full md:w-1/2 px-2 mb-4">
       <label for="issuedBy" class="block text-sm font-medium text-gray-700">Issued By</label>
       <input type="text" id="issuedBy" formControlName="issuedBy" class="mt-1 p-2 border rounded-md w-full" required>
       <div *ngIf="licenseForm.get('issuedBy')?.invalid && licenseForm.get('issuedBy')?.touched"
         class="text-red-500 text-sm mt-1">Issued By is required</div>
+      </div>
     </div>
-  </div>
 
-  <!-- Second Row: Creation Date and Expiration Date -->
+
   <div class="flex flex-wrap -mx-2 mb-4">
-    <!-- Creation Date -->
+
     <div class="w-full md:w-1/2 px-2 mb-4">
       <label for="creationDate" class="block text-sm font-medium text-gray-700">Creation Date</label>
       <input type="date" id="creationDate" formControlName="creationDate" class="mt-1 p-2 border rounded-md w-full"
         required>
       <div *ngIf="licenseForm.get('creationDate')?.invalid && licenseForm.get('creationDate')?.touched"
         class="text-red-500 text-sm mt-1">Creation Date is required</div>
-    </div>
+      </div>
 
-    <!-- Expiration Date -->
     <div class="w-full md:w-1/2 px-2 mb-4">
       <label for="expirationDate" class="block text-sm font-medium text-gray-700">Expiration Date</label>
       <input type="date" id="expirationDate" formControlName="expirationDate" class="mt-1 p-2 border rounded-md w-full"
         required>
       <div *ngIf="licenseForm.get('expirationDate')?.invalid && licenseForm.get('expirationDate')?.touched"
         class="text-red-500 text-sm mt-1">Expiration Date is required</div>
-    </div>
-  </div>
+      </div>
+  </div> -->
 
-  <!-- Third Row: Max Users and License Type -->
-  <div class="flex flex-wrap -mx-2 mb-4">
-    <!-- Max Users -->
+ 
+  <!-- <div class="flex flex-wrap -mx-2 mb-4">
+ 
     <div class="w-full md:w-1/2 px-2 mb-4">
       <label for="maxUsers" class="block text-sm font-medium text-gray-700">Max Users</label>
       <input type="number" id="maxUsers" formControlName="maxUsers" class="mt-1 p-2 border rounded-md w-full" required>
@@ -56,7 +173,7 @@
         class="text-red-500 text-sm mt-1">Max Users is required</div>
     </div>
 
-    <!-- License Type -->
+
     <div class="w-full md:w-1/2 px-2 mb-4">
       <label for="licenseType" class="block text-sm font-medium text-gray-700">License Type</label>
       <select id="licenseType" formControlName="licenseType" class="mt-1 p-2 border rounded-md w-full" required>
@@ -66,28 +183,32 @@
         class="text-red-500 text-sm mt-1">License Type is required</div>
     </div>
 
-  </div>
+  </div> -->
+
+
   <!-- Software Product -->
-  <div class="w-full md:w-1/2 px-2 mb-4">
+  <!-- <div class="w-full md:w-1/2 px-2 mb-4">
     <label for="softwareProduct" class="block text-sm font-medium text-gray-700">Software Product</label>
     <select id="softwareProduct" formControlName="softwareProductId" class="mt-1 p-2 border rounded-md w-full" required>
       <option *ngFor="let product of softwareProducts" [value]="product.id">{{ product.name }}</option>
     </select>
     <div *ngIf="licenseForm.get('softwareProduct')?.invalid && licenseForm.get('softwareProduct')?.touched"
       class="text-red-500 text-sm mt-1">Software Product is required</div>
-  </div>
+  </div> -->
 
   <!-- Notes -->
-  <div class="mb-4">
+  <!-- <div class="mb-4">
     <label for="notes" class="block text-sm font-medium text-gray-700">Notes</label>
     <textarea id="notes" formControlName="notes" class="mt-1 p-2 border rounded-md w-full" rows="3"></textarea>
-  </div>
+  </div> -->
+
+
 
   <!-- Submit Button -->
-  <div class="mt-4">
+  <!-- <div class="mt-4">
     <div class="flex justify-end">
       <button class="bg-red-500 hover:bg-red-700 text-white font-semi-bold py-2 px-4 rounded" type="submit">
         Submit</button>
     </div>
   </div>
-</form>
+</form> -->

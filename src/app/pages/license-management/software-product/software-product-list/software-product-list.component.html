@@ -1,20 +1,36 @@
 <section>
-  <section class="hero-section bg-cover bg-center">
+  <section class="hero-section bg-cover bg-center pl-16">
     <div class="hero-content text-left pt-8 pb-8">
       <h2 class="text-4xl font-bold text-red-700">Manage Zemen's Software and Products</h2>
     </div>
   </section>
-  <div class="flex justify-end pr-16">
-    <div>
-      <p class="text-gray-600 pl-16">The typical order would be: Software Product -> License Manager (Optional) -> License.</p>
+
+  <div class="flex justify-between items-center pl-24 pr-24">
+    <!-- Text section -->
+    <div class="flex-1">
+      <p class="text-gray-600">The typical order would be: Software Product -> License Manager (Optional) -> License.</p>
     </div>
+  
+    <!-- Button section -->
     <app-add-new-button buttonText="Add New Software" (click)="onAddSoftware()"></app-add-new-button>
   </div>
+
+    <!-- <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+      <div class="flex">
+        <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+        <div>
+          <p class="font-bold">Our privacy policy has changed</p>
+          <p class="text-sm">The typical order would be: Software Product -> License Manager (Optional) -> License.</p>
+        </div>
+      </div>
+    </div> -->
+   
   <div class="container py-8 px-4">
     <div class="flex justify-center space-x-4 w-full gap gap-2">
       <!-- <div class="flex flex-wrap justify-center"> -->
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+        <!-- md:grid-cols-2 lg:grid-cols-2 gap-4 -->
+      <div class="grid grid-cols-1 p-32">
         <div *ngFor="let product of softwareProducts">
           <app-software-product-detail [product]="product"></app-software-product-detail>
         </div>

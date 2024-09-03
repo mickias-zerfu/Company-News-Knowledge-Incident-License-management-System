@@ -15,6 +15,6 @@ export class LicenseTrackerService {
   }
 
   checkLicenseExpiration(): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/checkexpiration`, null);
+    return this.http.post<any>(`${'http://localhost:5195/api/licenses/checkexpiration'}`, null);
   }
 }

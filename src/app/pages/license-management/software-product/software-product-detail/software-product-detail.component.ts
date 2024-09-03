@@ -30,8 +30,10 @@ export class SoftwareProductDetailComponent  implements OnInit {
       data: {isEditMode: true, softwareId}
     });
     dialogRef.afterClosed().subscribe(result => {
+      
     });
   }
+
   deleteProduct() {
     this.productService.deleteSoftwareProduct(this.product.id).subscribe(
       () => {
@@ -47,7 +49,7 @@ export class SoftwareProductDetailComponent  implements OnInit {
   openConfirmationDialog(): void {
     const dialogData: ConfirmDialogData = {
       title: 'Confirmation',
-      message: 'Are you sure you want to delete this resource?',
+      message: 'Are you sure you want to delete this software?',
       callback: (confirmed: boolean) => {
         if (confirmed) {
           this.deleteProduct();

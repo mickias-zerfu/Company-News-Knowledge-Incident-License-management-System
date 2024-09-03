@@ -1,39 +1,91 @@
 <!-- add-license-manager.component.html -->
 
 <section class="hero-section bg-cover bg-center">
-  <div class="hero-content text-left pt-8 pb-8">
-    <h2 class="text-4xl font-bold text-red-700">Add license Manager</h2>
+  <div class="hero-content text-left pt-6 pb-6">
+    <h2 class="text-4xl font-bold text-red-500 ml-6">Add license Manager</h2>
   </div>
 </section>
 <form [formGroup]="licenseManagerForm" class="p-6 space-y-4">
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email" placeholder="Email">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>First Name</mat-label>
-    <input matInput formControlName="firstName" placeholder="First Name">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Last Name</mat-label>
-    <input matInput formControlName="lastName" placeholder="Last Name">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Role</mat-label>
-    <input matInput formControlName="role" placeholder="Role">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Phone Number</mat-label>
-    <input matInput formControlName="phoneNumber" placeholder="Phone Number">
-  </mat-form-field>
+  <div class="flex space-x-4">
+      <mat-form-field appearance="outline" class="w-1/2">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" placeholder="First Name">
+
+        <mat-error *ngIf="licenseManagerForm.controls['firstName']?.invalid && (licenseManagerForm.controls['firstName'].dirty || licenseManagerForm.controls['firstName'].touched)">
+          <span *ngIf="licenseManagerForm.controls['firstName'].hasError('required')">First Name is required.</span>
+          <span *ngIf="licenseManagerForm.controls['firstName'].hasError('minlength')">
+            First Name should be at least 3
+            characters long.
+          </span>
+        </mat-error>
+
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-1/2">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Last Name">
+
+        <mat-error *ngIf="licenseManagerForm.controls['lastName']?.invalid && (licenseManagerForm.controls['lastName'].dirty || licenseManagerForm.controls['lastName'].touched)">
+          <span *ngIf="licenseManagerForm.controls['lastName'].hasError('required')">Last Name is required.</span>
+          <span *ngIf="licenseManagerForm.controls['lastName'].hasError('minlength')">
+            Last Name should be at least 3
+            characters long.
+          </span>
+        </mat-error>
+
+      </mat-form-field>
+  </div>
+  <div class="flex space-x-4">
+        <mat-form-field appearance="outline" class="w-1/2">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Email">
+
+          <mat-error *ngIf="licenseManagerForm.controls['email']?.invalid && (licenseManagerForm.controls['email'].dirty || licenseManagerForm.controls['email'].touched)">
+            <span *ngIf="licenseManagerForm.controls['email'].hasError('required')">Email is required.</span>
+            <span *ngIf="licenseManagerForm.controls['email'].hasError('minlength')">
+              Email should be at least 5
+              characters long.
+            </span>
+            <span *ngIf="licenseManagerForm.controls['email'].hasError('pattern')">Email format is not correct.</span>
+
+          </mat-error>
+
+        </mat-form-field>
+          <mat-form-field appearance="outline" class="w-1/2">
+            <mat-label>Role</mat-label>
+            <input matInput formControlName="role" placeholder="Role">
+            
+            <mat-error *ngIf="licenseManagerForm.controls['role']?.invalid && (licenseManagerForm.controls['role'].dirty || licenseManagerForm.controls['role'].touched)">
+              <span *ngIf="licenseManagerForm.controls['role'].hasError('required')">Role is required.</span>
+              <span *ngIf="licenseManagerForm.controls['role'].hasError('minlength')">
+                Role should be at least 4
+                characters long.
+              </span>
+            </mat-error>
+
+        </mat-form-field>
+  </div>
+      <mat-form-field appearance="outline" class="w-1/2">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" placeholder="Phone Number">
+
+        <mat-error *ngIf="licenseManagerForm.controls['phoneNumber']?.invalid && (licenseManagerForm.controls['phoneNumber'].dirty || licenseManagerForm.controls['phoneNumber'].touched)">
+          <span *ngIf="licenseManagerForm.controls['phoneNumber'].hasError('required')">Email is required.</span>
+          <span *ngIf="licenseManagerForm.controls['phoneNumber'].hasError('minlength')">
+            Phone Number should be at least 10
+            characters long.
+          </span>
+          <span *ngIf="licenseManagerForm.controls['phoneNumber'].hasError('pattern')">Only numbers are allowed.</span>
+        </mat-error>
+
+      </mat-form-field>
   <div>
     <label class="block mb-1">Profile Picture</label>
-    <input type="file" accept="image/*" (change)="onFileSelected($event)">
+    <input type="file" accept="image/*" (change)="onFileSelected($event)" required>
   </div>
-  <!-- <div class="flex items-center space-x-4">
-    <span class="block">Active:</span>
-    <mat-slide-toggle formControlName="isActive" ></mat-slide-toggle>
-  </div> -->
+ <!-- // <div class="flex items-center space-x-4">
+ //   <span class="block">Active:</span>
+  //  <mat-slide-toggle formControlName="isActive" ></mat-slide-toggle>
+  //</div> -->
   <div class="flex items-center space-x-4">
     <span class="block">Active:</span>
 

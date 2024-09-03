@@ -57,7 +57,7 @@ export class LmanagersMgmtComponent {
       {
         bgcolor: 'red-500',
         icon: 'apps_outage',
-        title: 'Add Software or Products to eb Licensed',
+        title: 'Add Software or Products to be Licensed',
         subtitle: 'e.g. Sysaid'
       },
       {
@@ -71,6 +71,12 @@ export class LmanagersMgmtComponent {
         icon: 'person',
         title: 'Add The manager who will be Responsible for that Software',
         subtitle: 'Mr. Yekoye Mihret'
+      },
+      {
+        bgcolor: 'orange-400',
+        icon: 'done_all',
+        title: 'Receive Email Notification when The Expiration Date approaches',
+        subtitle: 'Check your email'
       }
 
     )
