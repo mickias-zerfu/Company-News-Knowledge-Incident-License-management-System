@@ -14,7 +14,7 @@ import { AddLicenseManagerComponent } from '../add-license-manager/add-license-m
 @Component({
   selector: 'app-detail-license-manager',
   templateUrl: './detail-license-manager.component.html',
-  styleUrls: ['./detail-license-manager.component.css']
+  styleUrls: ['./detail-license-manager.component.css', './assign.css']
 })
 export class DetailLicenseManagerComponent implements OnInit {
   licenses: any[] = []; // Array to store the list of licenses

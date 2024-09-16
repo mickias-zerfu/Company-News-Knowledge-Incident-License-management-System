@@ -8,9 +8,9 @@
     <!-- <app-add-new-button buttonText="Add New Licenses" (click)="addNewLicense()"></app-add-new-button> -->
   </div>
   <section class="flex px-2 md:px-2 lg:px-2">
-    <div class="w-full md:w-1/2 lg:w-1/2 p-4">
-      <div style="width: 410px;">
-        <app-chart-data></app-chart-data>
+    <div class="w-full md:w-1/2 lg:w-1/2 p-4" >
+      <div style="width: 310px !important;" *ngIf="data">
+        <app-chart-data [data]="data"></app-chart-data>
       </div>
     </div>
     <div class="w-full md:w-1/2 lg:w-1/2 p-4">

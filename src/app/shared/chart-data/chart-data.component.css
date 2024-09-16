@@ -1,5 +1,18 @@
 .pie-chart{
-  padding: 50px;
-  width: 400px;
-  height: 400px;
+  padding: 20px;
+  width: 300px !important;
+  height: 300px !important;
+}
+.highcharts-credits{
+    visibility:hidden !important;
+    display: none !important;
+}
+.highcharts-title,
+.highcharts-credits {
+  display: none;
+}
+article{
+  width: 300px !important;
+  height: 300px !important;
+
 }

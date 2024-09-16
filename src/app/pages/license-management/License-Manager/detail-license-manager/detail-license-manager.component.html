@@ -1,90 +1,110 @@
 
-<mat-card class="license-card">
-  <mat-card-header>
-    <img mat-card-avatar [src]="licenseManager.profilePictureUrl" alt="License Manager Image" class="profile-picture">
-    <mat-card-title>{{ licenseManager.firstName }} {{ licenseManager.lastName }}</mat-card-title>
-    <mat-card-subtitle>{{ licenseManager.email }}</mat-card-subtitle>
-  </mat-card-header>
-  
-  <mat-card-content>
-    <h3 class="contact-info-title">Contact Information</h3>
-    <div class="contact-info">
-      <div class="info-item">
-        <mat-icon>phone</mat-icon>
-        <span>{{ licenseManager.phoneNumber }}</span>
-      </div>
-      <div class="info-item">
-        <mat-icon>work</mat-icon>
-        <span>{{ licenseManager.role }}</span>
-      </div>
-    </div>
-  </mat-card-content>
-  
-  <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="fetchLicenses(licenseManager.id)">
-      <mat-icon>assignment</mat-icon>
-      Assign Licenses to this Manager
-    </button>
-    <div class="action-buttons">
-      <button mat-icon-button color="accent" (click)="updatelicenseManager(licenseManager.id)">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button color="warn" (click)="openConfirmationDialog(licenseManager.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </div>
-  </mat-card-actions>
-</mat-card>
 
-
-
-
-
-
-<!-- <div class="bg-white rounded-lg shadow-lg p-6">
-  <div class="flex justify-between items-center mb-4">
+<!--<div class="bg-white rounded-lg shadow-lg p-6 flex flex-row mb-4">
+  <div class="justify-start items-left mb-4 mr-4  border-r-4 border-red-500 info">
     <div class="flex-shrink-0 mr-4">
-      <img [src]="licenseManager.profilePictureUrl" alt="License Manager Image" class="w-32 h-32 rounded-full">
+      <img [src]="licenseManager.profilePictureUrl" alt="License Manager Image" class="w-16 h-16 rounded-full">
     </div>
-    <div class="flex justify-left items-left mb-4">
+    <div class="justify-left items-left mb-4">
+      <div class="justify-start items-left mb-4">
+        <h2 class="flex items-center">
+          {{ licenseManager.firstName }} {{
+          licenseManager.lastName
+          }}
+        </h2>
+        <p class="text-gray-600  flex items-center">{{ licenseManager.email }}</p>
+        <div class="flex items-center mb-2">
+          <mat-icon class="mr-2">phone</mat-icon>
+          <span>{{ licenseManager.phoneNumber }}</span>
+        </div>
+        <div class="flex items-center">
+          <mat-icon class="mr-2">work</mat-icon>
+          <span>{{ licenseManager.role }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="justify-start items-left mb-4 ">
+    <div class="action p-4">
       <div>
-        <h2 class="text-xl font-semibold justify-left items-left ">{{ licenseManager.firstName }} {{
-          licenseManager.lastName }}</h2>
-        <p class="text-gray-600">{{ licenseManager.email }}</p>
+        <button class="button" (click)="fetchLicenses(licenseManager.id)">
+          Assign Licenses
+          <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+            <path clip-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                  fill-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button mat-icon-button color="accent" (click)="updatelicenseManager(licenseManager.id)" class="m-2 p-2 rounded-sm  ">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <div>
+        <button mat-icon-button color="warn" (click)="openConfirmationDialog(licenseManager.id)" class="m-2 p-2 rounded-sm  ">
+          <mat-icon>delete</mat-icon>
+        </button>
       </div>
     </div>
   </div>
-  <div class="mb-4">
-    <p class="text-lg font-semibold">Contact Information</p>
-    <div class="flex flex-wrap items-center">
-      <div class="flex items-center mr-8 mb-2">
-        <mat-icon class="mr-2">phone</mat-icon>
-        <span>{{ licenseManager.phoneNumber }}</span>
+</div>-->
+
+<mat-accordion class="w-full ml-8">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header class="  h-32 rounded-full">
+      <mat-panel-title class="  h-32 rounded-full">
+        <div class="flex-shrink-0 mt-4 mr-4">
+          <img [src]="licenseManager.profilePictureUrl" alt="License Manager Image" class="w-16 h-16 rounded-full">
+        </div>
+        <h2 class="flex items-center">
+          {{ licenseManager.firstName }} {{ licenseManager.lastName   }}
+        </h2>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="bg-white rounded-lg s  p-6 flex flex-row ">
+      <div class="justify-start items-left   mr-4  border-r-4 border-red-500 info">         
+        <div class="justify-left items-left mb-4">
+          <div class="justify-start items-left mb-4">
+            <h2 class="flex items-center font-semibold">
+              {{ licenseManager.firstName | uppercase }} {{ licenseManager.lastName| uppercase  }}
+            </h2>
+            <p class="text-gray-600  flex items-center">{{ licenseManager.email }}</p>
+            <div class="flex items-center mb-2">
+              <mat-icon class="mr-2">phone</mat-icon>
+              <span>{{ licenseManager.phoneNumber }}</span>
+            </div>
+            <div class="flex items-center">
+              <mat-icon class="mr-2">work</mat-icon>
+              <span>{{ licenseManager.role }}</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="flex items-center">
-        <mat-icon class="mr-2">work</mat-icon>
-        <span>{{ licenseManager.role }}</span>
+      <div class="justify-start items-left  action">
+        <div class="action_ p-4">
+          <div>
+            <button class="button" (click)="fetchLicenses(licenseManager.id)">
+              Assign Licenses
+              <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                <path clip-rule="evenodd"
+                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                      fill-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+          <div>
+            <button mat-icon-button color="accent" (click)="updatelicenseManager(licenseManager.id)" class="m-2 p-2 rounded-sm  ">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+          <div>
+            <button mat-icon-button color="warn" (click)="openConfirmationDialog(licenseManager.id)" class="m-2 p-2 rounded-sm  ">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
-  <div class="action flex justify-start p-4">
-    <button (click)="fetchLicenses(licenseManager.id)" class="mr-8 p-2 bg-yellow-400 rounded-sm font-semibold"
-      >Assign Licenses to be tracked by this Manager
-    </button>
-  </div>
-  <div class="action flex justify-end p-4">
-    <button (click)="updatelicenseManager(licenseManager.id)" class="mr-8 p-2 bg-yellow-400 rounded-sm font-semibold"
-      >
-      <mat-icon>edit</mat-icon> </button>
-    <button (click)="openConfirmationDialog(licenseManager.id)" class="mr-8 p-2 bg-red-600 rounded-sm font-semibold"
-      >
-      <mat-icon>delete</mat-icon> </button>
-  </div>
-</div> -->
-
-
-
-<!-- license-manager-card.component.html -->
-
-
-
+</mat-expansion-panel>
+</mat-accordion>
