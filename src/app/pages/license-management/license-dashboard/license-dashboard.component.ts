@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; 
 import { LicenseDashboardService } from 'src/app/services/licenses/license-dashboard.service';
 export interface ReportCardLicense {
   bgcolor: string,
@@ -15,6 +15,8 @@ export interface ReportCardLicense {
 })
 export class LicenseDashboardComponent implements OnInit {
   topcardsLicense: ReportCardLicense[] = [];
+  data: { licenseCount: number, licenseManagerCount: number, softwareCount: number, expiredCount: number };
+
   constructor(private dashboardService: LicenseDashboardService) { }
 
 
@@ -29,6 +31,7 @@ export class LicenseDashboardComponent implements OnInit {
   gettopcardsLicenseData() {
 
     this.dashboardService.getTotalCounts().subscribe((data: any) => {
+      this.data = data; 
 
       this.topcardsLicense = [
       {

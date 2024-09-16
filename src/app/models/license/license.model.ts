@@ -1,6 +1,6 @@
 import { SoftwareProduct } from "./software.model";
 
-export interface License {
+export class License {
   id: number;
   issuedTo: string;
   issuedBy: string;

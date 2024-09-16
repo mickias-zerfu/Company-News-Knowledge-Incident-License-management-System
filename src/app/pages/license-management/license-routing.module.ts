@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: "", component: LicenseDashboardComponent, canActivate: [AuthGuard] }, // Default route should be placed at the end
   { path: "lists", component: LicenseListComponent, canActivate: [AuthGuard] },
   { path: "add", component: LicenseFormComponent, canActivate: [AuthGuard] },
-  { path: "license/:id/update", component: LicenseFormComponent, canActivate: [AuthGuard] },
+  { path: ":id/update", component: LicenseFormComponent, data: { isEditMode: true }, canActivate: [AuthGuard] },
   { path: "license/:id", component: LicenseDetailComponent, canActivate: [AuthGuard] },
 
   { path: "softwares", component: SoftwareProductListComponent, canActivate: [AuthGuard] },

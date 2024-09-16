@@ -8,14 +8,15 @@ import { ConfirmDialogComponent, ConfirmDialogData } from 'src/app/shared/confir
 import { MatDialog } from '@angular/material/dialog';
 import { LicenseManagerService } from 'src/app/services/licenses/license-manager.service';
 import { AssignmentComponent } from './assignment/assignment.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-license-table',
   templateUrl: './license-table.component.html',
-  styleUrls: ['./license-table.component.css']
+  styleUrls: ['./license-table.component.css','../../../License-Manager/detail-license-manager/assign.css']
 })
 export class LicenseTableComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'issuedTo', 'issuedBy', 'creationDate', 'expirationDate', 'maxUsers', 'activated', 'licenseType', 'softwareProduct', 'Assignment', 'action'];
+  displayedColumns: string[] = ['id', 'issuedTo', 'issuedBy', 'creationDate', 'expirationDate', 'maxUsers', 'activated', 'softwareProduct', 'Assignment', 'action'];
   dataSource: MatTableDataSource<License>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -24,7 +25,8 @@ export class LicenseTableComponent implements OnInit {
   managers: any[] = []; // Array to store the list of managers
   displayAssignForm: boolean = false; // Variable to control the display of the form
   selectedManagers: any[] = []; // Array to store the selected managers
-  constructor(private licenseService: LicenseCrudService, private licenseManagersService: LicenseManagerService, private dialog: MatDialog) {
+  constructor(private licenseService: LicenseCrudService, private licenseManagersService: LicenseManagerService, private dialog: MatDialog,
+    private router: Router) {
     this.dataSource = new MatTableDataSource<License>([]);
   }
 
@@ -50,6 +52,8 @@ export class LicenseTableComponent implements OnInit {
 
   editLicense(licenseId: number): void {
     // Logic to edit the license with the provided ID
+
+    this.router.navigate([`licenses/${licenseId}/update`]);
     console.log(`Editing license with ID: ${licenseId}`);
   }
   getLicenseManager(licenseId:any) {
@@ -71,6 +75,7 @@ export class LicenseTableComponent implements OnInit {
   
   assignLicenseManager(licenseId: number): void {
     // Logic to assign selected managers
+
     console.log(this.selectedManagers);
     // Send the selected managers to your TypeScript logic for further processing
 
